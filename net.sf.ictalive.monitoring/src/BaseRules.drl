@@ -1,0 +1,263 @@
+package net.sf.ictalive.monitoring.domain
+
+import java.util.TreeSet;
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EObject;
+
+import net.sf.ictalive.monitoring.EventTransporter;
+import net.sf.ictalive.monitoring.domain.Norm;
+import net.sf.ictalive.runtime.event.Event;
+import net.sf.ictalive.runtime.fact.SendAct;
+import net.sf.ictalive.operetta.OM.Atom;
+import net.sf.ictalive.operetta.OM.Constant;
+import net.sf.ictalive.operetta.OM.Term;
+import net.sf.ictalive.operetta.OM.Negation;
+
+// EVENT SUBMISSION
+
+rule "norm state to event"
+when
+	ns : NormState()
+	et : EventTransporter()
+then
+	et.publish(ns);
+end
+
+// COUNTS-AS TEMPLATES
+
+rule "existing predicates"
+when
+	Proposition(n : predicate)
+	not Predicate(name == n)
+then
+	insert(new Predicate(n));
+end
+
+rule "count predicates"
+when
+	Predicate(n : name, name != "Count")
+	ps : ArrayList(s : size) from collect(Proposition(predicate == n))
+then
+	Proposition	p;
+	
+	p = new Proposition("Count", n, s + "");
+	System.out.println("Count: " + p);
+	insertLogical(p);
+end
+
+rule "send-act(x) counts-as x"
+when
+	s : SendAct(m : sendMessage)
+then
+	Atom					a;
+	PropositionCandidate	p;
+	Iterator<Term>			term;
+	Vector<String>			params;
+	EObject					obj;
+	RemovalCandidate		r;
+	
+	obj = m.getObject().get(0);
+	if(obj instanceof Atom)
+	{
+		a = (Atom)obj;
+		p = new PropositionCandidate(a.getPredicate());
+		params = new Vector<String>();
+		term = a.getArguments().iterator();
+		while(term.hasNext())
+		{
+			params.add(((Constant)term.next()).getName());
+		}
+		p.setParams(params);
+		// System.out.println("Inserting " + p);
+		insert(p);
+	}
+	else if(obj instanceof Negation)
+	{
+		a = (Atom)((Negation)obj).getStateFormula();
+		r = new RemovalCandidate(a.getPredicate());
+		params = new Vector<String>();
+		term = a.getArguments().iterator();
+		while(term.hasNext())
+		{
+			params.add(((Constant)term.next()).getName());
+		}
+		r.setParams(params);
+		// System.out.println("Inserting " + r);
+		insert(r);
+	}
+	retract(s);
+end
+
+rule "proposition is unique"
+when
+	pc : PropositionCandidate(n : predicate, par0 : p0, par1 : p1, par2 : p2, par3 : p3, par4 : p4, par5 : p5, par6 : p6, par7 : p7, par8 : p8, par9 : p9)
+	not Proposition(predicate == n, p0 == par0, p1 == par1, p2 == par2, p3 == par3, p4 == par4, p5 == par5, p6 == par6, p7 == par7, p8 == par8, p9 == par9)
+then
+	Proposition	p;
+	
+	p = new Proposition(n);
+	p.setP0(par0);
+	p.setP1(par1);
+	p.setP2(par2);
+	p.setP3(par3);
+	p.setP4(par4);
+	p.setP5(par5);
+	p.setP6(par6);
+	p.setP7(par7);
+	p.setP8(par8);
+	p.setP9(par9);
+	
+	insert(p);
+	retract(pc);
+end
+
+rule "proposition is not unique"
+when
+	pc : PropositionCandidate(n : predicate, par0 : p0, par1 : p1, par2 : p2, par3 : p3, par4 : p4, par5 : p5, par6 : p6, par7 : p7, par8 : p8, par9 : p9)
+	Proposition(predicate == n, p0 == par0, p1 == par1, p2 == par2, p3 == par3, p4 == par4, p5 == par5, p6 == par6, p7 == par7, p8 == par8, p9 == par9)
+then
+	retract(pc);
+end
+
+rule "removal without match"
+when
+	rc : RemovalCandidate(n : predicate, par0 : p0, par1 : p1, par2 : p2, par3 : p3, par4 : p4, par5 : p5, par6 : p6, par7 : p7, par8 : p8, par9 : p9)
+	not Proposition(predicate == n, p0 == par0, p1 == par1, p2 == par2, p3 == par3, p4 == par4, p5 == par5, p6 == par6, p7 == par7, p8 == par8, p9 == par9)
+then
+	retract(rc);
+end
+
+rule "removal with match"
+when
+	rc : RemovalCandidate(n : predicate, par0 : p0, par1 : p1, par2 : p2, par3 : p3, par4 : p4, par5 : p5, par6 : p6, par7 : p7, par8 : p8, par9 : p9)
+	pc : Proposition(predicate == n, p0 == par0, p1 == par1, p2 == par2, p3 == par3, p4 == par4, p5 == par5, p6 == par6, p7 == par7, p8 == par8, p9 == par9)
+then
+	System.out.println(pc + " is dead");
+	retract(pc);
+	retract(rc);
+end
+
+// MONITORING RULES FOR NORMATIVE STATE
+
+rule "holds"
+salience 80
+when
+	HasClause(f : formula, f2 : clause)
+	Holds(formula == f2, theta : substitution)
+then
+	insertLogical(new Holds(f, theta));
+end
+
+rule "event processed"
+when
+	e : Event(a : asserter, p : content)
+then
+	insert(p.getFact());
+	retract(e);
+end
+
+rule "counts-as activation"
+when
+	CountsAs(g1 : gamma1, g2 : gamma2, s : context)
+	Holds(formula == g1, theta : substitution)
+	Holds(formula == s, theta2 : substitution)
+	not Holds(formula == g2, substitution == theta)
+then
+	Object	obj;
+	
+	obj = g2.substitute(theta);
+	System.out.println("Counts-as, substitution " + theta + ", inserting " + obj);
+	insert(obj);
+	insert(new CountsAsActivation(g1, theta, obj));
+end
+
+rule "counts-as deactivation"
+when
+	CountsAs(g1 : gamma1, g2 : gamma2, s : context)
+	Holds(formula == g1, theta : substitution)
+	not Holds(formula == s, theta2 : substitution)
+	Holds(formula == g2, substitution == theta)
+	f : Formula(content == g2, grounding == theta)
+then
+	retract(f);
+end
+
+rule "counts-as deactivation due to gamma1"
+when
+	caa : CountsAsActivation(g1 : gamma1, theta : substitution, o : object)
+	not (SubsetEQ(theta2 : subset, superset == theta)
+	and SubsetEQ(subset == theta, superset == theta2)
+	and Holds(formula == g1, substitution == theta2))
+then
+	System.out.println("Counts-as no longer valid, removing " + o);
+	retract(o);
+	retract(caa);
+end
+
+rule "norm instantiation"
+when
+	Activation(n : norm, f : formula)
+	Holds(formula == f, theta : substitution)
+	not Instantiated(norm == n, substitution == theta)
+	not Repair(n2 : norm, repairNorm == n)
+then
+	insert(new Instantiated(n, theta));
+	System.out.println("Norm instantiated! " + theta);
+end
+
+rule "norm instance violation"
+salience -1
+when
+	ni : Instantiated(n : norm, theta : substitution)
+	Maintenance(norm == n, f : formula)
+	not (SubsetEQ(theta2 : subset, superset == theta)
+	and Holds(formula == f, substitution == theta2))
+	rs : ArrayList() from collect(Repair(norm == n))
+then
+	Iterator	it;
+
+	System.out.println("!!!VIOLATION: " + theta);
+	retract(ni);
+	insert(new Violated(n, theta));
+	
+	it = rs.iterator();
+	while(it.hasNext())
+	{
+		insert(new Instantiated(((Repair)it.next()).getRepairNorm(), theta));
+	}
+end
+
+rule "norm instance fulfillment"
+when
+	Deactivation(n : norm, f : formula)
+	ni : Instantiated(norm == n, theta : substitution)
+	SubsetEQ(theta2 : subset, superset == theta)
+	Holds(formula == f, substitution == theta2)
+then
+	retract(ni);
+	insert(new Fulfilled(n, theta));
+	System.out.println("Norm fulfilled!");
+end
+
+rule "norm instance violation repaired"
+when
+	ni : Violated(n : norm, theta : substitution)
+	Repair(norm == n, n2 : repairNorm)
+	Fulfilled(norm == n2, substitution == theta)
+then
+	retract(ni);
+end
+
+rule "subseteq"
+salience 100
+when
+	theta : Substitution()
+	theta2 : Substitution()
+	eval(theta.containsAll(theta2))
+then
+	System.out.println(theta2 + " subset of " + theta);
+	insertLogical(new SubsetEQ(theta2, theta));
+end

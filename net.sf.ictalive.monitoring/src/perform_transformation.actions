@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions:ActionsCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:actions="http://ict-alive.sourceforge.net/coordination/actions" xmlns:process="http://ict-alive.sourceforge.net/owls/process" xmlns:swrl="http://ict-alive.sourceforge.net/swrl">
+  <actions xsi:type="actions:AtomicAction" name="perform_asr">
+    <hasPrecondition logicLanguage="SWRL">
+      <expressionBody xsi:type="swrl:AtomList">
+        <atom xsi:type="swrl:ClassAtom">
+          <classPredicate href="CalicoJack-1.0.0.opera#_Df-xIAv4Ed-oGOIW-FzhQQ"/>
+          <argument1 xsi:type="swrl:IndividualVariable" name="msg"/>
+        </atom>
+        <atom xsi:type="swrl:DatavaluedPropertyAtom">
+          <propertyPredicate href="CalicoJack-1.0.0.opera#_0Mtp8SanEd-KaMDcQDil3A"/>
+          <argument2 xsi:type="swrl:DataLiteral">
+            <dataValue literal="audio"/>
+          </argument2>
+          <argument1 xsi:type="swrl:IndividualVariable" name="msg"/>
+        </atom>
+        <atom xsi:type="swrl:IndividualPropertyAtom">
+          <propertyPredicate href="CalicoJack-1.0.0.opera#_irbGICenEd-1mobRw9HAUQ"/>
+          <argument1 xsi:type="swrl:IndividualVariable" name="msg"/>
+          <argument2 xsi:type="swrl:IndividualVariable" name="content"/>
+        </atom>
+        <atom xsi:type="swrl:IndividualPropertyAtom">
+          <propertyPredicate href="CalicoJack-1.0.0.opera#_-gZV4AvwEd-w-tmaCPggKA"/>
+          <argument1 xsi:type="swrl:IndividualVariable" name="rootIdentity"/>
+          <argument2 xsi:type="swrl:IndividualVariable" name="ac"/>
+        </atom>
+        <atom xsi:type="swrl:DatavaluedPropertyAtom">
+          <propertyPredicate href="CalicoJack-1.0.0.opera#_0Mtp8SanEd-KaMDcQDil3A"/>
+          <argument2 xsi:type="swrl:DataLiteral">
+            <dataValue literal="text"/>
+          </argument2>
+          <argument1 xsi:type="swrl:IndividualVariable" name="ac"/>
+        </atom>
+      </expressionBody>
+    </hasPrecondition>
+    <performedByRole>Participant</performedByRole>
+    <hasAtomicActionResult>
+      <hasAddEffect logicLanguage="SWRL">
+        <expressionBody xsi:type="swrl:AtomList">
+          <atom xsi:type="swrl:DatavaluedPropertyAtom">
+            <propertyPredicate href="CalicoJack-1.0.0.opera#_0Mtp8SanEd-KaMDcQDil3A"/>
+            <argument2 xsi:type="swrl:DataLiteral">
+              <dataValue literal="text"/>
+            </argument2>
+            <argument1 xsi:type="swrl:IndividualVariable" name="msg"/>
+          </atom>
+        </expressionBody>
+      </hasAddEffect>
+      <hasDeleteEffect logicLanguage="SWRL">
+        <expressionBody xsi:type="swrl:AtomList">
+          <atom xsi:type="swrl:DatavaluedPropertyAtom">
+            <propertyPredicate href="CalicoJack-1.0.0.opera#_0Mtp8SanEd-KaMDcQDil3A"/>
+            <argument2 xsi:type="swrl:DataLiteral">
+              <dataValue literal="audio"/>
+            </argument2>
+            <argument1 xsi:type="swrl:IndividualVariable" name="msg"/>
+          </atom>
+        </expressionBody>
+      </hasDeleteEffect>
+    </hasAtomicActionResult>
+  </actions>
+  <parameters xsi:type="process:Input" name="?content"/>
+</actions:ActionsCollection>

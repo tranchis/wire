@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<net.sf.ictalive.operetta:OperAModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:net.sf.ictalive.operetta="http://ict-alive.sourceforge.net/operetta/OM/1.0" xmi:id="_6BUHAQvmEd-U8rFOYLDn8w" Name="New OperA Model">
+  <om xmi:type="net.sf.ictalive.operetta:OM" xmi:id="_6BfGIAvmEd-U8rFOYLDn8w">
+    <ss xmi:type="net.sf.ictalive.operetta:SS" xmi:id="_6BftMAvmEd-U8rFOYLDn8w">
+      <roles xmi:type="net.sf.ictalive.operetta:Role" xmi:id="_4sryMQvtEd-447t0sckqMw" Name="Participant" conceptName="_5jVGUAvtEd-447t0sckqMw" objectives="_7FcZUAvtEd-447t0sckqMw _26at4AvuEd-uCtjNYlQGww"/>
+      <roles xmi:type="net.sf.ictalive.operetta:Role" xmi:id="_QcaW4AvuEd-uCtjNYlQGww" Name="Profile_Manager" conceptName="_R3cxgAvuEd-uCtjNYlQGww" objectives="_SlrJcAvuEd-uCtjNYlQGww"/>
+      <roles xmi:type="net.sf.ictalive.operetta:Role" xmi:id="_XFinAAvuEd-uCtjNYlQGww" Name="Context_Manager" conceptName="_Yev1oAvuEd-uCtjNYlQGww" objectives="_bbq5wAvuEd-uCtjNYlQGww"/>
+      <roles xmi:type="net.sf.ictalive.operetta:Role" xmi:id="_ZYBnAAvuEd-uCtjNYlQGww" Name="Subscription_Manager" conceptName="_aoESkAvuEd-uCtjNYlQGww" objectives="_dfZFAAvuEd-uCtjNYlQGww"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_bbq5wAvuEd-uCtjNYlQGww" Name="Manage_User_Context" conceptName="_RXeGkAwSEd-oGOIW-FzhQQ" stateDescription="_DD9eUAwKEd-oGOIW-FzhQQ"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_dfZFAAvuEd-uCtjNYlQGww" Name="Manage_User_Subscription_Info" conceptName="_QaRegAwSEd-oGOIW-FzhQQ" stateDescription="_9GCpMAwbEd-T6JmC24Rnvg"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_SlrJcAvuEd-uCtjNYlQGww" Name="Manage_User_Preferences" conceptName="_PjpYgAwSEd-oGOIW-FzhQQ" stateDescription="_4hCM8AwbEd-T6JmC24Rnvg"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_hTOjAAvuEd-uCtjNYlQGww" Name="Retrieve_Receiver_Subscription" conceptName="_i15PoAvuEd-uCtjNYlQGww" stateDescription="_udU24AwcEd-T6JmC24Rnvg"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_7FcZUAvtEd-447t0sckqMw" Name="Message_Transmitted" conceptName="_8HZlkAvtEd-447t0sckqMw" stateDescription="_A-0b8Av4Ed-oGOIW-FzhQQ"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="__iqykAvtEd-447t0sckqMw" Name="Retrieve_Receiver_Profile" conceptName="_BmkkAAvuEd-447t0sckqMw" stateDescription="_r7elMAwcEd-T6JmC24Rnvg"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_L84QgQvuEd-uCtjNYlQGww" Name="Retrieve_Receiver_Context" conceptName="_N3NPMAvuEd-uCtjNYlQGww" stateDescription="_eTcpQAwcEd-T6JmC24Rnvg"/>
+      <objectives xmi:type="net.sf.ictalive.operetta:Objective" xmi:id="_26at4AvuEd-uCtjNYlQGww" Name="Receive_Appropriate_Channels" conceptName="_6V7ygAvuEd-uCtjNYlQGww" stateDescription="_U7P44AweEd-q6tuo_dc7Zg" subObjectives="_L84QgQvuEd-uCtjNYlQGww __iqykAvtEd-447t0sckqMw _hTOjAAvuEd-uCtjNYlQGww"/>
+      <dependencies xmi:type="net.sf.ictalive.operetta:NetworkDependency" xmi:id="_wPXyMAvuEd-uCtjNYlQGww" ObjectOfDependency="_7FcZUAvtEd-447t0sckqMw _26at4AvuEd-uCtjNYlQGww" Dependant1="_4sryMQvtEd-447t0sckqMw" Dependant2="_4sryMQvtEd-447t0sckqMw"/>
+      <dependencies xmi:type="net.sf.ictalive.operetta:HierarchyDependency" xmi:id="_SqSuQQvvEd-w-tmaCPggKA" ObjectOfDependency="_hTOjAAvuEd-uCtjNYlQGww" Dependant="_4sryMQvtEd-447t0sckqMw" Dependee="_ZYBnAAvuEd-uCtjNYlQGww"/>
+      <dependencies xmi:type="net.sf.ictalive.operetta:HierarchyDependency" xmi:id="_TdJukAvvEd-w-tmaCPggKA" ObjectOfDependency="_L84QgQvuEd-uCtjNYlQGww" Dependant="_4sryMQvtEd-447t0sckqMw" Dependee="_XFinAAvuEd-uCtjNYlQGww"/>
+      <dependencies xmi:type="net.sf.ictalive.operetta:HierarchyDependency" xmi:id="_UORpgAvvEd-w-tmaCPggKA" ObjectOfDependency="__iqykAvtEd-447t0sckqMw" Dependant="_4sryMQvtEd-447t0sckqMw" Dependee="_QcaW4AvuEd-uCtjNYlQGww"/>
+    </ss>
+    <is xmi:type="net.sf.ictalive.operetta:IS" xmi:id="_6BgUQAvmEd-U8rFOYLDn8w">
+      <scenes xmi:type="net.sf.ictalive.operetta:Scene" xmi:id="_6BhiYAvmEd-U8rFOYLDn8w" sceneID="start" description="Default start scene of an interaction structure" type="start"/>
+      <scenes xmi:type="net.sf.ictalive.operetta:Scene" xmi:id="_6BhiYQvmEd-U8rFOYLDn8w" sceneID="end" description="Default end scene of an interaction structure" type="end"/>
+      <scenes xmi:type="net.sf.ictalive.operetta:Scene" xmi:id="_bUMjUAvvEd-w-tmaCPggKA" sceneID="Communication" results="_K7bvsAvwEd-w-tmaCPggKA" description="Possibly need to add a registration scene before this, which handles participant registration? Decided not to tackle this because of operational aspects which are out of the scope for the ALIVE project.">
+        <players xmi:type="net.sf.ictalive.operetta:Player" xmi:id="_5y9L0AvvEd-w-tmaCPggKA" playerID="120" role="_4sryMQvtEd-447t0sckqMw"/>
+        <players xmi:type="net.sf.ictalive.operetta:Player" xmi:id="_8wLx8AvvEd-w-tmaCPggKA" playerID="121" role="_4sryMQvtEd-447t0sckqMw"/>
+        <players xmi:type="net.sf.ictalive.operetta:Player" xmi:id="_-EHfAAvvEd-w-tmaCPggKA" playerID="117" role="_XFinAAvuEd-uCtjNYlQGww"/>
+        <players xmi:type="net.sf.ictalive.operetta:Player" xmi:id="__94dAAvvEd-w-tmaCPggKA" playerID="118" role="_QcaW4AvuEd-uCtjNYlQGww"/>
+        <players xmi:type="net.sf.ictalive.operetta:Player" xmi:id="_BnGdkAvwEd-w-tmaCPggKA" playerID="119" role="_ZYBnAAvuEd-uCtjNYlQGww"/>
+        <interactionPattern xmi:type="net.sf.ictalive.operetta:LandmarkPattern" xmi:id="_E68z8AvwEd-w-tmaCPggKA">
+          <landmarks xmi:type="net.sf.ictalive.operetta:Landmark" xmi:id="_FviSkAvwEd-w-tmaCPggKA" name="Start"/>
+          <landmarks xmi:type="net.sf.ictalive.operetta:Landmark" xmi:id="_HP5SEAvwEd-w-tmaCPggKA" name="Know_Possible_Channels" stateDescription="_sRi2cAwJEd-oGOIW-FzhQQ" entails="_dfZFAAvuEd-uCtjNYlQGww _hTOjAAvuEd-uCtjNYlQGww"/>
+          <landmarks xmi:type="net.sf.ictalive.operetta:Landmark" xmi:id="_JO58cAvwEd-w-tmaCPggKA" name="Know_Appropriate_Channels" stateDescription="_7pmu8AvwEd-w-tmaCPggKA" entails="_bbq5wAvuEd-uCtjNYlQGww _L84QgQvuEd-uCtjNYlQGww _SlrJcAvuEd-uCtjNYlQGww __iqykAvtEd-447t0sckqMw"/>
+          <landmarks xmi:type="net.sf.ictalive.operetta:Landmark" xmi:id="_K7bvsAvwEd-w-tmaCPggKA" name="Communication_Finished" stateDescription="_A-0b8Av4Ed-oGOIW-FzhQQ"/>
+          <landmarkOrder xmi:type="net.sf.ictalive.operetta:PartialOrder" xmi:id="_OKY_AAvwEd-w-tmaCPggKA" from="_FviSkAvwEd-w-tmaCPggKA" to="_HP5SEAvwEd-w-tmaCPggKA"/>
+          <landmarkOrder xmi:type="net.sf.ictalive.operetta:PartialOrder" xmi:id="_Qaup8AvwEd-w-tmaCPggKA" from="_HP5SEAvwEd-w-tmaCPggKA" to="_JO58cAvwEd-w-tmaCPggKA"/>
+          <landmarkOrder xmi:type="net.sf.ictalive.operetta:PartialOrder" xmi:id="_SQAJgAvwEd-w-tmaCPggKA" from="_JO58cAvwEd-w-tmaCPggKA" to="_K7bvsAvwEd-w-tmaCPggKA"/>
+        </interactionPattern>
+      </scenes>
+      <transitions xmi:type="net.sf.ictalive.operetta:Transition" xmi:id="_e03NsAvvEd-w-tmaCPggKA" transitionID="T0" transitionType="OR"/>
+      <transitions xmi:type="net.sf.ictalive.operetta:Transition" xmi:id="_fK0PkAvvEd-w-tmaCPggKA" transitionID="T2" transitionType="OR"/>
+      <arcs xmi:type="net.sf.ictalive.operetta:SceneToTransitionArc" xmi:id="_gq9MoAvvEd-w-tmaCPggKA" arcID="A1" from="_6BhiYAvmEd-U8rFOYLDn8w" to="_e03NsAvvEd-w-tmaCPggKA"/>
+      <arcs xmi:type="net.sf.ictalive.operetta:TransitionToSceneArc" xmi:id="_hPfdEAvvEd-w-tmaCPggKA" arcID="A3" from="_e03NsAvvEd-w-tmaCPggKA" to="_bUMjUAvvEd-w-tmaCPggKA"/>
+      <arcs xmi:type="net.sf.ictalive.operetta:SceneToTransitionArc" xmi:id="_h3FokAvvEd-w-tmaCPggKA" arcID="A4" from="_bUMjUAvvEd-w-tmaCPggKA" to="_fK0PkAvvEd-w-tmaCPggKA"/>
+      <arcs xmi:type="net.sf.ictalive.operetta:TransitionToSceneArc" xmi:id="_njZEEAvvEd-w-tmaCPggKA" arcID="A5" from="_fK0PkAvvEd-w-tmaCPggKA" to="_6BhiYQvmEd-U8rFOYLDn8w"/>
+      <arcs xmi:type="net.sf.ictalive.operetta:TransitionToSceneArc" xmi:id="_qN_CEAvvEd-w-tmaCPggKA" arcID="A6" from="_fK0PkAvvEd-w-tmaCPggKA" to="_bUMjUAvvEd-w-tmaCPggKA" type="Instance"/>
+    </is>
+    <ns xmi:type="net.sf.ictalive.operetta:NS" xmi:id="_6BhiYgvmEd-U8rFOYLDn8w">
+      <norms xmi:type="net.sf.ictalive.operetta:Norm" xmi:id="_qhL1cAvwEd-w-tmaCPggKA" normID="On_Appropriateness_of_Channels_before_Sending_Message" activationCondition="_vZdzAAvwEd-w-tmaCPggKA" expirationCondition="_NqwjEAv4Ed-oGOIW-FzhQQ" maintenanceCondition="_QlsqMAv4Ed-oGOIW-FzhQQ">
+        <deontics xmi:type="net.sf.ictalive.operetta:RoleDeonticStatement" xmi:id="_07lTkQv3Ed-oGOIW-FzhQQ" actor="_5y9L0AvvEd-w-tmaCPggKA" what="_7pmu8AvwEd-w-tmaCPggKA" role="_4sryMQvtEd-447t0sckqMw"/>
+      </norms>
+      <norms xmi:type="net.sf.ictalive.operetta:Norm" xmi:id="_qK9wMAwkEd-Z6cNCF-pWzw" normID="On_Using_Appropriate_Channels_when_Sending_Messages" activationCondition="_vC4hYAwkEd-Z6cNCF-pWzw" expirationCondition="_z9yVIAwkEd-Z6cNCF-pWzw" maintenanceCondition="_5dISsAwkEd-Z6cNCF-pWzw">
+        <deontics xmi:type="net.sf.ictalive.operetta:RoleDeonticStatement" xmi:id="_-fgAYAwkEd-Z6cNCF-pWzw" actor="_5y9L0AvvEd-w-tmaCPggKA" what="_aol7YAwMEd-oGOIW-FzhQQ" role="_4sryMQvtEd-447t0sckqMw"/>
+      </norms>
+      <norms xmi:type="net.sf.ictalive.operetta:Norm" xmi:id="_E3-lYAwlEd-Z6cNCF-pWzw" normID="ContraryToDuty_Use_Similar" activationCondition="_XFxykAwlEd-Z6cNCF-pWzw" expirationCondition="_A-0b8Av4Ed-oGOIW-FzhQQ" maintenanceCondition="_xsjc4AwlEd-deZMVVZpFmQ">
+        <deontics xmi:type="net.sf.ictalive.operetta:RoleDeonticStatement" xmi:id="_4KbfQAwlEd-deZMVVZpFmQ" actor="_5y9L0AvvEd-w-tmaCPggKA" what="_Jb2jwAwmEd-deZMVVZpFmQ" role="_4sryMQvtEd-447t0sckqMw"/>
+      </norms>
+    </ns>
+    <cs xmi:type="net.sf.ictalive.operetta:CS" xmi:id="_6BiJcAvmEd-U8rFOYLDn8w">
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_vZdzAAvwEd-w-tmaCPggKA" predicate="enacting" arguments="_xha-AAvwEd-w-tmaCPggKA"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_7pmu8AvwEd-w-tmaCPggKA" predicate="know" arguments="_87ZG8AvwEd-w-tmaCPggKA"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_A-0b8Av4Ed-oGOIW-FzhQQ" predicate="sent" arguments="_CPFxAAv4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Conjunction" xmi:id="_NqwjEAv4Ed-oGOIW-FzhQQ" leftStateFormula="_7pmu8AvwEd-w-tmaCPggKA" rightStateFormula="_A-0b8Av4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Negation" xmi:id="_QlsqMAv4Ed-oGOIW-FzhQQ" stateFormula="_A-0b8Av4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_sRi2cAwJEd-oGOIW-FzhQQ" predicate="know" arguments="_uBYcYAwJEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_DD9eUAwKEd-oGOIW-FzhQQ" predicate="managed" concept="_zN3DIQwbEd-T6JmC24Rnvg" arguments="_sVUNEAwSEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_4hCM8AwbEd-T6JmC24Rnvg" concept="_zN3DIQwbEd-T6JmC24Rnvg" arguments="_A7imAAwaEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_9GCpMAwbEd-T6JmC24Rnvg" concept="_zN3DIQwbEd-T6JmC24Rnvg" arguments="_ilJ6kAwSEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_eTcpQAwcEd-T6JmC24Rnvg" predicate="received" concept="_e_3qYAwcEd-T6JmC24Rnvg" arguments="_sVUNEAwSEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_r7elMAwcEd-T6JmC24Rnvg" concept="_e_3qYAwcEd-T6JmC24Rnvg" arguments="_A7imAAwaEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_udU24AwcEd-T6JmC24Rnvg" concept="_e_3qYAwcEd-T6JmC24Rnvg" arguments="_ilJ6kAwSEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_aol7YAwMEd-oGOIW-FzhQQ" predicate="used" arguments="_87ZG8AvwEd-w-tmaCPggKA"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_gRxxcAwMEd-oGOIW-FzhQQ" predicate="received" concept="_e_3qYAwcEd-T6JmC24Rnvg" arguments="_CPFxAAv4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Conjunction" xmi:id="_OLxwMQweEd-q6tuo_dc7Zg" leftStateFormula="_eTcpQAwcEd-T6JmC24Rnvg" rightStateFormula="_r7elMAwcEd-T6JmC24Rnvg"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Conjunction" xmi:id="_U7P44AweEd-q6tuo_dc7Zg" leftStateFormula="_udU24AwcEd-T6JmC24Rnvg" rightStateFormula="_OLxwMQweEd-q6tuo_dc7Zg"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_vC4hYAwkEd-Z6cNCF-pWzw" predicate="intendToSent" concept="_wC07cAwkEd-Z6cNCF-pWzw" arguments="_CPFxAAv4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Conjunction" xmi:id="_z9yVIAwkEd-Z6cNCF-pWzw" leftStateFormula="_aol7YAwMEd-oGOIW-FzhQQ" rightStateFormula="_A-0b8Av4Ed-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Implication" xmi:id="_5dISsAwkEd-Z6cNCF-pWzw" antecedentStateFormula="_A-0b8Av4Ed-oGOIW-FzhQQ" consequentStateFormula="_aol7YAwMEd-oGOIW-FzhQQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_XFxykAwlEd-Z6cNCF-pWzw" predicate="violated" concept="_XtJUkAwlEd-Z6cNCF-pWzw" arguments="_M5lrYAwlEd-Z6cNCF-pWzw"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_fKB84AwlEd-Z6cNCF-pWzw" predicate="used" concept="_fzM1sAwlEd-Z6cNCF-pWzw" arguments="_gnh1oAwlEd-Z6cNCF-pWzw"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_t4zecAwlEd-deZMVVZpFmQ" predicate="similarTo" concept="_vW2w0AwlEd-deZMVVZpFmQ" arguments="_gnh1oAwlEd-Z6cNCF-pWzw _87ZG8AvwEd-w-tmaCPggKA"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Implication" xmi:id="_xsjc4AwlEd-deZMVVZpFmQ" antecedentStateFormula="_fKB84AwlEd-Z6cNCF-pWzw" consequentStateFormula="_t4zecAwlEd-deZMVVZpFmQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Conjunction" xmi:id="_Jb2jwAwmEd-deZMVVZpFmQ" leftStateFormula="_fKB84AwlEd-Z6cNCF-pWzw" rightStateFormula="_t4zecAwlEd-deZMVVZpFmQ"/>
+      <formulas xmi:type="net.sf.ictalive.operetta:Atom" xmi:id="_b28mEAwmEd-deZMVVZpFmQ" predicate="serviceFunctionalCompatibility" concept="_doKsEAwmEd-deZMVVZpFmQ" arguments="_gnh1oAwlEd-Z6cNCF-pWzw _87ZG8AvwEd-w-tmaCPggKA"/>
+      <ontology xmi:type="net.sf.ictalive.operetta:Ontology" xmi:id="_6BiwgAvmEd-U8rFOYLDn8w" ontologyID="Default">
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_5jVGUAvtEd-447t0sckqMw" concept="Participant" URI="http://ictalive.sf.net/CalicoJack.owl#Participant"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_8HZlkAvtEd-447t0sckqMw" concept="Message_Transmitted" URI="http://ictalive.sf.net/CalicoJack.owl#Message_Transmitted"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_BmkkAAvuEd-447t0sckqMw" concept="Retrieve_Receiver_Profile" URI="http://ictalive.sf.net/CalicoJack.owl#Retrieve_Receiver_Profile"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_N3NPMAvuEd-uCtjNYlQGww" concept="Retrieve_Receiver_Context" URI="http://ictalive.sf.net/CalicoJack.owl#Retrieve_Receiver_Context"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_R3cxgAvuEd-uCtjNYlQGww" concept="Profile_Manager" URI="http://ictalive.sf.net/CalicoJack.owl#Profile_Manager"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_Yev1oAvuEd-uCtjNYlQGww" concept="Context_Manager" URI="http://ictalive.sf.net/CalicoJack.owl#Context_Manager"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_aoESkAvuEd-uCtjNYlQGww" concept="Subscription_Manager" URI="http://ictalive.sf.net/CalicoJack.owl#Subscription_Manager"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_i15PoAvuEd-uCtjNYlQGww" concept="Retrieve_Receiver_Subscription" URI="http://ictalive.sf.net/CalicoJack.owl#Retrieve_Receiver_Subscription"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_6V7ygAvuEd-uCtjNYlQGww" concept="Receive_Appropriate_Channels" URI="http://ictalive.sf.net/CalicoJack.owl#Receive_Appropriate_Channels"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_1h5w4AvwEd-w-tmaCPggKA" concept="sender" URI="http://ictalive.sf.net/CalicoJack.owl#sender"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_-gZV4AvwEd-w-tmaCPggKA" concept="appropriateChannel" URI="http://ictalive.sf.net/CalicoJack.owl#appropriateChannel"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_Df-xIAv4Ed-oGOIW-FzhQQ" concept="message" URI="http://ictalive.sf.net/CalicoJack.owl#message"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_wZsXkAwJEd-oGOIW-FzhQQ" concept="possibleChannels" URI="http://ictalive.sf.net/CalicoJack.owl#possibleChannels"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_PjpYgAwSEd-oGOIW-FzhQQ" concept="Manage_User_Preferences" URI="http://ictalive.sf.net/CalicoJack.owl#Manage_User_Preferences"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_QaRegAwSEd-oGOIW-FzhQQ" concept="Manage_User_Subscription_Info" URI="http://ictalive.sf.net/CalicoJack.owl#Manage_User_Subscription_Info"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_RXeGkAwSEd-oGOIW-FzhQQ" concept="Manage_User_Context" URI="http://ictalive.sf.net/CalicoJack.owl#Manage_User_Context"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_zN3DIQwbEd-T6JmC24Rnvg" concept="managed" URI="http://ictalive.sf.net/CalicoJack.owl#managed"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_e_3qYAwcEd-T6JmC24Rnvg" concept="received" URI="http://ictalive.sf.net/CalicoJack.owl#received"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_kn2fMQwfEd-lxOu5u8YRww" concept="subscriptionInfo" URI="http://ictalive.sf.net/CalicoJack.owl#subscriptionInfo"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_mRKmYAwfEd-lxOu5u8YRww" concept="context" URI="http://ictalive.sf.net/CalicoJack.owl#context"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_ngp4UAwfEd-lxOu5u8YRww" concept="preferences" URI="http://ictalive.sf.net/CalicoJack.owl#preferences"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_wC07cAwkEd-Z6cNCF-pWzw" concept="intendToSent" URI="http://ictalive.sf.net/CalicoJack.owl#intendToSent"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_SzqdIAwlEd-Z6cNCF-pWzw" concept="On_Using_Appropriate_Channels_when_Sending_Messages" URI="http://ictalive.sf.net/CalicoJack.owl#On_Using_Appropriate_Channels_when_Sending_Messages"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_XtJUkAwlEd-Z6cNCF-pWzw" concept="violated" URI="http://ictalive.sf.net/CalicoJack.owl#violated"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_fzM1sAwlEd-Z6cNCF-pWzw" concept="used" URI="http://ictalive.sf.net/CalicoJack.owl#used"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_qoQTsAwlEd-deZMVVZpFmQ" concept="alternativeChannel" URI="http://ictalive.sf.net/CalicoJack.owl#alternativeChannel"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_vW2w0AwlEd-deZMVVZpFmQ" concept="similarTo" URI="http://ictalive.sf.net/CalicoJack.owl#similarTo"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_doKsEAwmEd-deZMVVZpFmQ" concept="serviceFunctionalCompatibility" URI="http://ictalive.sf.net/CalicoJack.owl#serviceFunctionalCompatibility"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_3PuEwSajEd-UCakYeRo6DQ" concept="channel" URI="http://ictalive.sf.net/CalicoJack.owl#channel" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_-oaJkCajEd-UCakYeRo6DQ" concept="SecondLifeIM" URI="http://ictalive.sf.net/CalicoJack.owl#SecondLifeIM" type="Individual"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_0Mtp8SanEd-KaMDcQDil3A" concept="contentType" URI="http://ictalive.sf.net/CalicoJack.owl#contentType" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_AAdMsSbHEd-nFpOdR74fgA" concept="channelType" URI="http://ictalive.sf.net/CalicoJack.owl#channelType" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_9jE-sSefEd-1W5fa2OJBzw" concept="subscriptions" URI="http://ictalive.sf.net/CalicoJack.owl#subscriptions" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_kRyZQSeiEd-1mobRw9HAUQ" concept="to" URI="http://ictalive.sf.net/CalicoJack.owl#to" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_CGf_MCejEd-1mobRw9HAUQ" concept="channels" URI="http://ictalive.sf.net/CalicoJack.owl#channels" type="Individual"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_irbGICenEd-1mobRw9HAUQ" concept="content" URI="http://ictalive.sf.net/CalicoJack.owl#content" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_y_ffoCepEd-1mobRw9HAUQ" concept="successfullyDelivered" URI="http://ictalive.sf.net/CalicoJack.owl#successfullyDelievered" type="Property"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_9ozOYCeuEd-1mobRw9HAUQ" concept="Bob" URI="http://ictalive.sf.net/CalicoJack.owl#Bob" type="Individual"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_Ud4HcShZEd-X_cAuO8ieNQ" concept="email" URI="http://ictalive.sf.net/CalicoJack.owl#email" type="Individual"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_hGFf8ShrEd-CmKduDMtpnQ" concept="plan" URI="http://ictalive.sf.net/CalicoJack.owl#plan"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_l0fv0ChrEd-CmKduDMtpnQ" concept="Enacting" URI="http://ictalive.sf.net/CalicoJack.owl#Enacting"/>
+        <classes xmi:type="net.sf.ictalive.operetta:Concept" xmi:id="_xUdzEChrEd-CmKduDMtpnQ" concept="sent" URI="http://ictalive.sf.net/CalicoJack.owl#sent" type="Property"/>
+      </ontology>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_xha-AAvwEd-w-tmaCPggKA" name="sender" concept="_1h5w4AvwEd-w-tmaCPggKA"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_CPFxAAv4Ed-oGOIW-FzhQQ" name="message" concept="_Df-xIAv4Ed-oGOIW-FzhQQ"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_87ZG8AvwEd-w-tmaCPggKA" name="appropriateChannel" concept="_-gZV4AvwEd-w-tmaCPggKA"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_uBYcYAwJEd-oGOIW-FzhQQ" name="possibleChannels" concept="_wZsXkAwJEd-oGOIW-FzhQQ"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_ilJ6kAwSEd-oGOIW-FzhQQ" name="subscriptionInfo" concept="_kn2fMQwfEd-lxOu5u8YRww"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_sVUNEAwSEd-oGOIW-FzhQQ" name="context" concept="_mRKmYAwfEd-lxOu5u8YRww"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_A7imAAwaEd-oGOIW-FzhQQ" name="preferences" concept="_ngp4UAwfEd-lxOu5u8YRww"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_M5lrYAwlEd-Z6cNCF-pWzw" name="On_Using_Appropriate_Channels_when_Sending_Messages"/>
+      <terms xmi:type="net.sf.ictalive.operetta:Constant" xmi:id="_gnh1oAwlEd-Z6cNCF-pWzw" name="alternativeChannel" concept="_qoQTsAwlEd-deZMVVZpFmQ"/>
+      <countsAsRules xmi:type="net.sf.ictalive.operetta:CountsAs" xmi:id="_WWBUIAwmEd-deZMVVZpFmQ" concreteFact="_b28mEAwmEd-deZMVVZpFmQ" abstractFact="_t4zecAwlEd-deZMVVZpFmQ" context="_YJqcAAwmEd-deZMVVZpFmQ"/>
+      <contexts xmi:type="net.sf.ictalive.operetta:Context" xmi:id="_YJqcAAwmEd-deZMVVZpFmQ" Name="Universal"/>
+    </cs>
+  </om>
+</net.sf.ictalive.operetta:OperAModel>
