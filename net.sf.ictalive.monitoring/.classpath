@@ -12,6 +12,12 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
 	<classpathentry kind="lib" path="lib/runtime.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.jdt.core_3.5.2.v_981_R35x.jar"/>
+	<classpathentry kind="lib" path="lib/net.sf.ictalive.coordination_1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/net.sf.ictalive.owls_1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/net.sf.ictalive.rules_1.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/net.sf.ictalive.services_1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/net.sf.ictalive.XSDSchema_1.0.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/net.sf.ictalive.metamodel.utils"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/net.sf.ictalive.eventbus"/>
 	<classpathentry kind="output" path="bin"/>

@@ -183,7 +183,7 @@ public class Monitor extends Thread implements IMonitor
 		
 //		m = new Monitor("147.83.200.115");
 //		m = new Monitor("147.83.200.118");
-		m = new Monitor("147.83.200.118");
+		m = new Monitor("localhost");
 		m.subscribe(ev, iml);
 		m.start();
 		

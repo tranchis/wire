@@ -41,4 +41,13 @@ public class StartEventBus
 			ebd = null;
 		}
 	}
+	
+	public static void main(String[] args)
+	{
+		StartEventBus	seb;
+		
+		seb = new StartEventBus();
+		seb.run();
+		(new Thread()).start();
+	}
 }
