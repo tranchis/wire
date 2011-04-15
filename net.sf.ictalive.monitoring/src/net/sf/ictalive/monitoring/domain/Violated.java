@@ -2,6 +2,7 @@ package net.sf.ictalive.monitoring.domain;
 
 import java.util.Set;
 
+
 public class Violated extends NormState
 {
 	public Violated(Norm norm, Set<Value> substitution)

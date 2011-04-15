@@ -2,6 +2,7 @@ package net.sf.ictalive.monitoring.domain;
 
 import java.util.Set;
 
+
 public class SubsetEQ
 {
 	private Set<Value>	subset, superset;

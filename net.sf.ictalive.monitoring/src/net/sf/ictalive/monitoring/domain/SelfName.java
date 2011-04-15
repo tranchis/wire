@@ -2,7 +2,6 @@ package net.sf.ictalive.monitoring.domain;
 
 public class SelfName
 {
-
 	private String name;
 
 	public SelfName(String name)
@@ -19,5 +18,4 @@ public class SelfName
 	{
 		this.name = name;
 	}
-
 }

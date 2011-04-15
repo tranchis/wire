@@ -43,6 +43,7 @@ public class ConditionParser
 	private static Map<String,Set<String>>	map;
 	protected ObjectFactory					of;
 	
+	
 	static
 	{
 		map = new TreeMap<String,Set<String>>();

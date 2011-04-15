@@ -1,5 +1,6 @@
 package net.sf.ictalive.monitoring.domain;
 
+
 public class Deactivation extends NormBinding
 {
 
