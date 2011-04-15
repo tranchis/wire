@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Vector;
 
+import clojure.lang.RT;
+import clojure.lang.Var;
+
 import net.sf.ictalive.monitoring.domain.Activation;
 import net.sf.ictalive.monitoring.domain.ConditionHolder;
 import net.sf.ictalive.monitoring.domain.Deactivation;
@@ -92,8 +95,28 @@ public class NormParser {
 	public Collection<Rule> parseNorms(Collection<Norm> ns) {
 		Vector<Rule> vr;
 
+		try
+		{
+			// Load the Clojure script -- as a side effect this initializes the
+			// runtime.
+			RT.loadResourceScript("net/sf/ictalive/monitoring/rules/drools/ConditionParser.clj");			
+			// Get a reference to the foo function.
+			Var foo = RT.var("net.sf.ictalive.monitoring.rules.drools.ConditionParser", "parse-norms");
+			
+			// Call it!
+			Object result;
+			result = foo.invoke(new Vector<Norm>(ns));
+			System.out.println(result);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+
 		vr = new Vector<Rule>();
-		for (Norm norm : ns) {
+		for (Norm norm : ns)
+		{
 			vr.addAll(parseNorm(norm));
 		}
 

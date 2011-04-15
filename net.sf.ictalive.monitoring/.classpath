@@ -18,7 +18,10 @@
 	<classpathentry kind="lib" path="lib/net.sf.ictalive.rules_1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/net.sf.ictalive.services_1.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/net.sf.ictalive.XSDSchema_1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/clojure.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/net.sf.ictalive.metamodel.utils"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/net.sf.ictalive.eventbus"/>
+	<classpathentry kind="lib" path="clojure-contrib.jar" sourcepath="clojure-contrib-src.jar"/>
+	<classpathentry kind="lib" path="classes"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

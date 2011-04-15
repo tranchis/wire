@@ -2,6 +2,7 @@ package net.sf.ictalive.monitoring.domain;
 
 import java.util.Set;
 
+
 public class Fulfilled extends NormState
 {
 

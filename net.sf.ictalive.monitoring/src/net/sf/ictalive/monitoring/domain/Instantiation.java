@@ -2,7 +2,6 @@ package net.sf.ictalive.monitoring.domain;
 
 import java.util.Set;
 
-import net.sf.ictalive.monitoring.domain.Value;
 
 public class Instantiation
 {
