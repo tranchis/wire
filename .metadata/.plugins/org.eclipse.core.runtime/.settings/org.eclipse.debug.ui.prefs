@@ -1,7 +1,9 @@
-#Wed Feb 09 19:55:24 CET 2011
+#Sun Aug 07 22:42:43 CEST 2011
 Console.lowWaterMark=1000000
 eclipse.preferences.version=1
+DEBUG.consoleOpenOnOut=false
 Console.highWaterMark=1008000
 preferredTargets=default\:default|
+DEBUG.consoleOpenOnErr=false
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<launchPerspectives/>\n
 org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<viewBindings>\n<view id\="org.eclipse.ui.console.ConsoleView">\n<perspective id\="org.eclipse.jdt.ui.JavaPerspective" userAction\="opened"/>\n</view>\n</viewBindings>\n

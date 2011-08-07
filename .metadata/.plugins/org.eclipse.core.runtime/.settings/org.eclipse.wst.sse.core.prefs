@@ -1,3 +1,3 @@
-#Sun Aug 07 14:44:36 CEST 2011
-task-tag-projects-already-scanned=net.sf.ictalive.eventbus,net.sf.ictalive.eventbus.instance,net.sf.ictalive.metamodel.utils,net.sf.ictalive.monitoring
+#Sun Aug 07 22:55:21 CEST 2011
+task-tag-projects-already-scanned=com.github.tranchis.wire.core,com.github.tranchis.wire.eventbus,eventbus.instance,metamodel.utils
 eclipse.preferences.version=1
