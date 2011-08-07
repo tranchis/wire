@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.4.2/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
@@ -21,7 +21,7 @@
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.4/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.4/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
@@ -42,7 +42,7 @@
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
@@ -63,7 +63,7 @@
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
@@ -84,7 +84,7 @@
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.5.0/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
@@ -105,7 +105,7 @@
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home" version="1.6.0_22">
+<libraryInfo home="/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home" version="1.6.0_26">
 <bootpath>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar"/>
 <entry path="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar"/>
