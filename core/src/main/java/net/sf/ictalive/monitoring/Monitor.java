@@ -67,9 +67,9 @@ public class Monitor extends Thread implements IMonitor
 		
 		if(om == null)
 		{
-//			o2d = new Opera2Drools("Warcraft3ResourceGathering.opera");
+			o2d = new Opera2Drools("Warcraft3ResourceGathering.opera");
 //			o2d = new Opera2Drools("TMT-OperettA2.0.opera.opera");
-			o2d = new Opera2Drools("Thales_Evacuation.opera.opera");
+//			o2d = new Opera2Drools("Thales_Evacuation.opera.opera");
 		}
 		else
 		{

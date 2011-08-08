@@ -57,16 +57,21 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>com.sun.messaging.mq</groupId>
+      <groupId>alive.jms</groupId>
       <artifactId>imq</artifactId>
-      <version>4.4.2</version>
+      <version>1.0.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>javax.jms</groupId>
-      <artifactId>jms</artifactId>
-      <version>1.1</version>
+      <groupId>alive.jms</groupId>
+      <artifactId>imqutil</artifactId>
+      <version>1.0.0</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>alive.jms</groupId>
+      <artifactId>jms</artifactId>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>net.sf.ictalive</groupId>

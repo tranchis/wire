@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="18" version="2.0">
+<workbench progressCount="48" version="2.0">
 <workbenchAdvisor/>
-<window height="742" maximized="true" width="1029" x="0" y="22">
+<window height="1142" maximized="true" width="1601" x="16" y="22">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
-<itemSize x="160"/>
+<itemSize x="89"/>
 </perspectiveBar>
 <coolbarLayout>
 <coolItem id="group.file" itemType="typeGroupMarker"/>
@@ -12,19 +12,23 @@
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="adt.actionSet.avdManager" itemType="typeToolBarContribution" x="32" y="22"/>
 <coolItem id="adt.actionSet.wizards" itemType="typeToolBarContribution" x="76" y="22"/>
+<coolItem id="com.tasktop.ui.actionSet" itemType="typeToolBarContribution" x="98" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="100" y="22"/>
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="62" y="22"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="84" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="120" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="54" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="54" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="viPlugin.actionSet" itemType="typeToolBarContribution" x="32" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="152" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="com.tasktop.client.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.mylyn.tasks.ui.editors.task" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="ccw.antlrbasededitor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -40,140 +44,44 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
-<part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
-<part id="13"/>
-<part id="14"/>
-<part id="15"/>
-<part id="16"/>
-<part id="17"/>
-<part id="18"/>
-<part id="19"/>
-<part id="20"/>
-<part id="21"/>
-<part id="22"/>
-<part id="23"/>
-<part id="24"/>
-<part id="25"/>
-<part id="26"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" partName="com.github.tranchis.wire.core/pom.xml" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/pom.xml" title="com.github.tranchis.wire.core/pom.xml" tooltip="com.github.tranchis.wire.core/pom.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/pom.xml"/>
+<editor activePart="true" focus="true" id="ccw.antlrbasededitor" name="RegulativeParser.clj" partName="RegulativeParser.clj" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/RegulativeParser.clj" title="RegulativeParser.clj" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/RegulativeParser.clj" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/RegulativeParser.clj"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="730" selectionTopPixel="36"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="App.java" partName="App.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/com/github/tranchis/wire/App.java" title="App.java" tooltip="com.github.tranchis.wire.core/src/main/java/com/github/tranchis/wire/App.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/com/github/tranchis/wire/App.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="187" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NormParser.java" partName="NormParser.java" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java" title="NormParser.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="1993" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StressTest.java" partName="StressTest.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/test/StressTest.java" title="StressTest.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/test/StressTest.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/test/StressTest.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1707" selectionTopPixel="463"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConditionParser.java" partName="ConditionParser.java" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java" title="ConditionParser.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="10246" selectionTopPixel="413"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BusEventTransporter.java" partName="BusEventTransporter.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/BusEventTransporter.java" title="BusEventTransporter.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/BusEventTransporter.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/BusEventTransporter.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2453" selectionTopPixel="833"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Monitor.java" partName="Monitor.java" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/Monitor.java" title="Monitor.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/Monitor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2009" selectionTopPixel="419"/>
 </editor>
-<editor id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" partName="metamodel.utils/pom.xml" path="/Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml" title="metamodel.utils/pom.xml" tooltip="metamodel.utils/pom.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/metamodel.utils/pom.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Opera2Drools.java" partName="Opera2Drools.java" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java" title="Opera2Drools.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1012" selectionTopPixel="270"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLSaveImpl.java" partName="XMLSaveImpl.java" path="/Users/sergio/Documents/Research/wire/metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLSaveImpl.java" title="XMLSaveImpl.java" tooltip="metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLSaveImpl.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLSaveImpl.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="4051" selectionTopPixel="534"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="XMLHelperImpl.java" partName="XMLHelperImpl.java" path="/Users/sergio/Documents/Research/wire/metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLHelperImpl.java" title="XMLHelperImpl.java" tooltip="metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLHelperImpl.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/metamodel.utils/src/main/java/net/sf/ictalive/metamodel/utils/XMLHelperImpl.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="21" selectionOffset="3130" selectionTopPixel="265"/>
-</editor>
-<editor id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" partName="com.github.tranchis.wire.eventbus/pom.xml" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.eventbus/pom.xml" title="com.github.tranchis.wire.eventbus/pom.xml" tooltip="com.github.tranchis.wire.eventbus/pom.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.eventbus/pom.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EventBus.java" partName="EventBus.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/EventBus.java" title="EventBus.java" tooltip="com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/EventBus.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/EventBus.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3942" selectionTopPixel="1995"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="IEventBusTransportListener.java" partName="IEventBusTransportListener.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/IEventBusTransportListener.java" title="IEventBusTransportListener.java" tooltip="com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/IEventBusTransportListener.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/IEventBusTransportListener.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="26" selectionOffset="91" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MQJMSSpecifics.java" partName="MQJMSSpecifics.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/jms/MQJMSSpecifics.java" title="MQJMSSpecifics.java" tooltip="com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/jms/MQJMSSpecifics.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/jms/MQJMSSpecifics.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="914" selectionTopPixel="90"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JMSEventBusTransport.java" partName="JMSEventBusTransport.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/JMSEventBusTransport.java" title="JMSEventBusTransport.java" tooltip="com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/JMSEventBusTransport.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.eventbus/src/main/java/net/sf/ictalive/eventbus/transport/JMSEventBusTransport.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1782" selectionTopPixel="945"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NormParser.java" partName="NormParser.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java" title="NormParser.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="2" selectionOffset="2769" selectionTopPixel="1125"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Value.java" partName="Value.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/domain/Value.java" title="Value.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/domain/Value.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/domain/Value.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1079" selectionTopPixel="973"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DroolsEngine.java" partName="DroolsEngine.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/DroolsEngine.java" title="DroolsEngine.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/DroolsEngine.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/DroolsEngine.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3782" selectionTopPixel="1575"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ObjectFactory.java" partName="ObjectFactory.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java" title="ObjectFactory.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1231" selectionTopPixel="120"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Monitor.java" partName="Monitor.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java" title="Monitor.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1951" selectionTopPixel="490"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.ClassFileEditor" name="ProcessPackageImpl.class" partName="ProcessPackageImpl.class" title="ProcessPackageImpl.class" tooltip="net.sf.ictalive.owls.process.impl.ProcessPackageImpl" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" org.eclipse.jdt.ui.ClassFileIdentifier="=com.github.tranchis.wire.core/\/Users\/sergio\/.m2\/repository\/net\/sf\/ictalive\/owls\/1.0.1\/owls-1.0.1.jar&lt;net.sf.ictalive.owls.process.impl(ProcessPackageImpl.class"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Opera2Drools.java" partName="Opera2Drools.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java" title="Opera2Drools.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="117" selectionOffset="617" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Accumulate.java" partName="Accumulate.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java" title="Accumulate.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1205" selectionTopPixel="120"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndConditionalElement.java" partName="AndConditionalElement.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java" title="AndConditionalElement.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1181" selectionTopPixel="120"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndConstraintConnective.java" partName="AndConstraintConnective.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java" title="AndConstraintConnective.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1192" selectionTopPixel="120"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndRestrictionConnective.java" partName="AndRestrictionConnective.java" path="/Users/sergio/Documents/Research/wire/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java" title="AndRestrictionConnective.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1363" selectionTopPixel="120"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EventBusBrokerEventListener.java" partName="EventBusBrokerEventListener.java" path="/Users/sergio/Documents/Research/wire/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java" title="EventBusBrokerEventListener.java" tooltip="eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="322" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" partName="eventbus.instance/pom.xml" path="/Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml" title="eventbus.instance/pom.xml" tooltip="eventbus.instance/pom.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/eventbus.instance/pom.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EventBusDaemon.java" partName="EventBusDaemon.java" path="/Users/sergio/Documents/Research/wire/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java" title="EventBusDaemon.java" tooltip="eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2982" selectionTopPixel="1592"/>
+<editor id="ccw.antlrbasededitor" name="LispToDrools.clj" partName="LispToDrools.clj" path="/Users/sergio/Documents/Research/wire/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj" title="LispToDrools.clj" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="190" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState isPinned="false">
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+<view IMemento.internal.id="org.eclipse.jdt.ui.JavaSearchResultPage" org.eclipse.jdt.search.resultpage.grouping="3" org.eclipse.jdt.search.resultpage.limit="1000" org.eclipse.jdt.search.resultpage.limit_enabled="TRUE" org.eclipse.jdt.search.resultpage.sorting="1" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2"/>
+</viewState>
+</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings"/>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Errors (3 items)"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="198" org.eclipse.ui.ide.resourceField="186" org.eclipse.ui.ide.severityAndDescriptionField="773"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -181,9 +89,6 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -214,7 +119,12 @@
 </customFilters>
 </viewState>
 </view>
-<view id="ccw.view.namespacebrowser" partName="Namespace Browser"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="ccw.view.namespacebrowser" partName="Namespace Browser">
+<viewState/>
+</view>
 <view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
 <viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
 <sorter groupBy="CATEGORY_QUERY">
@@ -235,10 +145,14 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
-<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
+<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration">
+<viewState/>
+</view>
+<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc">
+<viewState/>
+</view>
 </views>
-<perspectives activePart="org.eclipse.m2e.editor.MavenPomEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="ccw.antlrbasededitor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -264,6 +178,11 @@
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
+<alwaysOnActionSet id="com.tasktop.client.dash.ui"/>
+<alwaysOnActionSet id="com.tasktop.client.actionSets.support"/>
+<alwaysOnActionSet id="com.tasktop.reporting.dashboard.actions"/>
+<alwaysOnActionSet id="com.tasktop.client.actionSets.folders"/>
+<alwaysOnActionSet id="com.tasktop.ui.actionSet"/>
 <show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
 <show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <show_view_action id="org.eclipse.jdt.ui.SourceView"/>
@@ -312,6 +231,7 @@
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="ccw.view.namespacebrowser"/>
@@ -338,23 +258,35 @@
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="254" ratioRight="762" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.68960243" ratioLeft="451" ratioRight="203" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<info folder="true" part="bottom" ratio="0.5540797" ratioLeft="584" ratioRight="470" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="ccw.view.repl:localhost@57279" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
+<page content="ccw.view.repl:localhost@57279" label="REPL @ localhost:57279 (net.sf.ictalive.monitoring.rules.drools.ConditionParser)"/>
+<page content="ccw.view.repl:localhost@62999" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@60458" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52086" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52328" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52418" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52569" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52651" label="LabelNotFound"/>
+<page content="ccw.view.repl:localhost@52717" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="4"/>
 <part id="3"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
@@ -385,201 +317,227 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" path="/com.github.tranchis.wire.core/pom.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" path="/com.github.tranchis.wire.eventbus/pom.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" path="/metamodel.utils/pom.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
-<editor factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" org.eclipse.jdt.ui.ClassFileIdentifier="=com.github.tranchis.wire.core/\/Users\/sergio\/.m2\/repository\/org\/eclipse\/gmf\/runtime\/notation\/1.0.100-v20070621-0000\/notation-1.0.100-v20070621-0000.jar&lt;org.eclipse.gmf.runtime.notation(NotationPackage.class"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/IComponent.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/StartEventBus.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/test/StressTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" path="/eventbus.instance/pom.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="ccw.antlrbasededitor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.clj"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="ccw.antlrbasededitor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/RegulativeParser.clj"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="ccw.antlrbasededitor" path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj"/>
 </editors>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="Opera2Drools.java" index="5">
-<position info="not_deleted" x="617" y="117"/>
+<item historyLabel="Opera2Drools.java" index="4">
+<position info="not_deleted" x="938" y="38"/>
 </item>
-<item historyLabel="Monitor.java" index="4">
-<position info="not_deleted" x="1951" y="0"/>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="2240" y="60"/>
 </item>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="NotationPackage.class" index="6">
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="3576" y="0"/>
+</item>
+<item historyLabel="Monitor.java" index="0">
+<position info="not_deleted" x="2009" y="0"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="4659" y="0"/>
+</item>
+<item historyLabel="ConditionParser.java" index="1">
+<position info="not_deleted" x="2465" y="0"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="3644" y="0"/>
+</item>
+<item historyLabel="ConditionParser.java" index="1">
+<position info="not_deleted" x="9494" y="0"/>
+</item>
+<item historyLabel="NormParser.java" index="3">
+<position info="not_deleted" x="1993" y="14"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position/>
+</item>
+<item historyLabel="ConditionParser.java" index="1">
+<position info="not_deleted" x="10246" y="0"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="2015" y="0"/>
+</item>
+<item historyLabel="ConditionParser.java" index="1">
+<position info="not_deleted" x="10246" y="0"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="2027" y="0"/>
+</item>
+<item historyLabel="Monitor.java" index="0">
+<position info="not_deleted" x="2009" y="0"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="4736" y="0"/>
+</item>
+<item historyLabel="NormParser.java" index="3">
+<position info="not_deleted" x="1993" y="14"/>
+</item>
+<item historyLabel="ConditionParser.clj" index="2">
+<position info="not_deleted" x="4736" y="0"/>
+</item>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position/>
+</item>
+<item historyLabel="Opera2Drools.java" index="4">
+<position info="not_deleted" x="1012" y="0"/>
+</item>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position/>
+</item>
+<item historyLabel="LispToDrools.clj" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="metamodel.utils/pom.xml" index="2"/>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="metamodel.utils/pom.xml" index="2"/>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="metamodel.utils/pom.xml" index="2"/>
-<item historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
-<item historyLabel="IComponent.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Opera2Drools.java" index="4">
+<position info="not_deleted" x="1012" y="0"/>
 </item>
-<item historyLabel="StartEventBus.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="NormParser.java" index="3">
+<position info="not_deleted" x="1993" y="14"/>
 </item>
-<item historyLabel="ObjectFactory.java" index="3">
-<position info="not_deleted" x="11004" y="0"/>
+<item historyLabel="ConditionParser.java" index="1">
+<position info="not_deleted" x="10246" y="0"/>
 </item>
-<item historyLabel="ObjectFactory.java" index="3">
-<position info="not_deleted" x="1154" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="214" y="0"/>
 </item>
-<item historyLabel="Accumulate.java" index="9">
-<position info="not_deleted" x="1222" y="19"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="182" y="0"/>
 </item>
-<item historyLabel="AndConditionalElement.java" index="10">
-<position info="not_deleted" x="1212" y="5"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="4" y="56"/>
 </item>
-<item historyLabel="AndConditionalElement.java" index="10">
-<position info="not_deleted" x="1181" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="AndConditionalElement.java" index="10">
-<position info="not_deleted" x="1189" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3930" y="0"/>
 </item>
-<item historyLabel="AndConditionalElement.java" index="10">
-<position info="not_deleted" x="1198" y="19"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="AndConstraintConnective.java" index="11">
-<position info="not_deleted" x="1223" y="5"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="4618" y="0"/>
 </item>
-<item historyLabel="AndRestrictionConnective.java" index="12">
-<position info="not_deleted" x="1363" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="192" y="0"/>
 </item>
-<item historyLabel="Accumulate.java" index="9">
-<position info="not_deleted" x="1205" y="0"/>
+<item historyLabel="Opera2Drools.java" index="4">
+<position info="not_deleted" x="1012" y="0"/>
 </item>
-<item historyLabel="AndConditionalElement.java" index="10">
-<position info="not_deleted" x="1181" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="161" y="0"/>
 </item>
-<item historyLabel="AndConstraintConnective.java" index="11">
-<position info="not_deleted" x="1192" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="103" y="0"/>
 </item>
-<item historyLabel="ObjectFactory.java" index="3">
-<position info="not_deleted" x="1231" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="161" y="0"/>
 </item>
-<item historyLabel="StressTest.java" index="13">
-<position info="not_deleted" x="1275" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="155" y="0"/>
 </item>
-<item historyLabel="StartEventBus.java" index="8">
-<position info="not_deleted" x="653" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3491" y="0"/>
 </item>
-<item historyLabel="StressTest.java" index="13">
-<position info="not_deleted" x="1707" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="EventBusBrokerEventListener.java" index="14">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Opera2Drools.java" index="4">
+<position info="not_deleted" x="1012" y="0"/>
 </item>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="EventBusDaemon.java" index="16">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3559" y="0"/>
 </item>
-<item historyLabel="com.github.tranchis.wire.eventbus/pom.xml" index="1"/>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="EventBusDaemon.java" index="16">
-<position info="not_deleted" x="408" y="32"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="com.github.tranchis.wire.eventbus/pom.xml" index="1"/>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="com.github.tranchis.wire.eventbus/pom.xml" index="1"/>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="EventBusDaemon.java" index="16">
-<position info="not_deleted" x="408" y="32"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3559" y="0"/>
 </item>
-<item historyLabel="EventBusBrokerEventListener.java" index="14">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="EventBusBrokerEventListener.java" index="14">
-<position info="not_deleted" x="322" y="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3559" y="0"/>
 </item>
-<item historyLabel="EventBusDaemon.java" index="16">
-<position info="not_deleted" x="2982" y="0"/>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="302" y="0"/>
 </item>
-<item historyLabel="com.github.tranchis.wire.eventbus/pom.xml" index="1"/>
-<item historyLabel="eventbus.instance/pom.xml" index="15"/>
-<item historyLabel="metamodel.utils/pom.xml" index="2"/>
-<item historyLabel="com.github.tranchis.wire.eventbus/pom.xml" index="1"/>
-<item active="true" historyLabel="com.github.tranchis.wire.core/pom.xml" index="0"/>
+<item historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3559" y="0"/>
+</item>
+<item historyLabel="LispToDrools.clj" index="6">
+<position info="not_deleted" x="190" y="0"/>
+</item>
+<item active="true" historyLabel="RegulativeParser.clj" index="5">
+<position info="not_deleted" x="3559" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
-<trimItem IMemento.internal.id="right"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@7f0b8d03"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
+<trimItem IMemento.internal.id="com.tasktop.web.ui.searchTrim"/>
 </trimArea>
 <trimArea IMemento.internal.id="1024">
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.examples.contributions.verticalTrim"/>
+<trimItem IMemento.internal.id="com.tasktop.calendar.ui.eventsTrim"/>
+<trimItem IMemento.internal.id="com.tasktop.resources.ui.task.progress.trim"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="ccw.antlrbasededitor" name="LispToDrools.clj" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/LispToDrools.clj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Opera2Drools.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Monitor.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/Monitor.java">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConditionParser.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NormParser.java" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/NormParser.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="ccw.antlrbasededitor" name="ConditionParser.clj" tooltip="core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.clj">
+<persistable path="/core/src/main/java/net/sf/ictalive/monitoring/rules/drools/ConditionParser.clj"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" tooltip="core/pom.xml">
+<persistable path="/core/pom.xml"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="BrokerProcess.class" tooltip="com.sun.messaging.jmq.jmsserver.BrokerProcess">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=eventbus.instance/\/Users\/sergio\/.m2\/repository\/com\/sun\/messaging\/mq\/imqbroker\/4.5-b29\/imqbroker-4.5-b29.jar&lt;com.sun.messaging.jmq.jmsserver(BrokerProcess.class"/>
+</file>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="MQResourceBundle.class" tooltip="com.sun.messaging.jmq.util.MQResourceBundle">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=eventbus.instance/\/Users\/sergio\/.m2\/repository\/com\/sun\/messaging\/mq\/imqbroker\/4.5-b29\/imqbroker-4.5-b29.jar&lt;com.sun.messaging.jmq.util(MQResourceBundle.class"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EventBusDaemon.java" tooltip="eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java">
 <persistable path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusDaemon.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" tooltip="eventbus/pom.xml">
+<persistable path="/eventbus/pom.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.m2e.editor.MavenPomEditor" name="pom.xml" tooltip="eventbus.instance/pom.xml">
 <persistable path="/eventbus.instance/pom.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EventBusBrokerEventListener.java" tooltip="eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java">
-<persistable path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/EventBusBrokerEventListener.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StartEventBus.java" tooltip="eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/StartEventBus.java">
+<persistable path="/eventbus.instance/src/main/java/net/sf/ictalive/eventbus/dashboard/StartEventBus.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndRestrictionConnective.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndRestrictionConnective.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndConstraintConnective.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConstraintConnective.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AndConditionalElement.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/AndConditionalElement.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Accumulate.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/Accumulate.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StartEventBus.java" tooltip="net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/StartEventBus.java">
-<persistable path="/net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/StartEventBus.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="IComponent.java" tooltip="net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/IComponent.java">
-<persistable path="/net.sf.ictalive.eventbus.instance/src/net/sf/ictalive/eventbus/dashboard/IComponent.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="NotationPackage.class" tooltip="org.eclipse.gmf.runtime.notation.NotationPackage">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=com.github.tranchis.wire.core/\/Users\/sergio\/.m2\/repository\/org\/eclipse\/gmf\/runtime\/notation\/1.0.100-v20070621-0000\/notation-1.0.100-v20070621-0000.jar&lt;org.eclipse.gmf.runtime.notation(NotationPackage.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Opera2Drools.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/Opera2Drools.java"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ProcessPackageImpl.class" tooltip="net.sf.ictalive.owls.process.impl.ProcessPackageImpl">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=com.github.tranchis.wire.core/\/Users\/sergio\/.m2\/repository\/net\/sf\/ictalive\/owls\/1.0.1\/owls-1.0.1.jar&lt;net.sf.ictalive.owls.process.impl(ProcessPackageImpl.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Monitor.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/Monitor.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ObjectFactory.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/schema/ObjectFactory.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DroolsEngine.java" tooltip="com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/DroolsEngine.java">
-<persistable path="/com.github.tranchis.wire.core/src/main/java/net/sf/ictalive/monitoring/rules/drools/DroolsEngine.java"/>
+<file factoryID="com.tasktop.web.editor.factory" id="com.tasktop.client.ui.browser.editor" name="Web Browser" tooltip="http://www.google.com/search?q=test&amp;rls=com.tasktop:en:2.0&amp;sourceid=tasktop-eclipse&amp;client=tasktop-pro">
+<persistable style="54" url="http://www.google.com/search?q=test&amp;rls=com.tasktop:en:2.0&amp;sourceid=tasktop-eclipse&amp;client=tasktop-pro"/>
 </file>
 </mruList>
 </workbench>
