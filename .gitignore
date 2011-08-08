@@ -2,3 +2,4 @@
 target/
 .plugins/
 *.index
+.metadata/
