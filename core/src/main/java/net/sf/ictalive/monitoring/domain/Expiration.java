@@ -1,10 +1,10 @@
 package net.sf.ictalive.monitoring.domain;
 
 
-public class Deactivation extends NormBinding
+public class Expiration extends NormBinding
 {
 
-	public Deactivation(Norm norm, Formula formula)
+	public Expiration(Norm norm, Formula formula)
 	{
 		super(norm, formula);
 		// TODO Auto-generated constructor stub

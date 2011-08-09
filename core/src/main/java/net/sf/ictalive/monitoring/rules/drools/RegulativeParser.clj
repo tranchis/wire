@@ -14,29 +14,29 @@
 
 ;;; Operators
 (defmethod operator net.sf.ictalive.operetta.OM.impl.ConjunctionImpl [o]
-  `(:and ~(operator (.getLeftStateFormula o)) ~(operator (.getRightStateFormula o))))
+  `(~(symbol "conjunction") ~(operator (.getLeftStateFormula o)) ~(operator (.getRightStateFormula o))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.ImplicationImpl [o]
-  `(:or (:not ~(operator (.getAntecedentStateFormula o))) ~(operator (.getConsequentStateFormula o))))
+  `(~(symbol "disjunction") ~(cons (symbol "negation") ~(operator (.getAntecedentStateFormula o))) ~(operator (.getConsequentStateFormula o))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.DisjunctionImpl [o]
-  `(:or ~(operator (.getLeftStateFormula o)) ~(operator (.getRightStateFormula o))))
+  `(~(symbol "disjunction") ~(operator (.getLeftStateFormula o)) ~(operator (.getRightStateFormula o))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.NegationImpl [o]
-  `(:not ~(operator (.getStateFormula o))))
+  `(~(symbol "negation") ~(operator (.getStateFormula o))))
 
 ;;; Terms
 (defmethod operator net.sf.ictalive.operetta.OM.impl.AtomImpl [o]
-  `(:predicate ~(operator (.getPredicate o)) ~(cons :arguments (operator (.getArguments o)))))
+  `(~(symbol "predicate") ~(operator (.getPredicate o)) ~(cons (symbol "arguments") (operator (.getArguments o)))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.FunctionImpl [o]
-  `(:function ~(operator (.getName o)) ~(cons :parameters (operator (.getArguments o)))))
+  `(~(symbol "function") ~(operator (.getName o)) ~(cons (symbol "parameters") (operator (.getArguments o)))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.VariableImpl [o]
-  `(:variable ~(operator (.getName o))))
+  `(~(symbol "variable") ~(operator (.getName o))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.ConstantImpl [o]
-  `(:constant ~(operator (.getName o))))
+  `(~(symbol "constant") ~(operator (.getName o))))
 
 ;;; Others
 (defmethod operator org.eclipse.emf.ecore.util.EObjectResolvingEList [o]
@@ -45,71 +45,70 @@
 (defmethod operator String [o]
   (str o))
 
-(defmethod operator :default [o]
-  (str "Not supported: " (class o)))
-
 (defn add-not [o]
-  `(:not ~o))
+  `(~(symbol "negation") ~o))
 
 (defn add-and [o]
-  `(:and ~o))
+  `(~(symbol "conjunction") ~o))
 
 (defn distribute [dnf]
-  ;; Input: DNF sequence in the form ((:or (:and (a1) (a2) ... (aN)) (:and (b1) (b2) ... (bN)) ... (:and (z1) (z2) ... (zN))) (:or ...))
-  (map #(cons :and %) (apply comb/cartesian-product (map #(rest (second %)) dnf))))
+  ;; Input: DNF sequence in the form (((symbol "disjunction") ((symbol "conjunction") (a1) (a2) ... (aN)) ((symbol "conjunction") (b1) (b2) ... (bN)) ... ((symbol "conjunction") (z1) (z2) ... (zN))) ((symbol "disjunction") ...))
+  (map #(cons (symbol "conjunction") %) (apply comb/cartesian-product (map #(rest (second %)) dnf))))
 
 ;; Multimethod: normalize
 (defmulti normalize (fn [a] (first a)))
 
-(defmethod normalize :or [o]
-  ;; Input: DNF sequence in the form ((:or (:and (a1) (a2) ... (aN)) (:and (b1) (b2) ... (bN)) ... (:and (z1) (z2) ... (zN))) (:or ...))
-  (cons :or (apply concat (map rest (map normalize (rest o))))))
+(defmethod normalize (symbol "disjunction") [o]
+  ;; Input: DNF sequence in the form (((symbol "disjunction") ((symbol "conjunction") (a1) (a2) ... (aN)) ((symbol "conjunction") (b1) (b2) ... (bN)) ... ((symbol "conjunction") (z1) (z2) ... (zN))) ((symbol "disjunction") ...))
+  (cons (symbol "disjunction") (apply concat (map rest (map normalize (rest o))))))
 
-(defmethod normalize :and [o]
-  (cons :or (distribute (map normalize (rest o)))))
+(defmethod normalize (symbol "conjunction") [o]
+  (cons (symbol "disjunction") (distribute (map normalize (rest o)))))
 
-(defmethod normalize :predicate [o]
-  `(~:or (~:and ~o)))
+(defmethod normalize (symbol "predicate") [o]
+  `(~(symbol "disjunction") (~(symbol "conjunction") ~o)))
 
-(defmethod normalize :not [o]
-  `(~:or (~:and ~o)))
+(defmethod normalize (symbol "negation") [o]
+  `(~(symbol "disjunction") (~(symbol "conjunction") ~o)))
 
 ;;; Multimethod: negate
 (defmulti negate (fn [a] (first a)))
 
-(defmethod negate :and [o]
-  (cons :or (map add-not (rest o))))
+(defmethod negate (symbol "conjunction") [o]
+  (cons (symbol "disjunction") (map add-not (rest o))))
 
-(defmethod negate :or [o]
-  (cons :and (map add-not (rest o))))
+(defmethod negate (symbol "disjunction") [o]
+  (cons (symbol "conjunction") (map add-not (rest o))))
 
-(defmethod negate :not [o]
+(defmethod negate (symbol "negation") [o]
   (rest o))
 
 ;; Multimethod: clean-negations
 (defmulti clean-negations (fn [a] (class (first a))))
 
-(defmethod clean-negations clojure.lang.Keyword [o]
-  (if (= (first o) :not) (if (= (first (second o)) :predicate) o (clean-negations (negate (second o)))) (cons (first o) (map clean-negations (rest o)))))
+(defmethod clean-negations clojure.lang.Symbol [o]
+  (if (= (first o) (symbol "negation")) (if (= (first (second o)) (symbol "predicate")) o (clean-negations (negate (second o)))) (cons (first o) (map clean-negations (rest o)))))
 
 (defmethod clean-negations java.lang.Character [o]
   (str o))
-
-(defmethod clean-negations :default [o]
-  (str "Not supported: " (class (first o))))
 
 (defn convert-condition [norm condition]
   (operator (str-invoke norm (str "get" (str/capitalize condition) "Condition"))))
 
 ;; Entry point
 (defn parse-condition [norm condition]
-  `(~(keyword (str condition)) ~(normalize (clean-negations (convert-condition norm condition)))))
+  `(~(symbol "condition") ~(str condition)
+                          ~(normalize (clean-negations (convert-condition norm condition)))))
+;                          ~(convert-condition norm condition)))
 
 (defn parse-norm [norm]
-  (cons :norm (cons (. norm getNormID) (map #(parse-condition norm %) (list "activation" "maintenance" "expiration")))))
+  `(~(symbol "norm")  ~(. norm getNormID) ~(cons (symbol "conditions") (map #(parse-condition norm %) (list "activation" "maintenance" "expiration")))))
 
-(defn parse-norms [norms]
-  (cons :institution (vec (map parse-norm norms))))
+(defn get-file-name [st]
+  (. (. (java.io.File. st) getName) replaceAll ".opera" ""))
+
+(defn parse-norms [st norms]
+  `(~(symbol "institution") ~(get-file-name st) ~@(vec (map parse-norm norms))))
 
 ;		ns = om.getOm().getNs().getNorms();
 (defn parse-file [st]
@@ -120,4 +119,4 @@
 	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/CalicoJack-1.0.0.opera")))
 	(def om (. s deserialise (java.io.File. st)))
 	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera")))
-  (parse-norms (. (. (. om getOm) getNs) getNorms)))
+  (parse-norms st (. (. (. om getOm) getNs) getNorms)))

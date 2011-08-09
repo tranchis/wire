@@ -9,7 +9,7 @@ import clojure.lang.Var;
 
 import net.sf.ictalive.monitoring.domain.Activation;
 import net.sf.ictalive.monitoring.domain.ConditionHolder;
-import net.sf.ictalive.monitoring.domain.Deactivation;
+import net.sf.ictalive.monitoring.domain.Expiration;
 import net.sf.ictalive.monitoring.domain.Formula;
 import net.sf.ictalive.monitoring.domain.Maintenance;
 import net.sf.ictalive.monitoring.rules.drools.schema.Package;
@@ -48,8 +48,7 @@ public class NormParser {
 			inserts.add(n);
 			inserts.add(new Activation(n, new Formula(n.getNormActivation())));
 			inserts.add(new Maintenance(n, new Formula(n.getNormCondition())));
-			inserts
-					.add(new Deactivation(n, new Formula(n.getNormExpiration())));
+			inserts.add(new Expiration(n, new Formula(n.getNormExpiration())));
 		}
 
 		itc = countsas.iterator();
