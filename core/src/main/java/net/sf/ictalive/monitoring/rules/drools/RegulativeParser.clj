@@ -33,7 +33,12 @@
   `(~(symbol "function") ~(operator (.getName o)) ~(cons (symbol "parameters") (operator (.getArguments o)))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.VariableImpl [o]
-  `(~(symbol "variable") ~(operator (.getName o))))
+  (def st (operator (.getName o)))
+  (if (and (>= (int (first st)) (int \0)) (<= (int (first st)) (int \9)))
+    (do
+      `(~(symbol "variable") ~(str "x" (operator (.getName o)))))
+    (do
+      `(~(symbol "variable") ~(operator (.getName o))))))
 
 (defmethod operator net.sf.ictalive.operetta.OM.impl.ConstantImpl [o]
   `(~(symbol "constant") ~(operator (.getName o))))

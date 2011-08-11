@@ -188,6 +188,8 @@
   fb)
 
 (defmethod replace-in-pattern Pattern [v p]
+  "Input: variable to convert into binding, and the target pattern"
+  "Output: modified version of the pattern, with a binding in the first appearance of the input variable"
   (def rrs (. p getFieldBindingOrFieldConstraintOrFrom))
   (def fc (sq/find-first #(restriction-contains v %) rrs))
   (def newrrs (replace {fc (constraint-to-binding v fc)} rrs))
@@ -197,17 +199,32 @@
   p)
 
 (defmethod replace-in-pattern Not [v n]
-  (def p (replace-in-pattern v (. (. n getAbstractConditionalElementOrNotOrExists) get 0)))
-  (def n (Not.))
-  (. (. n getAbstractConditionalElementOrNotOrExists) clear)
-  (. (. n getAbstractConditionalElementOrNotOrExists) add p)
-  n)
+  "Input: variable to convert into binding, and the target negative pattern (a Not)"
+  "Output: a sequence with the original not, plus a pattern with the positive binding of the variable"
+  "Example: ~is_in_house(john, 6pm) -> is_in_house(x, ?) and x = john and ~is_in_house(john, 6pm)"
+  "Or, in other words: there exists an instance of the pattern p with a certain variable, that doesn't comply a certain Not statement"
+  "This is a trick to overcome Drools limitations with expressivity, i.e. bindings can't be put into Not patterns"
+  (def p (. (. n getAbstractConditionalElementOrNotOrExists) get 0))
+  (def p-positive (Pattern.))
+  (def rrs (. p getFieldBindingOrFieldConstraintOrFrom))
+  (def fc-negative (sq/find-first #(restriction-contains v %) rrs))
+  (def fc (FieldConstraint.))
+  (def vr (VariableRestriction.))
+  (. (. p-positive getFieldBindingOrFieldConstraintOrFrom) add (. (. p getFieldBindingOrFieldConstraintOrFrom) get 0)) ; Copy p0: predicate name. TODO: Unsafe
+  (. p-positive setObjectType "Proposition")
+  (. vr setEvaluator "==")
+  (. vr setIdentifier v)
+  (. fc setFieldName (. fc-negative getFieldName))
+  (. (. fc getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction) add vr)
+  (. (. p-positive getFieldBindingOrFieldConstraintOrFrom) add fc)  
+  (def p-positive-with-binding (replace-in-pattern v p-positive))
+  (list p-positive-with-binding n))
 
 (defn replace-constraint [v atoms]
   "Input: v is the variable to check, atoms is a set of patterns: {Pattern, Not}"
   "Output: a modified set of patterns, in which the first appearance of the variable is changed to binding"
   (def fp (sq/find-first #(pattern-contains v %) atoms))
-  (replace {fp (replace-in-pattern v fp)} atoms))
+  (flatten (replace {fp (replace-in-pattern v fp)} atoms))) ; The flatten is due to the possibility of receiving a sequence (see replace-in-pattern(Not))
 
 (defn conjunction [& atoms]
   (def l (Lhs.))
@@ -296,21 +313,16 @@
   (. (. fc getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction) add rr)
   fc)
 
-(def d (DroolsEngine.))
-;(. d addPackage
-;(ppr/pprint
-(def package-institution
-  (eval
-    (regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
-    ;(regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera") 
-  )
-)
-
-
 (defn analyze-rule [r]
   (map #(do (class %)) (. (. r getLhs) getAbstractConditionalElementOrNotOrExists)))
 
-(. d addPackage package-institution)
-;(ppr/pprint (regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera"))
-;(map analyze-rule (. p getImportOrImportfunctionOrGlobal))
+(defn load-opera [st]
+  (def d (DroolsEngine.))
+  (. d addPackage (eval (regp/parse-file st)))
+  d)
+
+;(regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
+;(regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera") 
 ;(clojure.stacktrace/print-stack-trace (clojure.stacktrace/e))
+
+(load-opera "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
