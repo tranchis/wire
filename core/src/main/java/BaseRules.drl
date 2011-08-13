@@ -232,7 +232,7 @@ end
 
 rule "norm instance fulfillment"
 when
-	Deactivation(n : norm, f : formula)
+	Expiration(n : norm, f : formula)
 	ni : Instantiated(norm == n, theta : substitution)
 	SubsetEQ(theta2 : subset, superset == theta)
 	Holds(formula == f, substitution == theta2)

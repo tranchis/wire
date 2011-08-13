@@ -1,6 +1,5 @@
 package net.sf.ictalive.monitoring.rules.drools;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -203,14 +202,14 @@ public class DroolsEngine implements RuleEngine
 
 	public void dump()
 	{
-//		Iterator<Object>	it;
-//		
-//		it = ksession.getObjects().iterator();
-//		while(it.hasNext())
-//		{
-//			System.out.println(it.next());
-//		}
-		System.out.println(ksession.getObjects().size());
+		Iterator<Object>	it;
+		
+		it = ksession.getObjects().iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+//		System.out.println(ksession.getObjects().size());
 	}
 	
 	public Set<Action> getActions()
@@ -243,31 +242,31 @@ public class DroolsEngine implements RuleEngine
 		ksession.insert(eb);
 	}
 	
-	public static void main(String args[]) throws IOException, JAXBException
-	{
-		DroolsEngine			de;
-		Opera2Drools			o2d;
-		ParsedNorms				pn;
-		FactHandle				p;
-		
-		o2d = new Opera2Drools("Warcraft3ResourceGathering.opera");
-		o2d.parse();
-		pn = o2d.toDrools();
-		
-		de = new DroolsEngine();
-		de.addPackage(pn.getRules());
-		System.out.println("Adding: " + pn.getNorms());
-		de.handleObservation(pn.getNorms());
-		de.evaluate();
-		p = de.handleObservation(new Proposition("numberOfWorkers", "3"));
-		de.handleObservation(new Proposition("lessThan", "3", "5"));
-		de.evaluate();
-		de.remove(p);
-		de.evaluate();
-		de.dump();
-	}
+//	public static void main(String args[]) throws IOException, JAXBException
+//	{
+//		DroolsEngine			de;
+//		Opera2Drools			o2d;
+//		ParsedNorms				pn;
+//		FactHandle				p;
+//		
+//		o2d = new Opera2Drools("Warcraft3ResourceGathering.opera");
+//		o2d.parse();
+//		pn = o2d.toDrools();
+//		
+//		de = new DroolsEngine();
+//		de.addPackage(pn.getRules());
+//		System.out.println("Adding: " + pn.getNorms());
+//		de.handleObservation(pn.getNorms());
+//		de.evaluate();
+//		p = de.handleObservation(new Proposition("numberOfWorkers", "3"));
+//		de.handleObservation(new Proposition("lessThan", "3", "5"));
+//		de.evaluate();
+//		de.remove(p);
+//		de.evaluate();
+//		de.dump();
+//	}
 	
-	private void remove(FactHandle p)
+	public void remove(FactHandle p)
 	{
 		ksession.retract(p);
 	}

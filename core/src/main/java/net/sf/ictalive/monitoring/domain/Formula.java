@@ -5,9 +5,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import clojure.lang.Obj;
+
 import net.sf.ictalive.operetta.OM.Atom;
 import net.sf.ictalive.operetta.OM.Constant;
-import net.sf.ictalive.operetta.OM.PartialStateDescription;
 import net.sf.ictalive.operetta.OM.Term;
 import net.sf.ictalive.operetta.OM.Variable;
 
@@ -15,9 +16,9 @@ public class Formula
 {
 	private Formula					content;
 	private Set<Value>				grounding;
-	private PartialStateDescription	logic;
+	private Obj						logic;
 	
-	public Formula(PartialStateDescription logic)
+	public Formula(Obj logic)
 	{
 		this.setLogic(logic);
 	}
@@ -95,12 +96,12 @@ public class Formula
 		return grounding;
 	}
 
-	public void setLogic(PartialStateDescription logic)
+	public void setLogic(Obj logic)
 	{
 		this.logic = logic;
 	}
 
-	public PartialStateDescription getLogic()
+	public Obj getLogic()
 	{
 		return logic;
 	}

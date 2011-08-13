@@ -3,6 +3,9 @@ package net.sf.ictalive.monitoring;
 import java.io.IOException;
 import java.util.Iterator;
 
+import clojure.lang.RT;
+import clojure.lang.Var;
+
 import net.sf.ictalive.eventbus.EventBus;
 import net.sf.ictalive.eventbus.exception.EventBusConnectionException;
 import net.sf.ictalive.monitoring.domain.Instantiated;
@@ -83,7 +86,7 @@ public class BusEventTransporter implements EventTransporter
 		return eb.take();
 	}
 
-	public void publish(NormState ns) throws IOException
+	public void publish(NormState ns) throws Exception
 	{
 		NormInstanceActivated						nia;
 		NormInstanceViolated						niv;
@@ -97,7 +100,13 @@ public class BusEventTransporter implements EventTransporter
 		Variable									var;
 		net.sf.ictalive.runtime.fact.Fact			f;
 		
-		psd = ns.getNorm().getNormActivation();
+		// Load the Clojure script -- as a side effect this initializes the
+		// runtime.
+		RT.loadResourceScript("net/sf/ictalive/monitoring/rules/drools/ConditionParser.clj");			
+		// Get a reference to the foo function.
+		Var foo = RT.var("net.sf.ictalive.monitoring.rules.drools.ConditionParser", "parse-norms");
+		
+		psd = (PartialStateDescription)foo.invoke(ns.getNorm().getNormActivation());
 		
 		psdi = nif.createPartialStateDescriptionInstance();
 		psdi.setName(psd.getID() + "_" + ns.hashCode());

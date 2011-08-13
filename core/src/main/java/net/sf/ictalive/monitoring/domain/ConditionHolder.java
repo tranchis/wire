@@ -1,6 +1,6 @@
 package net.sf.ictalive.monitoring.domain;
 
-import net.sf.ictalive.operetta.OM.PartialStateDescription;
+import clojure.lang.Obj;
 
 public abstract class ConditionHolder
 {
@@ -11,7 +11,7 @@ public abstract class ConditionHolder
 	public static final int DEACTIVATION	= 5;
 
 	public abstract String getID();
-	public abstract PartialStateDescription getCondition(int mode);
+	public abstract Obj getCondition(int mode);
 	
 	public String getType(int mode)
 	{

@@ -1,6 +1,6 @@
 package net.sf.ictalive.monitoring.domain;
 
-import net.sf.ictalive.operetta.OM.PartialStateDescription;
+import clojure.lang.Obj;
 
 public class CountsAs extends ConditionHolder
 {
@@ -87,9 +87,9 @@ public class CountsAs extends ConditionHolder
 	}
 
 	@Override
-	public PartialStateDescription getCondition(int mode)
+	public Obj getCondition(int mode)
 	{
-		PartialStateDescription	res;
+		Obj	res;
 		
 		if(mode == ConditionHolder.GAMMA1)
 		{

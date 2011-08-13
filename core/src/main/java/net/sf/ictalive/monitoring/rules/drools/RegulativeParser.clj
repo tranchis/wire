@@ -1,6 +1,7 @@
 (ns net.sf.ictalive.monitoring.rules.drools.RegulativeParser
   (:import net.sf.ictalive.monitoring.domain.ConditionHolder)
   (:require [clojure.string :as str])
+  (:require [clojure.contrib.pprint :as ppr])
   (:require [clojure.contrib.combinatorics :as comb]))
 
 (defn str-invoke [instance method-str & args]
@@ -100,20 +101,38 @@
 (defn convert-condition [norm condition]
   (operator (str-invoke norm (str "get" (str/capitalize condition) "Condition"))))
 
+(defn convert-description [cas condition]
+  (def sp (str/split condition #"-"))
+  (operator (str-invoke cas (apply str "get" (str/capitalize (first sp)) (str/capitalize (second sp))))))
+
 ;; Entry point
 (defn parse-condition [norm condition]
   `(~(symbol "condition") ~(str condition)
                           ~(normalize (clean-negations (convert-condition norm condition)))))
 ;                          ~(convert-condition norm condition)))
 
+(defn parse-description [cas condition]
+  `(~(symbol (str condition))
+                          ~(normalize (clean-negations (convert-description cas condition)))))
+;                          ~(convert-condition norm condition)))
+
 (defn parse-norm [norm]
-  `(~(symbol "norm")  ~(. norm getNormID) ~(cons (symbol "conditions") (map #(parse-condition norm %) (list "activation" "maintenance" "expiration")))))
+  `(~(symbol "norm") ~(. norm getNormID) ~(cons (symbol "conditions") (map #(parse-condition norm %) (list "activation" "maintenance" "expiration")))))
+
+(defn parse-countsas [cas]
+  (if (nil? (. cas getContext))
+    (def ct "Universal")
+    (def ct (. (. cas getContext) getName)))
+  `(~(symbol "counts-as") "" ~(list (symbol "context") ct) ~(parse-description cas "concrete-fact") ~(parse-description cas "abstract-fact")))
 
 (defn get-file-name [st]
   (. (. (java.io.File. st) getName) replaceAll ".opera" ""))
 
-(defn parse-norms [st norms]
-  `(~(symbol "institution") ~(get-file-name st) ~@(vec (map parse-norm norms))))
+(defn update-id [idx cas]
+  (replace {"" (str "counts-as-rule-" idx)} cas))
+
+(defn parse-norms [st norms cas]
+  `(~(symbol "institution") ~(get-file-name st) ~@(vec (map parse-norm norms)) ~@(vec (map-indexed update-id (map parse-countsas cas)))))
 
 ;		ns = om.getOm().getNs().getNorms();
 (defn parse-file [st]
@@ -124,4 +143,15 @@
 	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/CalicoJack-1.0.0.opera")))
 	(def om (. s deserialise (java.io.File. st)))
 	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera")))
-  (parse-norms st (. (. (. om getOm) getNs) getNorms)))
+ 	;	ns = om.getOm().getNs().getNorms();
+	;	cs = om.getOm().getCs().getCountsAsRules();
+  (parse-norms st (. (. (. om getOm) getNs) getNorms) (. (. (. om getOm) getCs) getCountsAsRules)))
+
+(defn frm-save 
+ "Save a clojure form to file." 
+  [#^java.io.File file form] 
+  (with-open [w (java.io.FileWriter. file)] 
+    (binding [*out* w *print-dup* true] (ppr/pprint form))))
+
+; Example of use:
+;(frm-save (java.io.File. "/tmp/norm.lisp") (parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera"))

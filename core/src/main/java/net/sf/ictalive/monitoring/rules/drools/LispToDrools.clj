@@ -47,6 +47,38 @@
   (. r setName id)
   r)
 
+(defn fill-info-countsas [r id]
+;   p = new Pattern();
+;		p.setObjectType("CountsAs");
+;		fb = new FieldBinding();
+;		fb.setFieldName(type);
+;		fb.setIdentifier("f");
+;		p.getFieldBindingOrFieldConstraintOrFrom().add(fb);
+;		fc = new FieldConstraint();
+;		fc.setFieldName("id");
+;		lr = new LiteralRestriction();
+;		lr.setEvaluator("==");
+;		lr.setValue(code);
+;		fc.getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction().add(lr);
+;		p.getFieldBindingOrFieldConstraintOrFrom().add(fc);
+;		lhs.getAbstractConditionalElementOrNotOrExists().add(p);
+  (def lhs (. r getLhs))
+  (def p (Pattern.))
+  (def fb (FieldBinding.))
+  (def fc (FieldConstraint.))
+  (def lr (LiteralRestriction.))
+  (. p setObjectType "CountsAs")
+  (. fb setFieldName (nth (stt/split #"_" (. r getName)) 1))
+  (. fb setIdentifier "f")
+  (. (. p getFieldBindingOrFieldConstraintOrFrom) add fb)
+  (. fc setFieldName "id")
+  (. lr setEvaluator "==")
+  (. lr setValue id)
+  (. (. fc getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction) add lr)
+  (. (. p getFieldBindingOrFieldConstraintOrFrom) add fc)
+  (. (. lhs getAbstractConditionalElementOrNotOrExists) add p)
+  r)
+
 (defn fill-info-rule [r id]
   (def lhs (. r getLhs))
 ;		p = new Pattern();
@@ -102,6 +134,27 @@
   (. (. p2 getFieldBindingOrFieldConstraintOrFrom) add fb)
   (. (. lhs getAbstractConditionalElementOrNotOrExists) add p2)
   r)
+
+(defn context [nm]
+  (condition "context" (disjunction (conjunction (predicate "Context" (arguments (constant nm)))))))
+
+(defn concrete-fact [ors]
+  (def ors-with-rhs (map #(add-rhs (first %) (second %)) ors))
+  (map-indexed update-order (map #(set-name "gamma1" %) ors-with-rhs)))
+
+(defn abstract-fact [ors]
+  nil)
+
+(defn counts-as [id ct cf af]
+;		f = new Formula((PartialStateDescription) ca.getConcreteFact());
+;		fc = new Formula(a);
+;		cas = new net.sf.ictalive.monitoring.domain.CountsAs(ca.hashCode() + "", f, new Formula(ca.getAbstractFact()), fc);
+;		countsas.add(cas);
+;		vr = new Vector<Rule>();
+;		vr.addAll(cp.parseCondition(cas, ConditionHolder.GAMMA1));
+;		vr.addAll(cp.parseCondition(cas, ConditionHolder.CONTEXT));
+  (def m (map #(update-name id %) (flatten (list cf ct))))
+  (map #(fill-info-countsas % id) m))
 
 (defn norm [id cs]
 ;		vr = new Vector<Rule>()
@@ -321,8 +374,22 @@
   (. d addPackage (eval (regp/parse-file st)))
   d)
 
+(defn frm-load 
+  "Load a clojure form from file." 
+  [#^java.io.File file] 
+  (with-open [r (java.io.PushbackReader. 
+     (java.io.FileReader. file))] 
+     (let [rec (read r)] 
+      rec)))
+
+(defn lisp-to-drools [st]
+  (def d (DroolsEngine.))
+  (. d addPackage (eval (frm-load (java.io.File. st))))
+  (list d (frm-load (java.io.File. st))))
+  
 ;(regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
 ;(regp/parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera") 
 ;(clojure.stacktrace/print-stack-trace (clojure.stacktrace/e))
 
-(load-opera "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
+;(load-opera "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera")
+;(lisp-to-drools "/tmp/norm.lisp")

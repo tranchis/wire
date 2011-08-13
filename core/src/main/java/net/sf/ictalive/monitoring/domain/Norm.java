@@ -1,28 +1,28 @@
 package net.sf.ictalive.monitoring.domain;
 
-import net.sf.ictalive.operetta.OM.PartialStateDescription;
+import clojure.lang.Obj;
 
 public class Norm extends ConditionHolder
 {
 	public int									normType;
-	public PartialStateDescription				normActivation, normCondition, normExpiration;
+	Obj											normActivation;
+	Obj											normCondition;
+	public Obj									normExpiration;
 	public String								normTarget;
 	private String								normID;
-	private net.sf.ictalive.operetta.OM.Norm	originalNorm;
 	
 	public final static int OBLIGATION = 0;
 	public final static int PERMISSION = 1;
 	public final static int PROHIBITION = 2;
 	
-	public Norm(String normID, PartialStateDescription normActivation,
-			PartialStateDescription normCondition,
-			PartialStateDescription normExpiration, net.sf.ictalive.operetta.OM.Norm n)
+	public Norm(String normID, Obj normActivation,
+			Obj normCondition,
+			Obj normExpiration)
 	{
 		this.normID = normID;
 		this.normActivation = normActivation;
 		this.normCondition = normCondition;
 		this.normExpiration = normExpiration;
-		this.setOriginalNorm(n);
 	}
 
 	public int getNormType()
@@ -35,32 +35,32 @@ public class Norm extends ConditionHolder
 		this.normType = normType;
 	}
 
-	public PartialStateDescription getNormActivation()
+	public Obj getNormActivation()
 	{
 		return normActivation;
 	}
 
-	public void setNormActivation(PartialStateDescription normActivation)
+	public void setNormActivation(Obj normActivation)
 	{
 		this.normActivation = normActivation;
 	}
 
-	public PartialStateDescription getNormCondition()
+	public Obj getNormMaintenance()
 	{
 		return normCondition;
 	}
 
-	public void setNormCondition(PartialStateDescription normCondition)
+	public void setNormMaintenance(Obj normCondition)
 	{
 		this.normCondition = normCondition;
 	}
 
-	public PartialStateDescription getNormExpiration()
+	public Obj getNormExpiration()
 	{
 		return normExpiration;
 	}
 
-	public void setNormExpiration(PartialStateDescription normExpiration)
+	public void setNormExpiration(Obj normExpiration)
 	{
 		this.normExpiration = normExpiration;
 	}
@@ -92,9 +92,9 @@ public class Norm extends ConditionHolder
 	}
 
 	@Override
-	public PartialStateDescription getCondition(int mode)
+	public Obj getCondition(int mode)
 	{
-		PartialStateDescription	res;
+		Obj	res;
 		
 		if(mode == ConditionHolder.ACTIVATION)
 		{
@@ -116,13 +116,18 @@ public class Norm extends ConditionHolder
 		return res;
 	}
 
-	public void setOriginalNorm(net.sf.ictalive.operetta.OM.Norm originalNorm)
-	{
-		this.originalNorm = originalNorm;
-	}
+//	public void setOriginalNorm(net.sf.ictalive.operetta.OM.Norm originalNorm)
+//	{
+//		this.originalNorm = originalNorm;
+//	}
 
 	public net.sf.ictalive.operetta.OM.Norm getOriginalNorm()
 	{
-		return originalNorm;
+		net.sf.ictalive.operetta.OM.Norm	n;
+		
+		n = net.sf.ictalive.operetta.OM.OMFactory.eINSTANCE.createNorm();
+		n.setNormID(this.normID);
+		
+		return n;
 	}
 }
