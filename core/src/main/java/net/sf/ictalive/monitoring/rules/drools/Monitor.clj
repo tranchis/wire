@@ -42,4 +42,4 @@
 
 (run-monitor "localhost" 
   (binding [*ns* (the-ns 'net.sf.ictalive.monitoring.rules.drools.LispToDrools)]
-    (ltd/lisp-to-drools "/tmp/norm.lisp")))
+    (ltd/lisp-to-drools "C:/tmp.lisp")))
