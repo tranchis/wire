@@ -1,4 +1,4 @@
-(ns net.sf.ictalive.monitoring.rules.drools.RegulativeParser
+(ns com.github.tranchis.wire.RegulativeParser
   (:import net.sf.ictalive.monitoring.domain.ConditionHolder)
   (:require [clojure.string :as str])
   (:require [clojure.contrib.pprint :as ppr])
@@ -154,4 +154,4 @@
     (binding [*out* w *print-dup* true] (ppr/pprint form))))
 
 ; Example of use:
-(frm-save (java.io.File. "/tmp/norm.lisp") (parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera"))
+;(frm-save (java.io.File. "/tmp/norm.lisp") (parse-file "/Users/sergio/Documents/Research/wire/core/src/main/java/Warcraft3ResourceGathering.opera"))
