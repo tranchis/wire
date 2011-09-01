@@ -4231,3 +4231,281 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact net.sf.ictali
 2011-08-13 14:58:26,951 [Worker-111] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
 2011-08-13 14:58:26,953 [Worker-111] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2011-08-13 14:58:26,953 [Worker-111] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:30:26,332 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:30:26,333 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:30:26,335 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:30:26,335 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:30:45,773 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:30:45,774 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:30:45,777 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:30:45,777 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:31:47,043 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:31:47,044 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:31:47,046 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:31:47,046 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:32:17,119 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:32:17,119 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:32:17,121 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:32:17,122 [Worker-119] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:32:47,176 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:32:47,177 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:32:47,191 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:32:47,191 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:35:59,087 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:35:59,087 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:35:59,089 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:35:59,089 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:36:17,284 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:36:17,284 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:36:17,286 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:36:17,286 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:38:32,418 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:38:32,418 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:38:32,420 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:38:32,421 [Worker-122] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:39:17,603 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:39:17,603 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:39:17,616 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:39:17,617 [Worker-118] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:41:47,604 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:41:47,616 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:41:47,622 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:41:47,623 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:43:17,638 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:17,638 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:43:17,640 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:17,640 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:43:26,677 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:26,677 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:43:26,679 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:26,679 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:43:31,194 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:31,195 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:43:31,197 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:43:31,197 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:44:07,495 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:44:07,495 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:44:07,498 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:44:07,498 [Worker-115] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:44:17,703 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:44:17,703 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:44:17,706 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:44:17,706 [Worker-106] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:45:17,772 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:45:17,772 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:45:17,774 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:45:17,774 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:47:00,284 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:00,284 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:47:00,286 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:00,286 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:47:17,996 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:17,996 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:47:17,999 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:17,999 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:47:24,167 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:24,167 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:47:24,169 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:24,170 [Worker-124] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:47:48,363 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:48,363 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:47:48,365 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:47:48,365 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:48:57,705 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:48:57,705 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:48:57,707 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:48:57,708 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:49:18,193 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:18,193 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:49:18,195 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:18,195 [Worker-123] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:49:19,300 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:19,301 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:49:19,303 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:19,303 [Worker-125] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 15:49:48,234 [Worker-126] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:48,234 [Worker-126] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 15:49:48,236 [Worker-126] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 15:49:48,236 [Worker-126] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 16:03:46,875 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:03:46,875 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 16:03:46,877 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:03:46,877 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 16:03:58,838 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:03:58,839 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 16:03:58,840 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:03:58,841 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 16:04:29,831 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:29,831 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 16:04:29,833 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:29,834 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 16:04:31,173 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:31,173 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 16:04:31,175 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:31,176 [Worker-131] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 16:04:51,630 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:51,630 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-13 16:04:51,632 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 16:04:51,632 [Worker-128] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-13 18:49:34,267 [Worker-165] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Collecting project info '/pom.xml' /Users/sergio/Documents/Research/wire/testing/pom.xml
+2011-08-13 18:49:38,576 [Worker-165] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-13 18:49:39,108 [Worker-165] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /testing/src/main/java
+2011-08-13 18:49:39,128 [Worker-165] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /testing/src/test/java
+2011-08-13 18:49:39,794 [Worker-165] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Project import completed 5 sec
+2011-08-13 18:49:40,839 [Worker-168] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-13 18:49:41,058 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:49:41,059 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:49:41,063 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:49:41,063 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:50:22,300 [Worker-168] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-13 18:50:22,430 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:22,430 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:50:22,433 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:22,434 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:50:23,518 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:23,520 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:50:23,522 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:23,522 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:50:46,564 [Worker-165] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-13 18:50:47,021 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:47,022 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:50:47,024 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:47,025 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:50:49,798 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:49,804 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:50:49,806 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:50:49,807 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:51:02,301 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:51:02,301 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:51:02,303 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:51:02,303 [Worker-168] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:53:31,653 [Worker-167] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-13 18:53:32,587 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/org/igniterealtime/smack/smack/3.1.0/smack-3.1.0.pom
+2011-08-13 18:53:32,617 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/org/igniterealtime/smack/smack/3.1.0/smack-3.1.0.pom
+2011-08-13 18:53:32,955 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/org/igniterealtime/smack/smack/3.1.0/smack-3.1.0.jar
+2011-08-13 18:53:35,946 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/org/igniterealtime/smack/smack/3.1.0/smack-3.1.0.jar
+2011-08-13 18:53:36,629 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:36,629 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:53:36,632 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:36,632 [Worker-167] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:53:37,961 [Worker-163] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:37,962 [Worker-163] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:53:37,966 [Worker-163] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:37,966 [Worker-163] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 18:53:46,948 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:46,948 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 18:53:46,963 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 18:53:46,963 [Worker-165] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-13 20:46:54,011 [Worker-189] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 20:46:54,040 [Worker-189] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-13 20:46:54,049 [Worker-189] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-13 20:46:54,059 [Worker-189] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-23 15:11:45,460 [Worker-1] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-08-23 15:11:59,134 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:11:59,157 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-08-23 15:11:59,160 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:11:59,161 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-08-23 15:12:00,790 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:00,790 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-08-23 15:12:00,803 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:00,804 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-08-23 15:12:02,631 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:02,631 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-08-23 15:12:02,636 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:02,636 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-08-23 15:12:11,047 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:11,048 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:12:11,050 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:11,067 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 15:12:12,036 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:12,036 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-23 15:12:12,039 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:12:12,040 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-23 15:13:04,427 [Worker-1] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 79016 ms
+2011-08-23 15:14:05,267 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:14:05,267 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:14:05,269 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:14:05,269 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 15:14:14,938 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:14:14,939 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:14:14,958 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:14:14,958 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 15:19:17,170 [Worker-5] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-08-23 15:19:20,834 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:20,835 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-08-23 15:19:20,839 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:20,839 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-08-23 15:19:21,645 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:21,645 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-08-23 15:19:21,647 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:21,648 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-08-23 15:19:22,195 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:22,195 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-08-23 15:19:22,197 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:22,198 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-08-23 15:19:28,957 [Worker-5] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 11792 ms
+2011-08-23 15:19:42,048 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:42,048 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:19:42,071 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:42,071 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 15:19:42,423 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:42,424 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-23 15:19:42,426 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:42,426 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-23 15:19:46,616 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-08-23 15:19:49,183 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:49,184 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:19:49,186 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:49,187 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 15:19:54,902 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-08-23 15:19:55,157 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:55,157 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 15:19:55,159 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 15:19:55,159 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 17:38:54,418 [Worker-9] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-08-23 17:39:09,055 [Worker-9] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 14711 ms
+2011-08-23 17:59:58,582 [Worker-6] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-08-23 18:00:15,695 [Worker-6] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 17117 ms
+2011-08-23 18:00:23,229 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-08-23 18:00:27,408 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:27,409 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-08-23 18:00:27,413 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:27,413 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-08-23 18:00:28,345 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-08-23 18:00:28,681 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:28,681 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-08-23 18:00:28,684 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:28,684 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-08-23 18:00:30,296 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-08-23 18:00:30,763 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:30,764 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-08-23 18:00:30,766 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:00:30,767 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-08-23 18:01:14,723 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-08-23 18:01:16,636 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:01:16,637 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 18:01:16,639 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:01:16,639 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 18:01:17,634 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-08-23 18:01:18,110 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:01:18,121 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-08-23 18:01:18,124 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:01:18,124 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-08-23 18:54:27,410 [Worker-2] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-08-23 18:54:41,921 [Worker-2] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 14527 ms
+2011-08-23 18:58:01,704 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:58:01,705 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 18:58:01,708 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:58:01,721 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 18:58:45,008 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:58:45,012 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 18:58:45,015 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:58:45,015 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 18:59:44,977 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:59:44,977 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 18:59:44,993 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 18:59:44,994 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-08-23 19:00:15,089 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 19:00:15,089 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-08-23 19:00:15,091 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-08-23 19:00:15,091 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
