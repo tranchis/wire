@@ -1,4 +1,4 @@
-(ns net.sf.ictalive.monitoring.rules.drools.Monitor
+(ns com.github.tranchis.wire.Monitor
   (:require [clojure.contrib.pprint :as ppr])
   (:require [com.github.tranchis.wire.RegulativeParser :as regp])
   (:require [com.github.tranchis.wire.LispToDrools :as ltd]))
@@ -45,5 +45,5 @@
       (. de evaluate))))
 
 (run-monitor "localhost" 
-  (binding [*ns* (the-ns 'net.sf.ictalive.monitoring.rules.drools.LispToDrools)]
-    (ltd/lisp-to-drools "/tmp/norm.lisp")))
+  (binding [*ns* (the-ns 'com.github.tranchis.wire.LispToDrools)]
+    (ltd/lisp-to-drools "C:/tmp.lisp")))
