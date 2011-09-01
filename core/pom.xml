@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.tranchis.wire</groupId>
+  <artifactId>core</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>core</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>alive-maven</id>
+      <name>ALIVE Maven repository</name>
+      <layout>default</layout>
+      <url>http://tranchis.github.com/alive-maven/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+  <distributionManagement>
+    <repository>
+      <id>gh-pages-site</id>
+      <name>ALIVE Maven Local Repository</name>
+      <url>file:///Users/sergio/Documents/Research/alive-maven/site</url>
+    </repository>
+    <site>
+      <id>gh-pages</id>
+      <!-- This gets automatically pushed to the gh-pages branch. -->
+      <url>file:///Users/sergio/Documents/Research/alive-maven/site</url>
+    </site>  
+  </distributionManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.github.tranchis.wire</groupId>
+      <artifactId>eventbus</artifactId>
+      <scope>compile</scope>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>services</artifactId>
+      <scope>runtime</scope>
+      <version>1.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>XSDSchema</artifactId>
+      <scope>runtime</scope>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>operetta</artifactId>
+      <scope>compile</scope>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>runtime</artifactId>
+      <scope>compile</scope>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>coordination</artifactId>
+      <scope>runtime</scope>
+      <version>1.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>owls</artifactId>
+      <scope>runtime</scope>
+      <version>1.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>rules</artifactId>
+      <scope>runtime</scope>
+      <version>1.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ictalive</groupId>
+      <artifactId>normInstances</artifactId>
+      <scope>compile</scope>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.drools</groupId>
+    	<artifactId>drools-core</artifactId>
+    	<version>5.2.0.Final</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.clojure</groupId>
+    	<artifactId>clojure</artifactId>
+    	<version>1.2.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.clojure</groupId>
+    	<artifactId>clojure-contrib</artifactId>
+    	<version>1.2.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.drools</groupId>
+    	<artifactId>drools-compiler</artifactId>
+    	<version>5.2.0.Final</version>
+    	<scope>runtime</scope>
+    </dependency>
+    <dependency>
+    	<groupId>com.github.tranchis.wire</groupId>
+    	<artifactId>eventbus.instance</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>

@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.github.tranchis.wire</groupId>
+  <artifactId>metamodel.utils</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>metamodel.utils</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>alive-maven</id>
+      <name>ALIVE Maven repository</name>
+      <layout>default</layout>
+      <url>http://tranchis.github.com/alive-maven/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>kermeta.org</id>
+      <name>More up-to-date eclipse libraries</name>
+      <layout>default</layout>
+      <url>http://www.kermeta.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+  <distributionManagement>
+    <repository>
+      <id>gh-pages-site</id>
+      <name>ALIVE Maven Local Repository</name>
+      <url>file:///Users/sergio/Documents/Research/alive-maven/site</url>
+    </repository>
+    <site>
+      <id>gh-pages</id>
+      <!-- This gets automatically pushed to the gh-pages branch. -->
+      <url>file:///Users/sergio/Documents/Research/alive-maven/site</url>
+    </site>  
+  </distributionManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.kermeta.eclipse</groupId>
+      <artifactId>org.eclipse.gmf.runtime.notation</artifactId>
+      <scope>runtime</scope>
+      <version>1.2.0.v20091021-2333</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.eclipse.emf</groupId>
+    	<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+    	<version>2.5.0.v20100521-1846</version>
+    </dependency>
+  </dependencies>
+</project>
