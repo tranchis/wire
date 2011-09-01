@@ -76,6 +76,10 @@ public class Formula
 			
 			res = p;
 		}
+		else
+		{
+			throw new UnsupportedOperationException("Class unsupported: " + logic.getClass());
+		}
 		return res;
 	}
 	
