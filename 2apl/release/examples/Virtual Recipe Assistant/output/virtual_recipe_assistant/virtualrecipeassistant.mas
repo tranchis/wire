@@ -1,0 +1,9 @@
+<apaplmas>
+
+  <environment name="msAgentEnvironment" file="environments/msagentenvironment.jar" />
+  
+  <environment name="vraEnvironment" file="environments/virtualrecipeassistant.jar" />
+  
+  <agent name="assistant" file="agents/assistant.2apl"/>
+  
+</apaplmas>

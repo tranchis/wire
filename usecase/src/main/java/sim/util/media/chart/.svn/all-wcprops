@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/456/trunk/mason/sim/util/media/chart
+END
+SeriesAttributes.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/SeriesAttributes.java
+END
+UpArrow.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/UpArrow.png
+END
+TimeSeriesChartGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/TimeSeriesChartGenerator.java
+END
+HistogramGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/445/trunk/mason/sim/util/media/chart/HistogramGenerator.java
+END
+CloseBoxPressed.png
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/CloseBoxPressed.png
+END
+ChartGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/456/trunk/mason/sim/util/media/chart/ChartGenerator.java
+END
+ScatterPlotGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/ScatterPlotGenerator.java
+END
+DownArrowPressed.png
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/DownArrowPressed.png
+END
+MinGapDataCuller.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/174/trunk/mason/sim/util/media/chart/MinGapDataCuller.java
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/424/trunk/mason/sim/util/media/chart/README
+END
+HistogramSeriesAttributes.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/HistogramSeriesAttributes.java
+END
+DataCuller.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/174/trunk/mason/sim/util/media/chart/DataCuller.java
+END
+TimeSeriesAttributes.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/TimeSeriesAttributes.java
+END
+CloseBox.png
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/CloseBox.png
+END
+DownArrow.png
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/DownArrow.png
+END
+ScatterPlotSeriesAttributes.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/430/trunk/mason/sim/util/media/chart/ScatterPlotSeriesAttributes.java
+END
+UpArrowPressed.png
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/80/trunk/mason/sim/util/media/chart/UpArrowPressed.png
+END

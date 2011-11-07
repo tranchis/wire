@@ -1,0 +1,16 @@
+/*
+ * This example uses modules for implementing user profiles. It demonstrates the 
+ * application of clone module action and plan testing.  
+ *
+ * The seller module creates the module that represents the buyer's user profile.
+ * The seller creates variants of buyer module to find out the private value of 
+ * book "Hamlet" by injecting a belief representing selling price into the buyers 
+ * belief base and executing his deliberation to see if the buyer decided to buy 
+ * the book for the offered price.  
+ *
+ * The seller checks if the buyer's user profile has adopted the goal to buy the book, 
+ * which indicates that the injected belief about the offer was below his private value.
+ */
+ 
+peter : seller
+

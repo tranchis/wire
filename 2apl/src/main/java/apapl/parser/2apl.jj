@@ -1,0 +1,1016 @@
+options
+{
+	DEBUG_LOOKAHEAD = false; 
+	STATIC = false;
+} 
+
+PARSER_BEGIN(Parser2apl)
+package apapl.parser;
+
+import apapl.UnboundedVarException;
+import apapl.data.*;
+import apapl.program.*;
+import apapl.plans.*;
+import apapl.*;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.io.File;
+
+
+public class Parser2apl
+{
+}
+
+PARSER_END(Parser2apl) 
+
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+MORE :
+{
+  "%" : IN_SINGLE_LINE_COMMANT
+|
+
+  "//" : IN_SINGLE_LINE_COMMANT
+|
+  <"/**" ~["/"]> { input_stream.backup(1); } : IN_FORMAL_COMMANT
+|
+  "/*" : IN_MULTI_LINE_COMMANT
+}
+
+<IN_SINGLE_LINE_COMMANT>
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMANT: "\n" | "\r" | "\r\n" > : DEFAULT
+}
+
+<IN_FORMAL_COMMANT>
+SPECIAL_TOKEN :
+{
+  <FORMAL_COMMANT: "*/" > : DEFAULT
+}
+
+<IN_MULTI_LINE_COMMANT>
+SPECIAL_TOKEN :
+{
+  <MULTI_LINE_COMMANT: "*/" > : DEFAULT
+} 
+
+<IN_SINGLE_LINE_COMMANT,IN_FORMAL_COMMANT,IN_MULTI_LINE_COMMANT>
+MORE :
+{
+  < ~[] >
+} 
+
+//////////////// IN_INCLUDE_SECTION /////////////////////////////
+
+<IN_INCLUDE_SECTION>
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}  
+
+<IN_INCLUDE_SECTION>
+TOKEN:
+{
+	<FILENAME:	(["a"-"z","A"-"Z","_","0"-"9","."])+ >
+}
+
+///////////////////// DEFAULT ////////////////////////////////
+
+<DEFAULT, IN_INCLUDE_SECTION>
+// Program sections
+TOKEN:
+{
+	<INCLHEAD:		("Include:")> : IN_INCLUDE_SECTION
+|	<CAPSHEAD:		("BeliefUpdates:")> : DEFAULT
+|	<BBHEAD:		("Beliefs:")> : DEFAULT
+|	<GBHEAD:		("Goals:")> : DEFAULT
+|	<GPRULEHEAD:	("PG-rules:")> : DEFAULT
+|	<PRRULEHEAD:	("PR-rules:")> : DEFAULT
+|	<PCRULEHEAD:	("PC-rules:")> : DEFAULT
+|	<PLANHEAD:		("Plans:")> : DEFAULT
+}
+
+// Logic operators
+TOKEN :
+{
+	<AND:			("and")>
+|	<OR:			("or")>
+|	<NOT:			("not")>
+|	<TRUE:			("true")>
+}
+
+// Conditionals
+TOKEN :
+{
+	<IF:			("if")>
+|	<THEN:			("then")>
+|	<ELSE:			("else")>
+|	<WHILE:			("while")>
+|	<DO:			("do")>
+}
+
+TOKEN :
+{
+	<SELECT:		"#">
+|	<MARKER_BEGIN:	"<debug>" | "<DEBUG>">
+|	<MARKER_END:	"</debug>" | "</DEBUG>">
+|	<TESTAND:		"&">
+}
+
+// Plans
+TOKEN :
+{
+	<SKIPPLAN:		("skip")>
+|	<SEND:			("send")>
+|	<PRINT:			("print")>
+|	<CREATE:		("create")>
+|	<CLONE:			("clone")>
+|	<RELEASE:		("release")>
+|	<EXECUTE:		("execute")>
+|	<UPDATEBB:		("updateBB") >
+|	<GOALACTION:	("adopta" | "adoptz" | "dropgoal" | "dropsubgoals" | "dropsupergoals" )>
+}
+
+<DEFAULT, IN_INCLUDE_SECTION>
+TOKEN :
+{
+	<COMMA:	",">
+}
+
+TOKEN : 
+{
+	<B:				("B")>
+|	<G:				("G")>
+|	<GE:			("!G")>
+|	<P:				("P")>
+|	<AT:			("@")>
+|	<SLASHJADE:		("/JADE")>
+|	<UNDERSCORE:	("_")>
+|	<LBRACE:		"(">
+|	<RBRACE:		")">
+|	<DOTCOMMA:		";">
+|	<LISTL:			"[">
+|	<LISTR:			"]">
+|	<ACCL:			("{")>
+|	<ACCR:			("}")>
+|	<LEFTARROW:		"<-">
+|	<DOT:			".">
+|	<IMPL:			":-">
+|	<RELATIONAL:	("<" | ">" | "=" | "=<" | ">=") >
+|	<SIGN:			("+" | "-")>
+}
+
+// Identifiers etc.
+TOKEN:
+{
+	<IDENT:			(["a"-"z"]) ( ["a"-"z","A"-"Z","_","0"-"9"] )* >
+|	<VARNAME:		(["A"-"Z"]) ( ["a"-"z","A"-"Z","_","0"-"9"] )* >
+|	<NUM:			(["0"-"9"] )+ >
+|	<NUMNAME:		(["0"-"9"]) ( ["a"-"z","A"-"Z","_","0"-"9"] )+ >
+|   <NAMEDOT:		(["a"-"z","A"-"Z","_","0"-"9"] )+ > 
+//|	<NAMEDOT:		(["a"-"z","A"-"Z","_","0"-"9","."] )+ >
+|	<VERT:			"|">
+|	<QUOTE:			(("\'") ("\\\'" | ~["\'"])* ("\'"))
+					| (("\"") ("\\\"" | ~["\""])* ("\""))>
+|	<QUOTE1:		("\'") ("\\\'" | ~["\'"])* ("\'")>
+
+}
+
+void Program(APLModule m, LinkedList<File> files) :
+{}
+{
+	(Base(m,files))* (<EOF>)
+}
+
+void Base(APLModule m, LinkedList<File> files) :
+{}
+{
+	<INCLHEAD> Include(files)
+|	<CAPSHEAD> BeliefUpdates(m.getBeliefUpdates())
+|	<GBHEAD> Goalbase(m.getGoalbase(), m)
+|	<PLANHEAD> Planbase(m.getPlanbase(), m)
+|	<GPRULEHEAD> PGrulebase(m.getPGrulebase())
+|	<PRRULEHEAD> PRrulebase(m.getPRrulebase())
+|	<PCRULEHEAD> PCrulebase(m.getPCrulebase())
+}
+
+String AnyName() :
+{Token t;}
+{
+	t = <IDENT> {return t.toString();}
+|	t = <NUM> {return t.toString();}
+|	t = <NUMNAME> {return t.toString();}
+|	t = <NAMEDOT> {return t.toString();}
+|	t = Variable() {return t.toString();}
+}
+
+Token Variable() :
+{Token t;}
+{
+	t = <VARNAME> {return t;}
+|	t = <B> {return t;}
+|	t = <G> {return t;}
+}
+
+String Filename() :
+{Token t;}
+{
+	t = <FILENAME>	
+	{return t.image;}
+}
+
+void Include(LinkedList<File> i) :
+{String s;}
+{	
+	(s = Filename() {i.add(new java.io.File(s));})
+	(<COMMA> s = Filename() {i.add(new java.io.File(s));})*
+}
+
+
+void BeliefUpdates(BeliefUpdates caps) :
+{BeliefUpdate c;}
+{
+	(c = BeliefUpdate() {caps.addRule(c);})+
+}
+
+BeliefUpdate BeliefUpdate() :
+{Query q=null; APLFunction m; ArrayList<Literal> l;}
+{
+	<ACCL> (q = Query())? <ACCR>
+	m = BeliefUpdateAction()
+	<ACCL> l = Literals() <ACCR>
+	{
+		if (q==null) q = new True();
+		return new BeliefUpdate(q,m,l);
+	}
+}
+
+void Goalbase(Goalbase goals, APLModule m) :
+{
+	Goal g;
+}
+{
+	g = Goal() {
+		try {g.unvar(); goals.assertGoal(g);}
+		catch (UnboundedVarException e) {throw new ParseException("Goal "+g+" is not grounded.");}
+	}	
+	(
+		<COMMA>
+		g = Goal() {
+			try {g.unvar(); goals.assertGoal(g);}
+			catch (UnboundedVarException e) {throw new ParseException("Goal "+g+" is not grounded.");}
+		}
+	)*
+}
+
+Goal Goal() :
+{Goal g = new Goal(); Literal l;}
+{
+	l = LiteralBody(true) {g.addLiteral(l);} 
+	(<AND> l = LiteralBody(true) {g.addLiteral(l);})* {return g;}
+}
+
+Query GoalQuery() :
+{Query q;}
+{
+	q = Query()
+	{
+		if (q.containsNots()) throw new ParseException("Goalquery "+q+" contains negative goals. That's not allowed");
+		else return q;
+	}
+}
+
+void Planbase(Planbase plans, APLModule m) :
+{
+	PlanSeq p;
+}
+{
+	p = PlanSeq() {plans.addPlan(p);} 
+	(<COMMA> p = PlanSeq() {plans.addPlan(p);})*
+}
+
+PlanSeq PlanSeq() :
+{PlanSeq p;}
+{
+	p = UnBracedPlanSeq() {return p;}
+|	LOOKAHEAD(<ACCL> UnBracedPlanSeq() <ACCR>)
+	<ACCL> p = UnBracedPlanSeq() <ACCR> {return  p;}
+}
+
+PlanSeq UnBracedPlanSeq() :
+{Plan p; PlanSeq pl = new PlanSeq();}
+{
+	p = Plan() {pl.addPlan(p);} 
+	(	LOOKAHEAD( <DOTCOMMA>)
+		<DOTCOMMA> p = Plan() {pl.addPlan(p);}
+	)*
+	{return pl;}
+}
+
+PlanSeq PlanSeqWithVar() :
+{PlanSeq p;}
+{
+	p = UnBracedPlanSeqWithVar() {return p;}
+|	LOOKAHEAD(<ACCL> UnBracedPlanSeqWithVar() <ACCR>)
+	<ACCL> p = UnBracedPlanSeqWithVar() <ACCR> {return  p;}
+}
+
+PlanSeq UnBracedPlanSeqWithVar() :
+{Plan p; PlanSeq pl = new PlanSeq();}
+{
+	p = PlanWithVar() {pl.addPlan(p);} 
+	(	LOOKAHEAD( <DOTCOMMA>)
+		<DOTCOMMA> p = PlanWithVar() {pl.addPlan(p);}
+	)*
+	{return pl;}
+}
+
+Plan PlanWithVar() :
+{Plan p; APLFunction af;}
+{
+	LOOKAHEAD(<IDENT><DOT><EXECUTE>)
+	p = ExecuteModuleAction() {return p;}
+|	LOOKAHEAD(<IDENT><DOT><UPDATEBB>)
+	p = UpdateBeliefbaseAction() {return p;} 
+|	LOOKAHEAD(TestAction())
+	p = TestAction() {return p;}   
+|	LOOKAHEAD(GoalAction())
+	p = GoalAction() {return p;}
+|	LOOKAHEAD(ChunkPlanWithVar())
+	p = ChunkPlanWithVar() {return p;}
+|	af = PlanAtom() {return new AbstractAction(af);}
+|	p = SendAction() {return p;}
+|	LOOKAHEAD(Variable() <LBRACE>)
+	af = BeliefUpdateAction() {return new BeliefUpdateAction(af);}
+|	<SKIPPLAN> {return new Skip();}
+|	p = PrintAction() {return p;}
+|	p = ExternalAction() {return p;}
+|	p = CreateModuleAction() {return p;}
+|	p = CloneModuleAction() {return p;}
+|	p = ReleaseModuleAction() {return p;}
+|	p = WhilePlanWithVar() {return p;}
+|	p = ConditionalPlanWithVar() {return p;}
+|	p = PlanVariable() {return p;}
+}
+
+Plan PlanVariable() :
+{Token t;}
+{
+	t = Variable() {return new PlanVariable(t.toString());}
+}
+
+Plan Plan() :
+{Plan p; APLFunction af;}
+{
+	LOOKAHEAD(<IDENT><DOT><EXECUTE>)
+	p = ExecuteModuleAction() {return p;}
+|	LOOKAHEAD(<IDENT><DOT><UPDATEBB>)
+	p = UpdateBeliefbaseAction() {return p;}  
+|	LOOKAHEAD(TestAction())
+	p = TestAction() {return p;}	 
+|	LOOKAHEAD(GoalAction())
+	p = GoalAction() {return p;}
+|	LOOKAHEAD(ChunkPlan())
+	p = ChunkPlan() {return p;}
+|	af = PlanAtom() {return new AbstractAction(af);}
+|	p = SendAction() {return p;}
+|	af = BeliefUpdateAction() {return new BeliefUpdateAction(af);}
+|	<SKIPPLAN> {return new Skip();}
+|	p = PrintAction() {return p;}
+|	p = ExternalAction() {return p;}
+|	p = CreateModuleAction() {return p;}
+|	p = CloneModuleAction() {return p;}
+|	p = ReleaseModuleAction() {return p;}
+|	p = WhilePlan() {return p;}
+|	p = ConditionalPlan() {return p;}
+}
+
+
+APLFunction BeliefUpdateAction() :
+{APLFunction af; Token n; ArrayList<Term> p=null;}
+{
+	n = Variable() <LBRACE> [p = Params()] <RBRACE>
+	{
+		if (p==null) p = new ArrayList<Term>();
+		return new APLFunction(n.toString(),p);
+	}
+}
+
+SendAction SendAction() :
+{Term receiver, performative, language=null, ontology=null; Term content;}
+{
+	<SEND>
+	<LBRACE>
+	receiver = IV()
+	<COMMA>
+	performative = IV()
+	<COMMA>
+	(
+		LOOKAHEAD( IV() <COMMA> )
+		language = IV()
+		<COMMA>
+		ontology = IV()
+		<COMMA>
+	)?
+	content = FunctionIdent()
+	<RBRACE>
+	
+	{	if (language==null&&ontology==null)
+			return new SendAction(receiver,performative,content);
+		else
+			return new SendAction(receiver,performative,language,ontology,content);
+	}
+}
+
+
+PrintAction PrintAction() :
+{PrintAction a; Term t;}
+{
+	<PRINT>
+	<LBRACE>
+	t = Term()
+	<RBRACE>
+	{return new PrintAction(t);}
+}
+
+
+CreateModuleAction CreateModuleAction() :
+{APLIdent specification; APLIdent identifier;}
+{
+	<CREATE>
+	<LBRACE>
+	  specification = APLIdent()
+	<COMMA>
+	  identifier = APLIdent()
+	<RBRACE>
+	{return new CreateModuleAction(specification, identifier);} 
+}
+
+CloneModuleAction CloneModuleAction() :
+{APLIdent model; APLIdent identifier;}
+{
+	<CLONE>
+	<LBRACE>
+	  model = APLIdent()
+	<COMMA>
+	  identifier = APLIdent()
+	<RBRACE>
+	{return new CloneModuleAction(model, identifier);} 
+}
+ 
+
+ReleaseModuleAction ReleaseModuleAction() :
+{APLIdent identifier;}
+{
+	<RELEASE>
+	<LBRACE>
+	  identifier = APLIdent()
+	<RBRACE>
+	{return new ReleaseModuleAction(identifier);} 
+}
+
+
+ExecuteModuleAction ExecuteModuleAction() :
+{Test condition; APLIdent moduleId; }
+{
+	moduleId = ModuleIdent()
+	<DOT>
+	<EXECUTE>
+	<LBRACE>
+		condition = TestConjunction()
+	<RBRACE>
+	{return new ExecuteModuleAction(moduleId, condition);} 
+}
+
+UpdateBeliefbaseAction UpdateBeliefbaseAction() :
+{ArrayList<Literal> literals; APLIdent moduleId;}
+{
+	moduleId = ModuleIdent()
+	<DOT>
+	<UPDATEBB>
+	<LBRACE>
+		literals = Literals()
+	<RBRACE>
+	{return new UpdateBeliefbaseAction(moduleId, literals);} 
+}
+
+ExternalAction ExternalAction() :
+{Token env; Term timeout = new APLNum(0); APLFunction action; APLVar result = new APLVar();}
+{
+	<AT>
+	env = <IDENT>
+	<LBRACE>
+	action = PlanAtom()
+	(LOOKAHEAD(<COMMA> APLVar()) <COMMA> result = APLVar())?
+	(LOOKAHEAD(<COMMA> NumVar()) <COMMA> timeout = NumVar())?
+	<RBRACE>
+	{
+		return new ExternalAction(env.toString(),action,result,timeout);
+	}
+}
+
+ChunkPlan ChunkPlan() :
+{Plan p; ChunkPlan cp = new ChunkPlan();}
+{
+	<LISTL>
+	p = Plan() {cp.addPlan(p);}
+	(<DOTCOMMA> p = Plan() {cp.addPlan(p);})*
+	<LISTR>
+	{return cp;}
+}
+
+ChunkPlan ChunkPlanWithVar() :
+{Plan p; ChunkPlan cp = new ChunkPlan();}
+{
+	<LISTL>
+	p = PlanWithVar() {cp.addPlan(p);}
+	(<DOTCOMMA> p = PlanWithVar() {cp.addPlan(p);})*
+	<LISTR>
+	{return cp;}
+}
+
+PlanSeq ScopePlan() :
+{PlanSeq ps; Plan p;}
+{
+	<ACCL> ps = PlanSeq() <ACCR> {return ps;}
+|	p = Plan() {ps = new PlanSeq(); ps.addPlan(p); return ps;}
+}
+
+PlanSeq ScopePlanWithVar() :
+{PlanSeq ps; Plan p;}
+{
+	<ACCL> ps = PlanSeqWithVar() <ACCR> {return ps;}
+|	p = PlanWithVar() {ps = new PlanSeq(); ps.addPlan(p); return ps;}
+}
+
+ConditionalPlan ConditionalPlan() :
+{Test condition; PlanSeq thenPlan; PlanSeq elsePlan=null;}
+{
+	<IF> condition = TestConjunction() <THEN> thenPlan = ScopePlan()
+	(LOOKAHEAD(<ELSE>) <ELSE> elsePlan = ScopePlan())?
+	{
+		if (elsePlan==null) elsePlan= new PlanSeq();
+		return new ConditionalPlan(condition,thenPlan,elsePlan);
+	}
+}
+
+ConditionalPlan ConditionalPlanWithVar() :
+{Test condition; PlanSeq thenPlan; PlanSeq elsePlan=null;}
+{
+	<IF> condition = TestConjunction() <THEN> thenPlan = ScopePlanWithVar()
+	(LOOKAHEAD(<ELSE>) <ELSE> elsePlan = ScopePlanWithVar())?
+	{
+		if (elsePlan==null) elsePlan= new PlanSeq();
+		return new ConditionalPlan(condition,thenPlan,elsePlan);
+	}
+}
+
+GoalAction GoalAction() :
+{Goal g; Token t; APLIdent moduleId = null; }
+{
+  ( LOOKAHEAD(<IDENT><DOT>) moduleId = ModuleIdent() <DOT> )?		
+	t = <GOALACTION> 
+	<LBRACE> 
+	  g = Goal() 
+	<RBRACE> 
+	{return new GoalAction(moduleId, t.toString(),g);}
+}
+
+TestAction TestAction() :
+{
+	Test test, test2;
+	Query q;
+}
+{
+	//temporary suport the old syntax
+	LOOKAHEAD(Query() "?")
+	q = Query() "?" {return new TestAction(new BeliefTest(null, q));}
+|	
+	test = TestConjunction()
+	{return new TestAction(test);}
+}
+
+Test TestConjunction() :
+{
+	Test test, test2;
+	Query q;
+}
+{
+	test = Test()
+	(<TESTAND> test2 = Test() {test.addLast(test2);})*
+	{return test;}
+}
+
+
+Test Test() :
+{APLIdent moduleId = null; Test t;}
+{    
+    ( LOOKAHEAD(<IDENT><DOT>) moduleId = ModuleIdent() <DOT> )?		
+	(
+			LOOKAHEAD(<B>)
+			t = BeliefTest(moduleId) {return t;}	
+		|	
+			LOOKAHEAD(<G>)
+			t = GoalTest(moduleId) {return t;}
+		|	
+			LOOKAHEAD(<GE>)
+			t = GoalTestExact(moduleId) {return t;}	
+		|
+			LOOKAHEAD(<P>)
+			t = PlanTest(moduleId)	{return t;}		
+	)
+	
+
+}
+
+GoalTest GoalTest(APLIdent moduleId) :
+{Query q;}
+{
+	<G> <LBRACE> q = GoalQuery() <RBRACE> {return new GoalTest(moduleId, q);}
+}
+
+GoalTestExact GoalTestExact(APLIdent moduleId) :
+{Query q;}
+{
+	<GE> <LBRACE> q = GoalQuery() <RBRACE> {return new GoalTestExact(moduleId, q);}
+}
+
+
+BeliefTest BeliefTest(APLIdent moduleId):
+{Query q;}
+{
+	<B> <LBRACE> q = Query() <RBRACE> {return new BeliefTest(moduleId, q);}
+}
+
+PlanTest PlanTest(APLIdent moduleId):
+{Query q;}
+{
+	<P> <LBRACE> q = PlanQuery() <RBRACE> {return new PlanTest(moduleId, q);}
+}
+
+WhilePlan WhilePlan() :
+{Test condition; PlanSeq plan;}
+{
+	<WHILE> condition = TestConjunction() <DO> plan = ScopePlan()
+	{return new WhilePlan(condition,plan);}
+}
+
+WhilePlan WhilePlanWithVar() :
+{Test condition; PlanSeq plan;}
+{
+	<WHILE> condition = TestConjunction() <DO> plan = ScopePlanWithVar()
+	{return new WhilePlan(condition,plan);}
+}
+
+Term NameVar() :
+{Token s; Term t;}
+{
+	t = APLIdent() { return t; }
+|	s = <NUMNAME>  { return new APLIdent(s.toString()); }
+|	s = <NAMEDOT>  { return new APLIdent(s.toString()); }
+|	t = APLVar()   { return t; }
+}
+
+Term NumVar() :
+{Term t;}
+{
+	t = APLNum() { return t;}
+|	t = APLVar() {return t;}
+}
+
+
+void PCrulebase(PCrulebase pcrules) :
+{PCrule pcrule;}
+{
+	(pcrule = PCrule() {pcrules.addRule(pcrule);})+
+}
+
+PCrule PCrule() :
+{APLFunction head; Query guard; PlanSeq body;}
+{
+	head = PlanAtom() <LEFTARROW> guard = Query() <VERT> body = PlanSeq()
+	{return new PCrule(head,guard,body);}
+}
+
+void PGrulebase(PGrulebase pgrules) :
+{PGrule pgrule;}
+{
+	(pgrule = PGrule() {pgrules.addRule(pgrule);})+
+}
+
+PGrule PGrule() :
+{Query head; Query guard; PlanSeq body;}
+{
+	head = Query() <LEFTARROW> guard = Query() <VERT> body = PlanSeq()
+	{return new PGrule(head,guard,body);}
+|	<LEFTARROW> guard = Query() <VERT> body = PlanSeq()
+	{return new PGrule(new True(),guard,body);}
+}
+
+void PRrulebase(PRrulebase prrules) :
+{PRrule prrule;}
+{
+	(prrule = PRrule() {prrules.addRule(prrule);})+ 
+}
+
+PRrule PRrule() :
+{PlanSeq head; Query guard=null; PlanSeq body;}
+{
+	head = PlanSeqWithVar()
+	<LEFTARROW>
+	guard = Query()
+	<VERT>
+	body = PlanSeqWithVar()
+	{return new PRrule(head,guard,body);}
+}
+
+
+APLIdent APLIdent() :
+{Token s;}
+{
+	s = <IDENT> {return new APLIdent(s.toString());}
+|	s = <QUOTE> {return new APLIdent(s.toString().substring(1, s.toString().length() - 1), true);}
+}
+
+
+
+Query PlanQuery() :
+{Query q;}
+{
+	q = Query()
+	{
+		if (q.containsNots()) 
+			throw new ParseException("Plan query "+q+" contains negative literals. That is not allowed");
+		else 
+			return q;
+	}
+}
+
+Query Query() :
+{Query w,v;}
+{
+	<TRUE> {return new True();}
+|	LOOKAHEAD(Query2() QueryRHS()) w = Query2() v = QueryRHS(w) {return v;}
+|	w = Query2() {return w;}
+}
+
+Query QueryRHS(Query u) :
+{Query w,v;}
+{
+	LOOKAHEAD(<OR> Query2() QueryRHS(u))
+	<OR> w = Query2() v = QueryRHS(w) {return new OrQuery(u,v);}
+|	<OR> w = Query2() {return new OrQuery(u,w);}
+}
+
+Query Query2() :
+{Query w,v; Literal l;}
+{
+	LOOKAHEAD(Literal() Query2RHS()) l = Literal() w = Query2RHS(l) {return w;}
+|	LOOKAHEAD(Literal()) l = Literal() {return l;}
+|	LOOKAHEAD(<LBRACE> Query() <RBRACE> Query2RHS(w)) <LBRACE> w = Query() <RBRACE> v = Query2RHS(w) {return v;}
+|	<LBRACE> w = Query() <RBRACE> {return w;}
+}
+
+Query Query2RHS(Query u) :
+{Query w,v;}
+{
+	LOOKAHEAD(<AND> Query2() Query2RHS(w)) <AND> w = Query2() v = Query2RHS(w) {return new AndQuery(u,v);}
+|	<AND> w = Query2() {return new AndQuery(u,w);}
+}
+
+Literal Literal() :
+{Literal l; boolean sign = true;}
+{
+	( <NOT> {sign = false;} )?
+	l = LiteralBody(sign) {return l;}
+}
+
+Term FunctionIdent() :
+{Term a;}
+{
+	a = Term()
+	{
+		if (!(a instanceof APLIdent || a instanceof APLFunction ))
+		throw new ParseException(a + " is not a valid ident or function.");
+		return a;
+	}
+}
+
+Literal LiteralBody(boolean sign) :
+{Term a;}
+{
+	a = FunctionIdent()
+	{
+		return new Literal(a,sign);
+	}
+}
+
+
+ArrayList<Literal> Literals() :
+{
+	ArrayList<Literal> a = new ArrayList<Literal>();
+	Literal l;
+}
+{
+	(	l = Literal() {a.add(l);}
+		(<COMMA> l = Literal() {a.add(l);})*
+	)
+	{return a;}
+}
+
+
+APLFunction PlanAtom() :
+{Token n; ArrayList<Term> p = new ArrayList<Term>();}
+{
+	n = <IDENT> <LBRACE> (p = Params())? <RBRACE> {return new APLFunction(n.toString(),p);}
+}
+
+ArrayList<Term> Params() :
+{ArrayList<Term> a = new ArrayList<Term>(); Term t;}
+{
+	( 
+		t = Term() {a.add(t);}
+		(
+			LOOKAHEAD (<COMMA> Term())   //nog ff kijken
+			<COMMA> t = Term() {a.add(t);}
+		)*
+	)
+	{return a;}
+}
+
+
+APLVar APLVar() :
+{Token s;}
+{
+	s = Variable()
+	{return new APLVar(s.toString());}
+	|
+	<UNDERSCORE>
+	{return new APLVar();}
+}
+
+APLListVar APLList() :
+{LinkedList<Term> head = new LinkedList<Term>(); APLListVar tail = null; Term t;}
+{
+	<LISTL>
+	(
+		t = Term() {head.add(t);}
+		
+		(<COMMA> t = Term() {head.add(t);})*
+		
+		(
+			<VERT>
+			(tail = APLList() | tail = APLVar())
+		)?
+	)?
+	<LISTR>
+	{
+		return APLList.constructList(head,tail);
+	}
+}
+	
+
+int Int() :
+{Token n, s = null; int sign = 1;}
+{
+	(s = <SIGN>)?
+	n = <NUM>
+	{
+		if (s!=null) if (s.toString().equals("-")) sign = -1;
+		int i = Integer.parseInt(n.toString());
+		return sign*i;
+	}
+}
+
+APLNum APLNum() :
+{String s; Token sign; int j = 1;}
+{
+	(sign = <SIGN> {j = (sign.toString().equals("-")?-1:1);})?
+	
+	s = Double()
+	{
+		double i =  Double.parseDouble(s);
+		return new APLNum(j*i);
+	}
+}
+
+String Double() :
+{Token a,b;}
+{
+	LOOKAHEAD(<NUM> <DOT> <NUM>) a = <NUM> <DOT> b = <NUM> {return a+"."+b;}
+|	<DOT> a = <NUM> {return "." + a;}
+|	a = <NUM> {return "" + a;}
+}
+
+Term IV() :
+{Term t; String s;}
+{
+	t = APLVar() {return t;}
+|	t = APLIdent() {return t;}
+}
+
+/*
+APLFunction APLFunction() :
+{APLFunction a;}
+{
+	LOOKAHEAD(<IDENT> <LBRACE>)
+	a = APLFunctionNoInfix() {return a;}
+|	a = APLFunctionInfix() {return a;}
+}
+
+APLFunction APLFunctionInfix() :
+{Token n; Term l,r;}
+{
+	l = Term()
+	n = <RELATIONAL>
+	r = Term()
+	{ return new APLFunction(l,n.toString(),r);}
+}*/
+
+APLFunction APLFunction() :
+{APLFunction a;}
+{
+	a = APLFunctionNoInfix() {return a;}
+}
+APLFunction APLFunctionNoInfix() :
+{Token n; ArrayList<Term> p = new ArrayList<Term>();}
+{
+
+	n = <IDENT> <LBRACE> p = Params() <RBRACE>
+	{
+		return new APLFunction(n.toString(),p);
+	}
+}
+
+Term Term() :
+{Term l, r; Token t;}
+{
+	l = Term2()
+	(
+		LOOKAHEAD(<SIGN> Term2())
+		t = <SIGN>
+		r = Term2()
+		{
+			l = new APLFunction(l,t.toString(),r);
+		}
+	)*
+	{ return l; }
+}
+
+Term Term2() :
+{Term l, r; Token t;}
+{
+	l = Term3()
+	(
+		( t = "*" | t = "/" )
+		r = Term3()
+		{
+			l = new APLFunction(l, t.toString(), r);
+		}
+	)*
+	{ return l; }
+}
+
+Term Term3() :
+{Term l, r; Token t;}
+{
+	l = Term4()
+	(
+		t = <RELATIONAL>
+		r = Term4()
+		{
+			l = new APLFunction(l, t.toString(), r);
+		}
+	)*
+	{ return l; }
+}
+
+Term Term4() :
+{Term t;}
+{
+	(	LOOKAHEAD(<IDENT> <LBRACE>) t = APLFunctionNoInfix()
+	|	<LBRACE> t = Term() <RBRACE>
+	|	t = APLVar()
+	|	t = APLList()
+	|	t = APLNum()
+	|	t = APLIdent()
+	)
+	{ return t; }
+}
+
+APLIdent ModuleIdent() :
+{APLIdent ident;}
+{
+	ident = APLIdent() {return ident;}
+}

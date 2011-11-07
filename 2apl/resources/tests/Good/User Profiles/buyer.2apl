@@ -1,0 +1,38 @@
+BeliefUpdates:
+  { true }  Remember(X) { k(X) }
+
+Beliefs:
+  desire(hamlet, 20).
+  available(peter, pride_and_prejudice, 18).
+
+Goals:
+  bargain(k)
+
+PG-rules:
+	bargain(k) <- desire(Title, Value) | 
+	{ 
+	  B(available(_, Title, Price)); 
+	  
+	  if B(Price < Value) then 
+	  { 
+	    adopta(buy(Title))
+	  }
+	  else
+	  {
+	  	adopta(reject_offer(Title))
+	  }  	  
+	}
+	
+	buy(Title) <- available(Seller, Title, Price) | 
+	{
+		send(Seller, request, sell(Title, Price))
+	}
+	
+	reject_offer(Title) <- available(Seller, Title, Price) | 
+	{
+		send(Seller, inform, wont_buy(Title, Price))
+	}
+	
+PC-rules:   
+  stop() <- true | {print("Buyer module has stopped.")}
+  

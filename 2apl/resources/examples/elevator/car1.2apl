@@ -1,0 +1,8 @@
+Include:
+	elevator.2apl, economic_strategy.2apl
+	
+Beliefs:
+	me(car1).
+	
+Plans:
+  initialize()

@@ -1,0 +1,21 @@
+Plans:
+  @msagentenvironment( associateWith("peedy") ),
+  @msagentenvironment( show("yes") ),
+  @msagentenvironment( speak(' Hello!') ),
+  @msagentenvironment( moveTo("400", "300", "500") ),
+  @msagentenvironment( speak(' I am Peedy.') ),
+  @msagentenvironment( perform("greet") ),
+  @msagentenvironment( perform("pleased") ),
+  @msagentenvironment( speak(' I can do a lot of animations.') ),
+  @msagentenvironment( perform("acknowledge") ),
+  @msagentenvironment( perform("domagic1") ),
+  @msagentenvironment( perform("domagic2") ),
+  @msagentenvironment( perform("acknowledge") ),
+  @msagentenvironment( perform("congratulate") ),
+  @msagentenvironment( perform("explain") ),
+  @msagentenvironment( speak(' See?') ),
+  @msagentenvironment( moveTo("700", "100", "500") ),
+  @msagentenvironment( speak(' See ya!') ),
+  @msagentenvironment( perform("wave") ),
+  @msagentenvironment( hide("yes") )
+  

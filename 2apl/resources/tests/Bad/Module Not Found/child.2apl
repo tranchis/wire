@@ -1,0 +1,13 @@
+BeliefUpdates:
+  { true }  SetFinished() { done }
+  
+Beliefs:
+  me(child).      	
+
+Plans:
+  B(me(Name));
+  print(Name);
+  print(" is being executed.");
+  SetFinished()
+  
+

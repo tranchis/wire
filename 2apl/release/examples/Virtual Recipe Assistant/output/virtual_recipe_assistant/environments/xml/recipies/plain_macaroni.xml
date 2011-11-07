@@ -1,0 +1,29 @@
+<recipe name='plain_macaroni' title='plain macaroni'>
+  
+  <requirements>
+    <tool id='0' capacity='1100' />
+  </requirements>
+  
+  <actions>
+ 
+    <insert comment='comment 1'>
+      <tool id='0' />
+      <ingredient name='macaroni' amount='100' />
+    </insert>
+	  
+    <insert comment='comment 2'>
+      <tool id='0' />
+      <ingredient name='water' amount='1000' />
+    </insert>
+	  
+    <turn_on comment='comment 3'>
+      <tool name='fire' />
+    </turn_on>
+	  
+    <turn_off comment='comment 4'>
+      <tool name='fire' />
+    </turn_off>
+	  
+  </actions>
+  
+</recipe>

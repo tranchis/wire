@@ -1,0 +1,8 @@
+<apaplmas>
+  <environment name="domestic" file="eis-domestic-robot.jar">
+    <parameter key="gui"/>
+  </environment>
+  <agent name="robot" file="robot.2apl"/>
+  <agent name="owner" file="owner.2apl"/>
+  <agent name="supermarket" file="supermarket.2apl"/>
+</apaplmas>

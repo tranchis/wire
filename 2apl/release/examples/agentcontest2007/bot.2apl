@@ -1,0 +1,103 @@
+// This is a very simple agent for the agent-contest
+// 2007.
+// First it connects to the server and then does some
+// random walking.
+
+Beliefs:
+  prob(P) :- is(X, rand), X < P.
+
+Plans:
+{
+  // 1. connect to the server
+  B( server(Url,Port) );
+  B( credentials(User,Pass) );
+  B( entity(E) );
+  @massim( associateWith(E),_ );
+  print( connect(Url,Port,User,Pass) );
+  @massim( connect(Url,Port,User,Pass),_ );
+  
+  // 2. random walking
+  while B(true) do {
+    randomMove()
+  }
+    
+}
+
+// Further actions:
+//  @massim( pick(),_ );
+//  @massim( drop(),_ );
+//  @massim( mark('Hi'),_ );
+//  @massim( unmark(),_ );
+
+PC-rules:
+
+  randomMove() <- prob(0.25) | { @massim( right(), _) }  
+  randomMove() <- prob(0.5) | { @massim( up(), _) }  
+  randomMove() <- prob(0.75) | { @massim( left(), _) }  
+  randomMove() <- true | { @massim( down(), _)  }
+  
+  // the simulation has started
+  event(simStart,_) <- true | {
+    print(simStart)
+  }
+  
+  // the depot's position
+  event(depotPos(X,Y),_) <- true | {
+    print(depotPos(X,Y))
+  }
+
+  // the size of the grid
+  event(gridSize(X,Y),_) <- true | {
+    print(gridSize(X,Y))
+  }
+  
+  // the id of the simulation
+  event(simId(Id),_) <- true | {
+    print(simId(Id))
+  }
+  
+  // the name of the opponent
+  event(opponent(O),_) <- true | {
+    print(opponent(O))
+  }
+
+  // the maximum number of steps of the current simulation
+  event(steps(S),_) <- true | {
+    print(steps(S))
+  }
+  
+  // the simulation has ended
+  event(simEnd,_) <- true | {
+    print(simEnd)
+  }
+
+  // the result of the simulation
+  event(simResult(R),_) <- true | {
+    print(simResult(R))
+  }
+
+  // the tournament is over
+  event(bye,_) <- true | {
+    print(bye)
+  }
+
+  // the content of a perceived cell
+  event(cell(RelativePos,X,Y,Content,Step),_) <- true | {
+    print(cell(RelativePos,X,Y,Content,Step))
+  }
+
+  // the current position
+  event(pos(X,Y,Step),_) <- true | {
+    print(pos(X,Y,Step))
+  }
+
+  // number of currently carried items
+  event(currentItems(Items,Step),_) <- true | {
+    print(currentItems(Items,Step))
+  }
+
+  // the current step
+  event(currentStep(Step),_) <- true | {
+    print(currentItems(Step))
+  }
+

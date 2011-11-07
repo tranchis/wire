@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/499/trunk/mason/sim/portrayal/inspector
+END
+ScatterPlotChartingPropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/488/trunk/mason/sim/portrayal/inspector/ScatterPlotChartingPropertyInspector.java
+END
+StableLocation.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/474/trunk/mason/sim/portrayal/inspector/StableLocation.java
+END
+StreamingPropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/480/trunk/mason/sim/portrayal/inspector/StreamingPropertyInspector.java
+END
+TimeSeriesChartingPropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/488/trunk/mason/sim/portrayal/inspector/TimeSeriesChartingPropertyInspector.java
+END
+propertyinspector.classes
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/424/trunk/mason/sim/portrayal/inspector/propertyinspector.classes
+END
+TabbedInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/480/trunk/mason/sim/portrayal/inspector/TabbedInspector.java
+END
+HistogramChartingPropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/488/trunk/mason/sim/portrayal/inspector/HistogramChartingPropertyInspector.java
+END
+ChartingPropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/499/trunk/mason/sim/portrayal/inspector/ChartingPropertyInspector.java
+END
+StableDouble2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/474/trunk/mason/sim/portrayal/inspector/StableDouble2D.java
+END
+StableInt2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/474/trunk/mason/sim/portrayal/inspector/StableInt2D.java
+END
+PropertyInspector.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/480/trunk/mason/sim/portrayal/inspector/PropertyInspector.java
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/424/trunk/mason/sim/portrayal/inspector/README
+END

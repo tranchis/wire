@@ -1,0 +1,10 @@
+Include: bla.2apl
+
+Beliefs:
+me(harry).
+other(sally).
+messages(0).
+
+Plans:
+B(other(A)) ; send( A, inform, say(welles,1) )
+

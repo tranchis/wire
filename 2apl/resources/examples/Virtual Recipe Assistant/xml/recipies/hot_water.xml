@@ -1,0 +1,20 @@
+<recipe name='hot_water' title='hot water'>
+  
+  <actions>
+	  
+    <insert>
+      <tool name='medium_pan' />
+      <ingredient name='water' amount='1000'/>
+    </insert>
+  
+    <turn_on>
+      <tool name='fire' />
+    </turn_on>
+  
+    <turn_off>
+      <tool name='fire' />
+    </turn_off>
+  
+  </actions>
+
+</recipe>

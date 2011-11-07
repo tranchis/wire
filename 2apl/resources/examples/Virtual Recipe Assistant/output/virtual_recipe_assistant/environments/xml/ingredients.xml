@@ -1,0 +1,12 @@
+<ingredients>
+  <water unit='ml' amounts='50' capacity='50' image='water.jpg'/>
+  <olive_oil title='olive oil' unit='tablespoons' amounts='1' capacity='1' image='water.jpg'/>
+  <macaroni unit='gram' amounts='50' capacity='40' image='macaroni.jpg'/>
+  <salt unit='pinches' amounts='1' capacity='0.36' image='salt.jpg'/>
+  <pepper unit='pinches' amounts='1' capacity='0.36' image='pepper.jpg'/>
+  <rice unit='gram' amounts='50' capacity='37' image='rice.jpg'/>
+  <onion unit='pieces' amounts='1' capacity='70' image='onion.jpg'/>
+  <tomato unit='pieces' amounts='1' capacity='60' image='tomato.jpg'/>
+  <minced_meat title='minced meat' unit='gram' amounts='50' capacity='60' image='minced_meat.jpg'/>
+  <egg title='egg' unit='pieces' amounts='1' capacity='80' image='egg.jpg'/>
+</ingredients>

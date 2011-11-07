@@ -1,0 +1,26 @@
+<apaplmas>
+	<!-- 
+	 * This example illustrates the use of modules to implement roles in 2APL. 
+	 *
+	 * The aim of this multi-agent system in this example is to collect all bombs in 
+	 * the environment and drop them to the the waste bin, which is assumed to be 
+	 * at location 0,0.  
+	 * 
+	 * Multi-agent system consist of one manager and three worker agents. The 
+	 * manager agent is authoritatively ordering workers to enact either explorer
+	 * role or carrier role.
+	 * 
+	 * The roles of worker agents are implemented as modules and therefore can be 
+	 * instantiated and executed during runtime as illustrated in this example.
+	 -->
+   
+  <environment name="blockworld" file="blockworld.jar">
+    <parameter key="gridWidth" value="18"/>
+    <parameter key="gridHeight" value="18"/>
+  </environment>
+  
+  <agent name="m" file="manager.2apl"/>
+  <agent name="w1" file="worker.2apl"/>
+  <agent name="w2" file="worker.2apl"/>
+  <agent name="w3" file="worker.2apl"/> 
+</apaplmas>

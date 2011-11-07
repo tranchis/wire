@@ -1,0 +1,25 @@
+<tools>
+  <big_casserole title='big casserole' image='big casserole.jpg' capacity='2000' />
+  <medium_casserole title='medium casserole' image='medium casserole.jpg' capacity='1000' />
+  <small_casserole title='small casserole' image='small casserole.jpg' capacity='300' />
+  <big_pan title='big pan' image='big pan.jpg' capacity='15000' />
+  <medium_pan title='medium pan' image='medium pan.jpg' capacity='10000' />
+  <small_pan title='small pan' image='small pan.jpg' capacity='2000' />
+  <frying_pan title='frying pan' image='frying pan.jpg' capacity='1500' />
+  <fire image='fire.jpg'>
+    <turn_on title='turn on' />
+    <turn_off title='turn off' />
+  </fire>
+  <spoon image='spoon.jpg'>
+    <stir />
+    <taste />
+  </spoon>
+  <ladle image='ladle.jpg'>
+    <stir />
+    <taste />
+  </ladle>
+  <knife image='knife.jpg'>
+    <cut />
+    <stir />
+  </knife>
+</tools>

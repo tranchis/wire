@@ -1,0 +1,16 @@
+Plans:
+  @msagentenvironment( associateWith("genie") );
+  @msagentenvironment( show("yes") );
+  @msagentenvironment( moveTo("100", "100", "500") );
+  @msagentenvironment( perform("wave") );
+  @msagentenvironment( speak("Hello Merlin!") );
+  send( merlin, inform, say( "hello" ) )
+
+PC-rules:
+  message( S, inform, La, On, say( "hello" ) ) <- true |
+  {
+    @msagentenvironment( gestureat("100", "1000") );
+    @msagentenvironment( speak("Goodbye!") );
+    @msagentenvironment( hide("yes") );
+    send( merlin, inform, say( "goodbye" ) )
+  }

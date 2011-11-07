@@ -1,0 +1,21 @@
+<recipe name='test' title='test'>
+  
+  <requirements>
+    <tool id='0' capacity='1000' />
+  </requirements>
+  
+  <actions>
+ 
+    <insert>
+      <tool id='0' />
+      <ingredient name='water' amount='100' />
+    </insert>
+    
+    <insert>
+      <tool id='0' />
+      <ingredient name='egg' amount='1' />
+    </insert>
+    
+  </actions>
+  
+</recipe>

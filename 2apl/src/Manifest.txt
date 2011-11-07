@@ -1,0 +1,2 @@
+Main-Class: APAPL
+Class-Path: lib/jade/Base64.jar lib/jade/http.jar lib/jade/iiop.jar lib/jade/jade.jar lib/jade/jadeTools.jar lib/jext/dawn-1.1.1.jar lib/jext/jext-5.0.jar lib/jext/jython-2.1.jar lib/jext/looks-1.2.2.jar lib/jiprolog/JIProlog.jar

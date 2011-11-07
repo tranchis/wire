@@ -1,0 +1,52 @@
+BeliefUpdates:
+  { true }  SetAssigned(POS, A)     { assigned(POS, A) }
+  { true }  SetBomb(POS)            { bomb(POS) }
+  { true }  RemoveAssigned(POS, A)  { not assigned(POS, A) }
+  { true }  RemoveBomb(POS)         { not bomb(POS) }
+
+Beliefs:
+  worker(w1).
+  worker(w2).
+  worker(w3).
+
+Goals:
+  haveBomb
+
+PG-rules:
+  haveBomb <- bomb(POS) and not assigned(carrier(POS), _) and worker(W) and not assigned(_, W) |
+  {
+    send(W, request, play(carrier, POS));
+    SetAssigned(carrier(POS), W)
+  }
+  
+  haveBomb <- not bomb(_) and worker(W) and not assigned( _, W) |
+  {    
+    send(W, request, play(explorer));
+    SetAssigned(explorer, W)    
+  }
+
+PC-rules: 
+  message(A, inform, _, _, bomb(POS)) <- true  | 
+  {
+    [
+      SetBomb(POS);
+      RemoveAssigned(explorer, A)
+    ]
+  } 
+
+  message(A, inform, _, _, done(POS)) <- true |
+  {
+    [
+      RemoveAssigned(carrier(POS), A);
+      RemoveBomb(POS)
+    ]
+  } 
+  
+  message(A, inform, _, _, failed(POS)) <- true |
+  {
+    [
+      RemoveAssigned(carrier(POS), A)
+    ]
+  } 
+
+    

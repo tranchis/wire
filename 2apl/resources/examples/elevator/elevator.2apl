@@ -1,0 +1,269 @@
+Include: planner.2apl
+
+BeliefUpdates:
+	{} 		 						  SetBid(Subj, Price)    {bid(Subj, Price)}
+  {}                  RemoveBid(Subj, Price) {not bid(Subj, Price)}
+	
+	{plan(OP)}          SetPlan(Plan) {not plan(OP), plan(Plan)}
+	
+	
+	{plan([Head|Rest])} DropHeadOfPlan() {not plan([Head|Rest]), plan(Rest)}
+		
+	{plan(Plan) and append(Plan, [Floor], [From|Stops]) and 
+	 optimalRoute(From, Stops, NewPlan)}
+	                    AddStopToPlan(Floor) {not plan(Plan), plan(NewPlan)	}
+	
+	{plan(Plan) and delete(Plan, Floor, [From|Stops]) and 
+	 optimalRoute(From, Stops, NewPlan)}
+	                    RemoveStopFromPlan(Floor) {not plan(Plan), plan(NewPlan)}
+	
+	{}                  SetServed(Floor, Dir, Car) {served(Floor, Dir, Car)}
+	{}                  RemoveServed(Floor, Dir, Car) {not served(Floor, Dir, Car)}
+	
+Beliefs:
+	/* 
+	  Contains a list of floors the elevator car plans to visit. 
+	  The tail part of the list (2nd to n-th element) may be re-ordered as 
+	  long as all the planned stops will be eventually visited. 
+	  
+	  The head of the list (1st element) must not be moved as it represents 
+	  the floor the elevator car is currently: a) at or b) moving to.   
+	 */
+	plan([1]).
+  
+  /* List of all agents controlling elevator cars */
+	cars([car0,car1,car2]).
+	neighbors(Neighbors) :- me(Me), cars(Cars), delete(Cars, Me, Neighbors).
+		
+	/*	
+	 bid(served(2,up), car0, 100)
+	 bid(served(2,up), car1, 50)
+	 bid(served(2,up), car2, 120)
+	
+	 TODO: reimplement in a more general way 
+	 e.g. 
+	 bidsReceived(S) :- bagof(C1, (car(C2), bid(S, C, _)), L1), 
+										 bagof(C2, car(C2), L2), 
+										 L1 = L2.	
+	*/
+	
+	allBidsReceived(served(Floor, Dir, _)) :- bid(served(Floor, Dir, car0), _), 
+	                                          bid(served(Floor, Dir, car1), _), 
+	                                          bid(served(Floor, Dir, car2), _).
+	
+	winningBid(served(Floor, Dir, CarA)):-  allBidsReceived(served(Floor, Dir, _)), 
+										    							    bid(served(Floor, Dir, CarA), CostA), 
+											  							    not((bid(served(Floor, Dir, CarB), CostB), 
+											  							         CarA \= CarB, CostB < CostA)).
+	                                        
+	served(F, D) :- served(F, D, _).
+	
+Goals:
+	executePlan,
+	checkButtons
+	
+PG-rules:
+  /* Constantly checks state of the direction buttons in each floor (fButton) 
+     and buttons in the elevator car (eButton).*/
+	checkButtons <- true | {
+		@elevatorenv(getAllPercepts(), Percepts);		
+		processFButtonPercepts(Percepts);
+		processEButtonPercepts(Percepts)
+	}
+	
+	/* Execution of the elevator movement plan. Before elevator starts moving to 
+	   the next floor, it checks whether it has committed to serve any people in 
+	   this floor, in which case appropriate direction is lighten up. Note that 
+	   the agent may be committed to take people in both directions, then the car 
+	   has to open the door twice to let both groups of passengers to get in. 
+	    
+	   In case the agent has no commitments in the next floor (the stop has been 
+	   scheduled because a passenger in the elevator chose it), it picks the direction 
+	   semi-randomly and let the waiting passengers to get-in. 
+	   
+	   In both situations, the other agents will be informed that the Floor/Direction 
+	   has been served, so they may drop the goal to serve it again. */
+	      
+	executePlan <- plan([H|[Floor|Rest]]) and me(Me) | {		
+		DropHeadOfPlan();
+
+		if G(served(Floor, _, Me)) then  {		
+			/* Agent has committed to serve the floor in one or both directions. */
+			
+			if G(served(Floor, up, Me)) then {
+			  goto(Floor, up);
+			  informAll(served(Floor, up, Me))		  
+			};
+			
+			if G(served(Floor, down, Me)) then {
+			  goto(Floor, down);
+			  informAll(served(Floor, down, Me))
+			}	
+		}			
+		else {
+			/* Agent has not committed to serve the floor. 
+			   The indicated direction is chosen semi-randomly. */
+			
+			B(nextDir(Dir));
+			goto(Floor, Dir);
+			informAll(served(Floor, Dir, Me))
+		}
+	} 
+	
+	/* Plan to serve given Floor/Direction. First price auction is used to 
+	   determine which agent is willing the most to serve the Floor/Direction.
+	   In case, this agents wins the auction, it commits to serve the floor and 
+	   schedules a stop on the Floor. */
+	  	
+	served(Floor, Dir) <- plan(Plan) and me(Me) | {
+	  /* Determine the cost of serving the floor. */
+	  B(cost(Plan, Floor, Dir, Cost));
+	  
+	  /* Send proposal to other neighbors. */
+		propose(bid(served(Floor, Dir, Me), Cost));
+		print(proposed(bid(served(Floor, Dir, Me), Cost)));
+		
+		/* Block until all the bids are received. */
+		B(winningBid(served(Floor, Dir, Winner)));
+		
+		/* Commit to the fact that Winner serves the Floor in the given Direction. */
+		adoptz(served(Floor, Dir, Winner));
+		if B(Winner = Me) then {
+		  /* If this agent is Winner, schedule new stop at the floor. */
+			AddStopToPlan(Floor)
+		};
+
+	  /* Block until the goal is achieved. 
+	     I.e. One of the cars visited the floor. */
+		B(served(Floor, Dir))
+	}
+
+
+PC-rules:
+  /* Attaches agent to a car in the environment */   
+	initialize() <- me(Me) | {
+ 	  @elevatorenv( associateWith(Me), AW )
+	}
+	
+	/* Moves car to a given Floor and lights up given Direction light. 
+	   Blocks until all waiting passengers get in. */
+	goto(Floor, Direction) <- true | {
+		@elevatorenv( goto(Floor, Direction) , GR);
+		if B(not(GR = [success])) then print("Goto action has failed!");	
+		waitForPercept(atFloor(Floor));
+		waitForPercept(doorState(opened));
+		waitForPercept(doorState(closed))
+	}
+	
+	/* Blocks until the given Percept is received from the environment. */
+	waitForPercept(Percept) <- true | {
+		@elevatorenv(getAllPercepts(), Percepts);		
+		if B(not(member(Percept, Percepts))) then waitForPercept(Percept)
+	}
+	
+	
+	/* Reacts to a fButtonOn (floor buttons) percepts. 
+	   Adopts the goal to serve the floor (by one of the cars) as soon as the 
+	   percept is received. */
+	
+	processFButtonPercepts([]) <- true | { skip }
+	
+	processFButtonPercepts([fButtonOn(Floor, Dir) | Rest]) <- true | {	
+	  if G(served(Floor, Dir)) then 
+	    skip
+	  else {
+	    adoptz(served(Floor, Dir))	    
+	  };		
+		processFButtonPercepts(Rest)
+	}
+	
+	processFButtonPercepts([_ | Rest]) <- true | {	processFButtonPercepts(Rest) }
+
+	/* Reacts to a eButtonOn (elevator in-car buttons) percepts. 
+	   Schedules stop in the floor as soon as the percept is received. */		
+	
+	processEButtonPercepts([]) <- true | { skip }
+	
+	processEButtonPercepts([eButtonOn(Floor) | Rest]) <- plan(Plan) and not member(Floor, Plan) | {
+		[
+			B(append(Plan, [Floor], [From|Stops]));
+			B(optimalRoute(From, Stops, Route));
+			SetPlan(Route)
+		];
+		processEButtonPercepts(Rest)	
+	}
+	
+	processEButtonPercepts([_ | Rest]) <- true | { processEButtonPercepts(Rest) }
+	
+	/* Sends message to all other cars to inform them that the Floor in given Direction 
+	   was served. */	
+	informAll(served(Floor, Dir, Car)) <- neighbors(Neighbors) | {  
+		print(served(Floor, Dir, Car));
+		
+		/* Inform myself */
+		while B(bid(served(Floor, Dir, Car2), Price)) do {
+  		RemoveBid(served(Floor, Dir, Car2), Price)
+  	};  	
+		SetServed(Floor, Dir, Car);
+		
+		/* Inform all the neighbors */
+    sendToAll(Neighbors, inform, served(Floor, Dir, Car));
+    
+    RemoveServed(Floor, Dir, Car)
+  }
+  
+	/* Sends message to all other cars to propose cost associated with serving 
+	   certain floor in certain direction by this agent. */  
+  propose(bid(Subject, Price)) <- me(Me) and neighbors(Neighbors) | {
+    sendToAll(Neighbors, propose, bid(Subject, Price));
+		SetBid(Subject, Price)
+  }
+  
+  /* Sends given message to all recipients specified as a list passed in 
+     the first argument. */
+     
+  sendToAll([], Performative, Msg) <- true | {skip}
+    
+  sendToAll([NextRcp|RemainingRcps], Performative, Msg) <- true | {
+  	if B(Msg = served(F, D, C)) then send(NextRcp, Performative, served(F, D, C));
+  	if B(Msg = bid(S, C)) then send(NextRcp, Performative, bid(S, C));
+  	sendToAll(RemainingRcps, Performative, Msg)
+  }
+  
+  /* Reacts to proposals from other agents */
+  
+  message(Sender, propose, _, _, bid(Subject, Price)) <- true | {
+  	SetBid(Subject, Price)
+  }
+  
+  /* Reacts to the message informing that Sender has served given Floor/Direction. */
+  
+  message(Sender, inform, _, _, served(Floor, Dir, Car)) <- true | {
+  		if G(served(Floor, Dir, OriginalCar)) then {
+  		
+  		while B(bid(served(Floor, Dir, Car2), Price)) do {
+  			RemoveBid(served(Floor, Dir, Car2), Price)
+  		};
+  		
+  		/* Setting the belief served(Floor, Dir, Car) -> served(Floor, Dir), and 
+  		therefore it automatically drops the goal served(Floor, Dir). */
+  		SetServed(Floor, Dir, Car);
+  		
+  		while G(served(Floor, Dir, OtherCar)) do dropgoal(served(Floor, Dir, OtherCar));
+  		
+  		/* Remove planned stop from the plan if there is no more need for it */
+  		@elevatorenv(getAllPercepts(), Percepts);	
+  		if B(plan([H|Plan]) and member(Floor, Plan) and 
+  		     not(member(eButtonOn(Floor), Percepts)) ) then {
+  		  
+  		  if G(served(Floor,_, Me)) then 
+  		    skip 
+  		  else 
+  		    RemoveStopFromPlan(Floor)
+  		};  		
+  		
+  		/* The belief is removed immediately after, so the situation can re-assesed */
+  		while B(served(Floor, Dir, Car2)) do RemoveServed(Floor, Dir, Car2)
+  	}  	
+  }
+  

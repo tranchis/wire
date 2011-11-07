@@ -1,0 +1,52 @@
+Beliefs:
+routeLength([Origin,Target|Rest], Len) :- routeLength([Target|Rest], RestLen), Len is (abs(Target-Origin) + RestLen).
+routeLength([_], 0). 
+
+divide([], [], [], [], _).
+divide([Threshold|L], LoL,     [H|EqL], HiL,     Threshold) :- H = Threshold,  divide(L, LoL, EqL, HiL, Threshold).
+divide([H|L],         [H|LoL], EqL,     HiL,     Threshold) :- H < Threshold,  divide(L, LoL, EqL, HiL, Threshold).
+divide([H|L],         LoL,     EqL,     [H|HiL], Threshold) :- H > Threshold,  divide(L, LoL, EqL, HiL, Threshold).
+
+
+optimalRoute(From, Stops, [From])   :-  divide(Stops, [], [], [], From).
+optimalRoute(From, Stops, [From|LoL]) :-  sort(Stops, SortedStops), divide(SortedStops, LoL,  [], [], From).
+optimalRoute(From, Stops, [From|HiL]) :-  sort(Stops, SortedStops), divide(SortedStops, [], [],  HiL, From).
+optimalRoute(From, Stops, [From|Route]) :-  min(Stops, Min), max(Stops, Max), (abs(From-Min) =< abs(From-Max)),
+                                            sort(Stops, SortedStops), divide(SortedStops, LoL, EqL, HiL, From), reverse(LoL, LoLR),
+                                            append(EqL, LoLR, EqLoLR), append(EqLoLR, HiL, Route).
+optimalRoute(From, Stops, [From|Route]) :-  min(Stops, Min), max(Stops, Max), (abs(From-Max) < abs(From-Min)),
+                                            sort(Stops, SortedStops), divide(SortedStops, LoL, EqL, HiL, From), reverse(LoL, LoLR), 
+                                            append(EqL, HiL, EqHiL), append(EqHiL, LoLR, Route).
+   
+newStopCost([HR|TR], NewStop, Cost) :- routeLength([HR|TR], L), append([HR|TR], [NewStop], NewRoute), 
+                                     optimalRoute(HR, NewRoute, NewOptimalRoute), routeLength(NewOptimalRoute, NL),
+                                     Cost is NL-L.
+
+
+max([], _) :- fail. 
+max([Head|Tail], M) :-  max(Tail, Head, M). 
+max([], M, M). 
+max([Head|Tail], Y, M) :-  Head =< Y, max(Tail, Y, M). 
+max([Head|Tail], Y, M) :-  Head > Y, max(Tail, Head, M).
+
+min([], _) :- fail. 
+min([Head|Tail], M) :-  min(Tail, Head, M). 
+min([], M, M). 
+min([Head|Tail], Y, M) :- Head >= Y, min(Tail, Y, M). 
+min([Head|Tail], Y, M) :- Head < Y, min(Tail, Head, M).
+
+nextDir(up) :- plan([H|R]), divide(R, Lo, _, Hi, H), 
+                  length(Lo, LoL), length(Hi, HiL), 
+                  LoL < HiL.
+							  
+nextDir(down) :- plan([H|R]), divide(R, Lo, _, Hi, H), 
+                  length(Lo, LoL), length(Hi, HiL), 
+                  LoL > HiL.
+							  
+nextDir(up) :- plan([H|R]), divide(R, Lo, _, Hi, H), 
+                  length(Lo, LoL), length(Hi, HiL), 
+                  HiL = LoL, rand > (0.5) .
+
+nextDir(down) :- plan([H|R]), divide(R, Lo, _, Hi, H), 
+                  length(Lo, LoL), length(Hi, HiL), 
+                  HiL = LoL.    		 		   

@@ -1,0 +1,58 @@
+<recipe name='macaroni_bolognese' title='macaroni bolognese'>
+  
+  <requirements>
+    <tool id='0' capacity='2000' />
+  </requirements>
+  
+  <actions>
+ 
+    <include recipe='plain_macaroni' />
+    
+    <insert>
+      <tool name='frying_pan' />
+      <ingredient name='minced_meat' amount='300' />
+    </insert>
+    
+    <insert>
+      <tool name='frying_pan' />
+      <ingredient name='pepper' amount='2' />
+    </insert>    
+    
+    <turn_on comment='People like their food hot.'>
+      <tool name='fire' />
+    </turn_on>
+    
+    <cut comment='We need to cut the tomatoes into small pieces.'>
+      <tool />
+    </cut>
+    
+    <cut comment='We need small pieces of onions.'>
+      <tool />
+    </cut>
+    
+    <insert>
+      <tool name='frying_pan' />
+      <ingredient name='tomato' amount='2' />
+    </insert>
+    
+    <insert>
+      <tool name='frying_pan' />
+      <ingredient name='onion' amount='1' />
+    </insert>
+    
+    <insert>
+      <tool name='frying_pan' />
+      <ingredient name='salt' amount='2' />
+    </insert>
+    
+    <stir>
+      <tool name='spoon' />
+    </stir>
+    
+    <turn_off comment='We do not want any trouble with firemen.'>
+      <tool name='fire' />
+    </turn_off>
+    
+  </actions>
+  
+</recipe>

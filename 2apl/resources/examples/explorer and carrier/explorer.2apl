@@ -1,0 +1,33 @@
+Include: 
+  moving.2apl
+
+BeliefUpdates:
+  { true }               RememberBomb(POS)    { bomb(POS) }
+  { at(OLDPOS) }         UpdatePosition(POS)  { not at(OLDPOS), at(POS) }
+  { true }               UpdatePosition(POS)  { at(POS) }
+  
+Beliefs:
+  foundBomb :- bomb(_).
+  
+  /* Succeeds with probability P */ 
+  prob(P) :- is(X, rand), X < P.
+
+Goals:
+  foundBomb
+
+PG-rules:
+  /* Wander around */
+  foundBomb <- prob(0.05) | 
+  {
+		gotoRandomPos(15,15)
+  }
+  
+  foundBomb <- true |
+  {
+    @blockworld( senseBombs(), BOMBS );
+    if B( BOMBS = [actionresult([ [default,X1,Y1] | REST ])]) then
+    { 
+       RememberBomb([X1,Y1])
+    }
+  }
+  

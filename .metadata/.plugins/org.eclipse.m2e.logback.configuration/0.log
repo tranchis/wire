@@ -4509,3 +4509,579 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact net.sf.ictali
 2011-08-23 19:00:15,089 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
 2011-08-23 19:00:15,091 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2011-08-23 19:00:15,091 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-09-01 18:27:50,508 [Worker-2] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-10-25 17:45:06,922 [Worker-4] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-10-25 17:45:09,925 [Worker-4] ERROR o.e.m.c.i.i.nexus.NexusIndexManager - Unable to update index for central|http://repo1.maven.org/maven2
+java.io.IOException: null to http://repo1.maven.org/maven2/.index/nexus-maven-repository-index.properties
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$PipedErrorInputStream.checkError(AsyncFetcher.java:253) ~[org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$PipedErrorInputStream.read(AsyncFetcher.java:259) ~[org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at java.io.PipedInputStream.read(PipedInputStream.java:361) ~[na:1.6.0_26]
+	at java.io.InputStream.read(InputStream.java:85) ~[na:1.6.0_26]
+	at java.util.Properties$LineReader.readLine(Properties.java:418) ~[na:1.6.0_26]
+	at java.util.Properties.load0(Properties.java:337) ~[na:1.6.0_26]
+	at java.util.Properties.load(Properties.java:325) ~[na:1.6.0_26]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:457) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.access$100(DefaultIndexUpdater.java:75) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater$IndexAdaptor.setProperties(DefaultIndexUpdater.java:607) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:788) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:135) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1124) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.updateIndex(NexusIndexManager.java:1081) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager$1.run(NexusIndexManager.java:658) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.IndexUpdaterJob.run(IndexUpdaterJob.java:71) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.5.100.v20110404.jar:na]
+Caused by: java.net.ConnectException: null to http://repo1.maven.org/maven2/.index/nexus-maven-repository-index.properties
+	at com.ning.http.client.providers.netty.NettyConnectListener.operationComplete(NettyConnectListener.java:83) ~[async-http-client-1.6.3.jar:na]
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:857) ~[async-http-client-1.6.3.jar:na]
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.execute(NettyAsyncHttpProvider.java:731) ~[async-http-client-1.6.3.jar:na]
+	at com.ning.http.client.AsyncHttpClient.executeRequest(AsyncHttpClient.java:484) ~[async-http-client-1.6.3.jar:na]
+	at com.ning.http.client.SimpleAsyncHttpClient.execute(SimpleAsyncHttpClient.java:285) ~[async-http-client-1.6.3.jar:na]
+	at com.ning.http.client.SimpleAsyncHttpClient.get(SimpleAsyncHttpClient.java:202) ~[async-http-client-1.6.3.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher.retrieve(AsyncFetcher.java:205) ~[org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.downloadIndexProperties(DefaultIndexUpdater.java:452) ~[indexer-core-3.1.0.jar:3.1.0]
+	... 9 common frames omitted
+Caused by: java.nio.channels.UnresolvedAddressException: null
+	at sun.nio.ch.Net.checkAddress(Net.java:30) ~[na:1.6.0_26]
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:480) ~[na:1.6.0_26]
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.connect(NioClientSocketPipelineSink.java:140) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:103) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.handler.codec.oneone.OneToOneEncoder.handleDownstream(OneToOneEncoder.java:60) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleDownstream(HttpClientCodec.java:82) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleDownstream(ChunkedWriteHandler.java:114) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.channel.Channels.connect(Channels.java:541) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.channel.AbstractChannel.connect(AbstractChannel.java:218) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:227) ~[netty-3.2.4.Final.jar:na]
+	at org.jboss.netty.bootstrap.ClientBootstrap.connect(ClientBootstrap.java:188) ~[netty-3.2.4.Final.jar:na]
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.doConnect(NettyAsyncHttpProvider.java:836) ~[async-http-client-1.6.3.jar:na]
+	... 15 common frames omitted
+2011-10-25 17:45:20,027 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:45:24,408 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-10-25 17:45:24,507 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-10-25 17:45:24,708 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-10-25 17:45:24,911 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-10-25 17:45:27,902 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-10-25 17:45:34,126 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:34,127 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-10-25 17:45:34,131 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:34,131 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-10-25 17:45:35,546 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-10-25 17:45:36,209 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:36,210 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-10-25 17:45:36,223 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:36,224 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-10-25 17:45:37,355 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-10-25 17:45:39,000 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:39,001 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-10-25 17:45:39,113 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:45:39,113 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-10-25 17:46:23,857 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:46:29,515 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:29,516 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:46:29,531 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:29,531 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:46:30,603 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-10-25 17:46:31,138 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:31,197 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-10-25 17:46:31,213 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:31,214 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-10-25 17:46:33,483 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:46:34,225 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-10-25 17:46:34,273 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-10-25 17:46:34,307 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-10-25 17:46:34,335 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:testing:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/testing/pom.xml.
+2011-10-25 17:46:35,134 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,134 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-10-25 17:46:35,136 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,136 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-10-25 17:46:35,168 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,168 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-10-25 17:46:35,185 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,185 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-10-25 17:46:35,210 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,210 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-10-25 17:46:35,215 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,216 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-10-25 17:46:35,800 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,800 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:46:35,802 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:35,802 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:46:36,328 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:36,329 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/main/resources
+2011-10-25 17:46:36,331 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:46:36,331 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/testing/src/test/resources
+2011-10-25 17:50:37,830 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:50:40,344 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:40,344 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:50:40,347 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:40,347 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:50:45,897 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:45,897 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:50:45,899 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:45,900 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:50:50,651 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:50:51,508 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:51,508 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:50:51,524 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:50:51,524 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:51:02,058 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:51:02,059 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:51:02,060 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:51:02,061 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:54:47,082 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-10-25 17:54:49,612 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:54:49,613 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:54:49,616 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:54:49,616 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:54:55,911 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:54:55,939 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:54:55,959 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:54:55,959 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-25 17:55:46,261 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:55:46,285 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-10-25 17:55:46,287 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-10-25 17:55:46,288 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-10-28 17:28:03,481 [Worker-12] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-10-28 17:28:46,886 [Worker-12] ERROR o.e.m.c.i.i.nexus.NexusIndexManager - Unable to update index for central|http://repo1.maven.org/maven2
+java.io.IOException: null
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$PipedErrorInputStream.checkError(AsyncFetcher.java:253) ~[org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$PipedErrorInputStream.read(AsyncFetcher.java:261) ~[org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at java.io.PipedInputStream.read(PipedInputStream.java:361) ~[na:1.6.0_26]
+	at java.io.InputStream.read(InputStream.java:85) ~[na:1.6.0_26]
+	at org.codehaus.plexus.util.IOUtil.copy(IOUtil.java:188) ~[plexus-utils-2.0.6.jar:na]
+	at org.codehaus.plexus.util.IOUtil.copy(IOUtil.java:174) ~[plexus-utils-2.0.6.jar:na]
+	at org.codehaus.plexus.util.FileUtils.copyStreamToFile(FileUtils.java:1143) ~[plexus-utils-2.0.6.jar:na]
+	at org.apache.maven.index.updater.DefaultIndexUpdater$LocalCacheIndexAdaptor.setIndexFile(DefaultIndexUpdater.java:700) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:844) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.apache.maven.index.updater.DefaultIndexUpdater.fetchAndUpdateIndex(DefaultIndexUpdater.java:135) ~[indexer-core-3.1.0.jar:3.1.0]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.updateRemoteIndex(NexusIndexManager.java:1124) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.updateIndex(NexusIndexManager.java:1081) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager$1.run(NexusIndexManager.java:658) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.index.nexus.IndexUpdaterJob.run(IndexUpdaterJob.java:71) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.5.100.v20110404.jar:na]
+java.util.concurrent.CancellationException: null
+	at com.ning.http.client.providers.netty.NettyResponseFuture.cancel(NettyResponseFuture.java:152) ~[na:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher.cancel(AsyncFetcher.java:93) ~[na:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$MonitorListener.checkCancelled(AsyncFetcher.java:276) ~[na:na]
+	at org.eclipse.m2e.core.internal.index.nexus.AsyncFetcher$MonitorListener.onStatus(AsyncFetcher.java:281) ~[na:na]
+	at com.ning.http.client.SimpleAsyncHttpClient$BodyConsumerAsyncHandler.fireStatus(SimpleAsyncHttpClient.java:828) ~[na:na]
+	at com.ning.http.client.SimpleAsyncHttpClient$BodyConsumerAsyncHandler.onStatusReceived(SimpleAsyncHttpClient.java:779) ~[na:na]
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.updateStatusAndInterrupt(NettyAsyncHttpProvider.java:1439) ~[na:na]
+	at com.ning.http.client.providers.netty.NettyAsyncHttpProvider.messageReceived(NettyAsyncHttpProvider.java:1170) ~[na:na]
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:80) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:545) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:754) ~[na:na]
+	at org.jboss.netty.handler.stream.ChunkedWriteHandler.handleUpstream(ChunkedWriteHandler.java:148) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:545) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:754) ~[na:na]
+	at org.jboss.netty.handler.codec.http.HttpContentDecoder.messageReceived(HttpContentDecoder.java:104) ~[na:na]
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:80) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:545) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:754) ~[na:na]
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:302) ~[na:na]
+	at org.jboss.netty.handler.codec.replay.ReplayingDecoder.unfoldAndfireMessageReceived(ReplayingDecoder.java:522) ~[na:na]
+	at org.jboss.netty.handler.codec.replay.ReplayingDecoder.callDecode(ReplayingDecoder.java:506) ~[na:na]
+	at org.jboss.netty.handler.codec.replay.ReplayingDecoder.messageReceived(ReplayingDecoder.java:443) ~[na:na]
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:80) ~[na:na]
+	at org.jboss.netty.handler.codec.http.HttpClientCodec.handleUpstream(HttpClientCodec.java:77) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:545) ~[na:na]
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:540) ~[na:na]
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:274) ~[na:na]
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:261) ~[na:na]
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:349) ~[na:na]
+	at org.jboss.netty.channel.socket.nio.NioWorker.processSelectedKeys(NioWorker.java:280) ~[na:na]
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:200) ~[na:na]
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108) ~[na:na]
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:44) ~[na:na]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886) ~[na:1.6.0_26]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908) ~[na:1.6.0_26]
+	at java.lang.Thread.run(Thread.java:680) ~[na:1.6.0_26]
+2011-11-07 12:40:57,528 [Worker-10] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-11-07 12:41:40,299 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-11-07 12:41:42,738 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:42,738 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-11-07 12:41:42,754 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:42,755 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-11-07 12:41:44,340 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-11-07 12:41:45,026 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:45,027 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-11-07 12:41:45,030 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:45,030 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-11-07 12:41:46,106 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-11-07 12:41:46,989 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:46,990 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-11-07 12:41:47,023 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:47,024 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-11-07 12:41:53,839 [Worker-7] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-11-07 12:41:55,672 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:55,673 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-11-07 12:41:55,691 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:41:55,691 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-11-07 12:46:08,037 [Worker-10] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 310544 ms
+2011-11-07 12:46:55,352 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 12:46:55,977 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:46:57,062 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 12:46:57,378 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:47:23,416 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 12:47:23,553 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:47:23,966 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 12:47:23,990 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:48:20,711 [Worker-15] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 12:48:20,778 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:48:21,616 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:48:21,680 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/main/resources
+2011-11-07 12:48:21,683 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:48:21,688 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/test/resources
+2011-11-07 12:48:23,766 [Worker-15] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 12:48:24,086 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:48:24,880 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:48:24,939 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/main/resources
+2011-11-07 12:48:24,942 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:48:24,944 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/test/resources
+2011-11-07 12:52:39,958 [Worker-9] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updating index for repository: central|http://repo1.maven.org/maven2
+2011-11-07 12:53:10,073 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-11-07 12:53:17,577 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-11-07 12:53:17,869 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-11-07 12:53:18,401 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-11-07 12:53:18,522 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 12:53:18,925 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:53:19,107 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 12:53:25,369 [Worker-9] INFO  o.e.m.c.i.i.nexus.NexusIndexManager - Updated index for repository: central|http://repo1.maven.org/maven2 in 45472 ms
+2011-11-07 12:53:36,901 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-11-07 12:53:40,469 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:40,484 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-11-07 12:53:40,497 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:40,498 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-11-07 12:53:42,078 [Worker-9] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-11-07 12:53:42,578 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:42,578 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-11-07 12:53:42,581 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:42,581 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-11-07 12:53:43,615 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-11-07 12:53:44,262 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:44,263 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-11-07 12:53:44,287 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:44,288 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-11-07 12:53:48,107 [Worker-2] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-11-07 12:53:49,520 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:49,574 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-11-07 12:53:49,581 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:53:49,582 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-11-07 12:54:24,638 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 12:54:24,729 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:54:25,488 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:54:25,488 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/main/resources
+2011-11-07 12:54:25,491 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:54:25,491 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/test/resources
+2011-11-07 12:54:27,107 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 12:54:27,277 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 12:54:27,748 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:54:27,748 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/main/resources
+2011-11-07 12:54:27,751 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 12:54:27,751 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/test/resources
+2011-11-07 13:14:13,277 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:14:20,056 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:14:21,115 [Worker-19] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:14:21,397 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:14:21,403 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:14:21,411 [Worker-19] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:14:21,418 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:14:22,730 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:14:22,735 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:14:22,738 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:14:22,740 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:16:34,553 [Worker-16] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:16:34,620 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:16:34,838 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:16:34,840 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:16:34,845 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:16:34,847 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:16:34,888 [Worker-20] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:16:44,314 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:16:44,316 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:16:44,318 [Worker-16] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:16:44,320 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:21:03,042 [Worker-17] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:21:03,212 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:21:04,116 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/javacc/javacc/4.1/javacc-4.1.pom
+2011-11-07 13:21:04,129 [New I/O client worker #2-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/javacc/javacc/4.1/javacc-4.1.pom
+2011-11-07 13:21:04,710 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/net/java/dev/javacc/javacc/4.1/javacc-4.1.pom
+2011-11-07 13:21:04,716 [New I/O client worker #3-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/net/java/dev/javacc/javacc/4.1/javacc-4.1.pom
+2011-11-07 13:21:04,976 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 13:21:05,216 [New I/O client worker #4-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/net/java/dev/javacc/javacc/4.1/javacc-4.1.jar
+2011-11-07 13:21:05,627 [New I/O client worker #4-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/net/java/dev/javacc/javacc/4.1/javacc-4.1.jar
+2011-11-07 13:21:06,449 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:21:06,466 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:21:06,469 [Worker-17] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:21:06,473 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:21:06,710 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:24:11,510 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:24:11,544 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:24:11,887 [New I/O client worker #5-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/junit/junit/4.10/junit-4.10.pom
+2011-11-07 13:24:11,889 [New I/O client worker #5-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/junit/junit/4.10/junit-4.10.pom
+2011-11-07 13:24:12,376 [New I/O client worker #6-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.pom
+2011-11-07 13:24:12,378 [New I/O client worker #6-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.pom
+2011-11-07 13:24:12,877 [New I/O client worker #7-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/org/hamcrest/hamcrest-parent/1.1/hamcrest-parent-1.1.pom
+2011-11-07 13:24:12,878 [New I/O client worker #7-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/org/hamcrest/hamcrest-parent/1.1/hamcrest-parent-1.1.pom
+2011-11-07 13:24:13,382 [New I/O client worker #8-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.pom
+2011-11-07 13:24:13,385 [New I/O client worker #8-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.pom
+2011-11-07 13:24:13,691 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 13:24:13,880 [New I/O client worker #9-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/junit/junit/4.10/junit-4.10.jar
+2011-11-07 13:24:14,152 [New I/O client worker #9-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+2011-11-07 13:24:14,220 [New I/O client worker #9-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/junit/junit/4.10/junit-4.10.jar
+2011-11-07 13:24:14,247 [New I/O client worker #9-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+2011-11-07 13:24:14,411 [New I/O client worker #9-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://repo1.maven.org/maven2/commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.jar
+2011-11-07 13:24:14,545 [New I/O client worker #9-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://repo1.maven.org/maven2/commons-codec/commons-codec/20041127.091804/commons-codec-20041127.091804.jar
+2011-11-07 13:24:15,655 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:metamodel.utils:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/metamodel.utils/pom.xml.
+2011-11-07 13:24:15,749 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus/pom.xml.
+2011-11-07 13:24:15,832 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:eventbus.instance:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/eventbus.instance/pom.xml.
+2011-11-07 13:24:15,894 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:core:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/core/pom.xml.
+2011-11-07 13:24:16,342 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 13:24:16,368 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 13:24:16,894 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:24:16,912 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:24:16,914 [Worker-18] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:24:16,929 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:24:17,018 [Worker-24] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:24:18,390 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,390 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/main/resources
+2011-11-07 13:24:18,393 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,393 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/metamodel.utils/src/test/resources
+2011-11-07 13:24:18,547 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,548 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/main/resources
+2011-11-07 13:24:18,579 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,580 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus/src/test/resources
+2011-11-07 13:24:18,697 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,697 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/main/resources
+2011-11-07 13:24:18,712 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,713 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/eventbus.instance/src/test/resources
+2011-11-07 13:24:18,778 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,778 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/main/resources
+2011-11-07 13:24:18,782 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,782 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/core/src/test/resources
+2011-11-07 13:24:18,874 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,874 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/main/resources
+2011-11-07 13:24:18,893 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,893 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/test/resources
+2011-11-07 13:24:18,956 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,956 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/main/resources
+2011-11-07 13:24:18,958 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 13:24:18,959 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/test/resources
+2011-11-07 13:36:06,094 [Worker-27] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:36:06,727 [New I/O client worker #10-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/tilab/jade/1.0.0/jade-1.0.0.pom
+2011-11-07 13:36:06,731 [New I/O client worker #10-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/tilab/jade/1.0.0/jade-1.0.0.pom
+2011-11-07 13:36:07,224 [New I/O client worker #11-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jipxsets/1.0.0/jipxsets-1.0.0.pom
+2011-11-07 13:36:07,226 [New I/O client worker #11-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jipxsets/1.0.0/jipxsets-1.0.0.pom
+2011-11-07 13:36:07,699 [New I/O client worker #12-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jipxsystem/1.0.0/jipxsystem-1.0.0.pom
+2011-11-07 13:36:07,702 [New I/O client worker #12-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jipxsystem/1.0.0/jipxsystem-1.0.0.pom
+2011-11-07 13:36:07,944 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:36:08,340 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 13:36:08,637 [New I/O client worker #13-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/tilab/jade/1.0.0/jade-1.0.0.jar
+2011-11-07 13:36:08,913 [New I/O client worker #13-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jipxsets/1.0.0/jipxsets-1.0.0.jar
+2011-11-07 13:36:08,914 [New I/O client worker #13-2] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jipxsets/1.0.0/jipxsets-1.0.0.jar
+2011-11-07 13:36:09,049 [New I/O client worker #13-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jipxsystem/1.0.0/jipxsystem-1.0.0.jar
+2011-11-07 13:36:09,059 [New I/O client worker #13-3] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jipxsystem/1.0.0/jipxsystem-1.0.0.jar
+2011-11-07 13:36:18,373 [New I/O client worker #13-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/tilab/jade/1.0.0/jade-1.0.0.jar
+2011-11-07 13:36:19,547 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:36:19,616 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:36:19,636 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:36:19,728 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:36:19,867 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:37:07,064 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:37:07,174 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:37:07,177 [Worker-28] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:37:07,179 [Worker-28] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:37:24,337 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:37:24,364 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:37:24,366 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:37:24,369 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:38:24,889 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:25,013 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:38:25,016 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:25,018 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:38:40,710 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:40,743 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:38:40,745 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:40,747 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:38:45,856 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:45,859 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:38:45,862 [Worker-23] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:38:45,876 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:39:06,519 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:06,573 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:39:06,575 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:06,577 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:39:07,869 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:07,871 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:39:07,876 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:07,897 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:39:10,105 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:10,121 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:39:10,123 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:10,133 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:39:23,641 [Worker-29] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 13:39:23,783 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:39:24,600 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 13:39:25,303 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:25,305 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:39:25,307 [Worker-29] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:25,309 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:39:31,308 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 13:39:53,477 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:53,510 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:39:53,513 [Worker-25] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:39:53,515 [Worker-25] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 13:40:08,942 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:40:08,993 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 13:40:08,995 [Worker-33] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 13:40:08,999 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:01:40,370 [Worker-35] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:usecase:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/usecase/pom.xml.
+2011-11-07 14:01:40,531 [Worker-35] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:01:40,929 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:01:40,930 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/main/resources
+2011-11-07 14:01:40,932 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:01:40,932 [Worker-35] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/usecase/src/test/resources
+2011-11-07 14:02:50,627 [Worker-27] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.github.tranchis.wire:test.scenario:0.3 @ /Users/sergio/Documents/Research/wire/test.scenario/pom.xml.
+2011-11-07 14:02:50,703 [Worker-27] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:02:51,020 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:02:51,021 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/main/resources
+2011-11-07 14:02:51,032 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:02:51,032 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/test/resources
+2011-11-07 14:03:02,210 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:03:02,210 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/main/resources
+2011-11-07 14:03:02,212 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2011-11-07 14:03:02,212 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/test.scenario/src/test/resources
+2011-11-07 14:04:13,613 [Worker-34] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 14:04:13,748 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:04:14,104 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 14:04:14,757 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:04:14,761 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:04:14,777 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:04:14,779 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:04:16,451 [Worker-37] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:04:24,056 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:04:24,060 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:04:24,064 [Worker-38] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:04:24,087 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:14:22,777 [Worker-41] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 14:14:23,586 [New I/O client worker #14-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jiprolog/1.0.0/jiprolog-1.0.0.pom
+2011-11-07 14:14:23,732 [New I/O client worker #14-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jiprolog/1.0.0/jiprolog-1.0.0.pom
+2011-11-07 14:14:24,281 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:14:24,493 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 14:14:24,804 [New I/O client worker #15-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading http://tranchis.github.com/alive-maven/jiprolog/jiprolog/1.0.0/jiprolog-1.0.0.jar
+2011-11-07 14:14:25,571 [New I/O client worker #15-1] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded http://tranchis.github.com/alive-maven/jiprolog/jiprolog/1.0.0/jiprolog-1.0.0.jar
+2011-11-07 14:14:26,369 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:14:26,397 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:14:26,480 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:14:26,599 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:14:26,601 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:14:33,424 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:14:33,471 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:14:33,474 [Worker-40] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:14:33,476 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:15:13,732 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:13,734 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:15:13,737 [Worker-44] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:13,738 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:15:34,977 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:34,979 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:15:34,982 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:34,984 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:15:52,594 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:52,596 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:15:52,599 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:15:52,611 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:16:02,946 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:16:02,949 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:16:02,951 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:16:02,953 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:16:13,437 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:16:13,439 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:16:13,442 [Worker-42] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:16:13,444 [Worker-42] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:23:31,176 [Worker-39] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire-test/2apl/pom.xml.
+2011-11-07 14:23:31,209 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:23:31,417 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 14:23:32,082 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:23:32,085 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/main/resources
+2011-11-07 14:23:32,114 [Worker-39] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:23:32,143 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire-test/2apl/src/test/resources
+2011-11-07 14:23:35,037 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:26:40,509 [Worker-49] ERROR o.e.m.j.i.l.MavenLaunchConfigurationListener - Launch configuration APAPL references non-existing project 2apl.
+org.eclipse.core.runtime.CoreException: Launch configuration APAPL references non-existing project 2apl.
+	at org.eclipse.jdt.launching.JavaRuntime.abort(JavaRuntime.java:1376) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.jdt.launching.JavaRuntime.getJavaProject(JavaRuntime.java:1252) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.updateLaunchConfiguration(MavenLaunchConfigurationListener.java:52) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.launchConfigurationChanged(MavenLaunchConfigurationListener.java:37) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:228) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42) [org.eclipse.equinox.common_3.6.0.v20110523.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:209) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.setDirty(LaunchConfigurationWorkingCopy.java:536) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.setAttribute(LaunchConfigurationWorkingCopy.java:417) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:316) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:342) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.mavenProjectChanged(MavenLaunchConfigurationListener.java:69) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:724) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:847) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryRefreshJob.run(ProjectRegistryRefreshJob.java:93) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.5.100.v20110404.jar:na]
+2011-11-07 14:26:40,512 [Worker-49] ERROR o.e.m.j.i.l.MavenLaunchConfigurationListener - Launch configuration APAPL references non-existing project 2apl.
+org.eclipse.core.runtime.CoreException: Launch configuration APAPL references non-existing project 2apl.
+	at org.eclipse.jdt.launching.JavaRuntime.abort(JavaRuntime.java:1376) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.jdt.launching.JavaRuntime.getJavaProject(JavaRuntime.java:1252) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.updateLaunchConfiguration(MavenLaunchConfigurationListener.java:52) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.launchConfigurationChanged(MavenLaunchConfigurationListener.java:37) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:228) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42) [org.eclipse.equinox.common_3.6.0.v20110523.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:209) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.setDirty(LaunchConfigurationWorkingCopy.java:536) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.setAttribute(LaunchConfigurationWorkingCopy.java:417) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:317) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:342) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.mavenProjectChanged(MavenLaunchConfigurationListener.java:69) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:724) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:847) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryRefreshJob.run(ProjectRegistryRefreshJob.java:93) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.5.100.v20110404.jar:na]
+2011-11-07 14:26:40,520 [Worker-49] ERROR o.e.m.j.i.l.MavenLaunchConfigurationListener - Launch configuration APAPL references non-existing project 2apl.
+org.eclipse.core.runtime.CoreException: Launch configuration APAPL references non-existing project 2apl.
+	at org.eclipse.jdt.launching.JavaRuntime.abort(JavaRuntime.java:1376) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.jdt.launching.JavaRuntime.getJavaProject(JavaRuntime.java:1252) ~[org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.updateLaunchConfiguration(MavenLaunchConfigurationListener.java:52) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.launchConfigurationChanged(MavenLaunchConfigurationListener.java:37) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:228) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42) [org.eclipse.equinox.common_3.6.0.v20110523.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:209) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager.launchConfigurationChanged(LaunchManager.java:2115) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.writeNewFile(LaunchConfigurationWorkingCopy.java:378) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave0(LaunchConfigurationWorkingCopy.java:245) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:216) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:170) [org.eclipse.debug.core_3.7.0.v20110518.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:318) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenRuntimeClasspathProvider.disable(MavenRuntimeClasspathProvider.java:342) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.jdt.internal.launch.MavenLaunchConfigurationListener.mavenProjectChanged(MavenLaunchConfigurationListener.java:69) [org.eclipse.m2e.jdt_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.notifyProjectChangeListeners(ProjectRegistryManager.java:724) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.applyMutableProjectRegistry(ProjectRegistryManager.java:847) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryRefreshJob.run(ProjectRegistryRefreshJob.java:93) [org.eclipse.m2e.core_1.0.100.20110804-1717.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54) [org.eclipse.core.jobs_3.5.100.v20110404.jar:na]
+2011-11-07 14:27:22,693 [Worker-41] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/2apl/pom.xml.
+2011-11-07 14:27:22,819 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:27:23,019 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 14:27:23,347 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:27:23,361 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/main/resources
+2011-11-07 14:27:23,364 [Worker-41] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:27:23,367 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/test/resources
+2011-11-07 14:27:28,082 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:27:28,084 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/main/resources
+2011-11-07 14:27:28,086 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:27:28,101 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/test/resources
+2011-11-07 14:28:29,484 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:28:29,487 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/main/resources
+2011-11-07 14:28:29,489 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:28:29,491 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/test/resources
+2011-11-07 14:28:39,042 [Worker-46] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: cs.uu.nl:2apl:0.0.1-SNAPSHOT @ /Users/sergio/Documents/Research/wire/2apl/pom.xml.
+2011-11-07 14:28:39,113 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for jfree:jcommon:jar:1.0.16 is missing, no dependency information available
+2011-11-07 14:28:39,332 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact javacc:javacc:jar:4.1 has been relocated to net.java.dev.javacc:javacc:jar:4.1
+2011-11-07 14:28:39,529 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:28:39,532 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/main/resources
+2011-11-07 14:28:39,540 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (MacRoman actually) to copy filtered resources, i.e. build is platform dependent!
+2011-11-07 14:28:39,542 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/sergio/Documents/Research/wire/2apl/src/test/resources

@@ -1,0 +1,126 @@
+options
+{
+	DEBUG_LOOKAHEAD = false;
+	STATIC = false;
+} 
+
+PARSER_BEGIN(ParserMAS)
+package apapl.parser;
+
+import apapl.data.*;
+import apapl.*;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.io.File;
+
+
+public class ParserMAS
+{
+} 
+
+
+PARSER_END(ParserMAS) 
+
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+}
+
+MORE :
+{
+  "%" : IN_SINGLE_LINE_COMMENT
+|
+
+  "//" : IN_SINGLE_LINE_COMMENT
+|
+  <"/**" ~["/"]> { input_stream.backup(1); } : IN_FORMAL_COMMENT
+|
+  "/*" : IN_MULTI_LINE_COMMENT
+}
+
+<IN_SINGLE_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMENT: "\n" | "\r" | "\r\n" > : DEFAULT
+}
+
+<IN_FORMAL_COMMENT>
+SPECIAL_TOKEN :
+{
+  <FORMAL_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_MULTI_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <MULTI_LINE_COMMENT: "*/" > : DEFAULT
+} 
+
+<IN_SINGLE_LINE_COMMENT,IN_FORMAL_COMMENT,IN_MULTI_LINE_COMMENT>
+MORE :
+{
+  < ~[] >
+} 
+
+TOKEN :
+{
+	<COLON:		(":")>
+|	<AT:			("@")>
+| <COMMA:   (",")>
+| <NRAGENTS: ["1"-"9"] ( ["0"-"9"] )* >
+| <IDENTIFIER: ( ["a"-"z","A"-"Z","_","0"-"9"] )+>
+| <FILENAME: ( ["a"-"z","A"-"Z","_","0"-"9","."] )+ ".2" ["A","a"] ["P","p"] ["L","l"] >
+}
+
+void Mas(ArrayList<ArrayList<String>> ass) :
+{}
+{
+	(MasLine(ass))* (<EOF>)
+}
+
+void MasLine(ArrayList<ArrayList<String>> ass) :
+{	Token a,s,n,e;
+ 	int nr = 1;
+	ArrayList<String> envs = new ArrayList();
+	String name;
+	String spec;
+}
+{
+	  a = <IDENTIFIER> <COLON> 
+	  { name = a.toString(); }
+	  (
+	  	s = <IDENTIFIER> 
+		{ spec = new String(s.toString() + ".2apl"); }
+	  | 
+	  	s = <FILENAME> 
+		{ spec = s.toString(); }	    
+	  )
+	  ( n = <NRAGENTS>
+	  { try
+			  { nr = Integer.parseInt(n.toString());
+				}
+				catch(NumberFormatException exc) {}
+	  }	
+	  )?
+	  ( <AT> e = <IDENTIFIER>
+			{ envs.add(e.toString());
+			} 
+			( <COMMA> e = <IDENTIFIER> 
+			  { envs.add(e.toString());
+				}
+			)*
+	  )?
+		{ for( int i = 1; i <= nr; i++ )
+		  {
+			  ArrayList<String> agent = new ArrayList();
+				agent.add(name + (nr==1?"":i+""));
+				agent.add(spec);
+				agent.addAll(envs);
+				ass.add(agent);
+			}
+		}
+}

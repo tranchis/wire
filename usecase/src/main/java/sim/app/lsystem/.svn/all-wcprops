@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/468/trunk/mason/sim/app/lsystem
+END
+ByteList.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/3/trunk/mason/sim/app/lsystem/ByteList.java
+END
+LSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/LSystem.java
+END
+sierpinski.lss
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/sierpinski.lss
+END
+tree1.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree1.lss
+END
+tree2.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree2.lss
+END
+tree3.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree3.lss
+END
+Segment.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/Segment.java
+END
+tree4.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree4.lss
+END
+tree5.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree5.lss
+END
+radicans.lss
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/radicans.lss
+END
+tree6.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/tree6.lss
+END
+RuleUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/RuleUI.java
+END
+LSystemDrawer.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/LSystemDrawer.java
+END
+Rule.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/Rule.java
+END
+gosper.lss
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/gosper.lss
+END
+koch1.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/koch1.lss
+END
+koch2.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/koch2.lss
+END
+koch3.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/koch3.lss
+END
+koch4.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/koch4.lss
+END
+koch5.lss
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/koch5.lss
+END
+island.lss
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/island.lss
+END
+LSystemWithUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/468/trunk/mason/sim/app/lsystem/LSystemWithUI.java
+END
+LSystemData.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/LSystemData.java
+END
+dragon.lss
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/320/trunk/mason/sim/app/lsystem/dragon.lss
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/3/trunk/mason/sim/app/lsystem/index.html
+END
+DrawUI.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/342/trunk/mason/sim/app/lsystem/DrawUI.java
+END
+icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/3/trunk/mason/sim/app/lsystem/icon.png
+END

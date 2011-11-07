@@ -1,0 +1,17 @@
+Beliefs:
+  // The current step of the recipe
+  currentStep( 0 ).
+  
+  // When the agent adds an own instruction, this deviation is used to correct the step number
+  stepDeviation( 0 ).
+  
+  // The number of instructions that are included from another recipe
+  nrOfIncludedInstructions( 0 ).
+  
+  // The beliefs below define what a capacity is titled  
+  capacity( X, 'quite small' )  :- X =< 500.
+  capacity( X, 'small' )        :- X > 500, X =< 1000.
+  capacity( X, 'medium sized' ) :- X > 1000, X =< 2000.
+  capacity( X, 'larger' )       :- X > 2000, X =< 5000.
+  capacity( X, 'big' )          :- X > 5000, X =< 10000.
+  capacity( X, 'very big' )     :- X > 10000, X =< 15000.

@@ -1,0 +1,9 @@
+Beliefs:
+	/* The cost represents how much longer would be the route of elevator if it included
+	   the new stop. Random part is added to decide ties automatically.
+	 */
+	cost(CurrentPlan, NewStop, _, Cost) :- newStopCost(CurrentPlan, NewStop, NewStopCost), 
+	                                       Cost is (NewStopCost + rand).
+	
+	                                       
+	                                       

@@ -1,0 +1,232 @@
+PC-rules:
+ 
+  clear(  ) <- currentStep( S ) |
+  [
+    clearActionsPerformed(  );
+    clearInstructionsPerformed(  );
+    clearInstructions(  );
+    ResetStep( )
+  ]
+  
+  reset(  ) <- selectedRecipe( R, Rn ) |
+  [
+    clearActionsPerformed(  );
+    clearInstructionsPerformed(  );
+    clearInstructions(  );
+    ResetStep( );
+    
+    @vraEnvironment( getInstructions( R ), La );
+    @vraEnvironment( getRequirements( R ), Lr );
+
+    unWrap( La );
+    unWrap( Lr )
+  ]
+  
+  // To clear the instructions
+  clearInstructions(  ) <- instruction( S, T, U, V, W, X, Y ) |
+  [
+    ClearInstruction( S, T, U, V, W, X, Y );
+    clearInstructions(  )
+  ]
+  clearInstructions(  ) <- instruction( S, V, W, X, Y ) |
+  [
+    ClearInstruction( S, V, W, X, Y );
+    clearInstructions(  )
+  ]
+  clearInstructions(  ) <- true | { skip }
+  
+  // To clear the instructions
+  clearInstructionsPerformed(  ) <- instructionPerformed( S, T, U, V, W, X, Y ) |
+  [
+    ClearInstructionPerformed( S, T, U, V, W, X, Y );
+    clearInstructionsPerformed(  )
+  ]
+  clearInstructionsPerformed(  ) <- instructionPerformed( S, V, W, X, Y ) |
+  [
+    ClearInstructionPerformed( S, V, W, X, Y );
+    clearInstructionsPerformed(  )
+  ]
+  clearInstructionsPerformed(  ) <- true | { skip }
+  
+  // To clear the notes that actions are performed
+  clearActionsPerformed(  ) <- actionPerformed( S, T, U, V, W, X, Y ) |
+  [
+    ClearActionPerformed( S, T, U, V, W, X, Y );
+    clearActionsPerformed(  )
+  ]
+  clearActionsPerformed(  ) <- actionPerformed( S, V, W, X, Y ) |
+  [
+    ClearActionPerformed( S, V, W, X, Y );
+    clearActionsPerformed(  )
+  ]  
+  clearActionsPerformed(  ) <- true | { skip }
+
+  // Functions used to unwrap a list into seperate beliefs:
+  unWrap( E ) <- E = [] | 
+  {
+    skip
+  }
+  
+  unWrap( [ H | T ] ) <- true | 
+  [ 
+    unWrap( H ); 
+    unWrap( T ) 
+  ]
+  
+  unWrap( recipe( X, Y ) ) <- true |
+  {
+    Recipe( X, Y )
+  }
+  
+  unWrap( requirement( X, Y ) ) <- true | 
+  { 
+    Required( X, Y ) 
+  }
+  
+  unWrap( tool( X, Y, Z ) ) <- true | 
+  {
+    Tool( X, Y, Z )
+  }
+  
+  unWrap( ingredient( W, X, Y, Z ) ) <- true | 
+  {
+    Ingredient( W, X, Y, Z )
+  }
+  
+  unWrap( instruction( V, W, X, Y, Z ) ) <- true | 
+  [
+    B( stepDeviation( D ) );
+    Instruction( V + D, W, X, Y, Z )
+  ]
+  
+  unWrap( instruction( T, U, V, W, X, Y, Z ) ) <- true |
+  [
+    B( stepDeviation( D ) );
+    
+    // If there is already an instruction to select this tool, just continue
+    if B( instruction( S, R, select, W, AnyComment ) ) then
+      Instruction( T + D, U, V, W, X, Y, Z )
+    // Else, add this instruction first and increment the deviation
+    else
+    {
+      Instruction( T + D, U, select, W, 'none' );
+      Instruction( T + D + 1, U, V, W, X, Y, Z );
+      AddStepDeviation( D )
+    }
+    ]
+  
+  instructSubRecipe( Rec ) <- true |
+  {
+    if B( selectedRecipe( R, RT ) and not R = Rec and not instructedSubRecipe( Rec ) ) then
+    {
+      B( recipe( Rec, RecTitle ) );
+      
+      if B( capable( Rec ) ) then
+      {
+        say( ['Please make ', RecTitle] );
+        say( 'You should be able to.' );
+        @vraEnvironment( addSpeak( "No, I am not" ) )
+      }
+      else
+        say( ['We will now make ', RecTitle] )
+      ;
+      
+      InstructedSubRecipe( Rec )
+    }
+    else
+    {
+      if B( capable( Rec ) ) then
+        @vraEnvironment( addSpeak("Could you assist me, please?") )
+    }
+    //  NotInstructedSubRecipe( Rec )
+  }
+  
+  // When the user performs an action at a stage in the dialogue where the system
+  // was not expecting the user to perform an action, the system informs the user of
+  // the dialogue state (or type of dialogue contribution) that it was expecting.  
+  repeatInstruction(  ) <- true |
+  {
+    B( currentStep( S ) );
+    
+    if B( instructionPerformed( S, V, W, X, Y ) ) then
+      Instruction( S, V, W, X, Y )
+    else
+    {
+      if B( instructionPerformed( S, U, V, W, X, Y, Z ) ) then
+        Instruction( S, U, V, W, X, Y, Z )
+    }
+  }
+  
+  // Procedures for speaking a specific word or sentence:
+  say( Text ) <- true |
+  [
+    @vraEnvironment( concat( Text ), Rs );
+    B( Rs = [ sentence( Sentence ) ] );    
+    @msAgentEnvironment( speak( Sentence ) )
+  ]
+  
+  like( R ) <- true |
+  {
+    @vraEnvironment( rand(0, 6), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( like( Rnd, Text ) );
+    B( selectedRecipe( R, Rt ) );
+    say( [ '', Rt, Text ] )
+  }
+  
+  dislike( R ) <- true |
+  {
+    @vraEnvironment( rand(0, 6), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( dislike( Rnd, Text ) );
+    B( selectedRecipe( R, Rt ) );
+    say( [ '', Rt, Text ] )
+  }
+  
+  agree(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 7), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( agree( Rnd, Text ) );
+    say( Text )
+  }  
+  
+  affirmative(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 13), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( affirmative( Rnd, Text ) );
+    say( Text )
+  }
+  
+  hello(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 8), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( hello( Rnd, Text ) );
+    say( Text )
+  }
+  
+  goodbye(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 9), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( goodbye( Rnd, Text ) );
+    say( Text )
+  }
+
+  compliment(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 12), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( compliment( Rnd, Text ) );
+    say( Text )
+  }
+  
+  apologize(  ) <- true |
+  {
+    @vraEnvironment( rand(0, 7), Res );
+    B( Res = [ random( Rnd ) ] );
+    B( apology( Rnd, Text ) );
+    say( Text )
+  }  

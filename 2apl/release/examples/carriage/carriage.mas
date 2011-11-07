@@ -1,0 +1,4 @@
+<apaplmas>
+  <environment name="carriageexample" file="eis-0.2-carriage.jar"/>
+  <agent name="agent" file="agent.2apl"/>
+</apaplmas>

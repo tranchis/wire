@@ -1,0 +1,15 @@
+BeliefUpdates:  
+  { true }  Remember(X) { k(X) } 
+  
+Beliefs:
+  me(parent).
+          
+Plans:        
+     create(child, child);
+	   nonexistent.execute(B(done));
+	   nonexistent.updateBB(newbelief(x));
+	   release(child)
+          
+          
+          
+          

@@ -1,0 +1,5 @@
+<apaplmas>
+  <environment name="msagentenvironment" file="../msagentenvironment.jar"/>
+  <agent name="merlin" file="merlin.2apl"/>
+  <agent name="genie" file="genie.2apl"/>
+</apaplmas>

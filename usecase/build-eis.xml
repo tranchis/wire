@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="usecase">
+    <property environment="env"/>
+    <property name="2apl.location" value="../2apl"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../Applications/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../../.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar"/>
+        <pathelement location="../../../../.m2/repository/jfree/jcommon/1.0.15/jcommon-1.0.15.jar"/>
+        <pathelement location="../../../../.m2/repository/jfree/jfreechart/1.0.13/jfreechart-1.0.13.jar"/>
+        <pathelement location="../../../../.m2/repository/com/lowagie/itext/2.1.7/itext-2.1.7.jar"/>
+        <pathelement location="../../../../.m2/repository/bouncycastle/bcmail-jdk14/138/bcmail-jdk14-138.jar"/>
+        <pathelement location="../../../../.m2/repository/bouncycastle/bcprov-jdk14/138/bcprov-jdk14-138.jar"/>
+        <pathelement location="../../../../.m2/repository/org/bouncycastle/bctsp-jdk14/1.38/bctsp-jdk14-1.38.jar"/>
+        <pathelement location="../../../../.m2/repository/org/bouncycastle/bcprov-jdk14/1.38/bcprov-jdk14-1.38.jar"/>
+        <pathelement location="../../../../.m2/repository/org/bouncycastle/bcmail-jdk14/1.38/bcmail-jdk14-1.38.jar"/>
+    </path>
+    <path id="usecase.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+        <pathelement location="lib/jmf.jar"/>
+    </path>
+    <path id="run.Console.classpath">
+        <path refid="usecase.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.CooperativeObservation.classpath">
+        <path refid="usecase.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.CooperativeObservationWithUI (1).classpath">
+        <path refid="usecase.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.CooperativeObservationWithUI.classpath">
+        <path refid="usecase.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+                <exclude name="docs/"/>
+                <exclude name="docs/manualsource/"/>
+                <exclude name="docs/manualsource/originalsources/"/>
+                <exclude name="docs/tutorial0/"/>
+                <exclude name="start/"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <exclude name="docs/"/>
+            <exclude name="docs/manualsource/"/>
+            <exclude name="docs/manualsource/originalsources/"/>
+            <exclude name="docs/tutorial0/"/>
+            <exclude name="start/"/>
+            <classpath refid="usecase.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="usecase.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build-eis.xml" dir="${2apl.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build-eis.xml" dir="${2apl.location}" inheritAll="false" target="build">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Console">
+        <java classname="sim.display.Console" failonerror="true" fork="yes">
+            <classpath refid="run.Console.classpath"/>
+        </java>
+    </target>
+    <target name="CooperativeObservation">
+        <java classname="sim.app.rts.CooperativeObservation" failonerror="true" fork="yes">
+            <classpath refid="run.CooperativeObservation.classpath"/>
+        </java>
+    </target>
+    <target name="CooperativeObservationWithUI (1)">
+        <java classname="sim.app.rts.CooperativeObservationWithUI" failonerror="true" fork="yes">
+            <classpath refid="run.CooperativeObservationWithUI (1).classpath"/>
+        </java>
+    </target>
+    <target name="CooperativeObservationWithUI">
+        <java classname="sim.app.cto.CooperativeObservationWithUI" failonerror="true" fork="yes">
+            <classpath refid="run.CooperativeObservationWithUI.classpath"/>
+        </java>
+    </target>
+</project>

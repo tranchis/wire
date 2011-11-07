@@ -1,0 +1,156 @@
+PG-rules:
+
+  // To give an instruction of the form select(<tool>)
+  // S = Step
+  // T = Tool
+  // Com = Comment
+  doAssist( yes ) <- currentStep( S ) and instruction( S, Rec, select, T, Com ) | 
+  {
+    @vraEnvironment( clearSpeak(  ) );
+    
+    instructSubRecipe( Rec );
+    
+    if B( not capable( Rec ) ) then
+    {
+      if B( not Com = none ) then
+        say( Com );
+
+      if B( required( T, C ) ) then
+      {
+        // If the tool to select is not specified, the performer can choose
+        // any tool with Capacity C. The assistant needs to know which tool was chosen.
+        //B( capacity(  ) )
+
+        B( capacity( C, Ct ) );
+        say( [ 'Please select a ', Ct, ' tool.' ] );
+        @vraEnvironment( clearSpeak(  ) );
+        @vraEnvironment( addSpeak( "Could you repeat that?" ) );
+        @vraEnvironment( addSpeak( "What?" ) )
+      }
+      else
+      {
+        // A specific tool should be selected.
+        B( tool( T, Tn, Tc ) );
+        say( [ 'Please select a ', Tn ] ) 
+      }  
+    }
+    ;
+    InstructionPerformed( S, Rec, select, T, Com )
+  }
+  
+  // An instruction of the form <action>(<tool>).
+  // For example: "stir( spoon )" or "stir( anyTool )".
+  // S = Step
+  // A = Action
+  // T = Tool
+  // Com = Comment
+  doAssist( yes ) <- currentStep( S ) and instruction( S, Rec, A, T, Com ) and not A = select | 
+  {
+    @vraEnvironment( clearSpeak(  ) );
+    
+    instructSubRecipe( Rec );
+    
+    if B( not capable( Rec ) ) then
+    {
+      if B( not Com = none ) then
+        say( Com )
+      ;
+
+      if B( T = anyTool ) then
+      {
+        // The performer can use any tool as long as it provides this action.
+        // The assistant does NOT have to know which tool was used.
+        say( [ 'Now you have to ', A, '.' ] );
+        //@vraEnvironment( clearSpeak() );
+        @vraEnvironment( clearSpeak(  ) );
+        @vraEnvironment( addSpeak( "Could you repeat that?" ) );
+        @vraEnvironment( addSpeak("How?") )
+      }
+      else
+      {
+        // Fire is a special case; it needs a special sentence
+        if B( T = fire ) then
+        {
+          if B( A = turn_on ) then
+            say( [ 'Turn on the fire.' ] )
+          else
+            say( [ 'Now turn the fire off again.' ] )
+        }
+        else
+        // A specific tool should be used for this action.
+        {
+          B( tool( T, Tn, Tc ) );
+          say( [ 'Please ', A, ' with a ', Tn, '.' ] );
+          @vraEnvironment( clearSpeak(  ) );
+          @vraEnvironment( addSpeak( "Could you repeat that?" ) )
+        }
+      }
+    }
+    ;
+    InstructionPerformed( S, Rec, A, T, Com )
+  }  
+  
+  // An instruction of the form <action>(<tool>, <ingredient>).
+  // For example: insert( casserole, water ).
+  // S =  Step
+  // T =  Tool
+  // I =  Ingredient
+  // Am = Amount
+  // Com = Comment
+  doAssist( yes ) <- currentStep( S ) and instruction( S, Rec, insert, T, I, Am, Com ) | 
+  {
+    @vraEnvironment( clearSpeak(  ) );
+
+    instructSubRecipe( Rec );
+    
+    if B( not capable( Rec ) ) then
+    {
+      if B( not Com = none ) then
+        say( Com );
+
+      // Get the name of the tool
+      B( tool(T, Tn, X) );
+      // Get the name of the ingredient
+      B( ingredient(I, In, C, U) );
+      say( [ 'Insert ', Am, ' ', U, ' ', In, ' into the ', Tn, "." ] );
+      
+      @vraEnvironment( clearSpeak(  ) );
+      @vraEnvironment( addSpeak( "Could you repeat that?" ) );
+      @vraEnvironment( addSpeak( "How much?" ) )
+    }
+    ;
+    InstructionPerformed( S, Rec, insert, T, I, Am, Com )
+  }
+  
+  // When the recipe is finished
+  doAssist( yes ) <- currentStep( Cs ) and ( actionPerformed( Cs, Rec1, X1, Y1, Com1 ) or actionPerformed( Cs, Rec2, V2, W2, X2, X2, Com2 ) ) and not instruction( X3, Rec3, Y3, Z3, Com3 ) and not instruction( V4, Rec4, W4, X4, Y4, Z4, Com4 ) |
+  {
+    @vraEnvironment( clearSpeak(  ) );
+    
+    if B( not Com = none ) then
+      say( Com );
+
+    dropgoal( doAssist( yes ) );
+
+    B( selectedRecipe( R, Rt ) );
+    say( [ 'You just finished your ', Rt ] );
+    @msAgentEnvironment( perform("congratulate") );
+
+    compliment();
+
+    say( ['I guess you are now capable of making ', Rt, '!'] );
+    Capable( R );
+
+    goodbye();
+    @msAgentEnvironment( hide("yes") );
+
+    B( character( C ) );
+    @msAgentEnvironment( disassociateFrom( C ) );
+    clear(  );
+    DeselectRecipe( R, Rt );
+    DeselectCharacter( C );
+    while B( instructedSubRecipe( IR ) ) do
+      NotInstructedSubRecipe( IR )
+    ;
+    @vraEnvironment( reset(  ) )
+  }

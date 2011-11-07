@@ -1,0 +1,29 @@
+<recipe name='macaroni'>
+  
+  <requirements>
+    <tool id='0' capacity='1000' />
+  </requirements>
+  
+  <actions>
+ 
+    <insert>
+      <tool id='0' />
+      <ingredient name='water' amount='1000' />
+    </insert>
+    
+    <insert>
+      <tool id='0' />
+      <ingredient name='macaroni' amount='100' />
+    </insert>
+    
+    <turn_on>
+      <tool name='fire' />
+    </turn_on>
+
+    <turn_off>
+      <tool name='fire' />
+    </turn_off>
+	  
+  </actions>
+  
+</recipe>

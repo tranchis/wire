@@ -1,0 +1,9 @@
+<apaplmas>
+  <environment name="blockworld" file="blockworld.jar">
+    <parameter key="gridWidth" value="18"/>
+    <parameter key="gridHeight" value="18"/>
+    <parameter key="entities" value="2"/>
+  </environment>
+  <agent name="harry" file="harry.2apl"/>
+  <agent name="sally" file="sally.2apl"/>
+</apaplmas>

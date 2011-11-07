@@ -1,0 +1,27 @@
+<apaplmas>
+  <environment name="massim" file="eis-0.2-acconnector2007.jar"/>
+  <agent name="bot1" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials1.pl"/>
+  </agent>
+  <agent name="bot2" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials2.pl"/>
+  </agent>
+  <agent name="bot3" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials3.pl"/>
+  </agent>
+  <agent name="bot4" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials4.pl"/>
+  </agent>
+  <agent name="bot5" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials5.pl"/>
+  </agent>
+  <agent name="bot6" file="bot.2apl">
+    <beliefs file="server.pl"/>
+    <beliefs file="botcredentials6.pl"/>
+  </agent>
+</apaplmas>

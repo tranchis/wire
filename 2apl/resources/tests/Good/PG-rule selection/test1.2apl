@@ -1,0 +1,24 @@
+/*
+* Expected behaviour: During the first step the first and second rule are
+* selected. These rules are selected only once. After these rules are fully
+* executed, the third rule is repeatetly selected.
+*/
+
+Beliefs:
+  a(42).
+	b(42).
+
+BeliefUpdates:
+
+	{ } NoA() { not a(42) }
+
+	{ } NoB() { not b(42) }
+
+PG-rules:
+
+	true <- a(X) | { print("first PG-rule"); skip; NoA() }
+
+	true <- b(X) | { print("second PG-rule"); skip; NoB( ) }
+
+	true <- not b(X) | { print("third PG-rule") }
+

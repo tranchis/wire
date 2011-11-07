@@ -1,0 +1,46 @@
+Include: 
+moving.2apl
+
+Beliefs:
+  manager(m).
+
+Plans:
+    B(is( X, int( random( 15 ) ) ));
+    B(is( Y, int( random( 15 ) ) ));
+    @blockworld( enter( X, Y, blue ), _ )
+    
+PG-rules:
+
+  /* Wander around */
+  <- true | 
+  {
+		if B(prob(0.05)) then
+			gotoRandomPos(15,15)
+  }
+  
+PC-rules: 
+  message(A, request, _, _, play(explorer)) <- manager(A) |
+  { 
+    create(explorer, myexp);
+    myexp.execute(B(bomb(POS)));   
+    send(A, inform, bomb(POS));
+    release(myexp)
+  }
+
+  message(A, request, _, _, play(carrier, POS)) <- manager(A) |
+  {
+    create(carrier, mycar);
+    mycar.updateBB(bomb(POS));
+    mycar.execute(B(done or error));
+    if mycar.B( done ) then
+    {
+	  	send(A, inform, done(POS))
+    }
+    else
+    {
+      send(A, inform, failed(POS))
+    };
+    release(mycar)
+  }
+
+	

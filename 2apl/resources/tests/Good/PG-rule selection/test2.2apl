@@ -1,0 +1,30 @@
+/*
+* Expected behaviour: During the first deliberation step, the first PG-rule
+* should be applied for 42, the second rule for 43, both reactive rules should
+* be applied, the fifth rule should be applied for g2(b) and no rule should be
+* applied for 44. During the second deliberation step the second rule should be
+* applied for 44. Furthermore, only one rule can be instantiated per goal at any
+* time.
+*/
+
+Beliefs:
+  a(42).
+	b(42).
+
+BeliefUpdates:
+  { } UpdateG1(X) { g1(X) }
+  { } UpdateG2(X) { g2(X) }
+  { } NotA() { not a(42) }
+
+Goals:
+  g1(42) and g2(42)
+
+PG-rules:
+
+  g1(X) and g2(Y) <- a(X) | { print("first PG-rule"); skip; NotA() }
+
+  g1(X) <- b(X) | { print("second PG-rule"); skip; UpdateG1(X) }
+
+  g2(X) <- true | { print("third PG-rule"); skip; UpdateG2(X) }
+
+

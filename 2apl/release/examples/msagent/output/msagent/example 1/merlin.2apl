@@ -1,0 +1,21 @@
+Plans:
+  @msagentenvironment( associateWith("merlin") );
+  @msagentenvironment( show("yes") );
+  @msagentenvironment( moveTo("400", "300", "500") )
+  
+PC-rules:
+  message( S, inform, La, On, say( "hello" ) ) <- true |
+  {
+    @msagentenvironment( speak("Hello") );
+    @msagentenvironment( speak(S) );
+    @msagentenvironment( perform("wave") );
+    send( S, inform, say( "hello" ) )
+  }
+  message( S, inform, La, On, say( "goodbye" ) ) <- true |
+  {
+    @msagentenvironment( speak("So much for the conversation...") );
+    @msagentenvironment( think("How does the disappear trick work again?") );
+    @msagentenvironment( perform("read") );
+    @msagentenvironment( speak("Ah!") );
+    @msagentenvironment( hide("yes") )
+  }

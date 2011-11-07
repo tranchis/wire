@@ -1,0 +1,43 @@
+/*
+* Expected behaviour: all plans should be repaired and fully executed
+*/
+
+Beliefs:
+  a(42).
+
+BeliefUpdates:
+  { b(X) } Update1(X) { g(X) } 
+	{ a(X) } Update2(X) { g(X) }
+
+Plans:
+  // Repaired by rule 3, 2 and 5
+	{ B( a(X) ); doSomething(X); B( b(X) ); Update1(X) },
+
+  // Repaired by rule 3, 2 and 5
+	{ [B( a(X) ); doSomething(X); B( b(X) ); Update1(X)] },
+
+  // Repaired by rule 3 and atomic
+	{ B( a(X) ); doSomething(X); [B( b(X) ); Update1(X)] },
+
+  // Repaired by rule 1 and 4
+	{ B( b(X) ); doSomething(1); skip; skip }
+
+PC-rules:
+	doSomething(X) <- b(X) | { skip }
+	
+	doSomethingElse(X) <- true | { skip }
+
+PR-rules:
+
+  [B( b(X) ); Update1(X)] <- true | { [print("atomic PR-rule"); Update2(X)] }
+
+  B( b(X) ); X; skip; Y <- true | { print("first PR-rule"); Y; skip; X } 
+
+  B( b(X) ); REST <- a(X) | { print("second PR-rule"); REST }
+
+  doSomething(X); REST <- true | { print("third PR-rule"); doSomethingElse(X); REST }
+
+	doSomething(X) <- true | { print("fourth PR-rule"); doSomethingElse(X) }
+
+  Update1(X) <- true | { print("fifth PR-rule"); Update2(X) }
+

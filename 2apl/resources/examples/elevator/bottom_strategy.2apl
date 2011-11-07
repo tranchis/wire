@@ -1,0 +1,9 @@
+Beliefs:
+	/* The agent will strongly prefer to operate only in the lower floors.
+	   Random part is added to decide ties automatically.
+	 */
+	cost(_, NewStop, down, Cost) :- NewStop =< 5, 
+	                              Cost is (0 + rand).
+	
+	cost(_, _, _, Cost) :-     Cost is (10 + rand).                                  
+	                                       

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/500/trunk/mason/sim/field
+END
+SparseField.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/396/trunk/mason/sim/field/SparseField.java
+END
+SparseField2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/230/trunk/mason/sim/field/SparseField2D.java
+END
+SparseField3D.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/500/trunk/mason/sim/field/SparseField3D.java
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/225/trunk/mason/sim/field/README
+END

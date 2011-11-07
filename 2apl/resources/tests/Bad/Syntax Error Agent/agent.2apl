@@ -1,0 +1,8 @@
+Beliefs:
+  a(1).
+
+Goals:
+  b(1).
+
+BeliefUpdates
+  {a(X)} Update(X) {b(X)}

@@ -1,0 +1,47 @@
+BeliefUpdates:
+  { at(OLDPOS) }         UpdatePosition(POS)  { not at(OLDPOS), at(POS) }
+  { true }               UpdatePosition(POS)  { at(POS) }
+
+Beliefs: 
+  prob(P) :- is(X, rand), X < P.
+
+PG-rules:
+  at( [X, Y] ) <- true |
+  {
+    updatePosition();    
+    B(at(POS) and POS = [A,B]);
+    if B(A > X) then { @blockworld( west(), _ ) }
+    else if B(A < X) then  { @blockworld( east(), _ ) }
+    else if B(B > Y) then  { @blockworld( north(), _  )}
+    else if B(B < Y) then  { @blockworld( south(), _ )};    
+    updatePosition()
+  }
+  
+PC-rules:
+
+  gotoRandomPos(MaxX, MaxY) <- true |
+  {
+    B(is( X, int( random( MaxX ) ) )); 
+    B(is( Y, int( random( MaxY ) ) ));
+    if G(at(OLDPOS)) then { dropgoal(at(OLDPOS))};
+    [ if B(not at([X, Y])) then  adopta(at([X, Y])) ]
+  }
+
+  updatePosition() <- true |  
+  { 
+  	@blockworld( sensePosition(), RES ); 
+  	if B(RES = [actionresult(POS)]) then UpdatePosition(POS) 
+  }
+  
+  randomMove() <- prob(0.25) | { @blockworld( south(), _) }  
+  randomMove() <- prob(0.5) | { @blockworld( north(), _) }  
+  randomMove() <- prob(0.75) | { @blockworld( west(), _) }  
+  randomMove() <- true | { @blockworld( east(), _)  }        
+  
+PR-rules:
+  @blockworld( south(), _); REST <- true | { randomMove(); REST }  
+  @blockworld( north(), _); REST <- true | { randomMove(); REST }  
+  @blockworld( west(), _); REST <- true |  { randomMove(); REST }  
+  @blockworld( east(), _); REST <- true |  { randomMove(); REST }  
+  
+            

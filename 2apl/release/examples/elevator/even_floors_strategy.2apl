@@ -1,0 +1,10 @@
+Beliefs:
+	/* The agent will strongly prefer to visit only even floors.
+	   Random part is added to decide ties automatically.
+	 */
+	cost(CurrentPlan, NewStop, _, Cost) :- (0 is (NewStop mod 2)), 
+	                                       Cost is (0 + rand).
+	
+	cost(CurrentPlan, NewStop, _, Cost) :- (1 is (NewStop mod 2)),
+	                                       Cost is (10 + rand).                                  
+	                                       

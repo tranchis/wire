@@ -1,0 +1,19 @@
+Include: assistant_beliefupdates.2apl
+Include: assistant_pcrules.2apl
+Include: assistent_pgrules.2apl
+Include: assistant_vocabulary.2apl
+Include: assistant_initialbeliefs.2apl
+Include: assistant_events.2apl
+  
+Plans: 
+  // Get all recipies
+  @vraEnvironment( getRecipies(  ), Lr );
+  // Get all tools
+  @vraEnvironment( getTools(  ), Lt );
+  // Get all ingredients
+  @vraEnvironment( getIngredients(  ), Li );
+  // Place them in the belief base
+  unWrap( Lr );
+  unWrap( Lt );
+  unWrap( Li )
+  

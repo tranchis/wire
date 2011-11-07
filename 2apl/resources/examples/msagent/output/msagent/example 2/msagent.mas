@@ -1,0 +1,6 @@
+<apaplmas>
+  <environment name="msagentenvironment" file="../msagentenvironment.jar">
+    <parameter key="character0" value="peedy" />
+  </environment>
+  <agent name="peedy" file="peedy.2apl"/>
+</apaplmas>

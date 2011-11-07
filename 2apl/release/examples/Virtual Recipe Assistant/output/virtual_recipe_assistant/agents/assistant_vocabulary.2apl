@@ -1,0 +1,78 @@
+Beliefs:
+
+  hello( 0, 'Hello!' ).
+  hello( 1, 'Hello there!' ).
+  hello( 2, 'Hi!' ).
+  hello( 3, 'Hi there!' ).
+  hello( 4, 'Hey!' ).
+  hello( 5, 'Hey there!' ).
+  hello( 6, 'Greetings!' ).
+  hello( 7, 'Good day!' ).
+
+  goodbye( 0, 'Goodbye!' ).
+  goodbye( 1, 'Bye!' ).
+  goodbye( 2, 'Bye bye!' ).
+  goodbye( 3, 'See you later!' ).
+  goodbye( 4, 'See you!' ).
+  goodbye( 5, 'Cheers!' ).
+  goodbye( 6, 'See you next time!' ).
+  goodbye( 7, 'So long!' ).
+  goodbye( 8, 'Adios!' ).
+  
+  like( 0, ', I love it!' ).
+  like( 1, ', one of my favourites!' ).
+  like( 2, ', yum!' ).
+  like( 3, ', an exellent choice!' ).
+  like( 4, ', great! I like that!' ).
+  like( 5, ', alright! I love this recipe!' ).
+  
+  dislike( 0, ', oh great.' ).
+  dislike( 1, ', yuck!' ).
+  dislike( 2, ', I do not like that.' ).
+  dislike( 3, ', I hate that.' ).
+  dislike( 4, ', seriously?' ).
+  dislike( 5, ', oh dear.' ).
+  
+  agree( 0, 'Okay.' ).
+  agree( 1, 'Yes.' ).
+  agree( 2, 'Yes ofcourse.' ).
+  agree( 3, 'Ofcourse.' ).
+  agree( 4, 'Certainly.' ).
+  agree( 5, 'Sure.' ).
+  agree( 6, 'Yup.' ).
+
+  affirmative( 0, 'Alright.' ).
+  affirmative( 1, 'Great.' ).
+  affirmative( 2, 'Good.' ).
+  affirmative( 3, 'Very good.' ).
+  affirmative( 4, 'Very well.' ).
+  affirmative( 5, 'Okay.' ).
+  affirmative( 6, 'That will do.' ).
+  affirmative( 7, 'That is right.' ).
+  affirmative( 8, 'That is fine.' ).
+  affirmative( 9, 'Excellent.' ).
+  affirmative( 10, 'Okay, nice.' ).
+  affirmative( 11, 'Right.' ).
+  affirmative( 12, 'That will do just fine.' ).
+  
+  compliment( 0, 'I think we did a great job!' ).
+  compliment( 1, 'We made an outstanding recipe!' ).
+  compliment( 2, 'An outstanding piece of cookery!' ).
+  compliment( 3, 'An awesome recipe!' ).
+  compliment( 4, 'We should do this again some time!' ).
+  compliment( 5, 'A job well done!' ).
+  compliment( 6, 'We are an excellent team!' ).
+  compliment( 7, 'A marvellous cookery!' ).
+  compliment( 8, 'That went very well, did it not?' ).
+  compliment( 9, 'Awesome! I enjoyed cooking with you!' ).
+  compliment( 10, 'A most brilliant recipe!' ).
+  compliment( 11, 'That was fun!' ).
+  
+  apology( 0, 'Oh, sorry!' ).
+  apology( 1, 'My bad!' ).
+  apology( 2, 'Oh, excuse me please.' ).
+  apology( 3, 'Oh, I am sorry!' ).
+  apology( 4, 'Oh, pardon me!' ).
+  apology( 5, 'Oh, I am sorry for that!' ).
+  apology( 6, 'Oh, excuse me!' ).
+  

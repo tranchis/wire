@@ -1,0 +1,6 @@
+Include: bla.2apl
+
+Beliefs:
+me(sally).
+other(harry).
+messages(0).

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/svn/!svn/ver/503/trunk/mason
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/38/trunk/mason/LICENSE
+END
+CHANGES
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/503/trunk/mason/CHANGES
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/207/trunk/mason/README
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/468/trunk/mason/Makefile
+END

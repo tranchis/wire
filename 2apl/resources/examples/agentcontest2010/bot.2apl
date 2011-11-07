@@ -1,0 +1,116 @@
+// This is a very simple agent for the agent-contest
+// 2010.
+// First it connects to the server and then does some
+// random walking.
+
+Beliefs:
+  prob(P) :- is(X, rand), X < P.
+
+Plans:
+{
+  // 1. connect to the server
+  B( server(Url,Port) );
+  B( credentials(User,Pass) );
+  B( entity(E) );
+  @massim( associateWith(E),_ );
+  print( connect(Url,Port,User,Pass) );
+  @massim( connect(Url,Port,User,Pass),_ );
+  
+  // 2. random walking
+  while B(true) do {
+    randomMove()
+  }
+    
+}
+
+PC-rules: 
+
+  randomMove() <- prob(0.125) | { @massim( move(east), _) }  
+  randomMove() <- prob(0.25) | { @massim( move(northeast), _) }  
+  randomMove() <- prob(0.375) | { @massim( move(north), _) }  
+  randomMove() <- prob(0.5) | { @massim( move(northwest), _) }  
+  randomMove() <- prob(0.625) | { @massim( move(west), _) }  
+  randomMove() <- prob(0.75) | { @massim( move(southwest), _) }  
+  randomMove() <- prob(0.875) | { @massim( move(south), _) }  
+  randomMove() <- true | { @massim( move(soutneast), _)  }
+  
+  // the connection has been lost
+  event(connectionLost,_) <- true | {
+    print(connectionLost)
+  }
+
+  // the simulation has started
+  event(simStart,_) <- true | {
+    print(simStart)
+  }
+  
+  // the corral's position
+  event(corral(X1,Y1,X2,Y2),_) <- true | {
+    print(corral(X1,Y1,X2,Y2))
+  }
+
+  // the size of the grid
+  event(gridSize(X,Y),_) <- true | {
+    print(gridSize(X,Y))
+  }
+  
+  // the id of the simulation
+  event(simId(Id),_) <- true | {
+    print(simId(Id))
+  }
+  
+  // the line of sight
+  event(lineOfSight(L),_) <- true | {
+    print(lineOfSight(L))
+  }
+
+  // the name of the opponent
+  event(opponent(O),_) <- true | {
+    print(opponent(O))
+  }
+
+  // the maximum number of steps of the current simulation
+  event(steps(S),_) <- true | {
+    print(steps(S))
+  }
+  
+  // the simulation has ended
+  event(simEnd,_) <- true | {
+    print(simEnd)
+  }
+
+  // the result of the simulation
+  event(result(R),_) <- true | {
+    print(result(R))
+  }
+
+  // the final-score of the simulation
+  event(finalScore(F),_) <- true | {
+    print(finalScore(F))
+  }
+
+  // the tournament is over
+  event(bye,_) <- true | {
+    print(bye)
+  }
+
+  // the content of a perceived cell
+  event(cell(X,Y,Content,Step),_) <- true | {
+    print(cell(X,Y,Content,Step))
+  }
+
+  // the current position
+  event(pos(X,Y,Step),_) <- true | {
+    print(pos(X,Y,Step))
+  }
+
+  // number of currently carried items
+  event(cowsInCorral(Cows,Step),_) <- true | {
+    print(cowsInCorral(Cows,Step))
+  }
+
+  // the current step
+  event(currentStep(Step),_) <- true | {
+    print(currentItems(Step))
+  }
+

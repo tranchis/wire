@@ -1,0 +1,8 @@
+<actions>
+  <action name='turn_on'>
+    <tool/>
+  </action>
+  <action name='turn_off'>
+    <tool/>
+  </action>  
+</actions>

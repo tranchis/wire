@@ -1,0 +1,10 @@
+<ingredients>
+  <water unit='ml' amounts='50' capacity='50' image='water.jpg'/>
+  <olive_oil title='olive oil' unit='tablespoons' amounts='1' capacity='1' image='water.jpg'/>
+  <macaroni unit='g' amounts='50' capacity='40'/>
+  <salt unit='pinches' amounts='1' capacity='0.36' image='salt.jpg'/>
+  <pepper unit='pinches' amounts='1' capacity='0.36' image='pepper.jpg'/>
+  <rice unit='g' amounts='50' capacity='37'/>
+  <onion unit='pcs' amounts='1' capacity='70'/>
+  <tomato unit='pcs' amounts='1' capacity='60'/>
+</ingredients>

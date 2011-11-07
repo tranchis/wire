@@ -1,0 +1,10 @@
+Include:
+	elevator.2apl, top_strategy.2apl
+	
+Beliefs:
+	me(car2).
+	
+Plans:
+  initialize()
+
+	 

@@ -1,0 +1,61 @@
+Include: 
+	moving.2apl
+
+BeliefUpdates:
+  { true }               RemoveBomb(POS)      { not bomb(POS) }
+  { not carrying_bomb }  SetCarryingBomb()    { carrying_bomb }
+  { carrying_bomb }      SetNotCarryingBomb() { not carrying_bomb }
+  { }                    SetError()           { error }
+  
+Beliefs:  
+  trap([0,0]).
+  bombStored :- not bomb(_), not carrying_bomb.
+  done :- bombStored.
+  
+Goals:
+  bombStored
+
+PG-rules:
+  bombStored <- bomb(POS) and not carrying_bomb and not at(POS)| 
+  {
+    [
+     updatePosition();
+     if B(bomb(POS) and not at(POS)) then  adopta(at(POS))     
+    ]
+  }
+  
+  bombStored <- bomb(POS) and not carrying_bomb and at(POS)| 
+  { 
+    [
+      updatePosition();
+      if B(at(POS)) then 
+      {
+        @blockworld( pickup(), _ );
+        SetCarryingBomb();
+        RemoveBomb(POS)
+      }      
+    ]
+  } 
+  
+  bombStored <- carrying_bomb and trap(TRAPPOS) and not at(TRAPPOS) |
+  {
+    adopta(at(TRAPPOS))
+  }
+  
+  bombStored <- carrying_bomb and trap(TRAPPOS) and at(TRAPPOS) |
+  {
+    @blockworld( drop(), _ );
+    SetNotCarryingBomb()  
+  }
+  
+PR-rules:
+  @blockworld(pickup(), _); REST <- true |
+  {
+  	SetError()
+  }  
+  
+  @blockworld(drop(), _); REST <- true |
+  {
+  	SetError()
+  } 
+              

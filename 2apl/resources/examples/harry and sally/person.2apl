@@ -1,0 +1,22 @@
+PC-rules:
+  goto( X, Y ) <- true |
+  {
+    @blockworld( sensePosition(), POS );
+    B(POS = [actionresult([A,B])]);
+    if B(A > X) then
+    { @blockworld( west(), L );
+      goto( X, Y )
+    }
+    else if B(A < X) then
+    { @blockworld( east(), L );
+      goto( X, Y )
+    }
+    else if B(B > Y) then
+    { @blockworld( north(), L );
+      goto( X, Y )
+    }
+    else if B(B < Y) then
+    { @blockworld( south(), L );
+      goto( X, Y )
+    }
+  }

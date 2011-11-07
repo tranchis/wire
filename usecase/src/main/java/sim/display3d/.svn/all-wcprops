@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/500/trunk/mason/sim/display3d
+END
+CapturingCanvas3D.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/496/trunk/mason/sim/display3d/CapturingCanvas3D.java
+END
+SelectionBehavior.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/500/trunk/mason/sim/display3d/SelectionBehavior.java
+END
+ToolTipBehavior.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/500/trunk/mason/sim/display3d/ToolTipBehavior.java
+END
+Display3D.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/500/trunk/mason/sim/display3d/Display3D.java
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/200/trunk/mason/sim/display3d/README
+END

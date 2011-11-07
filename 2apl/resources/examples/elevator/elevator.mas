@@ -1,0 +1,6 @@
+<apaplmas>
+  <environment name="elevatorenv" file="elevatorenv.jar"/>
+  <agent name="car0" file="car0.2apl"/>
+  <agent name="car1" file="car1.2apl"/>
+  <agent name="car2" file="car2.2apl"/>
+</apaplmas>

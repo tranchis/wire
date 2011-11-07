@@ -1,0 +1,356 @@
+PC-rules:
+  // The user selected a recipe
+  // R = Recipe
+  event( recipyselected( R, Rt ), vraEnvironment ) <- true |
+  {
+    SelectRecipe( R, Rt )
+  }
+  
+  // The user selected an assistant
+  // A = Assistant
+  event( assistantselected( A ), vraEnvironment ) <- true |
+  {
+    // Store the chosen character
+    SelectCharacter( A );
+  
+    // Select the chosen recipe
+    B( selectedRecipe( R, Rt ) );
+    
+    @msAgentEnvironment( associateWith(A) );
+    @msAgentEnvironment( show( yes ) );
+    
+    hello();
+    
+    @vraEnvironment( rand(0, 2), Res );
+    if B( not like( R ) and not dislike( R ) ) then
+    {
+      if B( Res = [ random( Rnd ) ] and Rnd = 0 ) then
+        Dislike( R )
+      else
+        Like( R )
+    }
+    ;
+
+    // Does the agent like this recipe?
+    if B( like( R ) ) then
+    {
+      @msAgentEnvironment( perform( 'pleased' ) );
+      like( R )
+    }
+    else
+    {
+      if B( dislike( R ) ) then
+      {
+        @msAgentEnvironment( perform( 'sad' ) );
+        dislike( R )
+      }
+    }
+    ;
+
+    // Get instructions of this recipe from the environment
+    @vraEnvironment( getInstructions( R ), La );
+    // Get requirements of this recipe from the environment
+    @vraEnvironment( getRequirements( R ), Lr );
+
+    unWrap( La );
+    unWrap( Lr );
+
+    // Get the number of instructions
+    @vraEnvironment( getInstructionsCount( R ), Icr );
+    B( Icr = [ nrofinstructions( Ic ) ] );
+    
+    adopta( currentStep( Ic ) );
+    // Start assisting by adding a Goal:
+    adopta( doAssist( yes ) )
+  }
+  
+  // An action was performed like: stir( spoon )
+  // A = Action
+  // T = Tool
+  event( actionperformed( A, T ), vraEnvironment ) <- true |
+  {
+    // Get the current step
+    B( currentStep( S ) );
+    
+    // What tool was this about again? Get the required tool:
+    if B( instructionPerformed( S, R, Ar, Tr, Com ) ) then
+    {
+      if B( not A = Ar ) then
+      {
+        @msAgentEnvironment( speak( ' Why did you do that? I did not tell you to do that?' ) );
+        repeatInstruction(  )
+      }
+      else
+      {
+        // Did we ask for a certain tool?
+        if B( Tr = anyTool ) then
+        {
+          // Was the right action performed?
+          ActionPerformed( S, R, A, T, Com );
+          affirmative();
+          PerformStep( S )
+        }
+        else
+        {
+          // Was the tool we asked for actually used?
+          if B( T = Tr ) then
+          {
+            ActionPerformed( S, R, A, T, Com );
+            affirmative();
+            PerformStep( S )      
+          }
+          else
+          {
+            @msAgentEnvironment( speak( ' No. Not that tool!' ) );
+            repeatInstruction(  )
+          }
+        }
+      }
+    }
+    else
+    {
+      @msAgentEnvironment( speak( ' I did not tell you to do that?' ) );
+      repeatInstruction(  )    
+    }
+  }
+  
+  event( ingredientadded( I, A, T ), vraEnvironment ) <- true |
+  {
+    // Get the current step
+    B( currentStep( S ) );
+
+    // What did the agent request again?
+    if B( instructionPerformed( S, R, insert, Tr, Ir, Ar, Com ) ) then
+    {
+      if B( T = Tr ) then
+      {
+        if B( I = Ir) then
+        {
+          if B(A > Ar) then
+          {
+            say( [ 'That is too much! Remove this ingredient and try again.' ] )
+          }
+          else
+          {
+            if B(A < Ar) then
+            {
+              //say( [ 'That is not enough. Just add another ', ( Ar - A ), '.' ] )
+              say( [ 'That is not enough.' ] )
+            }
+            else
+            {
+              affirmative();
+              ActionPerformed( S, R, insert, T, I, A, Com );
+              PerformStep( S )
+            }
+          }
+        }
+        else
+        {
+          @msAgentEnvironment( speak( 'That is not the ingredient I asked for. Please remove this ingredient.' ) );
+          repeatInstruction(  )
+        }
+      }
+      else
+      {
+        @msAgentEnvironment( speak( 'No, that is the wrong tool.' ) );
+        repeatInstruction(  )
+      }
+    }
+    else
+    {
+      @msAgentEnvironment( speak( 'I did not tell you to insert this ingredient. Remove it please.' ) );
+      repeatInstruction(  )    
+    }
+  }
+  
+  // When a tool was selected
+  // T = Tool
+  event( toolselected( T ), vraEnvironment ) <- true |
+  {
+    // Get the current step
+    B( currentStep( S ) );
+    
+    // What tool was this about again? Get the required tool:
+    B( instructionPerformed( S, R, select, RT, Com ) );
+    
+    // Did the performer choose a tool?
+    if B( required( RT, C ) ) then
+    {
+      // Does the chosen tool meet with the requirements?
+      if B( tool( T, TN, TC ) ) then
+      {
+        if B( TC >= C ) then
+        {
+          // This tool will do
+          // We fill this tool in every action with this requirement:
+          while B( instruction(X, Rec, Y, RT, Z, Am, Com1) ) do
+            Replace( X, Rec, Y, RT, Z, C, T, Am, Com1 );
+          
+          while B( instruction(X, Rec, Y, RT, Com2) ) do
+            Replace( X, Rec, Y, RT, C, T, Com2 );
+          
+          affirmative();
+          ActionPerformed( S, R, select, T, Com );
+          PerformStep( S )
+        }
+        else
+        {
+          // This tool does NOT meet with the requirements
+          @msAgentEnvironment( speak(' That one is too small.') );
+          repeatInstruction(  )
+        }
+      }
+      else
+      {
+        // That tool does not exist!?
+        @msAgentEnvironment( speak(' I do not know that tool, please choose another one.') );
+        repeatInstruction(  )
+      }
+    }
+    else
+    {
+      // Did the performer select a tool which we didn't ask for?
+      if B( not T = RT ) then
+      {
+        @msAgentEnvironment( speak(' I did not tell you to select this tool.') );
+        repeatInstruction(  )
+      }
+      else
+      {
+        affirmative();
+        ActionPerformed( S, R, select, T, Com );
+        PerformStep( S )        
+      }
+    }
+  }
+  
+  // T = Tool
+  event( tooldeselected( T ), vraEnvironment ) <- true |
+  {
+    // If we are not finished with the recipe
+    if G( doAssist( yes ) ) then
+    {
+      // Get current step
+      //B( currentStep( S ) );
+    
+      if B( instruction( S, R, insert, T, I, A, Com ) or instructionPerformed( S, R, insert, T, I, A, Com ) ) then
+      {
+        @msAgentEnvironment( perform( 'surprised' ) );
+        @msAgentEnvironment( speak( 'Oh no! Now we have to start all over again!' ) );
+        @msAgentEnvironment( perform( 'sad' ) );
+        reset(  )
+      }
+    }
+    else
+    {
+      B( tool( T, Tn, Tc ) );
+      say( ['We do not need that ', Tn, ' anymore.'] )
+    }
+  }
+  
+  //event( ingredientselected( E ), vraEnvironment ) <- true |
+  //{
+  //  SetBelief( E )
+  //}
+  
+  event( speak( 'hello' ), vraEnvironment ) <- true |
+  {
+    hello(  )
+  }    
+  
+  event( speak( 'could you repeat that?' ), vraEnvironment ) <- true |
+  {
+    agree(  );
+    repeatInstruction(  )
+  }
+  
+  event( speak( 'how?' ), vraEnvironment ) <- true |
+  {
+    B( currentStep( S ) );
+  
+    B( instructionPerformed( S, R, A, T, Com ) );
+    
+    // Get a possible tool
+    @vraEnvironment( getToolFromAction( A ), Ta );
+    B( Ta = [ tool( Pt ) ] );
+    
+    // Get the name of this tool
+    B( tool( Pt, Tn, Tc ) );
+    
+    say( [ 'You could use a ', Tn ] )
+  }
+  
+  event( speak( 'how much?' ), vraEnvironment ) <- true |
+  {
+    // Get the current step
+    B( currentStep( S ) );
+    
+    // Get the instruction performed
+    B( instructionPerformed( S, R, insert, T, I, A, Com ) );
+    
+    // Get the Ingredient details
+    B( ingredient( I, In, C, U ) );
+    
+    say( [ '', A, ' ', U ] );
+    
+    @vraEnvironment( addSpeak( "What?" ) )
+  }
+  
+  event( speak( 'no, i am not' ), vraEnvironment ) <- true |
+  {
+    apologize(  );
+    
+    if B( instructionPerformed( S, R, insert, T, I, A, Com ) ) then
+      NotCapable( R )
+    else
+    {
+      if B( instructionPerformed( S, R, select, T, Com ) ) then
+        NotCapable( R )
+    }
+    ;
+    
+    repeatInstruction(  )
+  }
+  
+  event( speak( 'could you assist me, please?' ), vraEnvironment ) <- true |
+  {
+    agree(  );
+    if B( instructionPerformed( S, R, insert, T, I, A, Com ) ) then
+      NotCapable( R )
+    else
+    {
+      if B( instructionPerformed( S, R, select, T, Com ) ) then
+        NotCapable( R )
+    }
+    ;
+    
+    repeatInstruction(  )
+  }
+  
+  event( speak( 'what?' ), vraEnvironment ) <- true |
+  {
+    // Get the current step
+    B( currentStep( S ) );
+    
+    // Get the instruction performed
+    if B( instructionPerformed( S, R, insert, T, I, A, Com ) ) then
+    {   
+      // Get the Ingredient details
+      B( ingredient( I, In, C, U ) );
+
+      say( [ '', In ] )
+    }
+    else
+    {
+      B( instructionPerformed( S, R, select, T, Com ) );
+      
+      if B( required( T, C ) ) then
+        say( [ 'A Tool that can contain like ', C, ' ml.' ] )
+      else
+      {
+        B( tool( T, Tn, Tc ) );
+        say( [ 'A ', Tn ] )
+      }
+    }
+  }

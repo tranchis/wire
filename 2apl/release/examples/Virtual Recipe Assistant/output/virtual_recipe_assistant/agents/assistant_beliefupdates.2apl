@@ -1,0 +1,81 @@
+BeliefUpdates:
+  
+  
+  // To specify that the agent likes a recipe
+  { not dislike( R ) }  Like( R )                          { like( R ) }
+  // To specify that the agent dislikes a recipe
+  { not like( R ) }  Dislike( R )                          { dislike( R ) }
+  
+  
+  // To add a recipe
+  { true }  Recipe( X, Y )                                 { recipe( X, Y ) }
+  // To add an instruction to the belief base
+  { true }  Instruction( V, W, X, Y, Z )                   { instruction( V, W, X, Y, Z ) }
+  // To add an instruction to the belief base
+  { true }  Instruction( T, U, V, W, X, Y, Z )             { instruction( T, U, V, W, X, Y, Z ) }
+  // To add a requirement to the belief base
+  { true }  Required( X, Y )                               { required( X, Y ) }
+  // To add a tool to the belief base
+  { true }  Tool( X, Y, Z )                                { tool( X, Y, Z ) }
+  // To add an ingredient to the belief base
+  { true }  Ingredient( W, X, Y, Z )                       { ingredient( W, X, Y, Z ) }
+  
+  
+  // To select a recipe
+  { true }  SelectRecipe( R, Rt )                          { selectedRecipe( R, Rt ) }
+  // To deselect a recipe
+  { true } DeselectRecipe( R, Rt )                         { not selectedRecipe( R, Rt ) }
+  // To select a character
+  { true }  SelectCharacter( C )                           { character( C ) }
+  // To deselect a character
+  { true } DeselectCharacter( C )                          { not character( C ) }
+  
+  
+  // Adds 1 to the step deviation
+  { true }  AddStepDeviation( X )                          { not stepDeviation( X ), stepDeviation( X + 1 ) }
+  // Perform a step:
+  { true }  PerformStep( S )                               { not currentStep( S ), currentStep( S + 1 ) }
+  // Reset step to 0:
+  { currentStep( S ) and stepDeviation( D ) }  ResetStep( )  { not currentStep( S ), not stepDeviation( D ), currentStep( 0 ), stepDeviation( 0 ) }
+  
+  
+  // To replace a non-specified tool with a specified tool
+  { true }  Replace( X, Rec, Y, RT, Z, C, T, Am, Com )          { not required( RT, C ), not instruction( X, Rec, Y, RT, Z, Am, Com ), instruction( X, Rec, Y, T, Z, Am, Com ) }
+  // To replace a non-specified tool with a specified tool
+  { true }  Replace( X, Rec, Y, RT, C, T, Com )                 { not required( RT, C ), not instruction( X, Rec, Y, RT, Com ), instruction( X, Rec, Y, T, Com ) }
+  
+  
+  // To note that an instruction was performed
+  { true }  InstructionPerformed( S, U, V, W, X, Y, Z )       { not instruction( S, U, V, W, X, Y, Z ), instructionPerformed( S, U, V, W, X, Y, Z ) }
+  // To note that an instruction was performed
+  { true }  InstructionPerformed( S, V, W, X, Y )             { not instruction( S, V, W, X, Y ), instructionPerformed( S, V, W, X, Y ) }
+  // To note that an action was performed
+  { true }  ActionPerformed( S, V, W, X, Y )                  { actionPerformed( S, V, W, X, Y ) }
+  // To note that an action was performed
+  { true }  ActionPerformed( S, W, X, Y, Z, Am, Com )         { actionPerformed( S, W, X, Y, Z, Am, Com ) }
+  
+  
+  // To note that the assistent instructed to make a subrecipe
+  { true }  InstructedSubRecipe( R )                          { instructedSubRecipe( R ) }
+  // To clear this note
+  { true }  NotInstructedSubRecipe( R )                       { not instructedSubRecipe( R ) }
+  
+  
+  // To specify that the user is capable of making a (sub)recipe
+  { true }  Capable( R )                                      { capable( R ) }
+  // To specify that the user is not capable of making a (sub)recipe
+  { capable( R ) }  NotCapable( R )                           { not capable( R ) }
+  
+  
+  // To clear a note that an action was performed
+  { actionPerformed( S, W, X, Y, Z, Am, Com ) }    ClearActionPerformed( S, W, X, Y, Z, Am, Com )    { not actionPerformed( S, W, X, Y, Z, Am, Com ) }
+  // To clear a note that an action was performed
+  { actionPerformed( S, W, X, Y, Z ) }             ClearActionPerformed( S, W, X, Y, Z )             { not actionPerformed( S, W, X, Y, Z ) }
+  // To clear a note that an instruction was performed
+  { instructionPerformed( S, W, X, Y, Z ) }        ClearInstructionPerformed( S, W, X, Y, Z )        { not instructionPerformed( S, W, X, Y, Z ) }
+  // To clear a note that an instruction was performed
+  { instructionPerformed( S, U, V, W, X, Y, Z ) }  ClearInstructionPerformed( S, U, V, W, X, Y, Z )  { not instructionPerformed( S, U, V, W, X, Y, Z ) }  
+  // To clear an instruction
+  { instruction( S, W, X, Y, Z ) }                 ClearInstruction( S, W, X, Y, Z )                 { not instruction( S, W, X, Y, Z ) }  
+  // To clear an instruction
+  { instruction( S, U, V, W, X, Y, Z ) }           ClearInstruction( S, U, V, W, X, Y, Z )           { not instruction( S, U, V, W, X, Y, Z ) }  

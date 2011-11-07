@@ -1,0 +1,27 @@
+
+Plans:
+  {
+  @carriageexample( getAllEntities(), AE );
+  print(allEntities(AE));
+  @carriageexample( associateWith(robot1), AW );
+  print(associationResult(AW));
+  @carriageexample( getFreeEntities(), FE );
+  print(freeEntities(FE));
+  @carriageexample( getAllPercepts(), AP );
+  print(allPercepts(AP));
+
+
+  while B( false ) do {
+  
+    @carriageexample( wait(), _ )
+
+  };
+ 
+  @carriageexample( push(), X );
+  @carriageexample( push(), X );
+  @carriageexample( push(), X );
+  @carriageexample( push(), X );
+  @carriageexample( push(), X );
+
+  print("ALARM")
+  }
