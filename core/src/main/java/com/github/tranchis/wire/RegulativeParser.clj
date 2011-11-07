@@ -138,7 +138,7 @@
 (defn parse-file [st]
 	;		Serialiser<OperAModel>	s;
 	;		s = new Serialiser<OperAModel>(OMPackage.class, "opera", false);
-	;		om = s.deserialise(new File(DroolsEngine.class.getClassLoader().getResource(file).getFile().replace("%20", " ")));	
+	;		om = s.deserialise(new File(DroolsEngine.class.getCñlassLoader().getResource(file).getFile().replace("%20", " ")));	
 	(def s (net.sf.ictalive.metamodel.utils.Serialiser. net.sf.ictalive.operetta.OM.OMPackage "opera" false))
 	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/CalicoJack-1.0.0.opera")))
 	(def om (. s deserialise (java.io.File. st)))
