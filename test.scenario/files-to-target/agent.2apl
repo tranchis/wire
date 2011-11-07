@@ -1,0 +1,125 @@
+
+BeliefUpdates:
+  { next_to(R) and resource(R,X,Y) }				GetResource(R)				{ has_resource(R) }
+  { at(OLDPOS) }									UpdatePosition(POS)			{ not at(OLDPOS), at(POS) }
+  { true }											UpdatePosition(POS)			{ at(POS) }
+  { true }											RememberDimensions(X,Y)		{ dimensions(X,Y) }
+  { agent(N,OLDT,OLDX,OLDY,OLDC) }					RememberAgent(N,T,X,Y,C)	{ not agent(N,OLDT,OLDX,OLDY,OLDC), agent(N,T,X,Y,C) }
+  { true }											RememberAgent(N,T,X,Y,C)	{ agent(N,T,X,Y,C) }
+  { true }											RememberSpot(X,Y)			{ spot(X,Y) }
+  { has_resource(R) and at([X,Y]) and spot(X,Y) }	BuildStructure(X,Y)			{ structure_built(X,Y), not has_resource(R) }
+//  { finished() }									ReadoptGoals()				{ not finished() }
+  
+Beliefs:
+  resource_found :- resource(_,_,_).
+  prob(P) :- is(Q, rand), Q < P.
+  resource(R,X,Y) :- agent(R,'"ResourceAgent"',X,Y,C).
+  next_to(R) :- agent(R,_,_,_,true).
+  resource_taken :- has_resource(R).
+  find_spot :- spot(X,Y).
+  grow_structure :- structure_built(X,Y).
+
+Goals:
+  resource_found, resource_taken, find_spot, grow_structure
+  
+Plans:
+{
+  @rts(getAllPercepts(), AP);
+  print(allPercepts(AP));
+  processPercepts(AP)
+}
+  
+PG-rules:
+//  <- finished() |
+//  {
+//    adoptz(resource_found);
+//    adoptz(resource_taken);
+//    adoptz(find_spot);
+//    adoptz(grow_structure);
+//    ReadoptGoals()
+//  }
+
+  find_spot <- has_resource(R) and prob(0.40) |
+  {
+    gotoRandomPos()
+  }
+  
+  find_spot <- has_resource(R) and at([X,Y]) |
+  {
+    @rts(isSuitableSpot(X,Y), RES);
+    if B(RES = [yes]) then
+    {
+      RememberSpot(X,Y)
+    }
+  }
+
+  grow_structure <- has_resource(R) and spot(X,Y) and not at([X,Y]) |
+  {
+    goto(X,Y)
+  }
+  
+  grow_structure <- has_resource(R) and at([X,Y]) and spot(X,Y) |
+  {
+    @rts(buildStructure(X,Y), _);
+    BuildStructure(X,Y)
+  }
+  
+  resource_taken <- resource(R,X,Y) and next_to(R) |
+  {
+    takeResource(R)
+  }
+
+  resource_taken <- resource(R,X,Y) and not next_to(R) |
+  {
+    goto(X,Y)
+  }
+
+  at([X, Y]) <- true |
+  {
+    B(at(POS) and POS = [A,B]);
+    @rts(moveTowards(X, Y), R)
+  }
+  
+  resource_found <- prob(0.40) and not resource(R,X,Y) |
+  {
+    gotoRandomPos()
+  }
+    
+PC-rules:
+  takeResource(R) <- true |
+  {
+    @rts(obtainResource(R), RES);
+    if B(RES = [success]) then
+    {
+      GetResource(R)
+    }
+  }
+
+  event(percept([NAME,TYPE,X,Y,N]), _) <- not agent(NAME,TYPE,X,Y,N) |
+  {
+    RememberAgent(NAME, TYPE, X, Y, N)
+  }
+
+  event(location(POS), _) <- not at(POS) |
+  {
+    UpdatePosition(POS)
+  }
+
+  processPercepts([dimensions([XMAX,YMAX]) | REST]) <- true |
+  {
+    RememberDimensions(XMAX,YMAX)
+  }
+  
+  goto(X,Y) <- true |
+  {
+    if G(at(OLDPOS)) & B(not OLDPOS = [X,Y]) then { dropgoal(at(OLDPOS))};
+    [ if B(not at([X, Y])) then adopta(at([X, Y])) ]
+  }
+  
+  gotoRandomPos() <- dimensions(MaxX, MaxY) |
+  {
+    B(is( X, int( random( MaxX ) ) )); 
+    B(is( Y, int( random( MaxY ) ) ));
+    goto(X,Y)
+  }
+  

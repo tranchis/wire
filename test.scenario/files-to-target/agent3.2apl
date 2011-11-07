@@ -1,0 +1,8 @@
+Include:
+  agent.2apl
+  
+Plans:
+{
+  @rts(associateWith("Target3"), AW);
+  print(associationResult(AW))
+}
