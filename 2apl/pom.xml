@@ -18,31 +18,26 @@
      <dependency>
       <groupId>eis</groupId>
       <artifactId>lib</artifactId>
-      <scope>compile</scope>
       <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>tilab</groupId>
       <artifactId>jade</artifactId>
-      <scope>runtime</scope>
       <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>jiprolog</groupId>
       <artifactId>jiprolog</artifactId>
-      <scope>runtime</scope>
       <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>jiprolog</groupId>
       <artifactId>jipxsets</artifactId>
-      <scope>runtime</scope>
       <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>jiprolog</groupId>
       <artifactId>jipxsystem</artifactId>
-      <scope>runtime</scope>
       <version>1.0.0</version>
     </dependency>
   	<dependency>
