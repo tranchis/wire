@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Created-By: D.G.A. Mobach
-Class-Path: custom/eventbus.jar
-Main-Class: org.iids.aos.agents.monitor.MonitorizedChatter
