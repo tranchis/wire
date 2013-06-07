@@ -2,7 +2,7 @@ package eu.superhub.wp4.monitor.iface.impl;
 
 import eu.superhub.wp4.models.mobilitypolicy.PolicyModel;
 import eu.superhub.wp4.monitor.iface.Configuration;
-import eu.superhub.wp4.monitor.situationaldata.SituationalDataPusher;
+import eu.superhub.wp4.monitor.wp3servicedata.SituationalDataPusher;
 
 public class ConfigurationImpl implements Configuration {
     

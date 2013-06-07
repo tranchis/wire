@@ -17,7 +17,6 @@ import net.sf.ictalive.runtime.fact.FactFactory;
 import net.sf.ictalive.runtime.fact.Message;
 import net.sf.ictalive.runtime.fact.SendAct;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,44 +50,48 @@ public class MonitorTestCase extends TestCase {
      * Test that initializes the monitor and sends some elements into the
      * EventBus
      */
-    @Test
-    public void testApp() {
+    //@Test
+    public void testIntegration() {
 	MonitorManager		mm;
 	IMonitor		im;
 	Collection<IMonitor>	cim;
 	Iterator<IMonitor>	iim;
+        int n_events = 1;
+  
+        
+        
+            try {
+                mm = new MonitorManagerImpl();
+                im = mm.createInstance("tranchis.mooo.com", 61616);
+                mm.start(im);
 
-	try {
-	    mm = new MonitorManagerImpl();
-	    im = mm.createInstance("tranchis.mooo.com", 61616);
-	    mm.start(im);
+                cim = mm.listInstances();
+                iim = cim.iterator();
+                while (iim.hasNext()) {
+                    logger.info("IMonitor: " + iim.next());
+                }
+                assert(cim.size() == 1);
 
-	    cim = mm.listInstances();
-	    iim = cim.iterator();
-	    while (iim.hasNext()) {
-		logger.info("IMonitor: " + iim.next());
-	    }
-	    assert(cim.size() == 1);
-	    
-	    sendEvents(5);
-	    Thread.sleep(3000);
-	    mm.pause(im);
-	    mm.restart(im);
-	    sendEvents(5);
-	    Thread.sleep(5000);
-	    mm.stop(im);
-	    logger.info("" + mm.getCount(im));
-	    assert(mm.getCount(im) >= 10);
-	} catch (IOException e) {
-	    logger.error(e.getMessage());
-	    fail(e.getMessage());
-	} catch (EventBusConnectionException e) {
-	    logger.error(e.getMessage());
-	    fail(e.getMessage());
-	} catch (InterruptedException e) {
-	    logger.error(e.getMessage());
-	    fail(e.getMessage());
-	}
+                sendEvents(n_events);
+                Thread.sleep(3000);
+                mm.pause(im);
+                mm.restart(im);
+                sendEvents(n_events);
+                Thread.sleep(5000);
+                mm.stop(im);
+                logger.info("" + mm.getCount(im));
+                assert(mm.getCount(im) >= 10);
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+                fail(e.getMessage());
+            } catch (EventBusConnectionException e) {
+                logger.error(e.getMessage());
+                fail(e.getMessage());
+            } catch (InterruptedException e) {
+                logger.error(e.getMessage());
+                fail(e.getMessage());
+            }
+        
     }
     
     private void sendEvents(int total) throws EventBusConnectionException,
