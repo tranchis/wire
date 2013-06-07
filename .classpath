@@ -11,7 +11,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="eu/superhub/wp4/monitor/test/PolicyIntegrationTestCase.java" kind="src" output="target/test-classes" path="src/test/java">
+	<classpathentry excluding="eu/superhub/wp4/monitor/test/PolicyIntegrationTestCase.java|eu/superhub/wp4/monitor/test/MonitorTestCase.java|eu/superhub/wp4/monitor/test/SituationalIntegrationTest.java|eu/superhub/wp4/monitor/test/StressTest.java" kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
