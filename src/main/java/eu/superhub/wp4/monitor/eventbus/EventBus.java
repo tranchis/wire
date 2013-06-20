@@ -144,7 +144,7 @@ public class EventBus implements IEventBusTransportListener {
 		transport.initialise(code, host, port, this);
 
 		if (th == null) {
-			th = new ThOutput(transport, output, s);
+			th = new ThOutput(transport, output);
 			th.start();
 		}
 
