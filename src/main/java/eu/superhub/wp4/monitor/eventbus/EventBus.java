@@ -78,6 +78,16 @@ public class EventBus implements IEventBusTransportListener {
 		initialise("/topic/ExampleTopic");
 	}
 
+	public EventBus(String host, String port, EventBusListener ebl,
+			boolean bActiveMQ)
+			throws EventBusConnectionException {
+		this.host = host;
+		this.port = port;
+		this.ebl = ebl;
+		this.transport = new JMSEventBusTransport(bActiveMQ);
+		initialise("/topic/ExampleTopic");
+	}
+
 	public EventBus(String host, String port, IEventBusTransport transport)
 			throws EventBusConnectionException {
 		this.host = host;
