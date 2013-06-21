@@ -181,7 +181,7 @@ public class EventBus implements IEventBusTransportListener {
 	public void dispatch(String xml) throws IOException {
 		Event ev;
 
-		if (active) {
+		if (active && ebl.preFilter(xml)) {
 			ev = s.deserialiseAndFree(xml);
 			if (transport.isValid(ev.getTimestamp())) {
 				if (ebl != null) {

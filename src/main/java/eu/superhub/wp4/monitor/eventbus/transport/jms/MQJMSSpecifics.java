@@ -10,28 +10,28 @@ import com.sun.messaging.ConnectionConfiguration;
 import com.sun.messaging.ConnectionFactory;
 
 public class MQJMSSpecifics implements IJMSSpecifics {
-    private Session session;
+	private Session session;
 
-    public Session getSession(String host, String port) throws NamingException,
-	    JMSException {
-	ConnectionFactory factory;
-	Connection connection;
-	Session session;
+	public Session getSession(String host, String port) throws NamingException,
+			JMSException {
+		ConnectionFactory factory;
+		Connection connection;
+		Session session;
 
-	factory = new ConnectionFactory();
-	factory.setProperty(ConnectionConfiguration.imqBrokerHostName, host);
-	factory.setProperty(ConnectionConfiguration.imqBrokerHostPort, port);
+		factory = new ConnectionFactory();
+		factory.setProperty(ConnectionConfiguration.imqBrokerHostName, host);
+		factory.setProperty(ConnectionConfiguration.imqBrokerHostPort, port);
 
-	connection = factory.createConnection();
-	session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	connection.start();
+		connection = factory.createConnection();
+		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		connection.start();
 
-	this.session = session;
+		this.session = session;
 
-	return session;
-    }
+		return session;
+	}
 
-    public Topic getTopic(String code) throws NamingException, JMSException {
-	return session.createTopic(code.replace('/', '_'));
-    }
+	public Topic getTopic(String code) throws NamingException, JMSException {
+		return session.createTopic(code.replace('/', '_'));
+	}
 }
