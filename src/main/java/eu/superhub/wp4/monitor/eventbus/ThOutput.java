@@ -15,11 +15,11 @@ import eu.superhub.wp4.monitor.metamodel.utils.Serialiser;
 
 public class ThOutput extends Thread {
 	private IEventBusTransport transport;
-	private BlockingQueue<Event> output;
+	private BlockingQueue<String> output;
 	private Serialiser<Event> s;
 	private Logger logger;
 
-	public ThOutput(IEventBusTransport transport, BlockingQueue<Event> output) {
+	public ThOutput(IEventBusTransport transport, BlockingQueue<String> output) {
 		logger = LoggerFactory.getLogger(getClass());
 		this.transport = transport;
 		this.output = output;
@@ -28,23 +28,28 @@ public class ThOutput extends Thread {
 
 	public void run() {
 		String xml;
-		Event obj;
 
 		while (true) {
 			try {
-				obj = output.take();
-				obj.setTimestamp(Calendar.getInstance().getTime());
-				xml = s.serialise(obj);
+//				long t = System.currentTimeMillis();
+				xml = output.take();
 
 				transport.publish(xml);
+//				System.out.println("Remaining on queue: " + output.size() + ", last process: " + (System.currentTimeMillis() - t));
 				logger.debug("Remaining on queue: " + output.size());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
+	}
+
+	public void add(String xml) throws IOException {
+		output.add(xml);
+	}
+
+	public void add(Event ev) throws IOException {
+		ev.setTimestamp(Calendar.getInstance().getTime());
+		output.add(s.serialise(ev));
 	}
 }

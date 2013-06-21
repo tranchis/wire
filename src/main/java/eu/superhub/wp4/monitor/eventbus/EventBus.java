@@ -6,12 +6,6 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import eu.superhub.wp4.monitor.eventbus.exception.EventBusConnectionException;
-import eu.superhub.wp4.monitor.eventbus.transport.IEventBusTransport;
-import eu.superhub.wp4.monitor.eventbus.transport.IEventBusTransportListener;
-import eu.superhub.wp4.monitor.eventbus.transport.JMSEventBusTransport;
-import eu.superhub.wp4.monitor.metamodel.utils.Serialiser;
-
 import net.sf.ictalive.runtime.NormInstances.NormInstancesPackage;
 import net.sf.ictalive.runtime.event.Actor;
 import net.sf.ictalive.runtime.event.Event;
@@ -21,16 +15,23 @@ import net.sf.ictalive.runtime.event.Key;
 import net.sf.ictalive.runtime.fact.Content;
 import net.sf.ictalive.runtime.fact.Fact;
 import net.sf.ictalive.runtime.fact.FactFactory;
+import eu.superhub.wp4.monitor.eventbus.exception.EventBusConnectionException;
+import eu.superhub.wp4.monitor.eventbus.transport.IEventBusTransport;
+import eu.superhub.wp4.monitor.eventbus.transport.IEventBusTransportListener;
+import eu.superhub.wp4.monitor.eventbus.transport.JMSEventBusTransport;
+import eu.superhub.wp4.monitor.metamodel.utils.Serialiser;
 
 public class EventBus implements IEventBusTransportListener {
 	private String					host, port, name, url;
 	private EventBusListener		ebl;
 	private IEventBusTransport		transport;
-	private BlockingQueue<Event>	queue, output;
+	private BlockingQueue<Event>	queue;
+	private BlockingQueue<String>	output; // TODO: Move completely to ThOutput
 	private Serialiser<Event>		s;
 	private ThOutput				th;
 	private long					lastReceived;
 	private boolean					debug = false;
+	private boolean					active = true;
 
 	private final static String defaultHost = "localhost";
 	private final static String defaultPort = "7676";
@@ -134,7 +135,7 @@ public class EventBus implements IEventBusTransportListener {
 			queue = new LinkedBlockingQueue<Event>();
 		}
 		if (output == null) {
-			output = new LinkedBlockingQueue<Event>();
+			output = new LinkedBlockingQueue<String>();
 		}
 
 		if (s == null) {
@@ -156,25 +157,35 @@ public class EventBus implements IEventBusTransportListener {
 	}
 
 	public void publish(Event obj) throws IOException {
-		output.add(obj);
+		th.add(obj);
+	}
+
+	public void publish(String obj) throws IOException {
+		th.add(obj);
+	}
+	
+	public synchronized void activateSubscription(boolean active) {
+		this.active = active;
 	}
 
 	public void dispatch(String xml) throws IOException {
 		Event ev;
 
-		ev = s.deserialiseAndFree(xml);
-		if (transport.isValid(ev.getTimestamp())) {
-			if (ebl != null) {
-				ebl.onEvent(ev);
+		if (active) {
+			ev = s.deserialiseAndFree(xml);
+			if (transport.isValid(ev.getTimestamp())) {
+				if (ebl != null) {
+					ebl.onEvent(ev);
+				}
+				queue.add(ev);
 			}
-			queue.add(ev);
-		}
 
-		if (debug) {
-			System.out.println("Time since last received: "
-					+ (System.currentTimeMillis() - lastReceived) + "ms");
+			if (debug) {
+				System.out.println("Time since last received: "
+						+ (System.currentTimeMillis() - lastReceived) + "ms");
+			}
+			lastReceived = System.currentTimeMillis();
 		}
-		lastReceived = System.currentTimeMillis();
 	}
 
 	public synchronized void removeListener(EventBusListener ebl) {
@@ -217,5 +228,9 @@ public class EventBus implements IEventBusTransportListener {
 
 	public int available() {
 		return queue.size();
+	}
+	
+	public int waitingForDispatch() {
+		return output.size();
 	}
 }

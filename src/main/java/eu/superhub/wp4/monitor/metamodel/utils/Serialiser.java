@@ -252,22 +252,19 @@ public class Serialiser<T extends EObject> {
 	}
 
 	public String serialise(T t) throws IOException {
-		Resource resource;
-		File f;
-		FileInputStream fis;
-		byte[] by;
-		String res = null;
-		ResourceSet rs;
+		Resource		resource;
+		File			f;
+		FileInputStream	fis;
+		byte[]			by;
+		String			res = null;
+		ResourceSet		rs;
 
 		f = File.createTempFile("event", ".xml");
 
 		rs = getResourceSet();
-		// resource = t.eResource();
-		// resource.setURI(URI.createFileURI(f.getAbsolutePath()));
 		resource = getResource(rs, URI.createFileURI(f.getAbsolutePath()));
 		addCounter = 0;
 		addToResource((EObject) t, resource, true);
-		// System.out.println(resource.getContents());
 
 		try {
 			resource.save(null);
@@ -276,7 +273,7 @@ public class Serialiser<T extends EObject> {
 			fis.read(by);
 
 			res = new String(by);
-			// System.err.println(res);
+//			System.err.println(res);
 			fis.close();
 		} catch (IOException e) {
 			throw e;
@@ -284,18 +281,15 @@ public class Serialiser<T extends EObject> {
 			System.err
 					.println("DEBUG - Error in serialising the event, sending again");
 			serialise(t);
-
 		}
 
 		try {
-			resource.getContents().clear();
-			resource.unload();
+			resource.delete(null);
 		} catch (Exception e) {
 			System.err.println("DEBUG - Error in unloading the resource");
 			System.err.println(e.getMessage());
 		}
-		// rs.getResources().clear();
-
+		
 		return res;
 	}
 
