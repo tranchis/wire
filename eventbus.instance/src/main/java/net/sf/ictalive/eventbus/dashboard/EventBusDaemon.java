@@ -90,6 +90,7 @@ public class EventBusDaemon implements IComponent
 				}
 				else
 				{
+					f.getParentFile().mkdirs();
 					is = zf.getInputStream(ze);
 					f.delete();
 					f.createNewFile();
