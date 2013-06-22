@@ -179,7 +179,7 @@ public class EventBus implements IEventBusTransportListener {
 	}
 
 	public void dispatch(String xml) throws IOException {
-		Event ev;
+		Event	ev;
 
 		if (active && ebl.preFilter(xml)) {
 			ev = s.deserialiseAndFree(xml);
