@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Ignasi Gomez-Sebastia (igomez@lsi.upc.edu)
+Class-Path: custom/eventbus.jar
+Main-Class: org.iids.aos.agents.monitor.MonitorListener

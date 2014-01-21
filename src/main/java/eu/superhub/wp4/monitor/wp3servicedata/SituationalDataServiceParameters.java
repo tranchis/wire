@@ -16,12 +16,8 @@ public class SituationalDataServiceParameters {
        private String serviceTrafficSocialNetworkStateAbbr;
        private long serviceTrafficSocialNetworkLongitude;
        private long serviceTrafficSocialNetworkLatitude;
-       private String serviceStatementType;
        private BigInteger servicePredictedTrafficFromCellNetLongitude;
        private BigInteger servicePredictedTrafficFromCellNetLatitude;
-       private long SamplingPeriod;
-       private boolean isSituationalDataParameter;
-       private boolean isTrafficDataParameter;
        
        //Constructor assigns values by default for testing and backwards compatibility
        public SituationalDataServiceParameters(){
@@ -32,11 +28,6 @@ public class SituationalDataServiceParameters {
            serviceTrafficSocialNetworkLongitude = 0;
            servicePredictedTrafficFromCellNetLongitude = BigInteger.valueOf(45350000);
            servicePredictedTrafficFromCellNetLatitude = BigInteger.valueOf(9100000);
-           setServiceStatementType("TRAFFIC_FROM_SOCIAL_NETWORK");
-           setSamplingPeriod(10000);
-           setSituationalDataParameter(true);
-           setTrafficDataParameter(false);
-           
        }               
 
     /**
@@ -136,38 +127,6 @@ public class SituationalDataServiceParameters {
     public void setServicePredictedTrafficFromCellNetLongitude(BigInteger servicePredictedTrafficFromCellNetLongitude) {
         this.servicePredictedTrafficFromCellNetLongitude = servicePredictedTrafficFromCellNetLongitude;
     }
-
-	public String getServiceStatementType() {
-		return serviceStatementType;
-	}
-
-	public void setServiceStatementType(String serviceStatementType) {
-		this.serviceStatementType = serviceStatementType;
-	}
-
-	public long getSamplingPeriod() {
-		return SamplingPeriod;
-	}
-
-	public void setSamplingPeriod(long samplingPeriod) {
-		SamplingPeriod = samplingPeriod;
-	}
-
-	public boolean isSituationalDataParameter() {
-		return isSituationalDataParameter;
-	}
-
-	public void setSituationalDataParameter(boolean isSituationalDataParameter) {
-		this.isSituationalDataParameter = isSituationalDataParameter;
-	}
-
-	public boolean isTrafficDataParameter() {
-		return isTrafficDataParameter;
-	}
-
-	public void setTrafficDataParameter(boolean isTrafficDataParameter) {
-		this.isTrafficDataParameter = isTrafficDataParameter;
-	}
        
        
 }

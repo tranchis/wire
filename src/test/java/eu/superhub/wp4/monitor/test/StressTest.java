@@ -1,7 +1,21 @@
 package eu.superhub.wp4.monitor.test;
 
+import java.io.IOException;
+
 import junit.framework.TestCase;
+
+import eu.superhub.wp4.monitor.eventbus.EventBus;
 import eu.superhub.wp4.monitor.eventbus.exception.EventBusConnectionException;
+
+import net.sf.ictalive.operetta.OM.Atom;
+import net.sf.ictalive.operetta.OM.Constant;
+import net.sf.ictalive.operetta.OM.OMFactory;
+import net.sf.ictalive.runtime.event.Event;
+import net.sf.ictalive.runtime.event.EventFactory;
+import net.sf.ictalive.runtime.fact.Content;
+import net.sf.ictalive.runtime.fact.FactFactory;
+import net.sf.ictalive.runtime.fact.Message;
+import net.sf.ictalive.runtime.fact.SendAct;
 
 public class StressTest extends TestCase {
 
@@ -10,10 +24,6 @@ public class StressTest extends TestCase {
      * @throws EventBusConnectionException
      * @throws InterruptedException
      */
-	public static void testIntegration(){
-	
-	}
-	/*
     public static void testIntegration() throws EventBusConnectionException,
 	InterruptedException {
 	EventBus eb;
@@ -27,7 +37,7 @@ public class StressTest extends TestCase {
         
         
         
-        eb = new EventBus("tranchis.mooo.com", "61616");
+            eb = new EventBus("tranchis.mooo.com", "61616");
 
 
             for(int i=0;i<max_loops;i++) {
@@ -60,6 +70,5 @@ public class StressTest extends TestCase {
             }
         
     }
-    */
     
 }

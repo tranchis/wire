@@ -18,6 +18,13 @@ import org.apache.camel.ProducerTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.superhub.wp3.marshaller.GenericMarshaller;
+import eu.superhub.wp3.models.situationaldatamodel.interfaces.SituationalDataRequest;
+import eu.superhub.wp3.models.situationaldatamodel.interfaces.SituationalDataResponse;
+import eu.superhub.wp3.models.situationaldatamodel.interfaces.StatementType;
+import eu.superhub.wp3.models.situationaldatamodel.location.PointByCoordinates;
+import eu.superhub.wp3.models.situationaldatamodel.statements.unexpected.Accident;
+
 
 public class SituationalDataServiceWrapper 
 {
@@ -27,38 +34,43 @@ public class SituationalDataServiceWrapper
 		logger = LoggerFactory.getLogger(getClass());
 	}
 
-	public String enactServiceTrafficSocialNetwork(String city, String country, String stateName, long longitude, long latitude, String statementType) throws WP3DataClientException
+	public SituationalDataResponse enactServiceTrafficSocialNetwork(String city, String country, String stateName, long longitude, long latitude) throws WP3DataClientException
 	{
-//		Available types:
-//	    ABNORMAL_TRAFFIC("AbnormalTraffic"),
-//	    ACCIDENT("Accident"),
-//	    TRAFFIC_FROM_SOCIAL_NETWORK("TrafficFromSocialNetwork");		
 		try {       
 			logger.info("Message request for service WP3:SituationalData.getSituationalData. Enacting the service");                   
 			//Create the request from situational data model (dependency of this project) and fill it with the information received from the message
-			//An alternative would be to marshall the JSON inside the message (which should a Situational Data request by itself) 
-			//but this is less flexible to changes in the model
+			//An alternative would be to marshall the JSON inside the message (which should a Situational Data request by itself) but this is less flexible to changes in the model
 			logger.info("    · Creating situationaldata request");                        
-			String xmlRequest = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" +
-					"<SituationalDataRequest xmlns:location=\"http://superhub-project.eu/wp3/location\" xmlns=\"http://superhub-project.eu/wp3/interfaces\">" +
-					"<statementType>"+statementType+"</statementType>" +
-					"<observedLocation>" +
-						"<location:city>"+city+"</location:city>" +
-						"<location:country>"+country+"</location:country>" +
-						"<location:stateName>"+stateName+"</location:stateName>" +
-						"<location:latitudeE6>"+latitude+"</location:latitudeE6>" +
-						"<location:longitudeE6>"+longitude+"</location:longitudeE6>" +
-					"</observedLocation>" +
-					"</SituationalDataRequest>";			
-			//logger.info("Sending XML...:\n {}" + xmlRequest);
+			SituationalDataRequest req = new SituationalDataRequest();
+			PointByCoordinates loc = new PointByCoordinates();
+			loc.setCity(city);
+			loc.setCountry(country);
+			loc.setStateName(stateName);
+			loc.setLatitudeE6(longitude);
+			loc.setLongitudeE6(latitude);                        
+			req.setStatementType(StatementType.TRAFFIC_FROM_SOCIAL_NETWORK);
+			req.setObservedLocation(loc);
+
+			//And transform the object to XML
+			logger.info("    · Marshalling the situational data request");                        
+			GenericMarshaller<SituationalDataRequest> situationalDataRequestMarshaller = new GenericMarshaller<SituationalDataRequest>(SituationalDataRequest.class);                       
+			String xmlRequest = situationalDataRequestMarshaller.javaToXml(req);
+
+			logger.info("    · And the marshalled request is '" + xmlRequest + "'");  
+
+			logger.info("Sending XML...:\n {}" + xmlRequest);
 
 			//Send the message via jms
 			logger.info("    · Sending the message. Service enactment");                     
 			ProducerTemplate producerTemplate = JMSServicesUtils.getProducerTemplate();   
-			String response = (String)producerTemplate.requestBody("jms:wp3.SituationalData.getSituationalData",xmlRequest);
+			String response = (String)producerTemplate.requestBody("jms:wp3:situationaldata:getsituationaldata",xmlRequest);
 
-			//logger.info("    · And the service response is '" + response + "'");
-			return response;
+			logger.info("    · And the service response is '" + response + "'");                                                
+			//Unmarshall the response and print it. Monitor will use this information 
+			GenericMarshaller<SituationalDataResponse> situationalDataResponseMarshaller = new GenericMarshaller<SituationalDataResponse>(SituationalDataResponse.class, Accident.class);
+			SituationalDataResponse resp = situationalDataResponseMarshaller.xmlToJava(response.toString());
+			logger.info("    · And the unmrahsalled service response contains '" + resp.getStatement().size() + "' statements");  
+			return resp;
 
 		} catch (Exception e) {
 			e.printStackTrace();                        

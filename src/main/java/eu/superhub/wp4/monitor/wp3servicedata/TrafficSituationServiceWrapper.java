@@ -20,6 +20,10 @@ import org.apache.camel.ProducerTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.superhub.wp3.marshaller.GenericMarshaller;
+import eu.superhub.wp3.trafficsituation.fromcellnetdatamodel.request.Request;
+import eu.superhub.wp3.trafficsituation.fromcellnetdatamodel.response.Response;
+
 
 public class TrafficSituationServiceWrapper 
 {
@@ -27,37 +31,6 @@ public class TrafficSituationServiceWrapper
 	public TrafficSituationServiceWrapper()
 	{
 		logger = LoggerFactory.getLogger(getClass());
-	}
-	
-	public String enactServicePredictedTrafficFromCellNet(double longitude, double latitude) throws WP3DataClientException
-	{
-		try {       
-			logger.info("Message request for service WP3:TrafficSituation.getPredictedTrafficFromCellNet. Enacting the service");                 
-			ProducerTemplate producerTemplate = JMSServicesUtils.getProducerTemplate();                    
-
-			//Create the request from java classes generated from xsd
-			//An alternative would be to marshall the JSON inside the message (which should a Situational Data request by itself)
-			//but this is less flexible to changes in the model
-			System.out.println("    · Creating request");                        
-			
-			String xmlRequest = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" +
-					"<request xmlns=\"http://superhub-project.eu/wp3/traffic-situation/predicted-traffic-from-cellnet/request\">" +
-					"<pointCoordinates><latitude>"+latitude+"</latitude><longitude>"+longitude+"</longitude></pointCoordinates></request>";
-
-			//logger.info("    · And the marshalled request is '" + xmlRequest + "'");                                                  
-
-			//Send the message via jms
-			logger.info("    · Sending the message. Service enactment");                        
-			String responseString = (String)producerTemplate.requestBody("jms:wp3.TrafficSituation.getPredictedTrafficFromCellNet",xmlRequest);    
-
-			//logger.info("    · And the unmarshalled service response is '" + responseString + "'");
-			//return response;
-			return responseString;
-
-		} catch (Exception e) {
-			e.printStackTrace();                        
-			throw new WP3DataClientException("{\"result\": \"notAccepted\", \"comment\": \" Exception during service enactment '" + e.fillInStackTrace() + "' \"}");
-		}        
 	}
 
 	public String enactServicePredictedTrafficFromCellNet(BigInteger longitude, BigInteger latitude) throws WP3DataClientException
@@ -70,10 +43,12 @@ public class TrafficSituationServiceWrapper
 			//An alternative would be to marshall the JSON inside the message (which should a Situational Data request by itself)
 			//but this is less flexible to changes in the model
 			System.out.println("    · Creating request");                        
-			
-			String xmlRequest = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" +
-					"<request xmlns=\"http://superhub-project.eu/wp3/traffic-situation/predicted-traffic-from-cellnet/request\">" +
-					"<pointCoordinates><latitude>"+latitude+"</latitude><longitude>"+longitude+"</longitude></pointCoordinates></request>";
+			Request req = new Request(longitude, latitude);
+
+			//And transform the object to XML
+			logger.info("    · Marshalling the request");                        
+			GenericMarshaller<Request> requestMarshaller = new GenericMarshaller<Request>(Request.class);                       
+			String xmlRequest = requestMarshaller.javaToXml(req);
 
 			logger.info("    · And the marshalled request is '" + xmlRequest + "'");                                                  
 
@@ -81,7 +56,19 @@ public class TrafficSituationServiceWrapper
 			logger.info("    · Sending the message. Service enactment");                        
 			String responseString = (String)producerTemplate.requestBody("jms:wp3.TrafficSituation.getPredictedTrafficFromCellNet",xmlRequest);    
 
-			//logger.info("    · And the unmarshalled service response is '" + responseString + "'");
+			logger.info("    · And the unmarshalled service response is '" + responseString + "'");                                                
+
+			logger.info("    · Unmashalling the response");    
+			GenericMarshaller<Response> responseMarshaller = new GenericMarshaller<Response>(Response.class);                       
+			Response response = (Response) responseMarshaller.xmlToJava(responseString);
+			logger.info("    · And the marshalled service response is :  "
+					+"\n          · forecast '"+ response.getForecast()+"' "
+					+"\n          · start time '"+response.getValidityStartTime()+"' "
+					+"\n          · end time '"+response.getValidityEndTime()+"' "
+					+"\n          · traffic status '"+response.getTrafficStatus()+"' "
+					+"\n          · latitude '"+response.getLatitude()+"' "
+					+"\n          · longitude '"+response.getLongitude() + "'");
+
 			//return response;
 			return responseString;
 

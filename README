@@ -19,10 +19,7 @@ This component can be used as a JVM library by importing the jar bundles generat
 
 $ mvn clean install
 
-osgi:uninstall wp4-monitor
-osgi:install -s mvn:eu.superhub.wp4/wp4-monitor
-or
-install file:/home/igomez/SuperHub/repos/coderepo/coderepo/wp4/wp4-monitor/target/wp4-monitor-0.0.2d.jar (adapt path to your needs)
+osgi:install mvn:eu.superhub.wp4/monitor/0.0.2b
 
 USAGE
 =====
@@ -64,8 +61,3 @@ External:
   * Clojure 1.5
   * MongoDB/congomongo
   * JSON/Jackson/data.json
-
-Unitary tests depend on the availability of WP3 situational data service and vodafone's predicted traffic from cellnet service.
-To access this services open a ssh tunnel by running the following commands from console:
-	ssh -L61616:10.88.197.92:61616 SHGFIGuestWP4@83.224.72.251
-	0N56Bo4Vv04V36g92h2M2jI1627N8m
