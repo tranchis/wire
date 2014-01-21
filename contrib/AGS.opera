@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:net.sf.ictalive.operetta="http://ict-alive.sourceforge.net/operetta/OM/1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <net.sf.ictalive.operetta:OperAModel xmi:id="_IOtP4DAwEd-tC8iV4gHF2w" Name="New OperA Model">
+    <om xmi:type="net.sf.ictalive.operetta:OM" xmi:id="_IOtP4TAwEd-tC8iV4gHF2w">
+      <ss xmi:type="net.sf.ictalive.operetta:SS" xmi:id="_IOtP4jAwEd-tC8iV4gHF2w"/>
+      <is xmi:type="net.sf.ictalive.operetta:IS" xmi:id="_IOtP4zAwEd-tC8iV4gHF2w">
+        <scenes xmi:type="net.sf.ictalive.operetta:Scene" xmi:id="_IOtP5DAwEd-tC8iV4gHF2w" sceneID="start" description="Default start scene of an interaction structure" type="start"/>
+        <scenes xmi:type="net.sf.ictalive.operetta:Scene" xmi:id="_IOtP5TAwEd-tC8iV4gHF2w" sceneID="end" description="Default end scene of an interaction structure" type="end"/>
+      </is>
+      <ns xmi:type="net.sf.ictalive.operetta:NS" xmi:id="_IOtP5jAwEd-tC8iV4gHF2w"/>
+      <cs xmi:type="net.sf.ictalive.operetta:CS" xmi:id="_IOtP5zAwEd-tC8iV4gHF2w">
+        <ontology xmi:type="net.sf.ictalive.operetta:Ontology" xmi:id="_IOtP6DAwEd-tC8iV4gHF2w" ontologyID="Default"/>
+      </cs>
+    </om>
+  </net.sf.ictalive.operetta:OperAModel>
+  <notation:Diagram xmi:id="_IO6EMDAwEd-tC8iV4gHF2w" type="SS" element="_IOtP4jAwEd-tC8iV4gHF2w" name="SS_Diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_IO6rQDAwEd-tC8iV4gHF2w"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_IPAx4DAwEd-tC8iV4gHF2w" type="IS" element="_IOtP4zAwEd-tC8iV4gHF2w" name="IS_Diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_IPAx4TAwEd-tC8iV4gHF2w"/>
+  </notation:Diagram>
+</xmi:XMI>
