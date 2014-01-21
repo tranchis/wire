@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<package xmlns="http://drools.org/drools-5.0" name="net.sf.ictalive.monitoring.domain">
+    <rule name="Obtain_suitable_content_providers_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id1909">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Petition_received" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="P" field-name="p0"/>
+                    <field-binding identifier="U" field-name="p1"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id9001">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="isContentPetition" evaluator="=="/>
+                            </field-constraint>
+                            <field-constraint field-name="p0">
+<variable-restriction identifier="P" evaluator="=="/>
+                            </field-constraint>
+                        </pattern>
+                        <pattern object-type="Proposition" identifier="id293">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="SlotInstance" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="Initial_slot" field-name="p0"/>
+                            <field-binding identifier="Now" field-name="p1"/>
+                        </pattern>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Obtain_suitable_content_providers_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Obtain_suitable_content_providers_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Obtain_suitable_content_providers_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Obtain_suitable_content_providers_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Obtain_suitable_content_providers_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Obtain_suitable_content_providers_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id3937">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 10" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Obtain_suitable_content_providers_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_obtain_suitable_content_providers_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id1301">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id6910">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Obtain_suitable_content_providers" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_obtain_suitable_content_providers_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_obtain_suitable_content_providers_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_obtain_suitable_content_providers_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_obtain_suitable_content_providers_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id3883">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Delivered" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="m" field-name="p0"/>
+                    <field-binding identifier="I" field-name="p1"/>
+                    <field-binding identifier="U" field-name="p2"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id5293">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="isApologiesMessage" evaluator="=="/>
+                    </field-constraint>
+                    <field-constraint field-name="p0">
+                        <variable-restriction identifier="m" evaluator="=="/>
+                    </field-constraint>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_obtain_suitable_content_providers_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_obtain_suitable_content_providers_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_obtain_suitable_content_providers_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_suitable_content_provider_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id7345">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Content_provider_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="ITM" field-name="p0"/>
+                    <field-binding identifier="SB" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id459">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_suitable_content_provider_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_suitable_content_provider_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_suitable_content_provider_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_suitable_content_provider_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_suitable_content_provider_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_suitable_content_provider_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id7236">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 10" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_suitable_content_provider_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_suitable_content_provider_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id8709">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id7599">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Provide_suitable_content_provider" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_provide_suitable_content_provider_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_suitable_content_provider_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_provide_suitable_content_provider_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_suitable_content_provider_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id155">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Reputation_lowered" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="ITM" field-name="p0"/>
+                <field-binding identifier="SB" field-name="p1"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_provide_suitable_content_provider_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_suitable_content_provider_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_provide_suitable_content_provider_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Personalize_petition_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id5308">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Personalization_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="ITM" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id6450">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Personalize_petition_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Personalize_petition_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Personalize_petition_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Personalize_petition_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Personalize_petition_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Personalize_petition_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id514">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 10" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Personalize_petition_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Personalize_petition_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id955">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id5477">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Personalize_petition" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Personalize_petition_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Personalize_petition_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Personalize_petition_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Personalize_petition_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id6603">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="enacted_behaviour" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="repair_behaviour" field-name="p0"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Personalize_petition_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Personalize_petition_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Personalize_petition_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_environmental_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id7995">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Environmental_content_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="EC" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id3869">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_environmental_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_environmental_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_environmental_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_environmental_content_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_environmental_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_environmental_content_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id2811">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 15" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_environmental_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_environmental_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id8118">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id3448">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Provide_environmental_content" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_provide_environmental_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_environmental_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_provide_environmental_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_environmental_content_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id9217">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="enacted_behaviour" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="repair_behaviour" field-name="p0"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id3284">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="is_warning_message" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="m" field-name="p0"/>
+                        </pattern>
+                        <or-conditional-element>
+                            <and-conditional-element>
+<pattern object-type="Proposition" identifier="id6133">
+    <field-constraint field-name="predicate">
+        <literal-restriction value="message_exchange" evaluator="=="/>
+    </field-constraint>
+    <field-binding identifier="EC" field-name="p0"/>
+    <field-binding identifier="CA" field-name="p1"/>
+    <field-constraint field-name="p2">
+        <variable-restriction identifier="m" evaluator="=="/>
+    </field-constraint>
+</pattern>
+<pattern object-type="Proposition" identifier="id1330">
+    <field-constraint field-name="predicate">
+        <literal-restriction value="message_exchange" evaluator="=="/>
+    </field-constraint>
+    <field-constraint field-name="p0">
+        <variable-restriction identifier="EC" evaluator="=="/>
+    </field-constraint>
+    <field-binding identifier="ITM" field-name="p1"/>
+    <field-constraint field-name="p2">
+        <variable-restriction identifier="m" evaluator="=="/>
+    </field-constraint>
+</pattern>
+                            </and-conditional-element>
+                        </or-conditional-element>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_provide_environmental_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_provide_environmental_content_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_provide_environmental_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_legal_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id5061">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id7280">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="legal_info_provided" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="LB" field-name="p0"/>
+                            <field-binding identifier="CA" field-name="p1"/>
+                        </pattern>
+                        <pattern object-type="Proposition" identifier="id5542">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="content_provided" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="CP" field-name="p0"/>
+                            <field-constraint field-name="p1">
+<variable-restriction identifier="CA" evaluator="=="/>
+                            </field-constraint>
+                        </pattern>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Filter_content_legal_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_legal_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Filter_content_legal_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_legal_info_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Filter_content_legal_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_legal_info_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id1116">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 20" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Filter_content_legal_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_legal_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id3179">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id9374">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Filter_content_legal_info" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Filter_content_legal_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_legal_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Filter_content_legal_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_legal_info_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id3800">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="enacted_behaviour" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="repair_behaviour" field-name="p0"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id8551">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="is_warning_message" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="m" field-name="p0"/>
+                        </pattern>
+                        <pattern object-type="Proposition" identifier="id9230">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="message_exchange" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="CA" field-name="p0"/>
+                            <field-binding identifier="ITM" field-name="p1"/>
+                            <field-constraint field-name="p2">
+<variable-restriction identifier="m" evaluator="=="/>
+                            </field-constraint>
+                        </pattern>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Filter_content_legal_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_legal_info_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Filter_content_legal_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_environmental_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id6331">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id6511">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="environmental_info_provided" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="EC" field-name="p0"/>
+                            <field-binding identifier="CA" field-name="p1"/>
+                        </pattern>
+                        <pattern object-type="Proposition" identifier="id8877">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="content_provided" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="CP" field-name="p0"/>
+                            <field-constraint field-name="p1">
+<variable-restriction identifier="CA" evaluator="=="/>
+                            </field-constraint>
+                        </pattern>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Filter_content_environmental_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_environmental_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Filter_content_environmental_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_environmental_info_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Filter_content_environmental_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Filter_content_environmental_info_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id5485">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 20" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Filter_content_environmental_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_environmental_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id5886">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id619">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Filter_content_environmental_info" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Filter_content_environmental_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_environmental_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Filter_content_environmental_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_environmental_info_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id9512">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="is_warning_message" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="m" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id8281">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="message_exchange" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="ITM" field-name="p1"/>
+                    <field-constraint field-name="p2">
+                        <variable-restriction identifier="m" evaluator="=="/>
+                    </field-constraint>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Filter_content_environmental_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Filter_content_environmental_info_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Filter_content_environmental_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Compose_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id4287">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id2449">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="Filtered_content_legal_info" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="CA" field-name="p0"/>
+                            <field-binding identifier="CP" field-name="p1"/>
+                            <field-binding identifier="LB" field-name="p2"/>
+                        </pattern>
+                        <pattern object-type="Proposition" identifier="id98">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="Filtered_content_environmental_info" evaluator="=="/>
+                            </field-constraint>
+                            <field-constraint field-name="p0">
+<variable-restriction identifier="CA" evaluator="=="/>
+                            </field-constraint>
+                            <field-constraint field-name="p1">
+<variable-restriction identifier="CP" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="EC" field-name="p2"/>
+                        </pattern>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Compose_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Compose_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Compose_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Compose_content_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Compose_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Compose_content_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id141">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 25" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Compose_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Compose_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id1219">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id6920">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Compose_content" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Compose_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Compose_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Compose_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Compose_content_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id7677">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Content_composed" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="CA" field-name="p0"/>
+                <field-binding identifier="CP" field-name="p1"/>
+                <field-binding identifier="List" field-name="p2"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Compose_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Compose_content_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Compose_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_composed_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id5241">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <or-conditional-element>
+                    <pattern object-type="Proposition" identifier="id7948">
+                        <field-constraint field-name="predicate">
+                            <literal-restriction value="Content_composed" evaluator="=="/>
+                        </field-constraint>
+                        <field-binding identifier="CA" field-name="p0"/>
+                        <field-binding identifier="CP" field-name="p1"/>
+                        <field-binding identifier="Map" field-name="p2"/>
+                    </pattern>
+                    <pattern object-type="Proposition" identifier="id3696">
+                        <field-constraint field-name="predicate">
+                            <literal-restriction value="Content_composed" evaluator="=="/>
+                        </field-constraint>
+                        <field-constraint field-name="p0">
+                            <variable-restriction identifier="CA" evaluator="=="/>
+                        </field-constraint>
+                        <field-constraint field-name="p1">
+                            <variable-restriction identifier="CP" evaluator="=="/>
+                        </field-constraint>
+                        <field-binding identifier="List" field-name="p2"/>
+                    </pattern>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_composed_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_composed_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_composed_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_composed_content_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_composed_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_composed_content_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id9130">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 30" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_composed_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_composed_content_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id860">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id6302">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Provide_composed_content" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_composed_content_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_composed_content_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Provide_composed_content_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_composed_content_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id7476">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Content_provided" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="CA" field-name="p0"/>
+                <field-binding identifier="CP" field-name="p1"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_composed_content_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_composed_content_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id5815">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 35" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_composed_content_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Wait_interests_requirements_context_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id6062">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Personalization_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="ITM" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id8604">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Wait_interests_requirements_context_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Wait_interests_requirements_context_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Wait_interests_requirements_context_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Wait_interests_requirements_context_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id7858">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Environmental_content_provided" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="EC" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id7827">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="User_InterestsRequirements_provided" evaluator="=="/>
+                    </field-constraint>
+                    <field-constraint field-name="p0">
+                        <variable-restriction identifier="CA" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="UM" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Wait_interests_requirements_context_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Wait_interests_requirements_context_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id3984">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 5" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Wait_interests_requirements_context_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_legal_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id9607">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id3663">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Legal_Info_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="LB" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_legal_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_legal_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_legal_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_legal_info_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_legal_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_legal_info_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id2415">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 15" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_legal_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_legal_info_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id6246">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id7332">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Provide_legal_info" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_legal_info_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_legal_info_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Provide_legal_info_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_legal_info_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id7197">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="enacted_behaviour" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="repair_behaviour" field-name="p0"/>
+                </pattern>
+                <or-conditional-element>
+                    <and-conditional-element>
+                        <pattern object-type="Proposition" identifier="id8275">
+                            <field-constraint field-name="predicate">
+<literal-restriction value="is_warning_message" evaluator="=="/>
+                            </field-constraint>
+                            <field-binding identifier="m" field-name="p0"/>
+                        </pattern>
+                        <or-conditional-element>
+                            <and-conditional-element>
+<pattern object-type="Proposition" identifier="id9827">
+    <field-constraint field-name="predicate">
+        <literal-restriction value="is_warning_message" evaluator="=="/>
+    </field-constraint>
+    <field-constraint field-name="p0">
+        <variable-restriction identifier="m" evaluator="=="/>
+    </field-constraint>
+</pattern>
+<pattern object-type="Proposition" identifier="id663">
+    <field-constraint field-name="predicate">
+        <literal-restriction value="message_exchange" evaluator="=="/>
+    </field-constraint>
+    <field-binding identifier="LB" field-name="p0"/>
+    <field-binding identifier="ITM" field-name="p1"/>
+    <field-constraint field-name="p2">
+        <variable-restriction identifier="m" evaluator="=="/>
+    </field-constraint>
+</pattern>
+                            </and-conditional-element>
+                        </or-conditional-element>
+                    </and-conditional-element>
+                </or-conditional-element>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_legal_info_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_legal_info_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Provide_legal_info_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Wait_interests_requirements_context_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id4679">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id7242">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Wait_interests_requirements_context" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Wait_interests_requirements_context_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Wait_interests_requirements_context_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Wait_interests_requirements_context_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Wait_interests_requirements_context_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id3589">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="enacted_behaviour" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="repair_behaviour" field-name="p0"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Wait_interests_requirements_context_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Wait_interests_requirements_context_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Wait_interests_requirements_context_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_user_InterestsRequirements_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id1390">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id6744">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="User_InterestsRequirements_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="CA" field-name="p0"/>
+                    <field-binding identifier="LB" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_user_InterestsRequirements_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_user_InterestsRequirements_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_user_InterestsRequirements_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_user_InterestsRequirements_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Provide_user_InterestsRequirements_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Provide_user_InterestsRequirements_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id8552">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 5" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Provide_user_InterestsRequirements_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_user_InterestsRequirements_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id9886">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id8872">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Provide_user_InterestsRequirements" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_user_InterestsRequirements_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_user_InterestsRequirements_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Provide_user_InterestsRequirements_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_user_InterestsRequirements_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id6882">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Empty_User_InterestsRequirements_provided" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="CA" field-name="p0"/>
+                <field-binding identifier="UM" field-name="p1"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Provide_user_InterestsRequirements_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Provide_user_InterestsRequirements_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Provide_user_InterestsRequirements_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Change_user_data_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id4250">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="User_data_change_requirement" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="ITM" field-name="p0"/>
+                    <field-binding identifier="UM" field-name="p1"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id8599">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="SlotInstance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Initial_slot" field-name="p0"/>
+                    <field-binding identifier="Now" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Change_user_data_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Change_user_data_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Change_user_data_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Change_user_data_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Change_user_data_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Change_user_data_deadline">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id9694">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="Now &gt; Initial_slot + 5" evaluator="=="/>
+                </field-constraint>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Change_user_data_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Change_user_data_activation">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id8526">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance_violated" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="I" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id1962">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="Norm_instance" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="Change_user_data" field-name="p0"/>
+                    <field-binding identifier=" I" field-name="p1"/>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Change_user_data_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Change_user_data_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Change_user_data_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Change_user_data_expiration">
+        <lhs>
+            <and-conditional-element>
+                <pattern object-type="Proposition" identifier="id9204">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="isApologiesMessage" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="m" field-name="p0"/>
+                </pattern>
+                <pattern object-type="Proposition" identifier="id2490">
+                    <field-constraint field-name="predicate">
+                        <literal-restriction value="message_exchange" evaluator="=="/>
+                    </field-constraint>
+                    <field-binding identifier="UM" field-name="p0"/>
+                    <field-binding identifier="U" field-name="p1"/>
+                    <field-constraint field-name="p2">
+                        <variable-restriction identifier="m" evaluator="=="/>
+                    </field-constraint>
+                </pattern>
+            </and-conditional-element>
+        </lhs>
+        <rhs>System.out.println(&quot;Violate_Change_user_data_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Violate_Change_user_data_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Violate_Change_user_data_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_I_activation">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_I_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_I_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_I_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_I_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_I_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_I_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_I_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_MIM_activation">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_MIM_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_MIM_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_MIM_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_MIM_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_MIM_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_MIM_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_MIM_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_ITM_activation">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_ITM_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_ITM_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_ITM_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_ITM_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_ITM_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_ITM_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_ITM_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_CA_activation">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_CA_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_CA_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_CA_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_CA_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_CA_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_change_keep_user_data_CA_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_change_keep_user_data_CA_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_personal_data_UM_activation">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_personal_data_UM_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_personal_data_UM_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_personal_data_UM_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_personal_data_UM_expiration">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_personal_data_UM_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_personal_data_UM_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_personal_data_UM_deadline fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_data_unless_required_UM_activation">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id473">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="User_InterestsRequirements_requirement" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="CA" field-name="p0"/>
+                <field-binding identifier="LB" field-name="p1"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Not_provide_user_data_unless_required_UM_activation fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_data_unless_required_UM_maintenance">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_data_unless_required_UM_maintenance fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_data_unless_required_UM_expiration">
+        <lhs>
+            <pattern object-type="Proposition" identifier="id2525">
+                <field-constraint field-name="predicate">
+                    <literal-restriction value="User_InterestsRequirements_provided" evaluator="=="/>
+                </field-constraint>
+                <field-binding identifier="CA" field-name="p0"/>
+                <field-binding identifier="UM" field-name="p1"/>
+            </pattern>
+        </lhs>
+        <rhs>System.out.println(&quot;Not_provide_user_data_unless_required_UM_expiration fired!&quot;);</rhs>
+    </rule>
+    <rule name="Not_provide_user_data_unless_required_UM_deadline">
+        <lhs/>
+        <rhs>System.out.println(&quot;Not_provide_user_data_unless_required_UM_deadline fired!&quot;);</rhs>
+    </rule>
+</package>

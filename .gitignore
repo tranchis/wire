@@ -1,0 +1,6 @@
+bin/
+*.class
+target/
+.plugins/
+*.index
+.metadata/
