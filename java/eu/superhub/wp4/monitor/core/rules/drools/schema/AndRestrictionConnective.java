@@ -40,37 +40,37 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = { "orRestrictionConnective" })
 public class AndRestrictionConnective extends RestrictionElementType {
 
-    @XmlElement(name = "or-restriction-connective")
-    protected List<OrRestrictionConnective> orRestrictionConnective;
+	@XmlElement(name = "or-restriction-connective")
+	protected List<OrRestrictionConnective> orRestrictionConnective;
 
-    /**
-     * Gets the value of the orRestrictionConnective property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the orRestrictionConnective property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getOrRestrictionConnective().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link OrRestrictionConnective }
-     * 
-     * 
-     */
-    public List<OrRestrictionConnective> getOrRestrictionConnective() {
-	if (orRestrictionConnective == null) {
-	    orRestrictionConnective = new ArrayList<OrRestrictionConnective>();
+	/**
+	 * Gets the value of the orRestrictionConnective property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the orRestrictionConnective property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getOrRestrictionConnective().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link OrRestrictionConnective }
+	 * 
+	 * 
+	 */
+	public List<OrRestrictionConnective> getOrRestrictionConnective() {
+		if (orRestrictionConnective == null) {
+			orRestrictionConnective = new ArrayList<OrRestrictionConnective>();
+		}
+		return this.orRestrictionConnective;
 	}
-	return this.orRestrictionConnective;
-    }
 
 }

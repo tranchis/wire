@@ -29,72 +29,72 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  */
 public class XMIResourceImpl extends XMLResourceImpl implements XMIResource {
 
-    String version = XMIResource.VERSION_VALUE;
+	String version = XMIResource.VERSION_VALUE;
 
-    /**
-     * Constructor for XMIResourceImpl.
-     */
-    public XMIResourceImpl() {
-	super();
-    }
-
-    /**
-     * Constructor for XMIResourceImpl.
-     * 
-     * @param uri
-     */
-    public XMIResourceImpl(URI uri) {
-	super(uri);
-    }
-
-    @Override
-    protected XMLHelper createXMLHelper() {
-	return new XMIHelperImpl(this);
-    }
-
-    @Override
-    protected XMLLoad createXMLLoad() {
-	return new XMILoadImpl(createXMLHelper());
-    }
-
-    @Override
-    protected XMLSave createXMLSave() {
-	return new XMISaveImpl(createXMLHelper());
-    }
-
-    @Override
-    protected boolean useIDs() {
-	return true;
-    }
-
-    public String getXMIVersion() {
-	return version;
-    }
-
-    public void setXMIVersion(String version) {
-	this.version = version;
-    }
-
-    public String getXMINamespace() {
-	if (version.equals(XMIResource.VERSION_VALUE)) {
-	    return XMIResource.XMI_URI;
-	} else {
-	    return XMIResource.XMI_NAMESPACE_PREFIX + version;
-	}
-    }
-
-    public void setXMINamespace(String namespace) {
-	if (namespace.startsWith(XMIResource.XMI_NAMESPACE_PREFIX)) {
-	    this.setXMIVersion(namespace
-		    .substring(XMIResource.XMI_NAMESPACE_PREFIX.length()));
-	} else if (namespace.equals(XMIResource.XMI_URI)) {
-	    this.setXMIVersion(XMIResource.VERSION_VALUE);
-	} else {
-	    // TODO translation
-	    throw new IllegalArgumentException("Invalid XMI namespace: '"
-		    + namespace + "'");
+	/**
+	 * Constructor for XMIResourceImpl.
+	 */
+	public XMIResourceImpl() {
+		super();
 	}
 
-    }
+	/**
+	 * Constructor for XMIResourceImpl.
+	 * 
+	 * @param uri
+	 */
+	public XMIResourceImpl(URI uri) {
+		super(uri);
+	}
+
+	@Override
+	protected XMLHelper createXMLHelper() {
+		return new XMIHelperImpl(this);
+	}
+
+	@Override
+	protected XMLLoad createXMLLoad() {
+		return new XMILoadImpl(createXMLHelper());
+	}
+
+	@Override
+	protected XMLSave createXMLSave() {
+		return new XMISaveImpl(createXMLHelper());
+	}
+
+	@Override
+	protected boolean useIDs() {
+		return true;
+	}
+
+	public String getXMIVersion() {
+		return version;
+	}
+
+	public void setXMIVersion(String version) {
+		this.version = version;
+	}
+
+	public String getXMINamespace() {
+		if (version.equals(XMIResource.VERSION_VALUE)) {
+			return XMIResource.XMI_URI;
+		} else {
+			return XMIResource.XMI_NAMESPACE_PREFIX + version;
+		}
+	}
+
+	public void setXMINamespace(String namespace) {
+		if (namespace.startsWith(XMIResource.XMI_NAMESPACE_PREFIX)) {
+			this.setXMIVersion(namespace
+					.substring(XMIResource.XMI_NAMESPACE_PREFIX.length()));
+		} else if (namespace.equals(XMIResource.XMI_URI)) {
+			this.setXMIVersion(XMIResource.VERSION_VALUE);
+		} else {
+			// TODO translation
+			throw new IllegalArgumentException("Invalid XMI namespace: '"
+					+ namespace + "'");
+		}
+
+	}
 
 }

@@ -7,8 +7,7 @@ public class MonitorException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MonitorException(String message)
-	{
+	public MonitorException(String message) {
 		super(message);
 	}
 }

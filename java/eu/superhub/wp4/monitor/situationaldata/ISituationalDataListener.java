@@ -4,6 +4,6 @@ import eu.superhub.wp3.models.situationaldatamodel.statements.Statement;
 
 public interface ISituationalDataListener {
 
-    void push(Statement s);
+	void push(Statement s);
 
 }

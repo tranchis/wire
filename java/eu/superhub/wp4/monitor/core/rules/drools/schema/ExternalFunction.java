@@ -39,51 +39,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "external-function")
 public class ExternalFunction {
 
-    @XmlAttribute(required = true)
-    protected String evaluator;
-    @XmlAttribute(required = true)
-    protected String expression;
+	@XmlAttribute(required = true)
+	protected String evaluator;
+	@XmlAttribute(required = true)
+	protected String expression;
 
-    /**
-     * Gets the value of the evaluator property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getEvaluator() {
-	return evaluator;
-    }
+	/**
+	 * Gets the value of the evaluator property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getEvaluator() {
+		return evaluator;
+	}
 
-    /**
-     * Sets the value of the evaluator property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setEvaluator(String value) {
-	this.evaluator = value;
-    }
+	/**
+	 * Sets the value of the evaluator property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setEvaluator(String value) {
+		this.evaluator = value;
+	}
 
-    /**
-     * Gets the value of the expression property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getExpression() {
-	return expression;
-    }
+	/**
+	 * Gets the value of the expression property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExpression() {
+		return expression;
+	}
 
-    /**
-     * Sets the value of the expression property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setExpression(String value) {
-	this.expression = value;
-    }
+	/**
+	 * Sets the value of the expression property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExpression(String value) {
+		this.expression = value;
+	}
 
 }

@@ -22,16 +22,16 @@ import eu.superhub.wp4.monitor.eventbus.transport.JMSEventBusTransport;
 import eu.superhub.wp4.monitor.metamodel.utils.Serialiser;
 
 public class EventBus implements IEventBusTransportListener {
-	private String					host, port, name, url;
-	private EventBusListener		ebl;
-	private IEventBusTransport		transport;
-	private BlockingQueue<Event>	queue;
-	private BlockingQueue<String>	output; // TODO: Move completely to ThOutput
-	private Serialiser<Event>		s;
-	private ThOutput				th;
-	private long					lastReceived;
-	private boolean					debug = false;
-	private boolean					active = true;
+	private String host, port, name, url;
+	private EventBusListener ebl;
+	private IEventBusTransport transport;
+	private BlockingQueue<Event> queue;
+	private BlockingQueue<String> output; // TODO: Move completely to ThOutput
+	private Serialiser<Event> s;
+	private ThOutput th;
+	private long lastReceived;
+	private boolean debug = false;
+	private boolean active = true;
 
 	private final static String defaultHost = "localhost";
 	private final static String defaultPort = "7676";
@@ -79,8 +79,7 @@ public class EventBus implements IEventBusTransportListener {
 	}
 
 	public EventBus(String host, String port, EventBusListener ebl,
-			boolean bActiveMQ)
-			throws EventBusConnectionException {
+			boolean bActiveMQ) throws EventBusConnectionException {
 		this.host = host;
 		this.port = port;
 		this.ebl = ebl;
@@ -173,13 +172,13 @@ public class EventBus implements IEventBusTransportListener {
 	public void publish(String obj) throws IOException {
 		th.add(obj);
 	}
-	
+
 	public synchronized void activateSubscription(boolean active) {
 		this.active = active;
 	}
 
 	public void dispatch(String xml) throws IOException {
-		Event	ev;
+		Event ev;
 
 		if (active && ebl.preFilter(xml)) {
 			ev = s.deserialiseAndFree(xml);
@@ -210,10 +209,10 @@ public class EventBus implements IEventBusTransportListener {
 	}
 
 	public synchronized void publish(Fact f) throws IOException {
-		Event	ev;
-		Content	c;
-		Key		k;
-		Actor	actor;
+		Event ev;
+		Content c;
+		Key k;
+		Actor actor;
 
 		if (name == null || url == null) {
 			throw new UnsupportedOperationException(
@@ -239,7 +238,7 @@ public class EventBus implements IEventBusTransportListener {
 	public int available() {
 		return queue.size();
 	}
-	
+
 	public int waitingForDispatch() {
 		return output.size();
 	}

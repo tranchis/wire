@@ -4,6 +4,6 @@ import java.io.IOException;
 
 public interface IEventBusTransportListener {
 
-    void dispatch(String xml) throws IOException;
+	void dispatch(String xml) throws IOException;
 
 }

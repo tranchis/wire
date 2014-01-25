@@ -15,85 +15,85 @@ import eu.superhub.wp4.monitor.iface.Configuration;
 import eu.superhub.wp4.monitor.iface.MonitorManager;
 
 public class MonitorManagerImpl implements MonitorManager {
-    
-    private Var			vCreateMonitor, vListInstances, vStartMonitor, vPauseMonitor,
-    				vRestartMonitor, vStopMonitor, vGetCount, vPushStatement;
-    private List<IMonitor>	lm;
 
-    public MonitorManagerImpl() throws IOException {
-	long millis = System.currentTimeMillis();
-	// TODO: convert Monitor.clj into gen-class
-	RT.loadResourceScript("eu/superhub/wp4/monitor/core/Monitor.clj");
-	System.out.println("time: " + (System.currentTimeMillis() - millis));
-	vCreateMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"create-monitor");
-	vListInstances = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"list-instances");
-	vStartMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"start-monitor");
-	vPauseMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"pause-monitor");
-	vStopMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"stop-monitor");
-	vRestartMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"restart-monitor");
-	vGetCount = RT.var("eu.superhub.wp4.monitor.core.Monitor",
-		"get-count");
-	vPushStatement = RT.var("eu.superhub.wp4.monitor.core.Monitor", "push-statement");
-	lm = new ArrayList<IMonitor>();
-    }
+	private Var vCreateMonitor, vListInstances, vStartMonitor, vPauseMonitor,
+			vRestartMonitor, vStopMonitor, vGetCount, vPushStatement;
+	private List<IMonitor> lm;
 
-    public IMonitor createInstance(String host, int port) {
-	IMonitor m;
+	public MonitorManagerImpl() throws IOException {
+		long millis = System.currentTimeMillis();
+		// TODO: convert Monitor.clj into gen-class
+		RT.loadResourceScript("eu/superhub/wp4/monitor/core/Monitor.clj");
+		System.out.println("time: " + (System.currentTimeMillis() - millis));
+		vCreateMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"create-monitor");
+		vListInstances = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"list-instances");
+		vStartMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"start-monitor");
+		vPauseMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"pause-monitor");
+		vStopMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"stop-monitor");
+		vRestartMonitor = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"restart-monitor");
+		vGetCount = RT.var("eu.superhub.wp4.monitor.core.Monitor", "get-count");
+		vPushStatement = RT.var("eu.superhub.wp4.monitor.core.Monitor",
+				"push-statement");
+		lm = new ArrayList<IMonitor>();
+	}
 
-	m = (IMonitor) vCreateMonitor.invoke(host, port);
-	lm.add(m);
-	m.getRuleEngine();
+	public IMonitor createInstance(String host, int port) {
+		IMonitor m;
 
-	return m;
-    }
+		m = (IMonitor) vCreateMonitor.invoke(host, port);
+		lm.add(m);
+		m.getRuleEngine();
 
-    @SuppressWarnings("unchecked")
-    public Collection<IMonitor> listInstances() {
-	return (Collection<IMonitor>) vListInstances.invoke();
-    }
+		return m;
+	}
 
-    public void updateConfiguration(IMonitor m, Configuration c) {
-	// TODO: Complete this
-//	m.updateRules(convertIntoPackage(c.getPolicyModel());
-    }
+	@SuppressWarnings("unchecked")
+	public Collection<IMonitor> listInstances() {
+		return (Collection<IMonitor>) vListInstances.invoke();
+	}
 
-    public void start(IMonitor m) {
-	vStartMonitor.invoke(m);
-    }
+	public void updateConfiguration(IMonitor m, Configuration c) {
+		// TODO: Complete this
+		// m.updateRules(convertIntoPackage(c.getPolicyModel());
+	}
 
-    public void pause(IMonitor m) {
-	vPauseMonitor.invoke(m);
-    }
+	public void start(IMonitor m) {
+		vStartMonitor.invoke(m);
+	}
 
-    public void restart(IMonitor m) {
-	vRestartMonitor.invoke(m);
-    }
+	public void pause(IMonitor m) {
+		vPauseMonitor.invoke(m);
+	}
 
-    public void stop(IMonitor m) {
-	vStopMonitor.invoke(m);
-    }
+	public void restart(IMonitor m) {
+		vRestartMonitor.invoke(m);
+	}
 
-    public int getCount(IMonitor im) {
-	return ((Long) vGetCount.invoke(im)).intValue();
-    }
+	public void stop(IMonitor m) {
+		vStopMonitor.invoke(m);
+	}
 
-    public void push(Statement s) {
-	vPushStatement.invoke(s);
-    }
+	public int getCount(IMonitor im) {
+		return ((Long) vGetCount.invoke(im)).intValue();
+	}
 
-    @Override
-    public BlockingQueue<Metric> getMetricInputStream(IMonitor m) {
-	throw new UnsupportedOperationException();
-    }
+	public void push(Statement s) {
+		vPushStatement.invoke(s);
+	}
 
-    @Override
-    public BlockingQueue<Object> getSituationInputStream(IMonitor m) {
-	throw new UnsupportedOperationException();
-    }
+	@Override
+	public BlockingQueue<Metric> getMetricInputStream(IMonitor m) {
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public BlockingQueue<Object> getSituationInputStream(IMonitor m) {
+		throw new UnsupportedOperationException();
+	}
 }

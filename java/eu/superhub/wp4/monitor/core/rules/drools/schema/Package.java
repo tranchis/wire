@@ -50,67 +50,67 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "package")
 public class Package {
 
-    @XmlElements({
-	    @XmlElement(name = "importfunction", type = Importfunction.class),
-	    @XmlElement(name = "query", type = Query.class),
-	    @XmlElement(name = "global", type = Global.class),
-	    @XmlElement(name = "function", type = Function.class),
-	    @XmlElement(name = "rule", type = Rule.class),
-	    @XmlElement(name = "import", type = Import.class) })
-    protected List<Object> importOrImportfunctionOrGlobal;
-    @XmlAttribute(required = true)
-    protected String name;
+	@XmlElements({
+			@XmlElement(name = "importfunction", type = Importfunction.class),
+			@XmlElement(name = "query", type = Query.class),
+			@XmlElement(name = "global", type = Global.class),
+			@XmlElement(name = "function", type = Function.class),
+			@XmlElement(name = "rule", type = Rule.class),
+			@XmlElement(name = "import", type = Import.class) })
+	protected List<Object> importOrImportfunctionOrGlobal;
+	@XmlAttribute(required = true)
+	protected String name;
 
-    /**
-     * Gets the value of the importOrImportfunctionOrGlobal property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the importOrImportfunctionOrGlobal property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getImportOrImportfunctionOrGlobal().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Importfunction } {@link Query } {@link Global } {@link Function }
-     * {@link Rule } {@link Import }
-     * 
-     * 
-     */
-    public List<Object> getImportOrImportfunctionOrGlobal() {
-	if (importOrImportfunctionOrGlobal == null) {
-	    importOrImportfunctionOrGlobal = new ArrayList<Object>();
+	/**
+	 * Gets the value of the importOrImportfunctionOrGlobal property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the importOrImportfunctionOrGlobal property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getImportOrImportfunctionOrGlobal().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Importfunction } {@link Query } {@link Global } {@link Function }
+	 * {@link Rule } {@link Import }
+	 * 
+	 * 
+	 */
+	public List<Object> getImportOrImportfunctionOrGlobal() {
+		if (importOrImportfunctionOrGlobal == null) {
+			importOrImportfunctionOrGlobal = new ArrayList<Object>();
+		}
+		return this.importOrImportfunctionOrGlobal;
 	}
-	return this.importOrImportfunctionOrGlobal;
-    }
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getName() {
-	return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setName(String value) {
-	this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

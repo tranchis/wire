@@ -9,26 +9,26 @@ import javax.naming.NamingException;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class ActiveMQJMSSpecifics implements IJMSSpecifics {
-    private Session session;
+	private Session session;
 
-    public Session getSession(String host, String port) throws NamingException,
-	    JMSException {
-	ActiveMQConnectionFactory factory;
-	Connection connection;
-	Session session;
+	public Session getSession(String host, String port) throws NamingException,
+			JMSException {
+		ActiveMQConnectionFactory factory;
+		Connection connection;
+		Session session;
 
-	factory = new ActiveMQConnectionFactory("tcp://" + host + ":" + port);
+		factory = new ActiveMQConnectionFactory("tcp://" + host + ":" + port);
 
-	connection = factory.createConnection();
-	session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	connection.start();
+		connection = factory.createConnection();
+		session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		connection.start();
 
-	this.session = session;
+		this.session = session;
 
-	return session;
-    }
+		return session;
+	}
 
-    public Topic getTopic(String code) throws NamingException, JMSException {
-	return session.createTopic(code.replace('/', '_'));
-    }
+	public Topic getTopic(String code) throws NamingException, JMSException {
+		return session.createTopic(code.replace('/', '_'));
+	}
 }

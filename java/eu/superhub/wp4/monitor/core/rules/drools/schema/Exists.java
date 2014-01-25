@@ -48,48 +48,48 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "exists")
 public class Exists {
 
-    @XmlElementRefs({
-	    @XmlElementRef(name = "accumulate", namespace = "http://drools.org/drools-5.0", type = Accumulate.class),
-	    @XmlElementRef(name = "collect", namespace = "http://drools.org/drools-5.0", type = Collect.class),
-	    @XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
-	    @XmlElementRef(name = "pattern", namespace = "http://drools.org/drools-5.0", type = Pattern.class),
-	    @XmlElementRef(name = "forall", namespace = "http://drools.org/drools-5.0", type = Forall.class) })
-    protected List<Object> patternOrAbstractConditionalElementOrAccumulate;
+	@XmlElementRefs({
+			@XmlElementRef(name = "accumulate", namespace = "http://drools.org/drools-5.0", type = Accumulate.class),
+			@XmlElementRef(name = "collect", namespace = "http://drools.org/drools-5.0", type = Collect.class),
+			@XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
+			@XmlElementRef(name = "pattern", namespace = "http://drools.org/drools-5.0", type = Pattern.class),
+			@XmlElementRef(name = "forall", namespace = "http://drools.org/drools-5.0", type = Forall.class) })
+	protected List<Object> patternOrAbstractConditionalElementOrAccumulate;
 
-    /**
-     * Gets the value of the patternOrAbstractConditionalElementOrAccumulate
-     * property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the
-     * patternOrAbstractConditionalElementOrAccumulate property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getPatternOrAbstractConditionalElementOrAccumulate().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link OrConditionalElement }{@code >}
-     * {@link Accumulate } {@link Collect } {@link JAXBElement }{@code <}
-     * {@link ConditionalElementType }{@code >} {@link Pattern }
-     * {@link JAXBElement }{@code <}{@link AndConditionalElement }{@code >}
-     * {@link Forall }
-     * 
-     * 
-     */
-    public List<Object> getPatternOrAbstractConditionalElementOrAccumulate() {
-	if (patternOrAbstractConditionalElementOrAccumulate == null) {
-	    patternOrAbstractConditionalElementOrAccumulate = new ArrayList<Object>();
+	/**
+	 * Gets the value of the patternOrAbstractConditionalElementOrAccumulate
+	 * property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the
+	 * patternOrAbstractConditionalElementOrAccumulate property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getPatternOrAbstractConditionalElementOrAccumulate().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link OrConditionalElement }{@code >}
+	 * {@link Accumulate } {@link Collect } {@link JAXBElement }{@code <}
+	 * {@link ConditionalElementType }{@code >} {@link Pattern }
+	 * {@link JAXBElement }{@code <}{@link AndConditionalElement }{@code >}
+	 * {@link Forall }
+	 * 
+	 * 
+	 */
+	public List<Object> getPatternOrAbstractConditionalElementOrAccumulate() {
+		if (patternOrAbstractConditionalElementOrAccumulate == null) {
+			patternOrAbstractConditionalElementOrAccumulate = new ArrayList<Object>();
+		}
+		return this.patternOrAbstractConditionalElementOrAccumulate;
 	}
-	return this.patternOrAbstractConditionalElementOrAccumulate;
-    }
 
 }

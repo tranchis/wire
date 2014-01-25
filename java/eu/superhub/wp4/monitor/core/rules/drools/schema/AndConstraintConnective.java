@@ -40,37 +40,37 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = { "orConstraintConnective" })
 public class AndConstraintConnective extends ConstraintConnectiveElementType {
 
-    @XmlElement(name = "or-constraint-connective")
-    protected List<OrConstraintConnective> orConstraintConnective;
+	@XmlElement(name = "or-constraint-connective")
+	protected List<OrConstraintConnective> orConstraintConnective;
 
-    /**
-     * Gets the value of the orConstraintConnective property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the orConstraintConnective property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getOrConstraintConnective().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link OrConstraintConnective }
-     * 
-     * 
-     */
-    public List<OrConstraintConnective> getOrConstraintConnective() {
-	if (orConstraintConnective == null) {
-	    orConstraintConnective = new ArrayList<OrConstraintConnective>();
+	/**
+	 * Gets the value of the orConstraintConnective property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the orConstraintConnective property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getOrConstraintConnective().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link OrConstraintConnective }
+	 * 
+	 * 
+	 */
+	public List<OrConstraintConnective> getOrConstraintConnective() {
+		if (orConstraintConnective == null) {
+			orConstraintConnective = new ArrayList<OrConstraintConnective>();
+		}
+		return this.orConstraintConnective;
 	}
-	return this.orConstraintConnective;
-    }
 
 }

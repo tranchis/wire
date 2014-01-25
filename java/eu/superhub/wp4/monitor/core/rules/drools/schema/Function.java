@@ -46,105 +46,105 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "function")
 public class Function {
 
-    protected List<Parameter> parameter;
-    @XmlElement(required = true)
-    protected String body;
-    @XmlAttribute(required = true)
-    protected String name;
-    @XmlAttribute(name = "return-type", required = true)
-    protected String returnType;
+	protected List<Parameter> parameter;
+	@XmlElement(required = true)
+	protected String body;
+	@XmlAttribute(required = true)
+	protected String name;
+	@XmlAttribute(name = "return-type", required = true)
+	protected String returnType;
 
-    /**
-     * Gets the value of the parameter property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the parameter property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getParameter().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Parameter }
-     * 
-     * 
-     */
-    public List<Parameter> getParameter() {
-	if (parameter == null) {
-	    parameter = new ArrayList<Parameter>();
+	/**
+	 * Gets the value of the parameter property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the parameter property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getParameter().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link Parameter }
+	 * 
+	 * 
+	 */
+	public List<Parameter> getParameter() {
+		if (parameter == null) {
+			parameter = new ArrayList<Parameter>();
+		}
+		return this.parameter;
 	}
-	return this.parameter;
-    }
 
-    /**
-     * Gets the value of the body property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getBody() {
-	return body;
-    }
+	/**
+	 * Gets the value of the body property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getBody() {
+		return body;
+	}
 
-    /**
-     * Sets the value of the body property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setBody(String value) {
-	this.body = value;
-    }
+	/**
+	 * Sets the value of the body property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setBody(String value) {
+		this.body = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getName() {
-	return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setName(String value) {
-	this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the returnType property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getReturnType() {
-	return returnType;
-    }
+	/**
+	 * Gets the value of the returnType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getReturnType() {
+		return returnType;
+	}
 
-    /**
-     * Sets the value of the returnType property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setReturnType(String value) {
-	this.returnType = value;
-    }
+	/**
+	 * Sets the value of the returnType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setReturnType(String value) {
+		this.returnType = value;
+	}
 
 }

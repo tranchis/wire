@@ -29,149 +29,149 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.w3c.dom.Element;
 
 public class XMISaveImpl extends XMLSaveImpl {
-    protected boolean xmiType;
-    protected String xmiURI = XMIResource.XMI_URI;
+	protected boolean xmiType;
+	protected String xmiURI = XMIResource.XMI_URI;
 
-    protected static final String XMI_ID_NS = XMIResource.XMI_NS + ":"
-	    + XMIResource.XMI_ID; // xmi:id
-    protected static final String XMI_TAG_NS = XMIResource.XMI_NS + ":"
-	    + XMIResource.XMI_TAG_NAME; // xmi:XMI
-    protected static final String XMI_TYPE_NS = XMIResource.XMI_NS + ":"
-	    + XMLResource.TYPE; // xmi:type
-    protected static final String XMI_VER_NS = XMIResource.XMI_NS + ":"
-	    + XMIResource.VERSION_NAME; // xmi:version
-    protected static final String XMI_XMLNS = XMLResource.XML_NS + ":"
-	    + XMIResource.XMI_NS; // xmlns:xmi
+	protected static final String XMI_ID_NS = XMIResource.XMI_NS + ":"
+			+ XMIResource.XMI_ID; // xmi:id
+	protected static final String XMI_TAG_NS = XMIResource.XMI_NS + ":"
+			+ XMIResource.XMI_TAG_NAME; // xmi:XMI
+	protected static final String XMI_TYPE_NS = XMIResource.XMI_NS + ":"
+			+ XMLResource.TYPE; // xmi:type
+	protected static final String XMI_VER_NS = XMIResource.XMI_NS + ":"
+			+ XMIResource.VERSION_NAME; // xmi:version
+	protected static final String XMI_XMLNS = XMLResource.XML_NS + ":"
+			+ XMIResource.XMI_NS; // xmlns:xmi
 
-    public XMISaveImpl(XMLHelper helper) {
-	super(helper);
-	idAttributeName = XMI_ID_NS;
-	idAttributeNS = XMIResource.XMI_NS;
-    }
+	public XMISaveImpl(XMLHelper helper) {
+		super(helper);
+		idAttributeName = XMI_ID_NS;
+		idAttributeNS = XMIResource.XMI_NS;
+	}
 
-    public XMISaveImpl(Map<?, ?> options, XMLHelper helper, String encoding) {
-	this(options, helper, encoding, "1.0");
-    }
+	public XMISaveImpl(Map<?, ?> options, XMLHelper helper, String encoding) {
+		this(options, helper, encoding, "1.0");
+	}
 
-    public XMISaveImpl(Map<?, ?> options, XMLHelper helper, String encoding,
-	    String xmlVersion) {
-	super(options, helper, encoding, xmlVersion);
-	this.xmiType = Boolean.TRUE.equals(options
-		.get(XMIResource.OPTION_USE_XMI_TYPE));
-	idAttributeName = XMI_ID_NS;
-	idAttributeNS = XMIResource.XMI_NS;
-    }
+	public XMISaveImpl(Map<?, ?> options, XMLHelper helper, String encoding,
+			String xmlVersion) {
+		super(options, helper, encoding, xmlVersion);
+		this.xmiType = Boolean.TRUE.equals(options
+				.get(XMIResource.OPTION_USE_XMI_TYPE));
+		idAttributeName = XMI_ID_NS;
+		idAttributeNS = XMIResource.XMI_NS;
+	}
 
-    @Override
-    protected void init(XMLResource resource, Map<?, ?> options) {
-	super.init(resource, options);
-	this.xmiType = Boolean.TRUE.equals(options
-		.get(XMIResource.OPTION_USE_XMI_TYPE));
-	xmiURI = xmlResource == null ? XMIResource.XMI_URI
-		: ((XMIResource) xmlResource).getXMINamespace();
-	helper.getPrefixToNamespaceMap().put(XMIResource.XMI_NS, xmiURI);
-    }
+	@Override
+	protected void init(XMLResource resource, Map<?, ?> options) {
+		super.init(resource, options);
+		this.xmiType = Boolean.TRUE.equals(options
+				.get(XMIResource.OPTION_USE_XMI_TYPE));
+		xmiURI = xmlResource == null ? XMIResource.XMI_URI
+				: ((XMIResource) xmlResource).getXMINamespace();
+		helper.getPrefixToNamespaceMap().put(XMIResource.XMI_NS, xmiURI);
+	}
 
-    @Override
-    public Object writeTopObjects(List<? extends EObject> contents) {
-	if (!toDOM) {
-	    doc.startElement(XMI_TAG_NS);
-	    Object mark = doc.mark();
+	@Override
+	public Object writeTopObjects(List<? extends EObject> contents) {
+		if (!toDOM) {
+			doc.startElement(XMI_TAG_NS);
+			Object mark = doc.mark();
 
-	    for (int i = 0, size = contents.size(); i < size; i++) {
-		EObject top = contents.get(i);
-		// System.outprintln(top);
-		EClass eClass = top.eClass();
-		if (extendedMetaData == null
-			|| featureTable.getDocumentRoot(eClass.getEPackage()) != eClass) {
-		    String name = helper.getQName(eClass);
-		    doc.startElement(name);
-		    root = top;
-		    saveElementID(top);
+			for (int i = 0, size = contents.size(); i < size; i++) {
+				EObject top = contents.get(i);
+				// System.outprintln(top);
+				EClass eClass = top.eClass();
+				if (extendedMetaData == null
+						|| featureTable.getDocumentRoot(eClass.getEPackage()) != eClass) {
+					String name = helper.getQName(eClass);
+					doc.startElement(name);
+					root = top;
+					saveElementID(top);
+				} else {
+					doc.startElement(null);
+					root = top;
+					saveFeatures(top);
+					doc.addLine();
+				}
+			}
+
+			doc.endElement();
+			return mark;
 		} else {
-		    doc.startElement(null);
-		    root = top;
-		    saveFeatures(top);
-		    doc.addLine();
+			// create dummy documentElement
+			currentNode = document.createElementNS(XMIResource.XMI_URI,
+					XMI_TAG_NS);
+			document.appendChild(currentNode);
+			if (!contents.isEmpty()) {
+				EObject top = contents.get(0);
+				EClass eClass = top.eClass();
+				helper.populateNameInfo(nameInfo, eClass);
+				if (extendedMetaData == null
+						|| extendedMetaData.getDocumentRoot(eClass
+								.getEPackage()) != eClass) {
+					currentNode = currentNode.appendChild(document
+							.createElementNS(nameInfo.getNamespaceURI(),
+									nameInfo.getQualifiedName()));
+					handler.recordValues(currentNode, null, null, top);
+					root = top;
+					saveElementID(top);
+				} else {
+					root = top;
+					currentNode = currentNode.appendChild(document
+							.createElementNS(nameInfo.getNamespaceURI(),
+									nameInfo.getQualifiedName()));
+					saveFeatures(top);
+				}
+			}
+			return null;
 		}
-	    }
+	}
 
-	    doc.endElement();
-	    return mark;
-	} else {
-	    // create dummy documentElement
-	    currentNode = document.createElementNS(XMIResource.XMI_URI,
-		    XMI_TAG_NS);
-	    document.appendChild(currentNode);
-	    if (!contents.isEmpty()) {
-		EObject top = contents.get(0);
-		EClass eClass = top.eClass();
-		helper.populateNameInfo(nameInfo, eClass);
-		if (extendedMetaData == null
-			|| extendedMetaData.getDocumentRoot(eClass
-				.getEPackage()) != eClass) {
-		    currentNode = currentNode.appendChild(document
-			    .createElementNS(nameInfo.getNamespaceURI(),
-				    nameInfo.getQualifiedName()));
-		    handler.recordValues(currentNode, null, null, top);
-		    root = top;
-		    saveElementID(top);
+	@Override
+	protected void saveTypeAttribute(EClass eClass) {
+		if (xmiType) {
+			if (!toDOM) {
+				doc.addAttribute(XMI_TYPE_NS, helper.getQName(eClass));
+			} else {
+				((Element) currentNode).setAttributeNS(XMIResource.XMI_URI,
+						XMI_TYPE_NS, helper.getQName(eClass));
+			}
 		} else {
-		    root = top;
-		    currentNode = currentNode.appendChild(document
-			    .createElementNS(nameInfo.getNamespaceURI(),
-				    nameInfo.getQualifiedName()));
-		    saveFeatures(top);
+			super.saveTypeAttribute(eClass);
 		}
-	    }
-	    return null;
 	}
-    }
 
-    @Override
-    protected void saveTypeAttribute(EClass eClass) {
-	if (xmiType) {
-	    if (!toDOM) {
-		doc.addAttribute(XMI_TYPE_NS, helper.getQName(eClass));
-	    } else {
-		((Element) currentNode).setAttributeNS(XMIResource.XMI_URI,
-			XMI_TYPE_NS, helper.getQName(eClass));
-	    }
-	} else {
-	    super.saveTypeAttribute(eClass);
+	@Override
+	public void addNamespaceDeclarations() {
+		String version = XMIResource.VERSION_VALUE;
+		if (xmlResource != null) {
+			version = ((XMIResource) xmlResource).getXMIVersion();
+		}
+		if (!toDOM) {
+			doc.addAttribute(XMI_VER_NS, version);
+			doc.addAttribute(XMI_XMLNS, xmiURI);
+		} else {
+			((Element) currentNode).setAttributeNS(XMIResource.XMI_URI,
+					XMI_VER_NS, version);
+			((Element) currentNode).setAttributeNS(ExtendedMetaData.XMLNS_URI,
+					XMI_XMLNS, xmiURI);
+		}
+		super.addNamespaceDeclarations();
 	}
-    }
 
-    @Override
-    public void addNamespaceDeclarations() {
-	String version = XMIResource.VERSION_VALUE;
-	if (xmlResource != null) {
-	    version = ((XMIResource) xmlResource).getXMIVersion();
+	@Override
+	public boolean isDuplicateURI(String nsURI) {
+		return xmiURI.equals(nsURI);
 	}
-	if (!toDOM) {
-	    doc.addAttribute(XMI_VER_NS, version);
-	    doc.addAttribute(XMI_XMLNS, xmiURI);
-	} else {
-	    ((Element) currentNode).setAttributeNS(XMIResource.XMI_URI,
-		    XMI_VER_NS, version);
-	    ((Element) currentNode).setAttributeNS(ExtendedMetaData.XMLNS_URI,
-		    XMI_XMLNS, xmiURI);
-	}
-	super.addNamespaceDeclarations();
-    }
 
-    @Override
-    public boolean isDuplicateURI(String nsURI) {
-	return xmiURI.equals(nsURI);
-    }
-
-    @Override
-    protected void saveFeatureMapElementReference(EObject o, EReference f) {
-	if (extendedMetaData == null
-		|| extendedMetaData.getFeatureKind(f) != ExtendedMetaData.ELEMENT_FEATURE) {
-	    saveHref(o, f);
-	} else {
-	    saveElementReference(o, f);
+	@Override
+	protected void saveFeatureMapElementReference(EObject o, EReference f) {
+		if (extendedMetaData == null
+				|| extendedMetaData.getFeatureKind(f) != ExtendedMetaData.ELEMENT_FEATURE) {
+			saveHref(o, f);
+		} else {
+			saveElementReference(o, f);
+		}
 	}
-    }
 }

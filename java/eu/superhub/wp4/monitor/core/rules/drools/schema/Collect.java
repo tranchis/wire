@@ -39,27 +39,27 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "collect")
 public class Collect {
 
-    protected Pattern pattern;
+	protected Pattern pattern;
 
-    /**
-     * Gets the value of the pattern property.
-     * 
-     * @return possible object is {@link Pattern }
-     * 
-     */
-    public Pattern getPattern() {
-	return pattern;
-    }
+	/**
+	 * Gets the value of the pattern property.
+	 * 
+	 * @return possible object is {@link Pattern }
+	 * 
+	 */
+	public Pattern getPattern() {
+		return pattern;
+	}
 
-    /**
-     * Sets the value of the pattern property.
-     * 
-     * @param value
-     *            allowed object is {@link Pattern }
-     * 
-     */
-    public void setPattern(Pattern value) {
-	this.pattern = value;
-    }
+	/**
+	 * Sets the value of the pattern property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Pattern }
+	 * 
+	 */
+	public void setPattern(Pattern value) {
+		this.pattern = value;
+	}
 
 }

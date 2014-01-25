@@ -42,51 +42,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "query")
 public class Query {
 
-    @XmlElement(required = true)
-    protected Lhs lhs;
-    @XmlAttribute(required = true)
-    protected String name;
+	@XmlElement(required = true)
+	protected Lhs lhs;
+	@XmlAttribute(required = true)
+	protected String name;
 
-    /**
-     * Gets the value of the lhs property.
-     * 
-     * @return possible object is {@link Lhs }
-     * 
-     */
-    public Lhs getLhs() {
-	return lhs;
-    }
+	/**
+	 * Gets the value of the lhs property.
+	 * 
+	 * @return possible object is {@link Lhs }
+	 * 
+	 */
+	public Lhs getLhs() {
+		return lhs;
+	}
 
-    /**
-     * Sets the value of the lhs property.
-     * 
-     * @param value
-     *            allowed object is {@link Lhs }
-     * 
-     */
-    public void setLhs(Lhs value) {
-	this.lhs = value;
-    }
+	/**
+	 * Sets the value of the lhs property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Lhs }
+	 * 
+	 */
+	public void setLhs(Lhs value) {
+		this.lhs = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getName() {
-	return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setName(String value) {
-	this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }

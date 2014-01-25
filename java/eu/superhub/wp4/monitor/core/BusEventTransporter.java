@@ -29,10 +29,10 @@ import net.sf.ictalive.runtime.fact.NormInstanceExpired;
 import net.sf.ictalive.runtime.fact.NormInstanceViolated;
 
 public class BusEventTransporter implements EventTransporter {
-	private EventBus				eb;
-	private NormInstancesFactory	nif;
-	private OMFactory				omf;
-	private FactFactory				ff;
+	private EventBus eb;
+	private NormInstancesFactory nif;
+	private OMFactory omf;
+	private FactFactory ff;
 
 	public BusEventTransporter() throws EventBusConnectionException {
 		eb = new EventBus();

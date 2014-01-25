@@ -5,20 +5,20 @@ import eu.superhub.wp4.monitor.iface.Configuration;
 import eu.superhub.wp4.monitor.wp3servicedata.SituationalDataPusher;
 
 public class ConfigurationImpl implements Configuration {
-    
-    private PolicyModel policyModel;
-    private SituationalDataPusher dataPusher;
 
-    public ConfigurationImpl(PolicyModel p, SituationalDataPusher sdp) {
-	this.policyModel = p;
-	this.dataPusher = sdp;
-    }
+	private PolicyModel policyModel;
+	private SituationalDataPusher dataPusher;
 
-    public PolicyModel getPolicyModel() {
-	return policyModel;
-    }
+	public ConfigurationImpl(PolicyModel p, SituationalDataPusher sdp) {
+		this.policyModel = p;
+		this.dataPusher = sdp;
+	}
 
-    public SituationalDataPusher getDataPusher() {
-	return dataPusher;
-    }
+	public PolicyModel getPolicyModel() {
+		return policyModel;
+	}
+
+	public SituationalDataPusher getDataPusher() {
+		return dataPusher;
+	}
 }

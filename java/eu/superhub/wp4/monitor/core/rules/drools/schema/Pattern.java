@@ -52,116 +52,116 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "pattern")
 public class Pattern {
 
-    @XmlElementRefs({
-	    @XmlElementRef(name = "field-constraint", namespace = "http://drools.org/drools-5.0", type = FieldConstraint.class),
-	    @XmlElementRef(name = "predicate", namespace = "http://drools.org/drools-5.0", type = Predicate.class),
-	    @XmlElementRef(name = "from", namespace = "http://drools.org/drools-5.0", type = From.class),
-	    @XmlElementRef(name = "field-binding", namespace = "http://drools.org/drools-5.0", type = FieldBinding.class),
-	    @XmlElementRef(name = "abstractConstraintConective", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class) })
-    protected List<Object> fieldBindingOrFieldConstraintOrFrom;
-    @XmlAttribute(name = "field-name")
-    protected String fieldName;
-    @XmlAttribute
-    protected String identifier;
-    @XmlAttribute(name = "object-type", required = true)
-    protected String objectType;
+	@XmlElementRefs({
+			@XmlElementRef(name = "field-constraint", namespace = "http://drools.org/drools-5.0", type = FieldConstraint.class),
+			@XmlElementRef(name = "predicate", namespace = "http://drools.org/drools-5.0", type = Predicate.class),
+			@XmlElementRef(name = "from", namespace = "http://drools.org/drools-5.0", type = From.class),
+			@XmlElementRef(name = "field-binding", namespace = "http://drools.org/drools-5.0", type = FieldBinding.class),
+			@XmlElementRef(name = "abstractConstraintConective", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class) })
+	protected List<Object> fieldBindingOrFieldConstraintOrFrom;
+	@XmlAttribute(name = "field-name")
+	protected String fieldName;
+	@XmlAttribute
+	protected String identifier;
+	@XmlAttribute(name = "object-type", required = true)
+	protected String objectType;
 
-    /**
-     * Gets the value of the fieldBindingOrFieldConstraintOrFrom property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the fieldBindingOrFieldConstraintOrFrom
-     * property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getFieldBindingOrFieldConstraintOrFrom().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FieldConstraint } {@link Predicate } {@link From }
-     * {@link FieldBinding } {@link JAXBElement }{@code <}
-     * {@link AndConstraintConnective }{@code >} {@link JAXBElement }{@code <}
-     * {@link OrConstraintConnective }{@code >} {@link JAXBElement }{@code <}
-     * {@link ConstraintConnectiveElementType }{@code >}
-     * 
-     * 
-     */
-    public List<Object> getFieldBindingOrFieldConstraintOrFrom() {
-	if (fieldBindingOrFieldConstraintOrFrom == null) {
-	    fieldBindingOrFieldConstraintOrFrom = new ArrayList<Object>();
+	/**
+	 * Gets the value of the fieldBindingOrFieldConstraintOrFrom property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the fieldBindingOrFieldConstraintOrFrom
+	 * property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getFieldBindingOrFieldConstraintOrFrom().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link FieldConstraint } {@link Predicate } {@link From }
+	 * {@link FieldBinding } {@link JAXBElement }{@code <}
+	 * {@link AndConstraintConnective }{@code >} {@link JAXBElement }{@code <}
+	 * {@link OrConstraintConnective }{@code >} {@link JAXBElement }{@code <}
+	 * {@link ConstraintConnectiveElementType }{@code >}
+	 * 
+	 * 
+	 */
+	public List<Object> getFieldBindingOrFieldConstraintOrFrom() {
+		if (fieldBindingOrFieldConstraintOrFrom == null) {
+			fieldBindingOrFieldConstraintOrFrom = new ArrayList<Object>();
+		}
+		return this.fieldBindingOrFieldConstraintOrFrom;
 	}
-	return this.fieldBindingOrFieldConstraintOrFrom;
-    }
 
-    /**
-     * Gets the value of the fieldName property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getFieldName() {
-	return fieldName;
-    }
+	/**
+	 * Gets the value of the fieldName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFieldName() {
+		return fieldName;
+	}
 
-    /**
-     * Sets the value of the fieldName property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setFieldName(String value) {
-	this.fieldName = value;
-    }
+	/**
+	 * Sets the value of the fieldName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFieldName(String value) {
+		this.fieldName = value;
+	}
 
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getIdentifier() {
-	return identifier;
-    }
+	/**
+	 * Gets the value of the identifier property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setIdentifier(String value) {
-	this.identifier = value;
-    }
+	/**
+	 * Sets the value of the identifier property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdentifier(String value) {
+		this.identifier = value;
+	}
 
-    /**
-     * Gets the value of the objectType property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getObjectType() {
-	return objectType;
-    }
+	/**
+	 * Gets the value of the objectType property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getObjectType() {
+		return objectType;
+	}
 
-    /**
-     * Sets the value of the objectType property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setObjectType(String value) {
-	this.objectType = value;
-    }
+	/**
+	 * Sets the value of the objectType property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setObjectType(String value) {
+		this.objectType = value;
+	}
 
 }

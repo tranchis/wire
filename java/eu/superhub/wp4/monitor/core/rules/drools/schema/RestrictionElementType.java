@@ -44,48 +44,48 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "restrictionElementType", propOrder = { "literalRestrictionOrVariableRestrictionOrReturnValueRestriction" })
 @XmlSeeAlso({ OrRestrictionConnective.class, AndRestrictionConnective.class,
-	FieldConstraint.class })
+		FieldConstraint.class })
 public class RestrictionElementType {
 
-    @XmlElements({
-	    @XmlElement(name = "qualified-identifier-restriction", type = QualifiedIdentifierRestriction.class),
-	    @XmlElement(name = "variable-restriction", type = VariableRestriction.class),
-	    @XmlElement(name = "literal-restriction", type = LiteralRestriction.class),
-	    @XmlElement(name = "return-value-restriction", type = ReturnValueRestriction.class) })
-    protected List<Object> literalRestrictionOrVariableRestrictionOrReturnValueRestriction;
+	@XmlElements({
+			@XmlElement(name = "qualified-identifier-restriction", type = QualifiedIdentifierRestriction.class),
+			@XmlElement(name = "variable-restriction", type = VariableRestriction.class),
+			@XmlElement(name = "literal-restriction", type = LiteralRestriction.class),
+			@XmlElement(name = "return-value-restriction", type = ReturnValueRestriction.class) })
+	protected List<Object> literalRestrictionOrVariableRestrictionOrReturnValueRestriction;
 
-    /**
-     * Gets the value of the
-     * literalRestrictionOrVariableRestrictionOrReturnValueRestriction property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the
-     * literalRestrictionOrVariableRestrictionOrReturnValueRestriction property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction().add(
-     * 	newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link QualifiedIdentifierRestriction } {@link VariableRestriction }
-     * {@link LiteralRestriction } {@link ReturnValueRestriction }
-     * 
-     * 
-     */
-    public List<Object> getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction() {
-	if (literalRestrictionOrVariableRestrictionOrReturnValueRestriction == null) {
-	    literalRestrictionOrVariableRestrictionOrReturnValueRestriction = new ArrayList<Object>();
+	/**
+	 * Gets the value of the
+	 * literalRestrictionOrVariableRestrictionOrReturnValueRestriction property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the
+	 * literalRestrictionOrVariableRestrictionOrReturnValueRestriction property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction().add(
+	 * 		newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link QualifiedIdentifierRestriction } {@link VariableRestriction }
+	 * {@link LiteralRestriction } {@link ReturnValueRestriction }
+	 * 
+	 * 
+	 */
+	public List<Object> getLiteralRestrictionOrVariableRestrictionOrReturnValueRestriction() {
+		if (literalRestrictionOrVariableRestrictionOrReturnValueRestriction == null) {
+			literalRestrictionOrVariableRestrictionOrReturnValueRestriction = new ArrayList<Object>();
+		}
+		return this.literalRestrictionOrVariableRestrictionOrReturnValueRestriction;
 	}
-	return this.literalRestrictionOrVariableRestrictionOrReturnValueRestriction;
-    }
 
 }

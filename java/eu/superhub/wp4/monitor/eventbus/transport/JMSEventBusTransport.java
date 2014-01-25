@@ -23,13 +23,13 @@ import eu.superhub.wp4.monitor.eventbus.transport.jms.MQJMSSpecifics;
 
 public class JMSEventBusTransport implements IEventBusTransport,
 		MessageListener {
-	private Session						session;
-	private MessageConsumer				consumer;
-	private MessageProducer				producer;
-	private IEventBusTransportListener	transportListener;
-	private IJMSSpecifics				jms;
-	private Logger						logger;
-	private String						lastID;
+	private Session session;
+	private MessageConsumer consumer;
+	private MessageProducer producer;
+	private IEventBusTransportListener transportListener;
+	private IJMSSpecifics jms;
+	private Logger logger;
+	private String lastID;
 
 	public JMSEventBusTransport(boolean bActiveMQ) {
 		lastID = "InvalidID";
@@ -78,9 +78,9 @@ public class JMSEventBusTransport implements IEventBusTransport,
 	}
 
 	public void onMessage(Message arg0) {
-		TextMessage	tm;
-		String		st, newID;
-		boolean		isDifferent;
+		TextMessage tm;
+		String st, newID;
+		boolean isDifferent;
 
 		try {
 			// Incoming absurdity to deal with (potential?) bug in ActiveMQ Java

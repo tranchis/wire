@@ -19,11 +19,11 @@ package eu.superhub.wp4.monitor.metamodel.utils;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 public class XMIHelperImpl extends XMLHelperImpl {
-    public XMIHelperImpl() {
-	super();
-    }
+	public XMIHelperImpl() {
+		super();
+	}
 
-    public XMIHelperImpl(XMLResource resource) {
-	super(resource);
-    }
+	public XMIHelperImpl(XMLResource resource) {
+		super(resource);
+	}
 }

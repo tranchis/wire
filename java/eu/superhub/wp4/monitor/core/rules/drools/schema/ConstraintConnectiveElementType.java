@@ -42,37 +42,37 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({ AndConstraintConnective.class, OrConstraintConnective.class })
 public class ConstraintConnectiveElementType {
 
-    @XmlElement(name = "field-constraint")
-    protected List<FieldConstraint> fieldConstraint;
+	@XmlElement(name = "field-constraint")
+	protected List<FieldConstraint> fieldConstraint;
 
-    /**
-     * Gets the value of the fieldConstraint property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the fieldConstraint property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getFieldConstraint().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link FieldConstraint }
-     * 
-     * 
-     */
-    public List<FieldConstraint> getFieldConstraint() {
-	if (fieldConstraint == null) {
-	    fieldConstraint = new ArrayList<FieldConstraint>();
+	/**
+	 * Gets the value of the fieldConstraint property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the fieldConstraint property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getFieldConstraint().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link FieldConstraint }
+	 * 
+	 * 
+	 */
+	public List<FieldConstraint> getFieldConstraint() {
+		if (fieldConstraint == null) {
+			fieldConstraint = new ArrayList<FieldConstraint>();
+		}
+		return this.fieldConstraint;
 	}
-	return this.fieldConstraint;
-    }
 
 }

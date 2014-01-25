@@ -4,11 +4,11 @@ import eu.superhub.wp4.monitor.core.errors.RuleUpdateException;
 import eu.superhub.wp4.monitor.core.rules.drools.schema.Package;
 
 public interface IMonitor {
-    void initialise(Package[] listOfRules);
+	void initialise(Package[] listOfRules);
 
-    void updateRules(Package[] listOfRules) throws RuleUpdateException;
+	void updateRules(Package[] listOfRules) throws RuleUpdateException;
 
-    EventTransporter getEventTransporter();
+	EventTransporter getEventTransporter();
 
-    RuleEngine getRuleEngine();
+	RuleEngine getRuleEngine();
 }

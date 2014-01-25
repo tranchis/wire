@@ -7,9 +7,9 @@ import javax.naming.NamingException;
 
 public interface IJMSSpecifics {
 
-    Session getSession(String host, String port) throws NamingException,
-	    JMSException;
+	Session getSession(String host, String port) throws NamingException,
+			JMSException;
 
-    Topic getTopic(String code) throws NamingException, JMSException;
+	Topic getTopic(String code) throws NamingException, JMSException;
 
 }

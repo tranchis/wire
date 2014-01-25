@@ -39,51 +39,51 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlRootElement(name = "qualified-identifier-restriction")
 public class QualifiedIdentifierRestriction {
 
-    @XmlValue
-    protected String value;
-    @XmlAttribute(required = true)
-    protected String evaluator;
+	@XmlValue
+	protected String value;
+	@XmlAttribute(required = true)
+	protected String evaluator;
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getValue() {
-	return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setValue(String value) {
-	this.value = value;
-    }
+	/**
+	 * Sets the value of the value property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    /**
-     * Gets the value of the evaluator property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getEvaluator() {
-	return evaluator;
-    }
+	/**
+	 * Gets the value of the evaluator property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getEvaluator() {
+		return evaluator;
+	}
 
-    /**
-     * Sets the value of the evaluator property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setEvaluator(String value) {
-	this.evaluator = value;
-    }
+	/**
+	 * Sets the value of the evaluator property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setEvaluator(String value) {
+		this.evaluator = value;
+	}
 
 }

@@ -10,12 +10,12 @@ import eu.superhub.wp4.monitor.core.rules.Fact;
 import net.sf.ictalive.runtime.event.Event;
 
 public interface IComponent {
-    Session subscribe(Endpoint endpoint, Fact[] listOfFacts)
-	    throws SubscribeException;
+	Session subscribe(Endpoint endpoint, Fact[] listOfFacts)
+			throws SubscribeException;
 
-    void publish(Event event) throws IOException;
+	void publish(Event event) throws IOException;
 
-    void cancelSubscription(Session session) throws CancelSubscriptionException;
+	void cancelSubscription(Session session) throws CancelSubscriptionException;
 
-    Endpoint getEndpoint();
+	Endpoint getEndpoint();
 }

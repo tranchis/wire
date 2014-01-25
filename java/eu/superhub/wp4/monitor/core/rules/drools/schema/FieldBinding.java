@@ -39,51 +39,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "field-binding")
 public class FieldBinding {
 
-    @XmlAttribute(name = "field-name", required = true)
-    protected String fieldName;
-    @XmlAttribute(required = true)
-    protected String identifier;
+	@XmlAttribute(name = "field-name", required = true)
+	protected String fieldName;
+	@XmlAttribute(required = true)
+	protected String identifier;
 
-    /**
-     * Gets the value of the fieldName property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getFieldName() {
-	return fieldName;
-    }
+	/**
+	 * Gets the value of the fieldName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFieldName() {
+		return fieldName;
+	}
 
-    /**
-     * Sets the value of the fieldName property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setFieldName(String value) {
-	this.fieldName = value;
-    }
+	/**
+	 * Sets the value of the fieldName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFieldName(String value) {
+		this.fieldName = value;
+	}
 
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getIdentifier() {
-	return identifier;
-    }
+	/**
+	 * Gets the value of the identifier property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setIdentifier(String value) {
-	this.identifier = value;
-    }
+	/**
+	 * Sets the value of the identifier property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdentifier(String value) {
+		this.identifier = value;
+	}
 
 }

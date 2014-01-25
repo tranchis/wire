@@ -41,71 +41,71 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "from")
 public class From {
 
-    protected Collect collect;
-    protected String expression;
-    protected Accumulate accumulate;
+	protected Collect collect;
+	protected String expression;
+	protected Accumulate accumulate;
 
-    /**
-     * Gets the value of the collect property.
-     * 
-     * @return possible object is {@link Collect }
-     * 
-     */
-    public Collect getCollect() {
-	return collect;
-    }
+	/**
+	 * Gets the value of the collect property.
+	 * 
+	 * @return possible object is {@link Collect }
+	 * 
+	 */
+	public Collect getCollect() {
+		return collect;
+	}
 
-    /**
-     * Sets the value of the collect property.
-     * 
-     * @param value
-     *            allowed object is {@link Collect }
-     * 
-     */
-    public void setCollect(Collect value) {
-	this.collect = value;
-    }
+	/**
+	 * Sets the value of the collect property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Collect }
+	 * 
+	 */
+	public void setCollect(Collect value) {
+		this.collect = value;
+	}
 
-    /**
-     * Gets the value of the expression property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getExpression() {
-	return expression;
-    }
+	/**
+	 * Gets the value of the expression property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExpression() {
+		return expression;
+	}
 
-    /**
-     * Sets the value of the expression property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setExpression(String value) {
-	this.expression = value;
-    }
+	/**
+	 * Sets the value of the expression property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExpression(String value) {
+		this.expression = value;
+	}
 
-    /**
-     * Gets the value of the accumulate property.
-     * 
-     * @return possible object is {@link Accumulate }
-     * 
-     */
-    public Accumulate getAccumulate() {
-	return accumulate;
-    }
+	/**
+	 * Gets the value of the accumulate property.
+	 * 
+	 * @return possible object is {@link Accumulate }
+	 * 
+	 */
+	public Accumulate getAccumulate() {
+		return accumulate;
+	}
 
-    /**
-     * Sets the value of the accumulate property.
-     * 
-     * @param value
-     *            allowed object is {@link Accumulate }
-     * 
-     */
-    public void setAccumulate(Accumulate value) {
-	this.accumulate = value;
-    }
+	/**
+	 * Sets the value of the accumulate property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Accumulate }
+	 * 
+	 */
+	public void setAccumulate(Accumulate value) {
+		this.accumulate = value;
+	}
 
 }

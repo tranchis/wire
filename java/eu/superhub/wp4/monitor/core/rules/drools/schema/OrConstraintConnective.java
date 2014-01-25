@@ -40,37 +40,37 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = { "andConstraintConnective" })
 public class OrConstraintConnective extends ConstraintConnectiveElementType {
 
-    @XmlElement(name = "and-constraint-connective")
-    protected List<AndConstraintConnective> andConstraintConnective;
+	@XmlElement(name = "and-constraint-connective")
+	protected List<AndConstraintConnective> andConstraintConnective;
 
-    /**
-     * Gets the value of the andConstraintConnective property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the andConstraintConnective property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getAndConstraintConnective().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AndConstraintConnective }
-     * 
-     * 
-     */
-    public List<AndConstraintConnective> getAndConstraintConnective() {
-	if (andConstraintConnective == null) {
-	    andConstraintConnective = new ArrayList<AndConstraintConnective>();
+	/**
+	 * Gets the value of the andConstraintConnective property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the andConstraintConnective property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAndConstraintConnective().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link AndConstraintConnective }
+	 * 
+	 * 
+	 */
+	public List<AndConstraintConnective> getAndConstraintConnective() {
+		if (andConstraintConnective == null) {
+			andConstraintConnective = new ArrayList<AndConstraintConnective>();
+		}
+		return this.andConstraintConnective;
 	}
-	return this.andConstraintConnective;
-    }
 
 }

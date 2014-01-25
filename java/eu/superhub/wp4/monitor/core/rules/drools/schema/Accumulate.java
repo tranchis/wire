@@ -39,151 +39,151 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "pattern", "abstractConditionalElement",
-	"init", "action", "result", "externalFunction" })
+		"init", "action", "result", "externalFunction" })
 @XmlRootElement(name = "accumulate")
 public class Accumulate {
 
-    protected Pattern pattern;
-    @XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class)
-    protected JAXBElement<? extends ConditionalElementType> abstractConditionalElement;
-    protected String init;
-    protected String action;
-    protected String result;
-    @XmlElement(name = "external-function")
-    protected ExternalFunction externalFunction;
+	protected Pattern pattern;
+	@XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class)
+	protected JAXBElement<? extends ConditionalElementType> abstractConditionalElement;
+	protected String init;
+	protected String action;
+	protected String result;
+	@XmlElement(name = "external-function")
+	protected ExternalFunction externalFunction;
 
-    /**
-     * Gets the value of the pattern property.
-     * 
-     * @return possible object is {@link Pattern }
-     * 
-     */
-    public Pattern getPattern() {
-	return pattern;
-    }
+	/**
+	 * Gets the value of the pattern property.
+	 * 
+	 * @return possible object is {@link Pattern }
+	 * 
+	 */
+	public Pattern getPattern() {
+		return pattern;
+	}
 
-    /**
-     * Sets the value of the pattern property.
-     * 
-     * @param value
-     *            allowed object is {@link Pattern }
-     * 
-     */
-    public void setPattern(Pattern value) {
-	this.pattern = value;
-    }
+	/**
+	 * Sets the value of the pattern property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Pattern }
+	 * 
+	 */
+	public void setPattern(Pattern value) {
+		this.pattern = value;
+	}
 
-    /**
-     * Gets the value of the abstractConditionalElement property.
-     * 
-     * @return possible object is {@link JAXBElement }{@code <}
-     *         {@link OrConditionalElement }{@code >} {@link JAXBElement }{@code <}
-     *         {@link AndConditionalElement }{@code >} {@link JAXBElement }
-     *         {@code <}{@link ConditionalElementType }{@code >}
-     * 
-     */
-    public JAXBElement<? extends ConditionalElementType> getAbstractConditionalElement() {
-	return abstractConditionalElement;
-    }
+	/**
+	 * Gets the value of the abstractConditionalElement property.
+	 * 
+	 * @return possible object is {@link JAXBElement }{@code <}
+	 *         {@link OrConditionalElement }{@code >} {@link JAXBElement }{@code <}
+	 *         {@link AndConditionalElement }{@code >} {@link JAXBElement }
+	 *         {@code <}{@link ConditionalElementType }{@code >}
+	 * 
+	 */
+	public JAXBElement<? extends ConditionalElementType> getAbstractConditionalElement() {
+		return abstractConditionalElement;
+	}
 
-    /**
-     * Sets the value of the abstractConditionalElement property.
-     * 
-     * @param value
-     *            allowed object is {@link JAXBElement }{@code <}
-     *            {@link OrConditionalElement }{@code >} {@link JAXBElement }
-     *            {@code <}{@link AndConditionalElement }{@code >}
-     *            {@link JAXBElement }{@code <}{@link ConditionalElementType }
-     *            {@code >}
-     * 
-     */
-    public void setAbstractConditionalElement(
-	    JAXBElement<? extends ConditionalElementType> value) {
-	this.abstractConditionalElement = ((JAXBElement<? extends ConditionalElementType>) value);
-    }
+	/**
+	 * Sets the value of the abstractConditionalElement property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link JAXBElement }{@code <}
+	 *            {@link OrConditionalElement }{@code >} {@link JAXBElement }
+	 *            {@code <}{@link AndConditionalElement }{@code >}
+	 *            {@link JAXBElement }{@code <}{@link ConditionalElementType }
+	 *            {@code >}
+	 * 
+	 */
+	public void setAbstractConditionalElement(
+			JAXBElement<? extends ConditionalElementType> value) {
+		this.abstractConditionalElement = ((JAXBElement<? extends ConditionalElementType>) value);
+	}
 
-    /**
-     * Gets the value of the init property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getInit() {
-	return init;
-    }
+	/**
+	 * Gets the value of the init property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getInit() {
+		return init;
+	}
 
-    /**
-     * Sets the value of the init property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setInit(String value) {
-	this.init = value;
-    }
+	/**
+	 * Sets the value of the init property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setInit(String value) {
+		this.init = value;
+	}
 
-    /**
-     * Gets the value of the action property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getAction() {
-	return action;
-    }
+	/**
+	 * Gets the value of the action property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAction() {
+		return action;
+	}
 
-    /**
-     * Sets the value of the action property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setAction(String value) {
-	this.action = value;
-    }
+	/**
+	 * Sets the value of the action property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAction(String value) {
+		this.action = value;
+	}
 
-    /**
-     * Gets the value of the result property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getResult() {
-	return result;
-    }
+	/**
+	 * Gets the value of the result property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getResult() {
+		return result;
+	}
 
-    /**
-     * Sets the value of the result property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setResult(String value) {
-	this.result = value;
-    }
+	/**
+	 * Sets the value of the result property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setResult(String value) {
+		this.result = value;
+	}
 
-    /**
-     * Gets the value of the externalFunction property.
-     * 
-     * @return possible object is {@link ExternalFunction }
-     * 
-     */
-    public ExternalFunction getExternalFunction() {
-	return externalFunction;
-    }
+	/**
+	 * Gets the value of the externalFunction property.
+	 * 
+	 * @return possible object is {@link ExternalFunction }
+	 * 
+	 */
+	public ExternalFunction getExternalFunction() {
+		return externalFunction;
+	}
 
-    /**
-     * Sets the value of the externalFunction property.
-     * 
-     * @param value
-     *            allowed object is {@link ExternalFunction }
-     * 
-     */
-    public void setExternalFunction(ExternalFunction value) {
-	this.externalFunction = value;
-    }
+	/**
+	 * Sets the value of the externalFunction property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ExternalFunction }
+	 * 
+	 */
+	public void setExternalFunction(ExternalFunction value) {
+		this.externalFunction = value;
+	}
 
 }

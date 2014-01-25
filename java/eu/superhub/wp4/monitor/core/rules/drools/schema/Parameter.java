@@ -39,51 +39,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "parameter")
 public class Parameter {
 
-    @XmlAttribute(required = true)
-    protected String type;
-    @XmlAttribute(required = true)
-    protected String identifier;
+	@XmlAttribute(required = true)
+	protected String type;
+	@XmlAttribute(required = true)
+	protected String identifier;
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getType() {
-	return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setType(String value) {
-	this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getIdentifier() {
-	return identifier;
-    }
+	/**
+	 * Gets the value of the identifier property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setIdentifier(String value) {
-	this.identifier = value;
-    }
+	/**
+	 * Sets the value of the identifier property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdentifier(String value) {
+		this.identifier = value;
+	}
 
 }

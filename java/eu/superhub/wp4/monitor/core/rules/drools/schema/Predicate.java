@@ -40,74 +40,74 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlRootElement(name = "predicate")
 public class Predicate {
 
-    @XmlValue
-    protected String value;
-    @XmlAttribute(name = "field-name")
-    protected String fieldName;
-    @XmlAttribute
-    protected String identifier;
+	@XmlValue
+	protected String value;
+	@XmlAttribute(name = "field-name")
+	protected String fieldName;
+	@XmlAttribute
+	protected String identifier;
 
-    /**
-     * Gets the value of the value property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getValue() {
-	return value;
-    }
+	/**
+	 * Gets the value of the value property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValue() {
+		return value;
+	}
 
-    /**
-     * Sets the value of the value property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setValue(String value) {
-	this.value = value;
-    }
+	/**
+	 * Sets the value of the value property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    /**
-     * Gets the value of the fieldName property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getFieldName() {
-	return fieldName;
-    }
+	/**
+	 * Gets the value of the fieldName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFieldName() {
+		return fieldName;
+	}
 
-    /**
-     * Sets the value of the fieldName property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setFieldName(String value) {
-	this.fieldName = value;
-    }
+	/**
+	 * Sets the value of the fieldName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFieldName(String value) {
+		this.fieldName = value;
+	}
 
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getIdentifier() {
-	return identifier;
-    }
+	/**
+	 * Gets the value of the identifier property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setIdentifier(String value) {
-	this.identifier = value;
-    }
+	/**
+	 * Sets the value of the identifier property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdentifier(String value) {
+		this.identifier = value;
+	}
 
 }

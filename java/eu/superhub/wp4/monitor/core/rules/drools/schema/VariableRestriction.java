@@ -39,51 +39,51 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "variable-restriction")
 public class VariableRestriction {
 
-    @XmlAttribute(required = true)
-    protected String evaluator;
-    @XmlAttribute(required = true)
-    protected String identifier;
+	@XmlAttribute(required = true)
+	protected String evaluator;
+	@XmlAttribute(required = true)
+	protected String identifier;
 
-    /**
-     * Gets the value of the evaluator property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getEvaluator() {
-	return evaluator;
-    }
+	/**
+	 * Gets the value of the evaluator property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getEvaluator() {
+		return evaluator;
+	}
 
-    /**
-     * Sets the value of the evaluator property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setEvaluator(String value) {
-	this.evaluator = value;
-    }
+	/**
+	 * Sets the value of the evaluator property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setEvaluator(String value) {
+		this.evaluator = value;
+	}
 
-    /**
-     * Gets the value of the identifier property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getIdentifier() {
-	return identifier;
-    }
+	/**
+	 * Gets the value of the identifier property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdentifier() {
+		return identifier;
+	}
 
-    /**
-     * Sets the value of the identifier property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setIdentifier(String value) {
-	this.identifier = value;
-    }
+	/**
+	 * Sets the value of the identifier property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdentifier(String value) {
+		this.identifier = value;
+	}
 
 }

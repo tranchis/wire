@@ -45,62 +45,62 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "field-constraint")
 public class FieldConstraint extends RestrictionElementType {
 
-    @XmlElementRef(name = "abstractRestrictionConnective", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class)
-    protected List<JAXBElement<? extends RestrictionElementType>> abstractRestrictionConnective;
-    @XmlAttribute(name = "field-name", required = true)
-    protected String fieldName;
+	@XmlElementRef(name = "abstractRestrictionConnective", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class)
+	protected List<JAXBElement<? extends RestrictionElementType>> abstractRestrictionConnective;
+	@XmlAttribute(name = "field-name", required = true)
+	protected String fieldName;
 
-    /**
-     * Gets the value of the abstractRestrictionConnective property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the abstractRestrictionConnective property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getAbstractRestrictionConnective().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link OrRestrictionConnective }{@code >}
-     * {@link JAXBElement }{@code <}{@link RestrictionElementType }{@code >}
-     * {@link JAXBElement }{@code <}{@link AndRestrictionConnective }{@code >}
-     * 
-     * 
-     */
-    public List<JAXBElement<? extends RestrictionElementType>> getAbstractRestrictionConnective() {
-	if (abstractRestrictionConnective == null) {
-	    abstractRestrictionConnective = new ArrayList<JAXBElement<? extends RestrictionElementType>>();
+	/**
+	 * Gets the value of the abstractRestrictionConnective property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the abstractRestrictionConnective property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAbstractRestrictionConnective().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link OrRestrictionConnective }{@code >}
+	 * {@link JAXBElement }{@code <}{@link RestrictionElementType }{@code >}
+	 * {@link JAXBElement }{@code <}{@link AndRestrictionConnective }{@code >}
+	 * 
+	 * 
+	 */
+	public List<JAXBElement<? extends RestrictionElementType>> getAbstractRestrictionConnective() {
+		if (abstractRestrictionConnective == null) {
+			abstractRestrictionConnective = new ArrayList<JAXBElement<? extends RestrictionElementType>>();
+		}
+		return this.abstractRestrictionConnective;
 	}
-	return this.abstractRestrictionConnective;
-    }
 
-    /**
-     * Gets the value of the fieldName property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getFieldName() {
-	return fieldName;
-    }
+	/**
+	 * Gets the value of the fieldName property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFieldName() {
+		return fieldName;
+	}
 
-    /**
-     * Sets the value of the fieldName property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setFieldName(String value) {
-	this.fieldName = value;
-    }
+	/**
+	 * Sets the value of the fieldName property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFieldName(String value) {
+		this.fieldName = value;
+	}
 
 }

@@ -31,11 +31,12 @@ public class ThOutput extends Thread {
 
 		while (true) {
 			try {
-//				long t = System.currentTimeMillis();
+				// long t = System.currentTimeMillis();
 				xml = output.take();
 
 				transport.publish(xml);
-//				System.out.println("Remaining on queue: " + output.size() + ", last process: " + (System.currentTimeMillis() - t));
+				// System.out.println("Remaining on queue: " + output.size() +
+				// ", last process: " + (System.currentTimeMillis() - t));
 				logger.debug("Remaining on queue: " + output.size());
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

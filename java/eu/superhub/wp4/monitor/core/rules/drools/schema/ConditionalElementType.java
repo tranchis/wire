@@ -46,40 +46,40 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({ AndConditionalElement.class, OrConditionalElement.class })
 public class ConditionalElementType {
 
-    @XmlElements({ @XmlElement(name = "eval", type = String.class),
-	    @XmlElement(name = "exists", type = Exists.class),
-	    @XmlElement(name = "not", type = Not.class),
-	    @XmlElement(name = "pattern", type = Pattern.class) })
-    protected List<Object> notOrExistsOrEval;
+	@XmlElements({ @XmlElement(name = "eval", type = String.class),
+			@XmlElement(name = "exists", type = Exists.class),
+			@XmlElement(name = "not", type = Not.class),
+			@XmlElement(name = "pattern", type = Pattern.class) })
+	protected List<Object> notOrExistsOrEval;
 
-    /**
-     * Gets the value of the notOrExistsOrEval property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the notOrExistsOrEval property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getNotOrExistsOrEval().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list {@link String }
-     * {@link Exists } {@link Not } {@link Pattern }
-     * 
-     * 
-     */
-    public List<Object> getNotOrExistsOrEval() {
-	if (notOrExistsOrEval == null) {
-	    notOrExistsOrEval = new ArrayList<Object>();
+	/**
+	 * Gets the value of the notOrExistsOrEval property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the notOrExistsOrEval property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getNotOrExistsOrEval().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link String }
+	 * {@link Exists } {@link Not } {@link Pattern }
+	 * 
+	 * 
+	 */
+	public List<Object> getNotOrExistsOrEval() {
+		if (notOrExistsOrEval == null) {
+			notOrExistsOrEval = new ArrayList<Object>();
+		}
+		return this.notOrExistsOrEval;
 	}
-	return this.notOrExistsOrEval;
-    }
 
 }

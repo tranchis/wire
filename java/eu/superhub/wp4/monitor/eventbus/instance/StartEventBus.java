@@ -3,41 +3,41 @@ package eu.superhub.wp4.monitor.eventbus.instance;
 import java.io.File;
 
 public class StartEventBus {
-    public static EventBusDaemon ebd;
+	public static EventBusDaemon ebd;
 
-    static {
-	ebd = null;
-    }
-
-    public String getProblems() {
-	String res;
-
-	if (ebd == null || !ebd.isRunning()) {
-	    res = null;
-	} else {
-	    res = "EventBus instance already running. Please stop before starting again.";
+	static {
+		ebd = null;
 	}
 
-	return res;
-    }
+	public String getProblems() {
+		String res;
 
-    public void run() {
-	try {
-	    ebd = new EventBusDaemon(File.createTempFile("test", "test")
-		    .getParentFile().getAbsolutePath());
-	    ebd.start();
-	} catch (Exception e) {
-	    System.out.println(e.getMessage());
-	    e.printStackTrace();
-	    ebd = null;
+		if (ebd == null || !ebd.isRunning()) {
+			res = null;
+		} else {
+			res = "EventBus instance already running. Please stop before starting again.";
+		}
+
+		return res;
 	}
-    }
 
-    public static void main(String[] args) {
-	StartEventBus seb;
+	public void run() {
+		try {
+			ebd = new EventBusDaemon(File.createTempFile("test", "test")
+					.getParentFile().getAbsolutePath());
+			ebd.start();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			ebd = null;
+		}
+	}
 
-	seb = new StartEventBus();
-	seb.run();
-	(new Thread()).start();
-    }
+	public static void main(String[] args) {
+		StartEventBus seb;
+
+		seb = new StartEventBus();
+		seb.run();
+		(new Thread()).start();
+	}
 }

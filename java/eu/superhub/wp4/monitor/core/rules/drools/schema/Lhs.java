@@ -49,48 +49,48 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "lhs")
 public class Lhs {
 
-    @XmlElementRefs({
-	    @XmlElementRef(name = "eval", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
-	    @XmlElementRef(name = "not", namespace = "http://drools.org/drools-5.0", type = Not.class),
-	    @XmlElementRef(name = "exists", namespace = "http://drools.org/drools-5.0", type = Exists.class),
-	    @XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
-	    @XmlElementRef(name = "pattern", namespace = "http://drools.org/drools-5.0", type = Pattern.class),
-	    @XmlElementRef(name = "forall", namespace = "http://drools.org/drools-5.0", type = Forall.class) })
-    protected List<Object> abstractConditionalElementOrNotOrExists;
+	@XmlElementRefs({
+			@XmlElementRef(name = "eval", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
+			@XmlElementRef(name = "not", namespace = "http://drools.org/drools-5.0", type = Not.class),
+			@XmlElementRef(name = "exists", namespace = "http://drools.org/drools-5.0", type = Exists.class),
+			@XmlElementRef(name = "abstractConditionalElement", namespace = "http://drools.org/drools-5.0", type = JAXBElement.class),
+			@XmlElementRef(name = "pattern", namespace = "http://drools.org/drools-5.0", type = Pattern.class),
+			@XmlElementRef(name = "forall", namespace = "http://drools.org/drools-5.0", type = Forall.class) })
+	protected List<Object> abstractConditionalElementOrNotOrExists;
 
-    /**
-     * Gets the value of the abstractConditionalElementOrNotOrExists property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the abstractConditionalElementOrNotOrExists
-     * property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getAbstractConditionalElementOrNotOrExists().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link String }{@code >} {@link JAXBElement }
-     * {@code <}{@link OrConditionalElement }{@code >} {@link Not } {@link Exists }
-     * {@link JAXBElement }{@code <}{@link ConditionalElementType }{@code >}
-     * {@link Pattern } {@link JAXBElement }{@code <}{@link AndConditionalElement }
-     * {@code >} {@link Forall }
-     * 
-     * 
-     */
-    public List<Object> getAbstractConditionalElementOrNotOrExists() {
-	if (abstractConditionalElementOrNotOrExists == null) {
-	    abstractConditionalElementOrNotOrExists = new ArrayList<Object>();
+	/**
+	 * Gets the value of the abstractConditionalElementOrNotOrExists property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the abstractConditionalElementOrNotOrExists
+	 * property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAbstractConditionalElementOrNotOrExists().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link String }{@code >} {@link JAXBElement }
+	 * {@code <}{@link OrConditionalElement }{@code >} {@link Not } {@link Exists }
+	 * {@link JAXBElement }{@code <}{@link ConditionalElementType }{@code >}
+	 * {@link Pattern } {@link JAXBElement }{@code <}{@link AndConditionalElement }
+	 * {@code >} {@link Forall }
+	 * 
+	 * 
+	 */
+	public List<Object> getAbstractConditionalElementOrNotOrExists() {
+		if (abstractConditionalElementOrNotOrExists == null) {
+			abstractConditionalElementOrNotOrExists = new ArrayList<Object>();
+		}
+		return this.abstractConditionalElementOrNotOrExists;
 	}
-	return this.abstractConditionalElementOrNotOrExists;
-    }
 
 }

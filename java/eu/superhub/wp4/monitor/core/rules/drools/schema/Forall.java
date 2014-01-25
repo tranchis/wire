@@ -41,35 +41,35 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "forall")
 public class Forall {
 
-    protected List<Pattern> pattern;
+	protected List<Pattern> pattern;
 
-    /**
-     * Gets the value of the pattern property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the pattern property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getPattern().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list {@link Pattern }
-     * 
-     * 
-     */
-    public List<Pattern> getPattern() {
-	if (pattern == null) {
-	    pattern = new ArrayList<Pattern>();
+	/**
+	 * Gets the value of the pattern property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the pattern property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getPattern().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Pattern }
+	 * 
+	 * 
+	 */
+	public List<Pattern> getPattern() {
+		if (pattern == null) {
+			pattern = new ArrayList<Pattern>();
+		}
+		return this.pattern;
 	}
-	return this.pattern;
-    }
 
 }

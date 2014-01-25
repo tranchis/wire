@@ -40,37 +40,37 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = { "andConditionalElement" })
 public class OrConditionalElement extends ConditionalElementType {
 
-    @XmlElement(name = "and-conditional-element")
-    protected List<AndConditionalElement> andConditionalElement;
+	@XmlElement(name = "and-conditional-element")
+	protected List<AndConditionalElement> andConditionalElement;
 
-    /**
-     * Gets the value of the andConditionalElement property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the andConditionalElement property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getAndConditionalElement().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AndConditionalElement }
-     * 
-     * 
-     */
-    public List<AndConditionalElement> getAndConditionalElement() {
-	if (andConditionalElement == null) {
-	    andConditionalElement = new ArrayList<AndConditionalElement>();
+	/**
+	 * Gets the value of the andConditionalElement property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the andConditionalElement property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getAndConditionalElement().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link AndConditionalElement }
+	 * 
+	 * 
+	 */
+	public List<AndConditionalElement> getAndConditionalElement() {
+		if (andConditionalElement == null) {
+			andConditionalElement = new ArrayList<AndConditionalElement>();
+		}
+		return this.andConditionalElement;
 	}
-	return this.andConditionalElement;
-    }
 
 }

@@ -21,15 +21,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 
 public class XMIResourceFactoryImpl extends ResourceFactoryImpl {
-    /**
-     * Constructor for XMIResourceFactoryImpl.
-     */
-    public XMIResourceFactoryImpl() {
-	super();
-    }
+	/**
+	 * Constructor for XMIResourceFactoryImpl.
+	 */
+	public XMIResourceFactoryImpl() {
+		super();
+	}
 
-    @Override
-    public Resource createResource(URI uri) {
-	return new XMIResourceImpl(uri);
-    }
+	@Override
+	public Resource createResource(URI uri) {
+		return new XMIResourceImpl(uri);
+	}
 }

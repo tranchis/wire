@@ -46,106 +46,106 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "rule")
 public class Rule {
 
-    @XmlElement(name = "rule-attribute")
-    protected List<RuleAttribute> ruleAttribute;
-    @XmlElement(required = true)
-    protected Lhs lhs;
-    @XmlElement(required = true)
-    protected String rhs;
-    @XmlAttribute(required = true)
-    protected String name;
+	@XmlElement(name = "rule-attribute")
+	protected List<RuleAttribute> ruleAttribute;
+	@XmlElement(required = true)
+	protected Lhs lhs;
+	@XmlElement(required = true)
+	protected String rhs;
+	@XmlAttribute(required = true)
+	protected String name;
 
-    /**
-     * Gets the value of the ruleAttribute property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list, not a
-     * snapshot. Therefore any modification you make to the returned list will
-     * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the ruleAttribute property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * 
-     * <pre>
-     * getRuleAttribute().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link RuleAttribute }
-     * 
-     * 
-     */
-    public List<RuleAttribute> getRuleAttribute() {
-	if (ruleAttribute == null) {
-	    ruleAttribute = new ArrayList<RuleAttribute>();
+	/**
+	 * Gets the value of the ruleAttribute property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the ruleAttribute property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getRuleAttribute().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link RuleAttribute }
+	 * 
+	 * 
+	 */
+	public List<RuleAttribute> getRuleAttribute() {
+		if (ruleAttribute == null) {
+			ruleAttribute = new ArrayList<RuleAttribute>();
+		}
+		return this.ruleAttribute;
 	}
-	return this.ruleAttribute;
-    }
 
-    /**
-     * Gets the value of the lhs property.
-     * 
-     * @return possible object is {@link Lhs }
-     * 
-     */
-    public Lhs getLhs() {
-	return lhs;
-    }
+	/**
+	 * Gets the value of the lhs property.
+	 * 
+	 * @return possible object is {@link Lhs }
+	 * 
+	 */
+	public Lhs getLhs() {
+		return lhs;
+	}
 
-    /**
-     * Sets the value of the lhs property.
-     * 
-     * @param value
-     *            allowed object is {@link Lhs }
-     * 
-     */
-    public void setLhs(Lhs value) {
-	this.lhs = value;
-    }
+	/**
+	 * Sets the value of the lhs property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Lhs }
+	 * 
+	 */
+	public void setLhs(Lhs value) {
+		this.lhs = value;
+	}
 
-    /**
-     * Gets the value of the rhs property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getRhs() {
-	return rhs;
-    }
+	/**
+	 * Gets the value of the rhs property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getRhs() {
+		return rhs;
+	}
 
-    /**
-     * Sets the value of the rhs property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setRhs(String value) {
-	this.rhs = value;
-    }
+	/**
+	 * Sets the value of the rhs property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setRhs(String value) {
+		this.rhs = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getName() {
-	return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *            allowed object is {@link String }
-     * 
-     */
-    public void setName(String value) {
-	this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
 }
