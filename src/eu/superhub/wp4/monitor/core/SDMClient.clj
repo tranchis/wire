@@ -21,11 +21,9 @@
 ;; Compile, if we can
 ;; Should fail when called from Java (AOT) but that's fine
 (try
-  (set! *compile-path* "target/classes")
+  (set! *compile-path* "contrib/clojure-binaries")
   (compile 'eu.superhub.wp4.monitor.core.SDMClient)
-  (catch Exception e
-;    (.printStackTrace e)
-    ))
+  (catch Exception e #_(.printStackTrace e)))
 
 
 

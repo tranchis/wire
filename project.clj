@@ -40,6 +40,7 @@
                  [org.eclipse.emf/org.eclipse.emf.ecore "2.9.1.v20130827-0309"]
                  [org.drools/drools-core "5.5.0.Final"]
                  [org.drools/drools-compiler "5.5.0.Final"]
+                 [net.sf.saxon/Saxon-HE "9.5.1-3"]
                  [eu.superhub.wp4.models/policymodel "0.0.2-SNAPSHOT"]
                  [org.apache.activemq/activemq-client "5.8.0"]
                  [org.slf4j/slf4j-log4j12 "1.7.3"]
