@@ -5,10 +5,10 @@
   (:require [clojure.math.combinatorics :as comb]))
 
 (defn str-invoke [instance method-str & args]
-            (clojure.lang.Reflector/invokeInstanceMethod 
-                instance 
-                method-str 
-                (to-array args)))
+  (clojure.lang.Reflector/invokeInstanceMethod 
+    instance 
+    method-str 
+    (to-array args)))
 
 ;; Multimethod operator
 (defmulti operator class)
@@ -113,7 +113,7 @@
 
 (defn parse-description [cas condition]
   `(~(symbol (str condition))
-                          ~(normalize (clean-negations (convert-description cas condition)))))
+     ~(normalize (clean-negations (convert-description cas condition)))))
 ;                          ~(convert-condition norm condition)))
 
 (defn parse-norm [norm]
@@ -136,19 +136,19 @@
 
 ;		ns = om.getOm().getNs().getNorms();
 (defn parse-file [st]
-	;		Serialiser<OperAModel>	s;
-	;		s = new Serialiser<OperAModel>(OMPackage.class, "opera", false);
-	;		om = s.deserialise(new File(DroolsEngine.class.getClassLoader().getResource(file).getFile().replace("%20", " ")));	
-	(def s (eu.superhub.wp4.monitor.metamodel.utils.Serialiser. net.sf.ictalive.operetta.OM.OMPackage "opera" false))
-	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/CalicoJack-1.0.0.opera")))
-	(def om (. s deserialise (java.io.File. st)))
-	;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera")))
+  ;		Serialiser<OperAModel>	s;
+  ;		s = new Serialiser<OperAModel>(OMPackage.class, "opera", false);
+  ;		om = s.deserialise(new File(DroolsEngine.class.getClassLoader().getResource(file).getFile().replace("%20", " ")));	
+  (def s (eu.superhub.wp4.monitor.metamodel.utils.Serialiser. net.sf.ictalive.operetta.OM.OMPackage "opera" false))
+  ;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/CalicoJack-1.0.0.opera")))
+  (def om (. s deserialise (java.io.File. st)))
+  ;(def om (. s deserialise (java.io.File. "/Users/sergio/Documents/Research/wire/core/src/main/java/Thales_Evacuation.opera.opera")))
  	;	ns = om.getOm().getNs().getNorms();
-	;	cs = om.getOm().getCs().getCountsAsRules();
+  ;	cs = om.getOm().getCs().getCountsAsRules();
   (parse-norms st (. (. (. om getOm) getNs) getNorms) (. (. (. om getOm) getCs) getCountsAsRules)))
 
 (defn frm-save 
- "Save a clojure form to file." 
+  "Save a clojure form to file." 
   [#^java.io.File file form] 
   (with-open [w (java.io.FileWriter. file)] 
     (binding [*out* w *print-dup* true] (ppr/pprint form))))
