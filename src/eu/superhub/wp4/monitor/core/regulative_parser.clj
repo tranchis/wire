@@ -17,7 +17,7 @@
     (str-invoke norm (str "get" (str/capitalize condition) "Condition"))))
 
 (defn parse-description [cas condition]
-  (let [sp (str/split (name condition) #"-")]
+  (let [sp (str/split condition #"-")]
     (folc/operetta->edn
       (str-invoke cas
                   (apply str
@@ -40,8 +40,8 @@
              "Universal"
              (.getName orig-ct))]
     {:context ct
-     :concrete-fact (parse-description cas :concrete-fact)
-     :abstract-fact (parse-description cas :abstract-fact)}))
+     :concrete-fact (parse-description cas "concrete-fact")
+     :abstract-fact (parse-description cas "abstract-fact")}))
 
 (defn get-file-name [st]
   (-> (java.io.File. st)
@@ -65,6 +65,6 @@
     (parse-norms st norms cas)))
 
 (parse-file
-   (.getPath (clojure.java.io/resource "TestOpera.opera")))
+  (.getPath (clojure.java.io/resource "TestOpera.opera")))
 
 

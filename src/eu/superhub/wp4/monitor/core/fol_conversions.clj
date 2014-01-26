@@ -71,7 +71,7 @@
 
 ;; ## Entry point
 (defn operetta->fol [operetta]
-  result)
+  (fol/normal-form operetta))
 
 (defn operetta->edn [operetta]
   (fol->edn (operetta->fol operetta)))
