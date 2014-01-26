@@ -1,5 +1,6 @@
 (ns eu.superhub.wp4.monitor.core.fol
-  (:require [clojure.math.combinatorics :as comb]))
+  (:require [clojure.math.combinatorics :as comb])
+  (:use [clojure.pprint :only (pp pprint)]))
 
 ;; ## Multimethod operator
 (defmulti operator class)
@@ -58,32 +59,38 @@
   `(~(symbol "conjunction") ~o))
 
 (defn distribute [dnf]
-  "Input: DNF sequence in the form
-  (((symbol \"disjunction\")
-      ((symbol \"conjunction\") (a1) (a2) ... (aN))
-      ((symbol \"conjunction\") (b1) (b2) ... (bN))
-      ...
-      ((symbol \"conjunction\") (z1) (z2) ... (zN)))
-    ((symbol \"disjunction\") ...))"
+  #_(println dnf " : " (map #(cons (symbol "conjunction") %)
+        (apply comb/cartesian-product (map rest dnf))))
   (map #(cons (symbol "conjunction") %)
-       (apply comb/cartesian-product (map #(rest (second %)) dnf))))
+       (apply comb/cartesian-product (map rest dnf))))
 
 ;; ## Multimethod: eliminate redundancy
 (defmulti eliminate-redundancy first)
 
-(defmethod eliminate-redundancy (symbol "disjunction") [o]
-  (let [normalized (map eliminate-redundancy (rest o))]
-    (if (not (some #(not= (symbol "disjunction") (first %))
-                    normalized))
-      `(~(symbol "disjunction") ~@(mapcat rest normalized))
-      `(~(symbol "disjunction") ~@normalized))))
+#_(defmethod eliminate-redundancy (symbol "disjunction") [o]
+   (let [normalized (map eliminate-redundancy (rest o))]
+     (if (not (some #(not= (symbol "disjunction") (first %))
+                     normalized))
+       `(~(symbol "disjunction") ~@(mapcat rest normalized))
+       `(~(symbol "disjunction") ~@normalized))))
 
 (defmethod eliminate-redundancy (symbol "conjunction") [o]
   (let [normalized (map eliminate-redundancy (rest o))]
-    (if (not (some #(not= (symbol "conjunction") (first %))
-                    normalized))
-      `(~(symbol "conjunction") ~@(mapcat rest normalized))
-      `(~(symbol "conjunction") ~@normalized))))
+    (if (= (count normalized)
+           (count (filter #(= (symbol "conjunction") (first %)) normalized)))
+      `(~(symbol "conjunction") ~@(map rest normalized))
+      (if (= 1 (count normalized))
+        (first normalized)
+        `(~(symbol "conjunction") ~@normalized)))))
+
+(defmethod eliminate-redundancy (symbol "disjunction") [o]
+  (let [normalized (map eliminate-redundancy (rest o))]
+    (if (= (count normalized)
+           (count (filter #(= (symbol "disjunction") (first %)) normalized)))
+      `(~(symbol "disjunction") ~@(map rest normalized))
+      (if (= 1 (count normalized))
+        (first normalized)
+        `(~(symbol "disjunction") ~@normalized)))))
 
 (defmethod eliminate-redundancy :default [o]
   o)
@@ -92,19 +99,32 @@
 (defmulti normalize (fn [a] (first a)))
 
 (defmethod normalize (symbol "disjunction") [o]
-  "Input: DNF sequence in the form
-  (((symbol \"disjunction\")
-      ((symbol \"conjunction\") (a1) (a2) ... (aN))
-      ((symbol \"conjunction\") (b1) (b2) ... (bN))
-      ...
-      ((symbol \"conjunction\") (z1) (z2) ... (zN)))
-    ((symbol \"disjunction\") ...))"
-  (let [normalized (map normalize (rest o))]
-    (cons (symbol "disjunction") normalized)))
+  (let [pre-clauses (mapcat #(if (= (symbol "disjunction") (first %))
+                               (into [] (rest %))
+                               [%])
+                            (rest o))
+        normalized (map normalize pre-clauses)
+        clauses (mapcat #(if (= (symbol "disjunction") (first %))
+                           (into [] (rest %))
+                           [%])
+                        normalized)]
+    `(~(symbol "disjunction") ~@normalized)))
 
 (defmethod normalize (symbol "conjunction") [o]
-  (let [normalized (map normalize (rest o))]
-    (cons (symbol "disjunction") (distribute normalized))))
+  (let [pre-clauses (mapcat #(if (= (symbol "conjunction") (first %))
+                               (into [] (rest %))
+                               [%])
+                            (rest o))
+        normalized (map normalize pre-clauses)
+        clauses (mapcat #(if (= (symbol "conjunction") (first %))
+                           (into [] (rest %))
+                           [%])
+                        normalized)
+        with-disjunction (map #(if (= (symbol "disjunction") (first %))
+                                 %
+                                 `(~(symbol "disjunction") ~%))
+                              clauses)]
+    `(~(symbol "disjunction") ~@(distribute with-disjunction))))
 
 (defmethod normalize (symbol "predicate") [o]
   `(~(symbol "disjunction") (~(symbol "conjunction") ~o)))
@@ -138,11 +158,20 @@
   (str o))
 
 (defn normal-form [x]
-  (loop [result (operator x) old-result '()]
-    (if (= result old-result)
-      result
-      (recur
-        (eliminate-redundancy (normalize (eliminate-redundancy (clean-negations result))))
-        result))))
+  (let [normalized (eliminate-redundancy (normalize (normalize (normalize (normalize (clean-negations x))))))]
+    (if (= (first normalized) (symbol "disjunction"))
+      (let [first-level (map #(if (= (symbol "conjunction") (first %))
+                                %
+                                `(~(symbol "conjunction") ~%))
+                             (rest normalized))]
+        `(~(symbol "disjunction")
+          ~@first-level))
+      `(~(symbol "disjunction")
+        (~(symbol "conjunction")
+          ~normalized)))))
 
-#_(normal-form '(conjunction (conjunction (disjunction (conjunction (conjunction (predicate "test" (arguments)) (predicate "test2" (arguments))))))))
+#_(clojure.pprint/pprint '(disjunction (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))) (negation (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))))))
+#_(clojure.pprint/pprint (clean-negations '(disjunction (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))) (negation (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments))))))))
+#_(clojure.pprint/pprint (normal-form '(disjunction (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))) (negation (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments))))))))
+#_(clojure.pprint/pprint (normal-form '(conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))))
+#_(clojure.pprint/pprint (normal-form '(negation (predicate "b" (arguments)))))
