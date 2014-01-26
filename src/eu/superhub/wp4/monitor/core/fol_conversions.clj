@@ -1,5 +1,6 @@
 (ns eu.superhub.wp4.monitor.core.fol-conversions
-  (:require [eu.superhub.wp4.monitor.core.fol :as fol]))
+  (:require [clojure.data.json :as json]
+            [eu.superhub.wp4.monitor.core.fol :as fol]))
 
 ;; ## Multimethod: edn->fol
 (defmulti edn->fol :type)
@@ -70,13 +71,19 @@
 
 ;; ## Entry point
 (defn operetta->fol [operetta]
-  (let [result (fol/normalize (fol/clean-negations (fol/operator operetta)))]
-    (clojure.pprint/pprint (edn->fol (fol->edn result)))
-    result))
+  result)
 
 (defn operetta->edn [operetta]
   (fol->edn (operetta->fol operetta)))
 
 (defn fol->json [formula]
-  (clojure.pprint/pprint formula))
+  (json/write-str (fol->edn formula)))
+
+(defn json->edn [json]
+  (json/read-str json :key-fn keyword))
+
+(defn json->fol [json]
+  (edn->fol (json->edn json)))
+
+
 
