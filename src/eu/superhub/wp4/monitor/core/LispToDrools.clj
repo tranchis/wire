@@ -1,7 +1,7 @@
 (ns eu.superhub.wp4.monitor.core.LispToDrools
   (:require [clojure.pprint :as ppr])
   (:require [clojure.string :as stt])
-  (:require [eu.superhub.wp4.monitor.core.RegulativeParser :as regp]))
+  (:require [eu.superhub.wp4.monitor.core.lisp-regulative-parser :as regp]))
 
 (import (eu.superhub.wp4.monitor.core.rules.drools DroolsEngine))
 (import (eu.superhub.wp4.monitor.core.rules.drools.schema
