@@ -46,7 +46,7 @@
          ~@(map rule-atom atoms)
          =>
          (insert (->Holds
-                   ~:norm-id
+                   ~norm-id
                    ~type ~(apply merge (map #(hash-map
                                                %
                                                (symbol (str "?" %)))
