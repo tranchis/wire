@@ -67,13 +67,6 @@
 ;; ## Multimethod: eliminate redundancy
 (defmulti eliminate-redundancy first)
 
-#_(defmethod eliminate-redundancy (symbol "disjunction") [o]
-   (let [normalized (map eliminate-redundancy (rest o))]
-     (if (not (some #(not= (symbol "disjunction") (first %))
-                     normalized))
-       `(~(symbol "disjunction") ~@(mapcat rest normalized))
-       `(~(symbol "disjunction") ~@normalized))))
-
 (defmethod eliminate-redundancy (symbol "conjunction") [o]
   (let [normalized (map eliminate-redundancy (rest o))]
     (if (= (count normalized)
@@ -158,17 +151,20 @@
   (str o))
 
 (defn normal-form [x]
-  (let [normalized (eliminate-redundancy (normalize (normalize (normalize (normalize (clean-negations x))))))]
+  (let [normalized (eliminate-redundancy (eliminate-redundancy (normalize (normalize (normalize (normalize (clean-negations x)))))))]
     (if (= (first normalized) (symbol "disjunction"))
       (let [first-level (map #(if (= (symbol "conjunction") (first %))
                                 %
                                 `(~(symbol "conjunction") ~%))
                              (rest normalized))]
         `(~(symbol "disjunction")
-          ~@first-level))
-      `(~(symbol "disjunction")
-        (~(symbol "conjunction")
-          ~normalized)))))
+           ~@first-level))
+      (if (= (first normalized) (symbol "conjunction"))
+        `(~(symbol "conjunction")
+           ~normalized)
+        `(~(symbol "disjunction")
+           (~(symbol "conjunction")
+             ~normalized))))))
 
 #_(clojure.pprint/pprint '(disjunction (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))) (negation (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))))))
 #_(clojure.pprint/pprint (clean-negations '(disjunction (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments)))) (negation (conjunction (disjunction (predicate "b" (arguments)) (negation (predicate "a" (arguments)))) (conjunction (negation (predicate "b" (arguments))) (predicate "a" (arguments))))))))

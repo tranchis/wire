@@ -28,7 +28,7 @@
 (defn parse-norm [norm]
   {:norm-id (.getNormID norm)
    :conditions (apply merge (map #(hash-map
-                                    %
+                                    (keyword %)
                                     (parse-condition norm %))
                                  ["activation"
                                   "maintenance"
@@ -64,7 +64,5 @@
         cas (-> om .getOm .getCs .getCountsAsRules)]
     (parse-norms st norms cas)))
 
-(parse-file
-  (.getPath (clojure.java.io/resource "TestOpera.opera")))
-
-
+#_(parse-file
+   (.getPath (clojure.java.io/resource "TestOpera.opera")))
