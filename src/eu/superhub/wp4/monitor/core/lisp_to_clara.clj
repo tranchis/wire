@@ -6,11 +6,14 @@
             [eu.superhub.wp4.monitor.core.regulative-parser :as regp]))
 
 (defrecord Norm [norm-id activation maintenance expiration])
+(defrecord CountsAs [norm-id abstract-fact context concrete-fact])
 (defrecord Activation [norm formula])
+(defrecord Expiration [norm formula])
+(defrecord Maintenance [norm formula])
 (defrecord Predicate [name argument-0 argument-1 argument-2 argument-3
                       argument-4 argument-5 argument-6 argument-7 argument-8 
                       argument-9 argument-10 argument-11 argument-12])
-(defrecord AbstractFact [])
+(defrecord AbstractFact [norm formula])
 (defrecord Holds [clause substitution])
 
 (defmulti argument->literal (fn [a _] (:type a)))
@@ -22,7 +25,7 @@
 (defmethod argument->literal "constant" [constant idx]
   `(= ~(:value constant) ~(str "argument-" idx)))
 
-(defmulti rule-atom (fn [a _] (:type a)))
+(defmulti rule-atom :type)
 
 (defmethod rule-atom "predicate" [predicate]
   (let [vars (filter #(= (:type %) "variable") (:arguments predicate))]
@@ -31,7 +34,7 @@
                      (:arguments predicate))]))
 
 (defmethod rule-atom "negation" [negation]
-  `[:not (rule-atom (:formula negation))])
+  `[:not ~(rule-atom (:formula negation))])
 
 (defn atom->variables [atom]
   (if (= (:type atom) "predicate")
@@ -42,13 +45,20 @@
   (let [atoms (:formulae formula)
         variables (into #{} (mapcat atom->variables atoms))
         str-type (apply str (map clojure.string/capitalize
-                                 (clojure.string/split (name type) #"-")))]
-    `(defrule ~(read-string (str "norm-" norm-id "-" (name type) "-" idx))
-       ~(str str-type " condition for norm "
+                                 (clojure.string/split (name type) #"-")))
+        str-norm-type (if (= type :abstract-fact)
+                        "counts-as"
+                        "norm")]
+    `(defrule ~(read-string (str str-norm-type "-"
+                                 norm-id "-" (name type) "-" idx))
+       ~(str str-type " condition for " str-norm-type " "
              norm-id)
-       [?n <- Norm (= ~norm-id :norm-id)]
+       [?n ~(symbol "<-") ~(if (= type :abstract-fact)
+                             CountsAs
+                             Norm)
+        (= ~norm-id ~(symbol "norm-id"))]
        [~(read-string str-type)
-        (= ?n :norm) (= ?f formula)]
+        (= ?n ~(symbol "norm")) (= ?f ~(symbol "formula"))]
        ~@(map rule-atom atoms)
        =>
        (insert (->Holds
@@ -62,23 +72,23 @@
   (let [type (key condition)
         formula (val condition)]
     (map-indexed (fn [idx b]
-                  (rule-clause idx norm-id type b)) (:formulae formula))))
+                   (rule-clause idx norm-id type b)) (:formulae formula))))
 
 (defn rule-norm [norm]
   (let [conds (:conditions norm)]
     #_(->Norm (:norm-id norm))
-    (map #(rule-condition (:norm-id norm) %) conds)))
+    (mapcat #(rule-condition (:norm-id norm) %) conds)))
 
 (defn rule-counts-as [counts-as]
   ;; TODO: Handle contexts in a better way!
   (let [cid (int (* 10000 (java.lang.Math/random)))]
-    (map #(rule-condition (str cid) %)
-         (select-keys counts-as [:abstract-fact]))))
+    (mapcat #(rule-condition (str cid) %)
+            (select-keys counts-as [:abstract-fact]))))
 
 (defn ^Package opera-to-drools [^String st]
-  (let [data (regp/parse-file st)]
-    #_(clojure.pprint/pprint data)
-    (map clojure.pprint/pprint (map rule-norm (:norms data)))
-    (map clojure.pprint/pprint (map rule-counts-as (:cas-rules data)))))
+  (let [data (regp/parse-file st)
+        rules (concat (mapcat rule-norm (:norms data))
+                      (mapcat rule-counts-as (:cas-rules data)))]
+    rules))
 
 (opera-to-drools (.getPath (clojure.java.io/resource "TestOpera.opera")))
