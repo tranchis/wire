@@ -14,7 +14,16 @@
                       argument-4 argument-5 argument-6 argument-7 argument-8 
                       argument-9 argument-10 argument-11 argument-12])
 (defrecord AbstractFact [norm formula])
-(defrecord Holds [clause substitution])
+(defrecord Holds [formula substitution])
+(defrecord HasClause [formula clause])
+(defrecord Event [asserter content])
+(defrecord Formula [content grounding])
+(defrecord Instantiated [norm substitution])
+(defrecord Fulfilled [norm substitution])
+(defrecord Violated [norm substitution])
+(defrecord Repaired [norm substitution])
+(defrecord SubsetEQ [subset superset])
+(defrecord Repair [norm repair-norm])
 
 (defmulti argument->literal (fn [a _] (:type a)))
 
@@ -90,5 +99,84 @@
         rules (concat (mapcat rule-norm (:norms data))
                       (mapcat rule-counts-as (:cas-rules data)))]
     rules))
+
+(defrule holds
+  "holds"
+  [HasClause (= ?f formula) (= ?f2 clause)]
+  [Holds (= ?f2 formula) (= ?theta substitution)]
+  =>
+  (insert (->Holds ?f ?theta)))
+
+(defrule event-processed
+  "event processed"
+  [Event (= ?a asserter) (= ?p content)]
+  =>
+  (insert ?p))
+
+(defn substitute [formula theta]
+  formula)
+
+(defn contains-all [theta theta2]
+  (every? true? (map #(= ((key %) theta) (val %)) theta2)))
+
+(defrule counts-as-activation
+  "counts-as activation"
+  [CountsAs
+   (= ?g1 abstract-fact)
+   (= ?g2 concrete-fact)
+   (= ?s context)]
+  [Holds (= ?g1 formula) (= ?theta substitution)]
+  [Holds (= ?s formula) (= ?theta2 substitution)]
+  [:not [Holds (= ?g2 formula) (= ?theta substitution)]]
+  =>
+  (insert (substitute ?g2 ?theta)))
+
+(defrule counts-as-deactivation
+  "counts-as deactivation"
+  [CountsAs
+   (= ?g1 abstract-fact)
+   (= ?g2 concrete-fact)
+   (= ?s context)]
+  [Holds (= ?g1 formula) (= ?theta substitution)]
+  [:not [Holds (= ?s formula) (= ?theta2 substitution)]]
+  [Holds (= ?g2 formula) (= ?theta substitution)]
+  [?f <- Formula (= ?g2 content) (= ?theta grounding)]
+  =>
+  (retract ?f))
+
+(defrule norm-instantiation
+  "norm instantiation"
+  [Activation (= ?n norm) (= ?f formula)]
+  [Holds (= ?f formula) (= ?theta substitution)]
+  [:not [Instantiated (= ?n norm) (= ?theta substitution)]]
+  [:not [Repair (= ?n2 norm) (= ?n repair-norm)]]
+  =>
+  (insert (->Instantiated ?n ?theta)))
+
+(defrule norm-instance-fulfillment
+  "norm instance fulfillment"
+  [Expiration (= ?n norm) (= ?f formula)]
+  [?ni <- Instantiated (= ?n norm) (= ?theta substitution)]
+  [SubsetEQ (= ?theta2 subset) (= ?theta superset)]
+  [Holds (= ?f formula) (= ?theta2 substitution)]
+  =>
+  (retract ?ni)
+  (insert (->Fulfilled ?n ?theta)))
+
+(defrule norm-instance-violation-repaired
+  "norm instance violation repaired"
+  [?ni <- Violated (= ?n norm) (= ?theta substitution)]
+  [Repair (= ?n norm) (= ?n2 repair-norm)]
+  [Fulfilled (= ?n2 norm) (= ?theta substitution)]
+  =>
+  (retract ?ni))
+
+(defrule subseteq
+  "subseteq"
+  [Holds (= ?f formula) (= ?theta substitution)]
+  [Holds (= ?f2 formula) (= ?theta2 substitution)]
+  [:test (contains-all ?theta ?theta2)]
+  =>
+  (insert (->SubsetEQ ?theta2 ?theta)))
 
 (opera-to-drools (.getPath (clojure.java.io/resource "TestOpera.opera")))
