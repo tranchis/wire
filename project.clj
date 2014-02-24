@@ -21,7 +21,7 @@
                  [alive.jms/imqjmx "1.0.0"]
                  [alive.jms/jms "1.0.0"]
                  [alive.jms/imq "1.0.0"]
-                 [org.toomuchcode/clara-rules "0.3.0"]
+                 [org.toomuchcode/clara-rules "0.4.0"]
                  [com.googlecode.json-simple/json-simple "1.1.1"]
                  [org.eclipse.gmf.runtime/notation "1.5.0-v20110309-2159"]
                  [alive.jms/imqutil "1.0.0"]

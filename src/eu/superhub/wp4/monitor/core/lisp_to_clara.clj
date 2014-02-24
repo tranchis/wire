@@ -2,11 +2,12 @@
   (:require [clojure.pprint :as ppr]
             [clojure.string :as stt]
             [clara.rules :refer :all]
+            [clara.tools.viz :as viz]
             [eu.superhub.wp4.monitor.core.fol-conversions :as folc]
             [eu.superhub.wp4.monitor.core.regulative-parser :as regp]))
 
-(defrecord Norm [norm-id activation maintenance expiration])
-(defrecord CountsAs [norm-id abstract-fact context concrete-fact])
+(defrecord Norm [norm-id])
+(defrecord CountsAs [abstract-fact context concrete-fact])
 (defrecord Activation [norm formula])
 (defrecord Expiration [norm formula])
 (defrecord Maintenance [norm formula])
@@ -29,16 +30,16 @@
 
 (defmethod argument->literal "variable" [variable idx]
   (let [name (:name variable)]
-    `(= ~(symbol (str "?" name)) ~(str "argument-" idx))))
+    `(= ~(symbol (str "?" name)) ~(read-string (str "argument-" idx)))))
 
 (defmethod argument->literal "constant" [constant idx]
-  `(= ~(:value constant) ~(str "argument-" idx)))
+  `(= ~(:value constant) ~(read-string (str "argument-" idx))))
 
 (defmulti rule-atom :type)
 
 (defmethod rule-atom "predicate" [predicate]
   (let [vars (filter #(= (:type %) "variable") (:arguments predicate))]
-    `[Predicate (= :name ~(:name predicate))
+    `[Predicate (= ~(:name predicate) ~(symbol "name"))
       ~@(map-indexed (fn [idx arg] (argument->literal arg idx))
                      (:arguments predicate))]))
 
@@ -51,6 +52,7 @@
     (atom->variables (:formula atom))))
 
 (defn rule-clause [idx norm-id type formula]
+  {:pre [(= "conjunction" (:type formula))]}
   (let [atoms (:formulae formula)
         variables (into #{} (mapcat atom->variables atoms))
         str-type (apply str (map clojure.string/capitalize
@@ -58,46 +60,60 @@
         str-norm-type (if (= type :abstract-fact)
                         "counts-as"
                         "norm")]
-    `(defrule ~(read-string (str str-norm-type "-"
-                                 norm-id "-" (name type) "-" idx))
-       ~(str str-type " condition for " str-norm-type " "
-             norm-id)
-       [?n ~(symbol "<-") ~(if (= type :abstract-fact)
-                             CountsAs
-                             Norm)
-        (= ~norm-id ~(symbol "norm-id"))]
-       [~(read-string str-type)
-        (= ?n ~(symbol "norm")) (= ?f ~(symbol "formula"))]
-       ~@(map rule-atom atoms)
-       =>
-       (insert (->Holds
-                 ~formula
-                 ~(apply merge (map #(hash-map
-                                       %
-                                       (symbol (str "?" %)))
-                                    variables)))))))
+    (eval `(defrule ~(read-string (str str-norm-type "-"
+                                       norm-id "-" (name type) "-" idx))
+             ~(str str-type " condition for " str-norm-type " "
+                   norm-id)
+             ~@(if (= type :abstract-fact)
+                  [`[?n ~(symbol "<-") CountsAs (= ?f ~(symbol "abstract-fact"))]]
+                  [`[?n ~(symbol "<-") Norm (= ~norm-id ~(symbol "norm-id"))]
+                   `[~(read-string str-type)
+                     (= ?n ~(symbol "norm")) (= ?f ~(symbol "formula"))]])
+             ~@(map rule-atom atoms)
+             ~(symbol "=>")
+             (insert! (->Holds
+                       ~formula
+                       ~(apply merge (map #(hash-map
+                                             %
+                                             (symbol (str "?" %)))
+                                          variables))))))))
 
 (defn rule-condition [norm-id condition]
+  {:pre [(= "disjunction" (:type (val condition)))]}
   (let [type (key condition)
         formula (val condition)]
-    (map-indexed (fn [idx b]
-                   (rule-clause idx norm-id type b)) (:formulae formula))))
+    (apply merge-with concat
+           (map-indexed (fn [idx b]
+                          {:rules [(rule-clause idx norm-id type b)]
+                           :inserts [(->HasClause formula b)]})
+                        (:formulae formula)))))
 
 (defn rule-norm [norm]
-  (let [conds (:conditions norm)]
-    #_(->Norm (:norm-id norm))
-    (mapcat #(rule-condition (:norm-id norm) %) conds)))
+  (let [conds (:conditions norm)
+        production (apply merge-with concat
+                          (map #(rule-condition (:norm-id norm) %) conds))
+        n (->Norm (:norm-id norm))]
+    {:inserts (concat (:inserts production)
+                      [n
+                       (->Activation n (:activation (:conditions norm)))
+                       (->Expiration n (:expiration (:conditions norm)))
+                       (->Maintenance n (:maintenance (:conditions norm)))])
+     :rules (:rules production)}))
 
 (defn rule-counts-as [counts-as]
   ;; TODO: Handle contexts in a better way!
-  (let [cid (int (* 10000 (java.lang.Math/random)))]
-    (mapcat #(rule-condition (str cid) %)
-            (select-keys counts-as [:abstract-fact]))))
+  (let [cid (int (* 10000 (java.lang.Math/random)))
+        production (apply merge-with concat
+                          (map #(rule-condition (str cid) %)
+                               (select-keys counts-as [:abstract-fact])))]
+    {:inserts (conj (:inserts production) (map->CountsAs counts-as))
+     :rules (:rules production)}))
 
 (defn ^Package opera-to-drools [^String st]
   (let [data (regp/parse-file st)
-        rules (concat (mapcat rule-norm (:norms data))
-                      (mapcat rule-counts-as (:cas-rules data)))]
+        rules (apply merge-with concat
+                     (concat (map rule-norm (:norms data))
+                             #_(map rule-counts-as (:cas-rules data))))]
     rules))
 
 (defrule holds
@@ -105,19 +121,19 @@
   [HasClause (= ?f formula) (= ?f2 clause)]
   [Holds (= ?f2 formula) (= ?theta substitution)]
   =>
-  (insert (->Holds ?f ?theta)))
+  (insert! (->Holds ?f ?theta)))
 
 (defrule event-processed
   "event processed"
   [Event (= ?a asserter) (= ?p content)]
   =>
-  (insert ?p))
+  (insert! ?p))
 
 (defn substitute [formula theta]
   formula)
 
 (defn contains-all [theta theta2]
-  (every? true? (map #(= ((key %) theta) (val %)) theta2)))
+  (every? true? (map #(= (get theta (key %)) (val %)) theta2)))
 
 (defrule counts-as-activation
   "counts-as activation"
@@ -129,7 +145,7 @@
   [Holds (= ?s formula) (= ?theta2 substitution)]
   [:not [Holds (= ?g2 formula) (= ?theta substitution)]]
   =>
-  (insert (substitute ?g2 ?theta)))
+  (insert-unconditional! (substitute ?g2 ?theta)))
 
 (defrule counts-as-deactivation
   "counts-as deactivation"
@@ -142,16 +158,18 @@
   [Holds (= ?g2 formula) (= ?theta substitution)]
   [?f <- Formula (= ?g2 content) (= ?theta grounding)]
   =>
-  (retract ?f))
+  (retract! ?f))
 
 (defrule norm-instantiation
   "norm instantiation"
   [Activation (= ?n norm) (= ?f formula)]
   [Holds (= ?f formula) (= ?theta substitution)]
-  [:not [Instantiated (= ?n norm) (= ?theta substitution)]]
+  [:not [Instantiated (== ?n norm) (== ?theta substitution)]]
   [:not [Repair (= ?n2 norm) (= ?n repair-norm)]]
   =>
-  (insert (->Instantiated ?n ?theta)))
+  (do
+    (println "Instantiated " (.hashCode ?n) " " (.hashCode ?theta))
+    (insert-unconditional! (->Instantiated ?n ?theta))))
 
 (defrule norm-instance-fulfillment
   "norm instance fulfillment"
@@ -160,8 +178,9 @@
   [SubsetEQ (= ?theta2 subset) (= ?theta superset)]
   [Holds (= ?f formula) (= ?theta2 substitution)]
   =>
-  (retract ?ni)
-  (insert (->Fulfilled ?n ?theta)))
+  (do
+    (retract! ?ni)
+    (insert-unconditional! (->Fulfilled ?n ?theta))))
 
 (defrule norm-instance-violation-repaired
   "norm instance violation repaired"
@@ -169,7 +188,7 @@
   [Repair (= ?n norm) (= ?n2 repair-norm)]
   [Fulfilled (= ?n2 norm) (= ?theta substitution)]
   =>
-  (retract ?ni))
+  (retract! ?ni))
 
 (defrule subseteq
   "subseteq"
@@ -177,6 +196,26 @@
   [Holds (= ?f2 formula) (= ?theta2 substitution)]
   [:test (contains-all ?theta ?theta2)]
   =>
-  (insert (->SubsetEQ ?theta2 ?theta)))
+  (insert! (->SubsetEQ ?theta2 ?theta)))
 
-(opera-to-drools (.getPath (clojure.java.io/resource "TestOpera.opera")))
+(defquery test-instantiated
+  []
+  [?n <- Instantiated])
+
+(defn start-engine []
+  (let [specification (opera-to-drools
+                        (.getPath
+                          (clojure.java.io/resource "TestOpera.opera")))]
+    (ppr/pprint (count (:rules specification)))
+    (let [session (->
+                    (mk-session)
+                    (insert (map->Predicate {:name "NumberOfWorkers"
+                                             :argument-0 "x"}))
+                    (insert (map->Predicate {:name "lessThan"
+                                             :argument-0 "x"
+                                             :argument-1 "5"})))
+          session-all (apply insert session (:inserts specification))]
+      (query (fire-rules session-all) test-instantiated))))
+
+(start-engine)
+

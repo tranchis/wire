@@ -160,7 +160,7 @@
         `(~(symbol "disjunction")
            ~@first-level))
       (if (= (first normalized) (symbol "conjunction"))
-        `(~(symbol "conjunction")
+        `(~(symbol "disjunction")
            ~normalized)
         `(~(symbol "disjunction")
            (~(symbol "conjunction")
