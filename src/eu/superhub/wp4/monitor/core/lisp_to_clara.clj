@@ -51,32 +51,22 @@
     (map :name (filter #(= (:type %) "variable") (:arguments atom)))
     (atom->variables (:formula atom))))
 
-(defn rule-clause [idx norm-id type formula]
-  {:pre [(= "conjunction" (:type formula))]}
-  (let [atoms (:formulae formula)
-        variables (into #{} (mapcat atom->variables atoms))
-        str-type (apply str (map clojure.string/capitalize
-                                 (clojure.string/split (name type) #"-")))
-        str-norm-type (if (= type :abstract-fact)
-                        "counts-as"
-                        "norm")]
-    `(defrule ~(read-string (str str-norm-type "-"
-                                 norm-id "-" (name type) "-" idx))
-       ~(str str-type " condition for " str-norm-type " "
-             norm-id)
-       ~@(if (= type :abstract-fact)
-           [`[?n ~(symbol "<-") CountsAs (= ?f ~(symbol "abstract-fact"))]]
-           [`[?n ~(symbol "<-") Norm (= ~norm-id ~(symbol "norm-id"))]
-            `[~(read-string str-type)
-              (= ?n ~(symbol "norm")) (= ?f ~(symbol "formula"))]])
+(defn rule-clause [clause]
+  {:pre [(= "conjunction" (:type clause))]}
+  (let [atoms (:formulae clause)
+        norm-id (str (int (* 1000 (java.lang.Math/random))))
+        variables (into #{} (mapcat atom->variables atoms))]
+    `(defrule ~(read-string (str "clause-" norm-id))
        ~@(map rule-atom atoms)
        ~(symbol "=>")
-       (insert! (->Holds
-                  ~formula
-                  ~(apply merge (map #(hash-map
-                                        %
-                                        (symbol (str "?" %)))
-                                     variables)))))))
+       (do
+         (println "Holds: " ~(hash clause))
+         (insert! (->Holds
+                    ~clause
+                    ~(apply merge (map #(hash-map
+                                          %
+                                          (symbol (str "?" %)))
+                                       variables))))))))
 
 (defn rule-condition [norm-id condition]
   {:pre [(= "disjunction" (:type (val condition)))]}
@@ -84,8 +74,8 @@
         formula (val condition)]
     (apply merge-with concat
            (map-indexed (fn [idx b]
-                          {:rules [(rule-clause idx norm-id type b)]
-                           :inserts [(->HasClause formula b)]})
+                          {:formulae [{b [formula]}]
+                           #_:inserts #_[(->HasClause formula b)]})
                         (:formulae formula)))))
 
 (defn rule-norm [norm]
@@ -93,12 +83,11 @@
         production (apply merge-with concat
                           (map #(rule-condition (:norm-id norm) %) conds))
         n (->Norm (:norm-id norm))]
-    {:inserts (concat (:inserts production)
-                      [n
-                       (->Activation n (:activation (:conditions norm)))
-                       (->Expiration n (:expiration (:conditions norm)))
-                       (->Maintenance n (:maintenance (:conditions norm)))])
-     :rules (:rules production)}))
+    {:inserts [n
+               (->Activation n (:activation (:conditions norm)))
+               (->Expiration n (:expiration (:conditions norm)))
+               (->Maintenance n (:maintenance (:conditions norm)))]
+     :formulae (:formulae production)}))
 
 (defn rule-counts-as [counts-as]
   ;; TODO: Handle contexts in a better way!
@@ -106,15 +95,21 @@
         production (apply merge-with concat
                           (map #(rule-condition (str cid) %)
                                (select-keys counts-as [:abstract-fact])))]
-    {:inserts (conj (:inserts production) (map->CountsAs counts-as))
-     :rules (:rules production)}))
+    {:inserts (map->CountsAs counts-as)
+     :formulae (:formulae production)}))
 
 (defn ^Package opera-to-drools [^String st]
   (let [data (regp/parse-file st)
         rules (apply merge-with concat
-                     (concat (map rule-norm (take 1 (:norms data)))
-                             (map rule-counts-as (:cas-rules data))))]
-    rules))
+                     (concat (map rule-norm (:norms data))
+                             (map rule-counts-as (:cas-rules data))))
+        clause-relationships (apply merge-with concat (:formulae rules))
+        clauses (keys clause-relationships)
+        inserts (mapcat #(map (fn [a]
+                                (->HasClause a (key %)))
+                              (distinct (val %))) clause-relationships)]
+    (merge rules {:rules (map rule-clause clauses)
+                  :inserts (concat inserts (:inserts rules))})))
 
 (defn base-rules []
   (let [id (symbol (str "rule-ns-" (int (* 1000 (java.lang.Math/random)))))]
@@ -151,16 +146,21 @@
       
       (eval '(defrule holds
                "holds"
-               [HasClause (= ?f formula) (= ?f2 clause)]
-               [Holds (= ?f2 formula) (= ?theta substitution)]
+               [?h1 <- HasClause (= ?f formula) (= ?f2 clause)]
+               [?h2 <- Holds (= ?f2 formula) (= ?theta substitution)]
                =>
-               (insert! (->Holds ?f ?theta))))
+               (do
+                 (println "holds: " (.hashCode ?h1) " " (.hashCode ?h2)
+                          " " (.hashCode ?f) " " (.hashCode ?f2))
+                 (insert! (->Holds ?f ?theta)))))
       
       (eval '(defrule event-processed
                "event processed"
                [Event (= ?a asserter) (= ?p content)]
                =>
-               (insert! ?p)))
+               (do
+                 (println "event-processed")
+                 (insert! ?p))))
       
       (eval '(defn substitute [formula theta]
                formula))
@@ -178,7 +178,9 @@
                [Holds (= ?s formula) (= ?theta2 substitution)]
                [:not [Holds (= ?g2 formula) (= ?theta substitution)]]
                =>
-               (insert-unconditional! (substitute ?g2 ?theta))))
+               (do
+                 (println "counts-as-activation")
+                 (insert-unconditional! (substitute ?g2 ?theta)))))
       
       (eval '(defrule counts-as-deactivation
                "counts-as deactivation"
@@ -191,17 +193,19 @@
                [Holds (= ?g2 formula) (= ?theta substitution)]
                [?f <- Formula (= ?g2 content) (= ?theta grounding)]
                =>
-               (retract! ?f)))
+               (do
+                 (println "counts-as-deactivation")
+                 (retract! ?f))))
       
       (eval '(defrule norm-instantiation
                "norm instantiation"
-               [Activation (= ?n norm) (= ?f formula)]
-               [Holds (= ?f formula) (= ?theta substitution)]
-               [:not [Instantiated (== ?n norm) (== ?theta substitution)]]
+               [?a <- Activation (= ?n norm) (= ?f formula)]
+               [?h <- Holds (= ?f formula) (= ?theta substitution)]
+               [:not [Instantiated (= ?n norm) (= ?theta substitution)]]
                [:not [Repair (= ?n2 norm) (= ?n repair-norm)]]
                =>
                (do
-                 (println "Instantiated " (.hashCode ?n) " " (.hashCode ?theta))
+                 (println "norm-instantiation")
                  (insert-unconditional! (->Instantiated ?n ?theta)))))
       
       (eval '(defrule norm-instance-fulfillment
@@ -212,6 +216,7 @@
                [Holds (= ?f formula) (= ?theta2 substitution)]
                =>
                (do
+                 (println "norm-instance-fulfillment")
                  (retract! ?ni)
                  (insert-unconditional! (->Fulfilled ?n ?theta)))))
       
@@ -221,20 +226,23 @@
                [Repair (= ?n norm) (= ?n2 repair-norm)]
                [Fulfilled (= ?n2 norm) (= ?theta substitution)]
                =>
-               (retract! ?ni)))
+               (do
+                 (println "norm-instance-violation-repaired")
+                 (retract! ?ni))))
       
       (eval '(defrule subseteq
                "subseteq"
-               [Holds (= ?f formula) (= ?theta substitution)]
-               [Holds (= ?f2 formula) (= ?theta2 substitution)]
+               [?h1 <- Holds (= ?f formula) (= ?theta substitution)]
+               [?h2 <- Holds (= ?f2 formula) (= ?theta2 substitution)]
                [:test (contains-all ?theta ?theta2)]
                =>
-               (insert! (->SubsetEQ ?theta2 ?theta))))
+               (do
+                 (println "subseteq")
+                 (insert! (->SubsetEQ ?theta2 ?theta)))))
       
-      (println "lala")
-      (println (eval '(defquery test-instantiated
-                       []
-                       [?n <- Instantiated]))))
+      (eval '(defquery test-instantiated
+               []
+               [?n <- Instantiated])))
     
     (ns eu.superhub.wp4.monitor.core.lisp-to-clara)
     (find-ns id)))
@@ -247,7 +255,7 @@
     (dorun (map #(binding [*ns* br] (eval %)) (:rules specification)))
     #_(ppr/pprint (:rules specification))
     (let [session (->
-                    (mk-session (ns-name br))
+                    (mk-session (ns-name br) :cache false)
                     (insert (map->Predicate {:name "NumberOfWorkers"
                                              :argument-0 "x"}))
                     (insert (map->Predicate {:name "lessThan"
@@ -256,9 +264,7 @@
           session-all (apply insert session (:inserts specification))
           ti (first (filter #(= (name (key %)) "test-instantiated")
                             (ns-map br)))]
-      (println @(val ti))
-      (println (class (read-string (str (:ns (meta (val ti))) "/" (:name (meta (val ti)))))))
-      (fire-rules session-all))))
+      (query (fire-rules session-all) @(val ti)))))
 
 (start-engine)
 #_(base-rules)
