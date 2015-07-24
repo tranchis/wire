@@ -1,6 +1,6 @@
 (ns eu.superhub.wp4.monitor.core.Monitor
   (:require [clojure.pprint :as ppr])
-  (:require [eu.superhub.wp4.monitor.core.RegulativeParser :as regp])
+  (:require [eu.superhub.wp4.monitor.core.regulative-parser :as regp])
   (:require [eu.superhub.wp4.monitor.core.LispToDrools :as ltd]))
 
 (import (eu.superhub.wp4.monitor.core                           IMonitor BusEventTransporter
@@ -11,8 +11,6 @@
         (eu.superhub.wp4.monitor.core.rules.drools              DroolsEngine)
         (net.sf.ictalive.runtime.event                          Event)
         (net.sf.ictalive.runtime.fact                           Fact Content SendAct Message)
-        (eu.superhub.wp3.models.situationaldatamodel.statements Statement Interpreted)
-        (eu.superhub.wp3.marshaller                             GenericMarshaller)
         (eu.superhub.wp4.monitor.core.domain                    Norm Activation Maintenance
                                                                 Expiration Formula Proposition
                                                                 Session))
@@ -201,18 +199,8 @@
     (. m setBody xml)
     ev))
 
-(defn ^String statement-to-event [^Statement s]
-  (let [gms (GenericMarshaller. Statement)
-        xml (. gms javaToXml s)]
-    (new-event xml)))
-
 (defn send-event [^EventTransporter et ^Event ev]
   (. et push ev))
-
-(defn push-statement [^Statement s]
-  (let [ev (statement-to-event s)
-        buses (into #{} (map #(:bus (deref %)) (vals @monitor-map)))]
-    (map #(send-event % ev) buses)))
 
 ;(start-monitor (create-monitor "tranchis.mooo.com" 61616))
 ;(push-statement (Interpreted.))

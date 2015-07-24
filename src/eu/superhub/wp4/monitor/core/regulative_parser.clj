@@ -65,4 +65,4 @@
     (parse-norms st norms cas)))
 
 #_(parse-file
-   (.getPath (clojure.java.io/resource "TestOpera.opera")))
+  (.getPath (clojure.java.io/resource "TestOpera.opera")))
