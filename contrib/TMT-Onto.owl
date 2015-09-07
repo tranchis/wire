@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns="http://www.csd.abdn.ac.uk/~dcorsar/ALIVE/actions/2009/04/Ontology1253026869.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.csd.abdn.ac.uk/~dcorsar/ALIVE/actions/2009/04/Ontology1253026869.owl">
+  <owl:Ontology rdf:about="http://www.csd.abdn.ac.uk/~dcorsar/ALIVE/tmt.owl"/>
+  <owl:Class rdf:ID="InterfaceFormat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SessionPreferences"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="User"/>
+  <owl:Class rdf:ID="Genre">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Movie"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Location"/>
+  <owl:Class rdf:ID="City">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Address"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Cinema">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Content"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ContentProvider"/>
+  <owl:Class rdf:ID="Model">
+    <rdfs:subClassOf rdf:resource="#User"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Requirements">
+    <rdfs:subClassOf rdf:resource="#User"/>
+  </owl:Class>
+  <owl:Class rdf:ID="District">
+    <rdfs:subClassOf rdf:resource="#Location"/>
+  </owl:Class>
+  <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Location"/>
+      <owl:Class rdf:about="#Cinema"/>
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ExternalInfo">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Info"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Time"/>
+  <owl:Class rdf:ID="Petition"/>
+  <owl:Class rdf:ID="Weather">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EnvironmentalContext"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="UserContext">
+    <rdfs:subClassOf rdf:resource="#Info"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InteractionMode">
+    <rdfs:subClassOf rdf:resource="#SessionPreferences"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LegalInfo">
+    <rdfs:subClassOf rdf:resource="#ExternalInfo"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CinemaProvider">
+    <rdfs:subClassOf rdf:resource="#ContentProvider"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Facilities">
+    <rdfs:subClassOf rdf:resource="#Cinema"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DeviceInfo">
+    <rdfs:subClassOf rdf:resource="#Info"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Movie">
+    <rdfs:subClassOf rdf:resource="#Content"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Interests">
+    <rdfs:subClassOf rdf:resource="#User"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EnvironmentalContext">
+    <rdfs:subClassOf rdf:resource="#ExternalInfo"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Date"/>
+  <owl:Class rdf:about="#Address">
+    <rdfs:subClassOf rdf:resource="#Location"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="atCinema">
+    <rdfs:range rdf:resource="#Cinema"/>
+    <rdfs:domain rdf:resource="#Movie"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasMovie"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTime">
+    <rdfs:range rdf:resource="#Time"/>
+    <rdfs:domain rdf:resource="#UserContext"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMovie">
+    <rdfs:range rdf:resource="#Movie"/>
+    <rdfs:domain rdf:resource="#Cinema"/>
+    <owl:inverseOf rdf:resource="#atCinema"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasLocation">
+    <rdfs:range rdf:resource="#Location"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Cinema"/>
+          <owl:Class rdf:about="#UserContext"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="userID">
+    <rdfs:domain rdf:resource="#User"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDate">
+    <rdfs:domain rdf:resource="#UserContext"/>
+    <rdfs:range rdf:resource="#Date"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="composedList">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Content"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="updated"/>
+  <owl:DatatypeProperty rdf:ID="hasPrice">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#Cinema"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="time"/>
+  <owl:DatatypeProperty rdf:ID="received">
+    <rdfs:domain rdf:resource="#Petition"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Latitude">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="proivded">
+    <rdfs:domain rdf:resource="#Content"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="assigned">
+    <rdfs:domain rdf:resource="#SessionPreferences"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="date">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasSynopsis">
+    <rdfs:domain rdf:resource="#Movie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="provider_chosen"/>
+  <owl:DatatypeProperty rdf:ID="hasAccess">
+    <rdfs:domain rdf:resource="#Cinema"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAddress">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Cinema"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasGenre">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Movie"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Movie"/>
+          <owl:Class rdf:about="#Cinema"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="personalized">
+    <rdfs:domain rdf:resource="#Petition"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="created">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="gathered">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ExternalInfo"/>
+          <owl:Class rdf:about="#DeviceInfo"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="filtered">
+    <rdfs:domain rdf:resource="#Content"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasRate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Cinema"/>
+          <owl:Class rdf:about="#Movie"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="collected">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Content"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="provided">
+    <rdfs:domain rdf:resource="#Info"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="providerChosen">
+    <rdfs:domain rdf:resource="#Content"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="composed">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Content"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Longitude">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="authenticated"/>
+  <owl:DatatypeProperty rdf:ID="hasPremierDate">
+    <rdfs:domain rdf:resource="#Movie"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="adapted">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#InteractionMode"/>
+          <owl:Class rdf:about="#InterfaceFormat"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasLength">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Movie"/>
+  </owl:DatatypeProperty>
+  <Facilities rdf:ID="non_smoking_area"/>
+  <Genre rdf:ID="terror"/>
+  <Genre rdf:ID="thriller"/>
+  <Facilities rdf:ID="air-conditioned"/>
+  <Genre rdf:ID="action"/>
+  <Facilities rdf:ID="wheelchair_accessible"/>
+  <Genre rdf:ID="documental"/>
+  <Petition rdf:ID="NewInteractionModePetition"/>
+  <Genre rdf:ID="animation"/>
+  <Petition rdf:ID="SignInPetition"/>
+  <Genre rdf:ID="drama"/>
+  <Facilities rdf:ID="parking"/>
+  <Petition rdf:ID="ChangeProfilePetition"/>
+  <Genre rdf:ID="comedy"/>
+  <Facilities rdf:ID="accepts_credit_cards"/>
+  <Petition rdf:ID="ChangeUserInterestsAndRequirementsPetition"/>
+  <Genre rdf:ID="adventure"/>
+  <Petition rdf:ID="SignUpPetition"/>
+  <Petition rdf:ID="NewInterfaceFormatPetition"/>
+  <Petition rdf:ID="ContentPetition"/>
+  <Genre rdf:ID="romantic_comedy"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.1, Build 536)  http://protege.stanford.edu -->

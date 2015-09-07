@@ -1,0 +1,241 @@
+Montar función en el optimizer para que saque el XML
+	· Se debe crear una nueva policy que contenga el success indicator para testeo
+Portar la función al populator
+
+Probar
+Documentar
+Subir
+Notificar
+	· Pedir que se actualice la BD de deployment
+	
+	
+																TemplateParameterList = new ArrayList<TemplateParameter>();	
+                                templateParameterValueList = new ArrayList<TemplateParameterValue>();
+
+                                monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("statename");
+                                monitoTemplateParameter.setDescription("statename");
+                                monitoTemplateParameter.setRestrictions("statename in ('SPAIN','ITALY','FINLAND')");
+                                monitoTemplateParameter.setId("statename");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("string");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("SPAIN");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                 monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("country");
+                                monitoTemplateParameter.setDescription("country");
+                                monitoTemplateParameter.setRestrictions("country in ('SP','IT','FI')");
+                                monitoTemplateParameter.setId("country");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("string");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("SP");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                 monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("latitude");
+                                monitoTemplateParameter.setDescription("latitude");                                
+                                monitoTemplateParameter.setId("latitude");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("long");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("0");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                 monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("longitude");
+                                monitoTemplateParameter.setDescription("longitude");                                
+                                monitoTemplateParameter.setId("longitude");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("long");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("0");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                 monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("status");
+                                monitoTemplateParameter.setDescription("status");
+                                monitoTemplateParameter.setRestrictions("status in ('impossible','congested','heavy','freeFlow','unknown')");
+                                monitoTemplateParameter.setId("status");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("string");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("freeFlow");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                 monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("city");
+                                monitoTemplateParameter.setDescription("city");
+                                monitoTemplateParameter.setRestrictions("city in ('BARCELONA','HELSINKI','MILAN')");
+                                monitoTemplateParameter.setId("city");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("string");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("BARCELONA");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("PeopleInvolved");
+                                monitoTemplateParameter.setDescription("PeopleInvolved");
+                                monitoTemplateParameter.setRestrictions("PeopleInvolved >= 0");
+                                monitoTemplateParameter.setId("PeopleInvolved");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("integer");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("1");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+                                
+                                monitoTemplateParameter = of.createTemplateParameter();
+                                monitoTemplateParameter.setName("VehiclesInvolved");
+                                monitoTemplateParameter.setDescription("VehiclesInvolved");
+                                monitoTemplateParameter.setRestrictions("VehiclesInvolved >= 0");
+                                monitoTemplateParameter.setId("VehiclesInvolved");
+                                monitoTemplateParameter.setMandatory(true);
+                                monitoTemplateParameter.setMaxelements(1);
+                                monitoTemplateParameter.setMinelements(1);
+                                monitoTemplateParameter.setDataType("integer");
+                                monitorTemplateParameterValue = of.createTemplateParameterValue();
+                                monitorTemplateParameterValue.setFieldid(monitoTemplateParameter.getId());
+                                monitorTemplateParameterValue.setValue("1");
+                                templateParameterValueList.add(monitorTemplateParameterValue);	
+                                TemplateParameterList.add(monitoTemplateParameter);
+	
+	
+TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_example_freeFlow_traffic
+	TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_freeFlow_traffic
+<parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>status</fieldid>
+                <value>freeFlow</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+
+
+ACCIDENT_Indicator_example_heavy_traffic
+	ACCIDENT_Indicator_Template_example_heavy_traffic	
+<parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>PeopleInvolved</fieldid>
+                <value>1</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>VehiclesInvolved</fieldid>
+                <value>1</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+
+
+<successIndicatorTemplate id="stinkingGasRatio">
+            <name>stinkingGasRatio</name>
+            <description>Ratio of gas levels that do not smell very well</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>for $element1 in //SampleSeries[name='producedCO2InGramproducedCOInGramAggregate'] for $element2 in //SampleSeries[name='producedNOxInGramproducedSOxInGramAggregate'] return (xs:double( ((max($element1/sample/value) - min($element1/sample/value)) + (max($element2/sample/value) - min($element2/sample/value))) div 2), min($element1/sample/begintime), max($element1/sample/endtime))</formula>
+            <formulaDependency>
+                <dependencyTemplateId>producedCO2InGramproducedCOInGramAggregate</dependencyTemplateId>
+            </formulaDependency>
+            <formulaDependency>
+                <dependencyTemplateId>producedNOxInGramproducedSOxInGramAggregate</dependencyTemplateId>
+            </formulaDependency>
+            <scorecalculationformula>for $element1 in //SampleSeries[name='stinkingGasRatio']/sample return (xs:double(1 - $element1/value) , xs:double($element1/begintime) , xs:double($element1/endtime))</scorecalculationformula>
+        </successIndicatorTemplate>
+        
+        
+        
+
+ successIndicator id="8">
+                        <name>stinkingGasRatio</name>
+                        <description>Ratio of gas levels that do not smell very well</description>
+                        <templateId>stinkingGasRatio</templateId>
+                        <parameterValue>
+                            <fieldid>startInterval</fieldid>
+                            <value>0</value>
+                        </parameterValue>
+                        <parameterValue>
+                            <fieldid>endInterval</fieldid>
+                            <value>1000</value>
+                        </parameterValue>
+                        <samplingPeriod>0</samplingPeriod>
+                    </successIndicator>       

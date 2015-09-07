@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:policyModel xmlns:ns2="http://developers.superhub-project.eu/schemas/mobilitypolicy.xsd">
+    <policies>
+        <policy id="100000">
+            <name>testPolicy</name>
+            <description>Test policy Description</description>
+            <defaultimplementation>0</defaultimplementation>
+            <implementation id="100001">
+                <name>goodPolicyImplementation</name>
+                <description>Good policy implementation description</description>
+                <status>final</status>
+                <actions>
+                    <action id="14">
+                        <name>action3</name>
+                        <description>Vehicle model projection for PRIVATE_TRANSPORT_CAR_SKODA_Octavia_Estate. Ultra-low pollution</description>
+                        <templateId>11</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateVehicle</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.VehicleTemplate","averageVehicleSpeedInKmPerHour":70.5,"consumeElectricityInkWhourPer100Km":0.0,"consumeFuelInLitersPer100Km":6.9,"lengthInMeter":4.2,"passengerCapacity":5,"produceCO2InGramPerKm":1.0,"produceCOInGramPerKm":1.0,"produceNOxInGramPerKm":1.0,"producePM10InGramPerKm":1.0,"produceSOxInGramPerKm":9000.0,"transportType":"PRIVATE_TRANSPORT","vehicleTemplateId":"PRIVATE_TRANSPORT_CAR_SKODA_Octavia_Estate","vehicleType":"CAR"}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="15">
+                        <name>action4</name>
+                        <description>Vehicle model projection for PRIVATE_TRANSPORT_MOTORBIKE_Model_685. Ultra-low pollution</description>
+                        <templateId>11</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateVehicle</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.VehicleTemplate","averageVehicleSpeedInKmPerHour":55,"consumeElectricityInkWhourPer100Km":0.0,"consumeFuelInLitersPer100Km":3.85,"lengthInMeter":2,"passengerCapacity":2,"produceCO2InGramPerKm":1.0,"produceCOInGramPerKm":1.0,"produceNOxInGramPerKm":1.0,"producePM10InGramPerKm":1.0,"produceSOxInGramPerKm":9000.0,"transportType":"PRIVATE_TRANSPORT","vehicleTemplateId":"PRIVATE_TRANSPORT_MOTORBIKE_Model_685","vehicleType":"MOTORBIKE"}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="17">
+                        <name>action5</name>
+                        <description>Time table model projection adding early and late services</description>
+                        <templateId>16</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateTimetable</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.PublicTransportStopAction","PublicTransportStop":{"class":"eu.superhub.wp3.models.citymodel.PublicTransportStop","TimeTable":{"class":"eu.superhub.wp3.models.citymodel.TimeTable","LineSchedule":[{"class":"eu.superhub.wp3.models.citymodel.LineSchedule","Schedule":{"class":"eu.superhub.wp3.models.citymodel.Schedule","begin-date":1366881015786,"begin-time":3,"end-date":7,"end-time":0,"weekdays":62}}]}},"Instant":{"class":"eu.superhub.wp3.models.citymodel.Instant","timestamp":0}}</value>
+                        </parameterValue>
+                    </action>
+                </actions>
+            </implementation>
+            <implementation id="100002">
+                <name>badPolicyImplementation</name>
+                <description>Bad policy implementation description</description>
+                <status>final</status>
+                <actions>
+                    <action id="12">
+                        <name>action1</name>
+                        <description>Vehicle model projection for PRIVATE_TRANSPORT_CAR_SKODA_Octavia_Estate. Ultra pollution</description>
+                        <templateId>11</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateVehicle</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.VehicleTemplate","averageVehicleSpeedInKmPerHour":70.5,"consumeElectricityInkWhourPer100Km":0.0,"consumeFuelInLitersPer100Km":6.9,"lengthInMeter":4.2,"passengerCapacity":5,"produceCO2InGramPerKm":9000.0,"produceCOInGramPerKm":9000.0,"produceNOxInGramPerKm":9000.0,"producePM10InGramPerKm":9000.0,"produceSOxInGramPerKm":9000.0,"transportType":"PRIVATE_TRANSPORT","vehicleTemplateId":"PRIVATE_TRANSPORT_CAR_SKODA_Octavia_Estate","vehicleType":"CAR"}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="13">
+                        <name>action2</name>
+                        <description>Vehicle model projection for PRIVATE_TRANSPORT_MOTORBIKE_Model_685. Ultra pollution</description>
+                        <templateId>11</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateVehicle</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.VehicleTemplate","averageVehicleSpeedInKmPerHour":55,"consumeElectricityInkWhourPer100Km":0.0,"consumeFuelInLitersPer100Km":3.85,"lengthInMeter":2,"passengerCapacity":2,"produceCO2InGramPerKm":9000.0,"produceCOInGramPerKm":9000.0,"produceNOxInGramPerKm":9000.0,"producePM10InGramPerKm":9000.0,"produceSOxInGramPerKm":9000.0,"transportType":"PRIVATE_TRANSPORT","vehicleTemplateId":"PRIVATE_TRANSPORT_MOTORBIKE_Model_685","vehicleType":"MOTORBIKE"}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="19">
+                        <name>action6</name>
+                        <description>Road model projection setting very low max speed</description>
+                        <templateId>18</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateRoad</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.RoadUpdateAction","speedLimit":40,"Road":{"class":"eu.superhub.wp3.models.citymodel.Road","osmid":"18"},"TransportMode":["CAR","MOTORBIKE","BICYCLE","BUS","METRO","TRAM","WALKING"]}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="21">
+                        <name>action7</name>
+                        <description>Road model projection Allowing only WALKING and BYCYCLE transport modes</description>
+                        <templateId>20</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateRoad</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.RoadUpdateAction","speedLimit":30,"Road":{"class":"eu.superhub.wp3.models.citymodel.Road","osmid":"20"},"TransportMode":["BICYCLE","WALKING"]}</value>
+                        </parameterValue>
+                    </action>
+                    <action id="23">
+                        <name>action8</name>
+                        <description>Road model projection Closing rode by setting speed limit to 0 (Note: Speed limit is not updated by projector, road is removed from OSM file)</description>
+                        <templateId>22</templateId>
+                        <parameterValue>
+                            <fieldid>UpdateRoad</fieldid>
+                            <value>{"class":"eu.superhub.wp3.models.citymodel.RoadUpdateAction","speedLimit":0,"Road":{"class":"eu.superhub.wp3.models.citymodel.Road","osmid":"22"},"TransportMode":[]}</value>
+                        </parameterValue>
+                    </action>
+                </actions>
+            </implementation>
+            <purpose>
+                <instantiatedSuccessIndicators>
+                    <successIndicator id="8">
+                        <name>stinkingGasRatio</name>
+                        <description>Ratio of gas levels that do not smell very well</description>
+                        <templateId>stinkingGasRatio</templateId>
+                        <parameterValue>
+                            <fieldid>startInterval</fieldid>
+                            <value>0</value>
+                        </parameterValue>
+                        <parameterValue>
+                            <fieldid>endInterval</fieldid>
+                            <value>1000</value>
+                        </parameterValue>
+                        <samplingPeriod>0</samplingPeriod>
+                    </successIndicator>
+                </instantiatedSuccessIndicators>
+                <goal>
+                    <weight>0.5</weight>
+                    <threshold>0.0</threshold>
+                    <operationalobjectiveid>9</operationalobjectiveid>
+                    <successIndicator>
+                        <weight>0.3</weight>
+                        <threshold>0.0</threshold>
+                        <successindicatorid>8</successindicatorid>
+                    </successIndicator>
+                    <successIndicator>
+                        <weight>0.7</weight>
+                        <threshold>0.0</threshold>
+                        <successindicatorid>8</successindicatorid>
+                    </successIndicator>
+                </goal>
+                <goal>
+                    <weight>0.7</weight>
+                    <threshold>0.0</threshold>
+                    <operationalobjectiveid>10</operationalobjectiveid>
+                    <successIndicator>
+                        <weight>0.3</weight>
+                        <threshold>0.0</threshold>
+                        <successindicatorid>8</successindicatorid>
+                    </successIndicator>
+                    <successIndicator>
+                        <weight>0.7</weight>
+                        <threshold>0.0</threshold>
+                        <successindicatorid>8</successindicatorid>
+                    </successIndicator>
+                </goal>
+            </purpose>
+        </policy>
+    </policies>
+    <indicators>
+        <indicator id="5">
+            <name>AveragePercentageOfCitizenUsingThisTransportTypeIndicator</name>
+            <description>Average Percentage of the population served by a transport type Indicator</description>
+            <templateId>AveragePercentageOfCitizenUsingThisTransportType</templateId>
+            <parameterValue>
+                <fieldid>transportType</fieldid>
+                <value>PUBLIC_TRANSPORT</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+            <samplingPeriod>0</samplingPeriod>
+        </indicator>
+        <indicator id="6">
+            <name>producedCO2InGramproducedCOInGramAggregateIndicator</name>
+            <description>Aggregation of CO2 and CO level over time Indicator</description>
+            <templateId>producedCO2InGramproducedCOInGramAggregate</templateId>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+            <samplingPeriod>0</samplingPeriod>
+        </indicator>
+        <indicator id="7">
+            <name>producedNOxInGramproducedSOxInGramAggregateIndicator</name>
+            <description>Aggregation of NOx and SOx level over time Indicator</description>
+            <templateId>producedNOxInGramproducedSOxInGramAggregate</templateId>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+            <samplingPeriod>0</samplingPeriod>
+        </indicator>
+        <indicator id="900000666">
+            <name>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_example_heavy_traffic</name>
+            <description>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_heavy_traffic</description>
+            <templateId>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_heavy_traffic</templateId>
+            <parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>status</fieldid>
+                <value>heavy</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+            <samplingPeriod>5</samplingPeriod>
+            <timeUnit>tuSecond</timeUnit>
+        </indicator>
+        <indicator id="900000667">
+            <name>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_example_freeFlow_traffic</name>
+            <description>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_example_freeFlow_traffic</description>
+            <templateId>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_freeFlow_traffic</templateId>
+            <parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>status</fieldid>
+                <value>freeFlow</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+            <samplingPeriod>5</samplingPeriod>
+            <timeUnit>tuSecond</timeUnit>
+        </indicator>
+        <indicator id="900000668">
+            <name>ABNORM_TRAFFIC_Indicator_example_stationary_traffic</name>
+            <description>ABNORM_TRAFFIC_Indicator_example_stationary_traffic</description>
+            <templateId>ABNORM_TRAFFIC_Indicator_Template_example_stationary_traffic</templateId>
+            <parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>status</fieldid>
+                <value>stationaryTraffic</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+            <samplingPeriod>5</samplingPeriod>
+            <timeUnit>tuSecond</timeUnit>
+        </indicator>
+        <indicator id="900000669">
+            <name>ACCIDENT_Indicator_example_heavy_traffic</name>
+            <description>ACCIDENT_Indicator_example_heavy_traffic</description>
+            <templateId>ACCIDENT_Indicator_Template_example_heavy_traffic</templateId>
+            <parameterValue>
+                <fieldid>statename</fieldid>
+                <value>SPAIN</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>country</fieldid>
+                <value>SP</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>PeopleInvolved</fieldid>
+                <value>1</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>VehiclesInvolved</fieldid>
+                <value>1</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>city</fieldid>
+                <value>BARCELONA</value>
+            </parameterValue>
+            <samplingPeriod>5</samplingPeriod>
+            <timeUnit>tuSecond</timeUnit>
+        </indicator>
+        <indicator id="900000670">
+            <name>TRAFFIC_FROM_GPS_Indicator_example_congested</name>
+            <description>TRAFFIC_FROM_GPS_Indicator_example_congested</description>
+            <templateId>TRAFFIC_FROM_GPS_Indicator_Template_example_congested</templateId>
+            <parameterValue>
+                <fieldid>latitude</fieldid>
+                <value>45365000</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>longitude</fieldid>
+                <value>9150000</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>status</fieldid>
+                <value>heavy</value>
+            </parameterValue>
+            <samplingPeriod>5</samplingPeriod>
+            <timeUnit>tuSecond</timeUnit>
+        </indicator>
+    </indicators>
+    <indicatorTemplates>
+        <indicatorTemplate id="AveragePercentageOfCitizenUsingThisTransportType">
+            <name>AveragePercentageOfCitizenUsingThisTransportType</name>
+            <description>Average Percentage of the population served by a transport type</description>
+            <parameter id="transportType">
+                <name>transportType</name>
+                <description>Transport type of query from PUBLIC_TRANSPORT or PRIVATE_TRANSPORT</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('PUBLIC_TRANSPORT','PRIVATE_TRANSPORT')</restrictions>
+            </parameter>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>for $element in //SampleSeries[name='percentageOfCitizenUsingThisTransportType'] return (avg($element/sample/value), min($element/sample/begintime), max($element/sample/endtime))</formula>
+            <formulaDependency>
+                <dependencyTemplateId>percentageOfCitizenUsingThisTransportType</dependencyTemplateId>
+            </formulaDependency>
+        </indicatorTemplate>
+        <indicatorTemplate id="producedCO2InGramproducedCOInGramAggregate">
+            <name>producedCO2InGramproducedCOInGramAggregate</name>
+            <description>Aggregation of CO2 and CO level over time</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>for $element1 in //SampleSeries[name='producedCO2InGram']/sample for $element2 in //SampleSeries[name='producedCOInGram']/sample where $element1/begintime = $element2/begintime and $element1/endtime = $element2/endtime return (xs:double($element1/value + $element2/value), xs:double($element1/begintime), xs:double($element1/endtime))</formula>
+            <formulaDependency>
+                <dependencyTemplateId>producedCO2InGram</dependencyTemplateId>
+            </formulaDependency>
+            <formulaDependency>
+                <dependencyTemplateId>producedCOInGram</dependencyTemplateId>
+            </formulaDependency>
+        </indicatorTemplate>
+        <indicatorTemplate id="producedNOxInGramproducedSOxInGramAggregate">
+            <name>producedNOxInGramproducedSOxInGramAggregate</name>
+            <description>Aggregation of NOx and SOx level over time</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>for $element1 in //SampleSeries[name='producedNOxInGram']/sample for $element2 in //SampleSeries[name='producedSOxInGram']/sample where $element1/begintime = $element2/begintime and $element1/endtime = $element2/endtime return (xs:double($element1/value + $element2/value), xs:double($element1/begintime), xs:double($element1/endtime))</formula>
+            <formulaDependency>
+                <dependencyTemplateId>producedNOxInGram</dependencyTemplateId>
+            </formulaDependency>
+            <formulaDependency>
+                <dependencyTemplateId>producedSOxInGram</dependencyTemplateId>
+            </formulaDependency>
+        </indicatorTemplate>
+        <indicatorTemplate id="TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_heavy_traffic">
+            <name>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_heavy_traffic</name>
+            <description>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_heavy_traffic</description>
+            <parameter id="statename">
+                <name>statename</name>
+                <description>statename</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>statename in ('SPAIN','ITALY','FINLAND')</restrictions>
+            </parameter>
+            <parameter id="country">
+                <name>country</name>
+                <description>country</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>country in ('SP','IT','FI')</restrictions>
+            </parameter>
+            <parameter id="latitude">
+                <name>latitude</name>
+                <description>latitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="longitude">
+                <name>longitude</name>
+                <description>longitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="status">
+                <name>status</name>
+                <description>status</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>status in ('impossible','congested','heavy','freeFlow','unknown')</restrictions>
+            </parameter>
+            <parameter id="city">
+                <name>city</name>
+                <description>city</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>city in ('BARCELONA','HELSINKI','MILAN')</restrictions>
+            </parameter>
+            <formula>Monitoring Indicator</formula>
+        </indicatorTemplate>
+        <indicatorTemplate id="TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_freeFlow_traffic">
+            <name>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_freeFlow_traffic</name>
+            <description>TRAFFIC_FROM_SOCIAL_NETWORK_Indicator_Template_example_freeFlow_traffic</description>
+            <parameter id="statename">
+                <name>statename</name>
+                <description>statename</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>statename in ('SPAIN','ITALY','FINLAND')</restrictions>
+            </parameter>
+            <parameter id="country">
+                <name>country</name>
+                <description>country</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>country in ('SP','IT','FI')</restrictions>
+            </parameter>
+            <parameter id="latitude">
+                <name>latitude</name>
+                <description>latitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="longitude">
+                <name>longitude</name>
+                <description>longitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="status">
+                <name>status</name>
+                <description>status</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>status in ('impossible','congested','heavy','freeFlow','unknown')</restrictions>
+            </parameter>
+            <parameter id="city">
+                <name>city</name>
+                <description>city</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>city in ('BARCELONA','HELSINKI','MILAN')</restrictions>
+            </parameter>
+            <formula>Monitoring Indicator</formula>
+        </indicatorTemplate>
+        <indicatorTemplate id="ABNORM_TRAFFIC_Indicator_Template_example_stationary_traffic">
+            <name>ABNORM_TRAFFIC_Indicator_Template_example_stationary_traffic</name>
+            <description>ABNORM_TRAFFIC_Indicator_Template_example_stationary_traffic</description>
+            <parameter id="statename">
+                <name>statename</name>
+                <description>statename</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>statename in ('SPAIN','ITALY','FINLAND')</restrictions>
+            </parameter>
+            <parameter id="country">
+                <name>country</name>
+                <description>country</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>country in ('SP','IT','FI')</restrictions>
+            </parameter>
+            <parameter id="latitude">
+                <name>latitude</name>
+                <description>latitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="longitude">
+                <name>longitude</name>
+                <description>longitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="status">
+                <name>status</name>
+                <description>status</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>status in ('queueingTraffic','stopAndGo','slowTraffic','stationaryTraffic')</restrictions>
+            </parameter>
+            <parameter id="city">
+                <name>city</name>
+                <description>city</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>city in ('BARCELONA','HELSINKI','MILAN')</restrictions>
+            </parameter>
+            <formula>Monitoring Indicator</formula>
+        </indicatorTemplate>
+        <indicatorTemplate id="ACCIDENT_Indicator_Template_example_heavy_traffic">
+            <name>ACCIDENT_Indicator_Template_example_heavy_traffic</name>
+            <description>ACCIDENT_Indicator_Template_example_heavy_traffic</description>
+            <parameter id="statename">
+                <name>statename</name>
+                <description>statename</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>statename in ('SPAIN','ITALY','FINLAND')</restrictions>
+            </parameter>
+            <parameter id="country">
+                <name>country</name>
+                <description>country</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>country in ('SP','IT','FI')</restrictions>
+            </parameter>
+            <parameter id="latitude">
+                <name>latitude</name>
+                <description>latitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="longitude">
+                <name>longitude</name>
+                <description>longitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+            </parameter>
+            <parameter id="PeopleInvolved">
+                <name>PeopleInvolved</name>
+                <description>PeopleInvolved</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>integer</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>PeopleInvolved &gt;= 0</restrictions>
+            </parameter>
+            <parameter id="VehiclesInvolved">
+                <name>VehiclesInvolved</name>
+                <description>VehiclesInvolved</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>integer</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>VehiclesInvolved &gt;= 0</restrictions>
+            </parameter>
+            <parameter id="city">
+                <name>city</name>
+                <description>city</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>city in ('BARCELONA','HELSINKI','MILAN')</restrictions>
+            </parameter>
+            <formula>Monitoring Indicator</formula>
+        </indicatorTemplate>
+        <indicatorTemplate id="TRAFFIC_FROM_GPS_Indicator_Template_example_congested">
+            <name>TRAFFIC_FROM_GPS_Indicator_Template_example_congested</name>
+            <description>TRAFFIC_FROM_GPS_Indicator_Template_example_congested</description>
+            <parameter id="latitude">
+                <name>latitude</name>
+                <description>latitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>latitude &gt;= 45.345 * 1000000 and latitude &lt;= 45.55 * 1000000</restrictions>
+            </parameter>
+            <parameter id="longitude">
+                <name>longitude</name>
+                <description>longitude</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>long</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>latitude &gt;= 8.89 * 1000000 and latitude &lt;= 9.35 * 1000000</restrictions>
+            </parameter>
+            <parameter id="status">
+                <name>status</name>
+                <description>status</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>status in ('impossible','congested','heavy','freeFlow','unknown')</restrictions>
+            </parameter>
+            <formula>Monitoring Indicator</formula>
+        </indicatorTemplate>
+    </indicatorTemplates>
+    <successIndicatorTemplates>
+        <successIndicatorTemplate id="stinkingGasRatio">
+            <name>stinkingGasRatio</name>
+            <description>Ratio of gas levels that do not smell very well</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>for $element1 in //SampleSeries[name='producedCO2InGramproducedCOInGramAggregate'] for $element2 in //SampleSeries[name='producedNOxInGramproducedSOxInGramAggregate'] return (xs:double( ((max($element1/sample/value) - min($element1/sample/value)) + (max($element2/sample/value) - min($element2/sample/value))) div 2), min($element1/sample/begintime), max($element1/sample/endtime))</formula>
+            <formulaDependency>
+                <dependencyTemplateId>producedCO2InGramproducedCOInGramAggregate</dependencyTemplateId>
+            </formulaDependency>
+            <formulaDependency>
+                <dependencyTemplateId>producedNOxInGramproducedSOxInGramAggregate</dependencyTemplateId>
+            </formulaDependency>
+            <scorecalculationformula>for $element1 in //SampleSeries[name='stinkingGasRatio']/sample return (xs:double(1 - $element1/value) , xs:double($element1/begintime) , xs:double($element1/endtime))</scorecalculationformula>
+        </successIndicatorTemplate>
+    </successIndicatorTemplates>
+    <actionTemplates>
+        <actionTemplate id="11">
+            <name>ProjectVehicleDataTemplate</name>
+            <description>Action template for projection of vehicle model</description>
+            <formalexpression>UpdateVehicle</formalexpression>
+        </actionTemplate>
+        <actionTemplate id="16">
+            <name>UpdateTimetableDataTemplate</name>
+            <description>Action template for projection of time table model</description>
+            <formalexpression>UpdateTimetable</formalexpression>
+        </actionTemplate>
+        <actionTemplate id="18">
+            <name>UpdateRoadDataTemplate</name>
+            <description>Action template for projection of road model</description>
+            <formalexpression>UpdateRoad</formalexpression>
+        </actionTemplate>
+        <actionTemplate id="20">
+            <name>UpdateRoadDataTemplate</name>
+            <description>Action template for projection of road model</description>
+            <formalexpression>UpdateRoad</formalexpression>
+        </actionTemplate>
+        <actionTemplate id="22">
+            <name>UpdateRoadDataTemplate</name>
+            <description>Action template for projection of road model</description>
+            <formalexpression>UpdateRoad</formalexpression>
+        </actionTemplate>
+    </actionTemplates>
+    <metricTemplates>
+        <metricTemplate id="percentageOfCitizenUsingThisTransportType">
+            <name>percentageOfCitizenUsingThisTransportType</name>
+            <description>Percentage of the population served by a transport type</description>
+            <parameter id="transportType">
+                <name>transportType</name>
+                <description>Transport type of query from PUBLIC_TRANSPORT or PRIVATE_TRANSPORT</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('PUBLIC_TRANSPORT','PRIVATE_TRANSPORT')</restrictions>
+            </parameter>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_transportType := &lt;FormulaParameter&gt;transportType&lt;/FormulaParameter&gt; let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //citizenReport where  $element/transportType/text() = $var_transportType and $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/percentageOfCitizenUsingThisTransportType),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="numOfJourneyLegs">
+            <name>numOfJourneyLegs</name>
+            <description>Number of the population served by a transport type and mode</description>
+            <parameter id="transportType">
+                <name>transportType</name>
+                <description>Transport type of query from PUBLIC_TRANSPORT or PRIVATE_TRANSPORT</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('PUBLIC_TRANSPORT','PRIVATE_TRANSPORT')</restrictions>
+            </parameter>
+            <parameter id="transportMode">
+                <name>transportMode</name>
+                <description>transport mode of query from WALK or BYCICLE or MOTORBIKE or CAR or TRAM or BUS or METRO</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('WALK','BYCICLE','MOTORBIKE','CAR','TRAM','BUS','METRO')</restrictions>
+            </parameter>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_transportType := &lt;FormulaParameter&gt;transportType&lt;/FormulaParameter&gt; let $var_transportMode := &lt;FormulaParameter&gt;transportMode&lt;/FormulaParameter&gt; let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //transportModeReport where  $element/transportType/text() = $var_transportType and $element/transportMode/text() = $var_transportMode and $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/numOfJourneyLegs),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="numOfJourneysBasedOnMainModeCriterion">
+            <name>numOfJourneysBasedOnMainModeCriterion</name>
+            <description>Number of the population served by a transport type and mode based on main mode criterion</description>
+            <parameter id="transportType">
+                <name>transportType</name>
+                <description>Transport type of query from PUBLIC_TRANSPORT or PRIVATE_TRANSPORT</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('PUBLIC_TRANSPORT','PRIVATE_TRANSPORT')</restrictions>
+            </parameter>
+            <parameter id="transportMode">
+                <name>transportMode</name>
+                <description>transport mode of query from WALK or BYCICLE or MOTORBIKE or CAR or TRAM or BUS or METRO</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('WALK','BYCICLE','MOTORBIKE','CAR','TRAM','BUS','METRO')</restrictions>
+            </parameter>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_transportType := &lt;FormulaParameter&gt;transportType&lt;/FormulaParameter&gt; let $var_transportMode := &lt;FormulaParameter&gt;transportMode&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //transportModeReport where  $element/transportType/text() = $var_transportType and $element/transportMode/text() = $var_transportMode and $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/numOfJourneysBasedOnMainModeCriterion),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedCO2InGram">
+            <name>producedCO2InGram</name>
+            <description>Air quality: CO2 level</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //emissions where $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/producedCO2InGram),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedCOInGram">
+            <name>producedCOInGram</name>
+            <description>Air quality: CO level</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //emissions where $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/producedCOInGram),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedNOxInGram">
+            <name>producedNOxInGram</name>
+            <description>Air quality: NOx level</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //emissions where $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/producedNOxInGram),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedSOxInGram">
+            <name>producedSOxInGram</name>
+            <description>Air quality: SOx level</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //emissions where $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/producedSOxInGram),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedPM10InGram">
+            <name>producedPM10InGram</name>
+            <description>Air quality: PM10 standard level</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //emissions where $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/producedPM10InGram),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="travelTimeInMilliseconds">
+            <name>travelTimeInMilliseconds</name>
+            <description>Transport Mode average travelling time</description>
+            <parameter id="transportType">
+                <name>transportType</name>
+                <description>Transport type of query from PUBLIC_TRANSPORT or PRIVATE_TRANSPORT</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('PUBLIC_TRANSPORT','PRIVATE_TRANSPORT')</restrictions>
+            </parameter>
+            <parameter id="transportMode">
+                <name>transportMode</name>
+                <description>transport mode of query from WALK or BYCICLE or MOTORBIKE or CAR or TRAM or BUS or METRO</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>string</dataType>
+                <mandatory>true</mandatory>
+                <restrictions>transportType in ('WALK','BYCICLE','MOTORBIKE','CAR','TRAM','BUS','METRO')</restrictions>
+            </parameter>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_transportType := &lt;FormulaParameter&gt;transportType&lt;/FormulaParameter&gt; let $var_transportMode := &lt;FormulaParameter&gt;transportMode&lt;/FormulaParameter&gt; let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; for $element in //averageTravelTime where  $element/transportType/text() = $var_transportType and $element/transportMode/text() = $var_transportMode and $element/measuredInTimeInterval/orderOfSimulationDay &gt;= $var_startInterval and $element/measuredInTimeInterval/orderOfSimulationDay &lt;= $var_endInterval return ( xs:double($element/travelTimeInMilliseconds),xs:double($element/measuredInTimeInterval/orderOfSimulationDay),xs:double($element/measuredInTimeInterval/orderOfSimulationDay))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedCO2InGramExceedsLevelNumberDays">
+            <name>producedCO2InGramExceedsLevelNumberDays</name>
+            <description>Number of days where CO2 limit Level is exceeded</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="maxLevel">
+                <name>maxLevel</name>
+                <description>Maximum level to be taken into account</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; let $var_maxLevel := &lt;FormulaParameter&gt;maxLevel&lt;/FormulaParameter&gt; for $element in //emissionsArray return ( xs:double(count(//emissionsArray/emissions[producedCO2InGram &gt; $var_maxLevel])), xs:double($var_startInterval), xs:double($var_endInterval))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedCOInGramExceedsLevelNumberDays">
+            <name>producedCOInGramExceedsLevelNumberDays</name>
+            <description>Number of days where CO limit Level is exceeded</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="maxLevel">
+                <name>maxLevel</name>
+                <description>Maximum level to be taken into account</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; let $var_maxLevel := &lt;FormulaParameter&gt;maxLevel&lt;/FormulaParameter&gt; for $element in //emissionsArray return ( xs:double(count(//emissionsArray/emissions[producedCOInGram &gt; $var_maxLevel])), xs:double($var_startInterval), xs:double($var_endInterval))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedNOxInGramExceedsLevelNumberDays">
+            <name>producedNOxInGramExceedsLevelNumberDays</name>
+            <description>Number of days where NOx limit Level is exceeded</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="maxLevel">
+                <name>maxLevel</name>
+                <description>Maximum level to be taken into account</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; let $var_maxLevel := &lt;FormulaParameter&gt;maxLevel&lt;/FormulaParameter&gt; for $element in //emissionsArray return ( xs:double(count(//emissionsArray/emissions[producedNOxInGram &gt; $var_maxLevel])), xs:double($var_startInterval), xs:double($var_endInterval))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedSOxInGramExceedsLevelNumberDays">
+            <name>producedSOxInGramExceedsLevelNumberDays</name>
+            <description>Number of days where SOx limit Level is exceeded</description>
+            <parameter id="startInterval">
+                <name>startInterval</name>
+                <description>Start interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="endInterval">
+                <name>endInterval</name>
+                <description>End interval for query</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <parameter id="maxLevel">
+                <name>maxLevel</name>
+                <description>Maximum level to be taken into account</description>
+                <minelements>1</minelements>
+                <maxelements>1</maxelements>
+                <dataType>int</dataType>
+                <mandatory>true</mandatory>
+                <restrictions></restrictions>
+            </parameter>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; let $var_maxLevel := &lt;FormulaParameter&gt;maxLevel&lt;/FormulaParameter&gt; for $element in //emissionsArray return ( xs:double(count(//emissionsArray/emissions[producedSOxInGram &gt; $var_maxLevel])), xs:double($var_startInterval), xs:double($var_endInterval))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+        <metricTemplate id="producedPM10InGramExceedsLevelNumberDays">
+            <name>producedPM10InGramExceedsLevelNumberDays</name>
+            <description>Number of days where PM10 limit Level is exceeded</description>
+            <formula>let $var_startInterval := &lt;FormulaParameter&gt;startInterval&lt;/FormulaParameter&gt; let $var_endInterval := &lt;FormulaParameter&gt;endInterval&lt;/FormulaParameter&gt; let $var_maxLevel := &lt;FormulaParameter&gt;maxLevel&lt;/FormulaParameter&gt; for $element in //emissionsArray return ( xs:double(count(//emissionsArray/emissions[producedPM10InGram &gt; $var_maxLevel])), xs:double($var_startInterval), xs:double($var_endInterval))</formula>
+            <dataSource>simulationreport.xml</dataSource>
+        </metricTemplate>
+    </metricTemplates>
+    <metrics>
+        <metric id="1">
+            <name>percentageOfCitizenUsingThisTransportTypeMetric</name>
+            <description>Percentage of the population served by a transport type metric</description>
+            <templateId>percentageOfCitizenUsingThisTransportType</templateId>
+            <parameterValue>
+                <fieldid>transportType</fieldid>
+                <value>PUBLIC_TRANSPORT</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+        </metric>
+        <metric id="2">
+            <name>producedCO2InGramMetric</name>
+            <description>Air quality: CO2 level Metric</description>
+            <templateId>producedCO2InGram</templateId>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+        </metric>
+        <metric id="3">
+            <name>producedCOInGramMetric</name>
+            <description>Air quality: CO level Metric</description>
+            <templateId>producedCOInGram</templateId>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+        </metric>
+        <metric id="4">
+            <name>producedSOxInGramMetric</name>
+            <description>Air quality: SOx level Metric</description>
+            <templateId>producedSOxInGram</templateId>
+            <parameterValue>
+                <fieldid>startInterval</fieldid>
+                <value>0</value>
+            </parameterValue>
+            <parameterValue>
+                <fieldid>endInterval</fieldid>
+                <value>1000</value>
+            </parameterValue>
+        </metric>
+    </metrics>
+</ns2:policyModel>

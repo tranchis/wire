@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:OM="http://opera/OM/1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:opera="http://opera/1.0">
+  <opera:OperAModel Name="New OperA Model">
+    <om>
+      <ss>
+        <roles Name="User" conceptName="/0/@om/@cs/@ontology/@classes[concept='User']" objectives="/0/@om/@ss/@objectives.25 /0/@om/@ss/@objectives.26 /0/@om/@ss/@objectives.27 /0/@om/@ss/@objectives.28 /0/@om/@ss/@objectives.29 /0/@om/@ss/@objectives.30 /0/@om/@ss/@objectives.31" RoleType="Ext"/>
+        <roles Name="Interface" conceptName="/0/@om/@cs/@ontology/@classes[concept='Interface']" objectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.21 /0/@om/@ss/@objectives.22 /0/@om/@ss/@objectives.23 /0/@om/@ss/@objectives.32"/>
+        <roles Name="Interaction_Task_Manager" conceptName="/0/@om/@cs/@ontology/@classes[concept='Interaction_Task_Manager']" objectives="/0/@om/@ss/@objectives.13 /0/@om/@ss/@objectives.14 /0/@om/@ss/@objectives.15 /0/@om/@ss/@objectives.16 /0/@om/@ss/@objectives.17 /0/@om/@ss/@objectives.18 /0/@om/@ss/@objectives.19"/>
+        <roles Name="Multimodal_Interaction_Manager" conceptName="/0/@om/@cs/@ontology/@classes[concept='Multimodal_Interaction_Manager']" objectives="/0/@om/@ss/@objectives.24"/>
+        <roles Name="Content_Adaptor" conceptName="/0/@om/@cs/@ontology/@classes[concept='Content_Adaptor']" objectives="/0/@om/@ss/@objectives.7 /0/@om/@ss/@objectives.8 /0/@om/@ss/@objectives.9 /0/@om/@ss/@objectives.10"/>
+        <roles Name="User_Modeler" conceptName="/0/@om/@cs/@ontology/@classes[concept='User_Modeler']" objectives="/0/@om/@ss/@objectives.2 /0/@om/@ss/@objectives.3 /0/@om/@ss/@objectives.4 /0/@om/@ss/@objectives.5 /0/@om/@ss/@objectives.6"/>
+        <roles Name="Authenticator" conceptName="/0/@om/@cs/@ontology/@classes[concept='Authenticator']" objectives="/0/@om/@ss/@objectives.12 /0/@om/@ss/@objectives.34" RoleType="Ext"/>
+        <roles Name="Service_Broker" conceptName="/0/@om/@cs/@ontology/@classes[concept='Service_Broker']" objectives="/0/@om/@ss/@objectives.11"/>
+        <roles Name="Content_Provider" conceptName="/0/@om/@cs/@ontology/@classes[concept='Content_Provider']" objectives="/0/@om/@ss/@objectives.33" RoleType="Ext"/>
+        <roles Name="Environmental_Context_Manager" conceptName="/0/@om/@cs/@ontology/@classes[concept='Environmental_Context_Manager']" objectives="/0/@om/@ss/@objectives.0" RoleType="Ext"/>
+        <roles Name="Legal_Info_Manager" conceptName="/0/@om/@cs/@ontology/@classes[concept='Legal_Info_Manager']" objectives="/0/@om/@ss/@objectives.1" RoleType="Ext"/>
+        <objectives Name="Provide_environmental_context" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_environmental_context']"/>
+        <objectives Name="Provide_legal_info" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_legal_info']"/>
+        <objectives Name="Assign_session_preferences" conceptName="/0/@om/@cs/@ontology/@classes[concept='Assign_session_preferences']"/>
+        <objectives Name="Provide_user_interests_requirements" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_user_interests_requirements']"/>
+        <objectives Name="Create_new_profile" conceptName="/0/@om/@cs/@ontology/@classes[concept='Create_new_profile']"/>
+        <objectives Name="Change_user_profile" conceptName="/0/@om/@cs/@ontology/@classes[concept='Change_user_profile']"/>
+        <objectives Name="Change_user_interests_requirements" conceptName="/0/@om/@cs/@ontology/@classes[concept='Change_user_interests_requirements']"/>
+        <objectives Name="Personalize_content_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Personalize_content_petition']" subObjectives="/0/@om/@ss/@objectives.3 /0/@om/@ss/@objectives.23"/>
+        <objectives Name="Get_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Get_content']" subObjectives="/0/@om/@ss/@objectives.33"/>
+        <objectives Name="Filter_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Filter_content']" subObjectives="/0/@om/@ss/@objectives.1 /0/@om/@ss/@objectives.0"/>
+        <objectives Name="Compose_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Compose_content']"/>
+        <objectives Name="Choose_a_related_content_provider" conceptName="/0/@om/@cs/@ontology/@classes[concept='Choose_a_related_content_provider']"/>
+        <objectives Name="Validate_user" conceptName="/0/@om/@cs/@ontology/@classes[concept='Validate_user']"/>
+        <objectives Name="Manage_new_interaction_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_new_interaction_petition']" subObjectives="/0/@om/@ss/@objectives.21 /0/@om/@ss/@objectives.12 /0/@om/@ss/@objectives.2 /0/@om/@ss/@objectives.24"/>
+        <objectives Name="Manage_new_interface_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_new_interface_petition']" subObjectives="/0/@om/@ss/@objectives.21 /0/@om/@ss/@objectives.12 /0/@om/@ss/@objectives.2 /0/@om/@ss/@objectives.22"/>
+        <objectives Name="Manage_sign_in_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_sign_in_petition']" subObjectives="/0/@om/@ss/@objectives.21 /0/@om/@ss/@objectives.12 /0/@om/@ss/@objectives.2 /0/@om/@ss/@objectives.24 /0/@om/@ss/@objectives.22"/>
+        <objectives Name="Manage_content_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_content_petition']" subObjectives="/0/@om/@ss/@objectives.11 /0/@om/@ss/@objectives.7 /0/@om/@ss/@objectives.8 /0/@om/@ss/@objectives.9 /0/@om/@ss/@objectives.10 /0/@om/@ss/@objectives.32"/>
+        <objectives Name="Manage_sign_up_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_sign_up_petition']" subObjectives="/0/@om/@ss/@objectives.4 /0/@om/@ss/@objectives.34"/>
+        <objectives Name="Manage_change_profile_petition" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_change_profile_petition']" subObjectives="/0/@om/@ss/@objectives.5"/>
+        <objectives Name="Manage_change_interests_requirements" conceptName="/0/@om/@cs/@ontology/@classes[concept='Manage_change_interests_requirements']" subObjectives="/0/@om/@ss/@objectives.6"/>
+        <objectives Name="Collect_petitions" conceptName="/0/@om/@cs/@ontology/@classes[concept='Collect_petitions']"/>
+        <objectives Name="Provide_device_information" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_device_information']"/>
+        <objectives Name="Adapt_interface_format" conceptName="/0/@om/@cs/@ontology/@classes[concept='Adapt_interface_format']"/>
+        <objectives Name="Provide_user_context" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_user_context']"/>
+        <objectives Name="Adapt_interaction_mode" conceptName="/0/@om/@cs/@ontology/@classes[concept='Adapt_interaction_mode']"/>
+        <objectives Name="Change_interaction_mode" conceptName="/0/@om/@cs/@ontology/@classes[concept='Change_interaction_mode']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.13"/>
+        <objectives Name="Change_interface_format" conceptName="/0/@om/@cs/@ontology/@classes[concept='Change_interface_format']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.14"/>
+        <objectives Name="Sign_in" conceptName="/0/@om/@cs/@ontology/@classes[concept='Sign_in']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.15"/>
+        <objectives Name="Obtain_personalized_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Obtain_personalized_content']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.16"/>
+        <objectives Name="Sign_up" conceptName="/0/@om/@cs/@ontology/@classes[concept='Sign_up']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.17"/>
+        <objectives Name="Update_profile" conceptName="/0/@om/@cs/@ontology/@classes[concept='Update_profile']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.18"/>
+        <objectives Name="Update_interests_requirements" conceptName="/0/@om/@cs/@ontology/@classes[concept='Update_interests_requirements']" subObjectives="/0/@om/@ss/@objectives.20 /0/@om/@ss/@objectives.19"/>
+        <objectives Name="Provide_composed_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_composed_content']"/>
+        <objectives Name="Provide_content" conceptName="/0/@om/@cs/@ontology/@classes[concept='Provide_content']"/>
+        <objectives Name="Assign_open_id" conceptName="/0/@om/@cs/@ontology/@classes[concept='Assign_open_id']"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.20" Dependant="/0/@om/@ss/@roles.0" Dependee="/0/@om/@ss/@roles.1"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.19 /0/@om/@ss/@objectives.18 /0/@om/@ss/@objectives.16 /0/@om/@ss/@objectives.15 /0/@om/@ss/@objectives.13 /0/@om/@ss/@objectives.14 /0/@om/@ss/@objectives.17" Dependant="/0/@om/@ss/@roles.0" Dependee="/0/@om/@ss/@roles.2"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.21 /0/@om/@ss/@objectives.22 /0/@om/@ss/@objectives.32" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.1"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.12 /0/@om/@ss/@objectives.34" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.6"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.2 /0/@om/@ss/@objectives.4 /0/@om/@ss/@objectives.5 /0/@om/@ss/@objectives.6" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.5"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.24" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.3"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.11" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.7"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.7 /0/@om/@ss/@objectives.8 /0/@om/@ss/@objectives.9 /0/@om/@ss/@objectives.10" Dependant="/0/@om/@ss/@roles.2" Dependee="/0/@om/@ss/@roles.4"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.1" Dependant="/0/@om/@ss/@roles.4" Dependee="/0/@om/@ss/@roles.10"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.33" Dependant="/0/@om/@ss/@roles.4" Dependee="/0/@om/@ss/@roles.8"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.0" Dependant="/0/@om/@ss/@roles.4" Dependee="/0/@om/@ss/@roles.9"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.3" Dependant="/0/@om/@ss/@roles.4" Dependee="/0/@om/@ss/@roles.5"/>
+        <dependencies xsi:type="OM:HierarchyDependency" ObjectOfDependency="/0/@om/@ss/@objectives.23" Dependant="/0/@om/@ss/@roles.4" Dependee="/0/@om/@ss/@roles.1"/>
+      </ss>
+      <is>
+        <scenes sceneID="start" description="Default start scene of an interaction structure" type="start">
+          <interactionPattern>
+            <landmarks name="Petition_received" entails="/0/@om/@ss/@objectives.20"/>
+          </interactionPattern>
+        </scenes>
+        <scenes sceneID="User_Model_Creation">
+          <interactionPattern>
+            <landmarks name="Sign_up_petition_identified" entails="/0/@om/@ss/@objectives.17"/>
+            <landmarks name="User_model_created" entails="/0/@om/@ss/@objectives.4 /0/@om/@ss/@objectives.34"/>
+            <landmarkOrder from="Sign_up_petition_identified" to="User_model_created"/>
+          </interactionPattern>
+        </scenes>
+        <scenes sceneID="User_Model_Adaptation">
+          <interactionPattern>
+            <landmarks name="Change_user_interests_and_requirements_petition_identified" entails="/0/@om/@ss/@objectives.19"/>
+            <landmarks name="Change_user_profile_petition_identified" entails="/0/@om/@ss/@objectives.18"/>
+            <landmarks name="User_model_updated" entails="/0/@om/@ss/@objectives.6 /0/@om/@ss/@objectives.5"/>
+            <landmarkOrder from="Change_user_interests_and_requirements_petition_identified" to="User_model_updated"/>
+            <landmarkOrder from="Change_user_profile_petition_identified" to="User_model_updated"/>
+          </interactionPattern>
+        </scenes>
+        <scenes sceneID="Interaction_Interface_Adaption">
+          <interactionPattern>
+            <landmarks name="New_interaction_mode_petition_identified" entails="/0/@om/@ss/@objectives.13 /0/@om/@ss/@objectives.21"/>
+            <landmarks name="New_interface_format_petition_identified" entails="/0/@om/@ss/@objectives.14 /0/@om/@ss/@objectives.21"/>
+            <landmarks name="Sign_in_petition_identified" entails="/0/@om/@ss/@objectives.15 /0/@om/@ss/@objectives.21"/>
+            <landmarks name="User_authenticated" entails="/0/@om/@ss/@objectives.12"/>
+            <landmarks name="User_not_authenticated" entails="/0/@om/@ss/@objectives.12"/>
+            <landmarks name="Session_preferences_assigned" entails="/0/@om/@ss/@objectives.2"/>
+            <landmarks name="Interface_and_interaction_adapted" entails="/0/@om/@ss/@objectives.24 /0/@om/@ss/@objectives.22"/>
+            <landmarkOrder from="New_interaction_mode_petition_identified" to="User_authenticated"/>
+            <landmarkOrder from="New_interface_format_petition_identified" to="User_authenticated"/>
+            <landmarkOrder from="Sign_in_petition_identified" to="User_authenticated"/>
+            <landmarkOrder from="New_interaction_mode_petition_identified" to="User_not_authenticated"/>
+            <landmarkOrder from="New_interface_format_petition_identified" to="User_not_authenticated"/>
+            <landmarkOrder from="Sign_in_petition_identified" to="User_not_authenticated"/>
+            <landmarkOrder from="User_authenticated" to="Session_preferences_assigned"/>
+            <landmarkOrder from="User_not_authenticated" to="Session_preferences_assigned"/>
+            <landmarkOrder from="Session_preferences_assigned" to="Interface_and_interaction_adapted"/>
+          </interactionPattern>
+        </scenes>
+        <scenes sceneID="Content_Adaption">
+          <interactionPattern>
+            <landmarks name="Content_petition_identified" entails="/0/@om/@ss/@objectives.16"/>
+            <landmarks name="Content_provider_chosen" entails="/0/@om/@ss/@objectives.11"/>
+            <landmarks name="Content_petition_personalized" entails="/0/@om/@ss/@objectives.7 /0/@om/@ss/@objectives.23 /0/@om/@ss/@objectives.3"/>
+            <landmarks name="External_info_gathered" entails="/0/@om/@ss/@objectives.1 /0/@om/@ss/@objectives.0"/>
+            <landmarks name="Content_collected" entails="/0/@om/@ss/@objectives.8 /0/@om/@ss/@objectives.33"/>
+            <landmarks name="Content_filtered" entails="/0/@om/@ss/@objectives.9"/>
+            <landmarks name="Content_composed" entails="/0/@om/@ss/@objectives.10"/>
+            <landmarks name="Composed_content_provided" entails="/0/@om/@ss/@objectives.32"/>
+            <landmarkOrder from="Content_petition_identified" to="Content_provider_chosen"/>
+            <landmarkOrder from="Content_petition_identified" to="Content_petition_personalized"/>
+            <landmarkOrder from="Content_provider_chosen" to="Content_collected"/>
+            <landmarkOrder from="Content_petition_personalized" to="Content_collected"/>
+            <landmarkOrder from="Content_petition_identified" to="External_info_gathered"/>
+            <landmarkOrder from="Content_collected" to="Content_filtered"/>
+            <landmarkOrder from="External_info_gathered" to="Content_filtered"/>
+            <landmarkOrder from="Content_filtered" to="Content_composed"/>
+            <landmarkOrder from="Content_composed" to="Composed_content_provided"/>
+          </interactionPattern>
+        </scenes>
+        <scenes sceneID="end" description="Default end scene of an interaction structure" type="end"/>
+        <transitions transitionID="T130" transitionType="OR"/>
+        <transitions transitionID="T131" transitionType="OR"/>
+        <transitions transitionID="T132" transitionType="OR"/>
+        <transitions transitionID="T133" transitionType="OR"/>
+        <arcs xsi:type="OM:SceneToTransitionArc" arcID="A283" from="start" to="T130"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A284" from="T130" to="User_Model_Creation"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A285" from="T130" to="Interaction_Interface_Adaption"/>
+        <arcs xsi:type="OM:SceneToTransitionArc" arcID="A286" from="User_Model_Creation" to="T131"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A287" from="T131" to="Interaction_Interface_Adaption"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A288" from="T131" to="User_Model_Adaptation"/>
+        <arcs xsi:type="OM:SceneToTransitionArc" arcID="A289" from="User_Model_Adaptation" to="T132"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A290" from="T132" to="end"/>
+        <arcs xsi:type="OM:SceneToTransitionArc" arcID="A291" from="Content_Adaption" to="T132"/>
+        <arcs xsi:type="OM:SceneToTransitionArc" arcID="A292" from="Interaction_Interface_Adaption" to="T133"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A293" from="T133" to="Content_Adaption"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A294" from="T133" to="end"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A295" from="T132" to="Interaction_Interface_Adaption"/>
+        <arcs xsi:type="OM:TransitionToSceneArc" arcID="A16" from="T131" to="end"/>
+      </is>
+      <ns>
+        <norms normID="Obtain_suitable_content_providers" activationCondition="/0/@om/@cs/@formulas.67" deadline="/0/@om/@cs/@formulas.62">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.64" role="/0/@om/@ss/@roles.2"/>
+        </norms>
+        <norms normID="Violate_obtain_suitable_content_providers" activationCondition="/0/@om/@cs/@formulas.74" expirationCondition="/0/@om/@cs/@formulas.56">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.59" role="/0/@om/@ss/@roles.2"/>
+        </norms>
+        <norms normID="Provide_suitable_content_provider" activationCondition="/0/@om/@cs/@formulas.77" deadline="/0/@om/@cs/@formulas.81">
+          <deontics xsi:type="OM:IndividualDeonticStatement" what="/0/@om/@cs/@formulas.82"/>
+        </norms>
+        <norms normID="Violate_provide_suitable_content_provider" activationCondition="/0/@om/@cs/@formulas.83" expirationCondition="/0/@om/@cs/@formulas.86">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.87"/>
+        </norms>
+        <norms normID="Personalize_petition" activationCondition="/0/@om/@cs/@formulas.88" deadline="/0/@om/@cs/@formulas.91">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.208" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Violate_Personalize_petition" activationCondition="/0/@om/@cs/@formulas.92" expirationCondition="/0/@om/@cs/@formulas.96">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.95" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Provide_environmental_content" activationCondition="/0/@om/@cs/@formulas.104" deadline="/0/@om/@cs/@formulas.107">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.108" role="/0/@om/@ss/@roles.9"/>
+        </norms>
+        <norms normID="Violate_provide_environmental_content" activationCondition="/0/@om/@cs/@formulas.109" expirationCondition="/0/@om/@cs/@formulas.112">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.113" role="/0/@om/@ss/@roles.9"/>
+        </norms>
+        <norms normID="Filter_content_legal_info" activationCondition="/0/@om/@cs/@formulas.126" deadline="/0/@om/@cs/@formulas.131">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.132" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Violate_Filter_content_legal_info" activationCondition="/0/@om/@cs/@formulas.133" expirationCondition="/0/@om/@cs/@formulas.134">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.141" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Filter_content_environmental_info" activationCondition="/0/@om/@cs/@formulas.146" deadline="/0/@om/@cs/@formulas.147">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.152" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Violate_Filter_content_environmental_info" activationCondition="/0/@om/@cs/@formulas.153" expirationCondition="/0/@om/@cs/@formulas.156">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.157" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Compose_content" activationCondition="/0/@om/@cs/@formulas.162" deadline="/0/@om/@cs/@formulas.176">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.168" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Violate_Compose_content" activationCondition="/0/@om/@cs/@formulas.171" expirationCondition="/0/@om/@cs/@formulas.174">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.175" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Provide_composed_content" activationCondition="/0/@om/@cs/@formulas.177" deadline="/0/@om/@cs/@formulas.183">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.182" role="/0/@om/@ss/@roles.1"/>
+        </norms>
+        <norms normID="Violate_Provide_composed_content" activationCondition="/0/@om/@cs/@formulas.184" expirationCondition="/0/@om/@cs/@formulas.185" deadline="/0/@om/@cs/@formulas.186">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.189" role="/0/@om/@ss/@roles.1"/>
+        </norms>
+        <norms normID="Wait_interests_requirements_context" activationCondition="/0/@om/@cs/@formulas.209" expirationCondition="/0/@om/@cs/@formulas.213" deadline="/0/@om/@cs/@formulas.212">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.216" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Provide_legal_info" activationCondition="/0/@om/@cs/@formulas.190" deadline="/0/@om/@cs/@formulas.193">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.194" role="/0/@om/@ss/@roles.10"/>
+        </norms>
+        <norms normID="Violate_Provide_legal_info" activationCondition="/0/@om/@cs/@formulas.197" expirationCondition="/0/@om/@cs/@formulas.200">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.201" role="/0/@om/@ss/@roles.10"/>
+        </norms>
+        <norms normID="Violate_Wait_interests_requirements_context" activationCondition="/0/@om/@cs/@formulas.217" expirationCondition="/0/@om/@cs/@formulas.226">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.227" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Provide_user_InterestsRequirements" activationCondition="/0/@om/@cs/@formulas.228" deadline="/0/@om/@cs/@formulas.231">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.232" role="/0/@om/@ss/@roles.5"/>
+        </norms>
+        <norms normID="Violate_Provide_user_InterestsRequirements" activationCondition="/0/@om/@cs/@formulas.233" expirationCondition="/0/@om/@cs/@formulas.236">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.237" role="/0/@om/@ss/@roles.5"/>
+        </norms>
+        <norms normID="Change_user_data" activationCondition="/0/@om/@cs/@formulas.238" deadline="/0/@om/@cs/@formulas.239">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.240" role="/0/@om/@ss/@roles.5"/>
+        </norms>
+        <norms normID="Violate_Change_user_data" activationCondition="/0/@om/@cs/@formulas.243" expirationCondition="/0/@om/@cs/@formulas.244">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.245" role="/0/@om/@ss/@roles.5"/>
+        </norms>
+        <norms normID="Not_change_keep_user_data_I">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.252" role="/0/@om/@ss/@roles.1"/>
+        </norms>
+        <norms normID="Not_change_keep_user_data_MIM">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.252" role="/0/@om/@ss/@roles.3"/>
+        </norms>
+        <norms normID="Not_change_keep_user_data_ITM">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.252" role="/0/@om/@ss/@roles.2"/>
+        </norms>
+        <norms normID="Not_change_keep_user_data_CA">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.252" role="/0/@om/@ss/@roles.4"/>
+        </norms>
+        <norms normID="Not_provide_user_personal_data_UM">
+          <deontics xsi:type="OM:RoleDeonticStatement" modality="F" what="/0/@om/@cs/@formulas.259" role="/0/@om/@ss/@roles.5"/>
+        </norms>
+        <norms normID="Not_provide_user_data_unless_required_UM" activationCondition="/0/@om/@cs/@formulas.265" expirationCondition="/0/@om/@cs/@formulas.266">
+          <deontics xsi:type="OM:RoleDeonticStatement" what="/0/@om/@cs/@formulas.267"/>
+        </norms>
+      </ns>
+      <cs>
+        <formulas xsi:type="OM:Until"/>
+        <formulas xsi:type="OM:Until" fromPathFormula="/0/@om/@cs/@formulas.4"/>
+        <formulas xsi:type="OM:Always"/>
+        <formulas xsi:type="OM:Next"/>
+        <formulas xsi:type="OM:PathImplication"/>
+        <formulas xsi:type="OM:ForAllPaths"/>
+        <formulas xsi:type="OM:ExistsPath"/>
+        <formulas xsi:type="OM:Always"/>
+        <formulas xsi:type="OM:ExistsPath" pathFormula="/0/@om/@cs/@formulas.9"/>
+        <formulas xsi:type="OM:Atom" proposition="Data_interchange_starts"/>
+        <formulas xsi:type="OM:ForAllPaths" pathFormula="/0/@om/@cs/@formulas.11"/>
+        <formulas xsi:type="OM:Atom" proposition="Data_interchange_ends"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.13" rightStateFormula="/0/@om/@cs/@formulas.14"/>
+        <formulas xsi:type="OM:Atom" proposition="Interchange(Data)"/>
+        <formulas xsi:type="OM:Atom" proposition="IsPersonal(Data)"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_received(P)"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Disjunction" leftStateFormula="/0/@om/@cs/@formulas.24" rightStateFormula="/0/@om/@cs/@formulas.21"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P)"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.22" rightStateFormula="/0/@om/@cs/@formulas.23"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition="Shown_message(apologies_for_delay)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.25" rightStateFormula="/0/@om/@cs/@formulas.26"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P)"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot >= Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition="ITM_Request_received(R)"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.31" rightStateFormula="/0/@om/@cs/@formulas.32"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.33" rightStateFormula="/0/@om/@cs/@formulas.34"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.35" rightStateFormula="/0/@om/@cs/@formulas.36"/>
+        <formulas xsi:type="OM:Atom" proposition="Request_Served(R)"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot &lt;= Initial_slot +10"/>
+        <formulas xsi:type="OM:Atom" proposition="Reputation_reduced"/>
+        <formulas xsi:type="OM:Atom" proposition="Slot > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition="ITM"/>
+        <formulas xsi:type="OM:Atom"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P)"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Atom" proposition="Delivered(Apologies_message)"/>
+        <formulas xsi:type="OM:Negation" stateFormula="/0/@om/@cs/@formulas.43"/>
+        <formulas xsi:type="OM:Atom" proposition="Delivered(Apologies_message)"/>
+        <formulas xsi:type="OM:Atom" proposition="Deliver(Apologies_message)"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_received(P,ITM)"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.48" rightStateFormula="/0/@om/@cs/@formulas.49"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P',ITM')"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.50" rightStateFormula="/0/@om/@cs/@formulas.51"/>
+        <formulas xsi:type="OM:Atom" proposition="P = P'"/>
+        <formulas xsi:type="OM:Atom" proposition="ITM = ITM'"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P,ITM)"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_received(P,U)"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P,U,ITM)"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.57" rightStateFormula="/0/@om/@cs/@formulas.58"/>
+        <formulas xsi:type="OM:Atom" proposition="Delivered(m,I,U)"/>
+        <formulas xsi:type="OM:Atom" proposition="isApologiesMessage(m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.60" rightStateFormula="/0/@om/@cs/@formulas.61"/>
+        <formulas xsi:type="OM:Atom" proposition="Deliver(m,I.U)"/>
+        <formulas xsi:type="OM:Atom" proposition="isApologiesMessage(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition=""/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_served(P,U)"/>
+        <formulas xsi:type="OM:Atom" proposition="True"/>
+        <formulas xsi:type="OM:Atom" proposition="False"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.68" rightStateFormula="/0/@om/@cs/@formulas.70"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_received(P,U)"/>
+        <formulas xsi:type="OM:Atom" proposition="isContentPetition(P)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.71" rightStateFormula="/0/@om/@cs/@formulas.73"/>
+        <formulas xsi:type="OM:Atom" proposition="isContentPetition(P)"/>
+        <formulas xsi:type="OM:Atom"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.75" rightStateFormula="/0/@om/@cs/@formulas.76"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Obtain_suitable_content_providers, I)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.79" rightStateFormula="/0/@om/@cs/@formulas.80"/>
+        <formulas xsi:type="OM:Conjunction"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_provider_requirement(ITM,SB)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Atom" proposition="Provide_related_content_provider(ITM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.84" rightStateFormula="/0/@om/@cs/@formulas.85"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Provide_suitable_content_provider, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Reputation_lowered(ITM,SB)"/>
+        <formulas xsi:type="OM:Atom" proposition="Reputation_lowered(ITM,SB)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.89" rightStateFormula="/0/@om/@cs/@formulas.90"/>
+        <formulas xsi:type="OM:Atom" proposition="Personalization_requirement(CA,ITM)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 10"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.93" rightStateFormula="/0/@om/@cs/@formulas.94"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Personalize_petition, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.98" rightStateFormula="/0/@om/@cs/@formulas.99"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.100" rightStateFormula="/0/@om/@cs/@formulas.101"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.102" rightStateFormula="/0/@om/@cs/@formulas.103"/>
+        <formulas xsi:type="OM:Atom"/>
+        <formulas xsi:type="OM:Atom"/>
+        <formulas xsi:type="OM:Atom" proposition="Obtain_content_requirement(ITM,CP)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.105" rightStateFormula="/0/@om/@cs/@formulas.106"/>
+        <formulas xsi:type="OM:Atom" proposition="Environmental_content_requirement(CA,EC)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 15"/>
+        <formulas xsi:type="OM:Atom" proposition="Environmental_content_provided(CA,EC)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.110" rightStateFormula="/0/@om/@cs/@formulas.111"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Provide_environmental_content, I)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.114" rightStateFormula="/0/@om/@cs/@formulas.116"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.115" rightStateFormula="/0/@om/@cs/@formulas.117"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.118" rightStateFormula="/0/@om/@cs/@formulas.120"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.119" rightStateFormula="/0/@om/@cs/@formulas.121"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.122" rightStateFormula="/0/@om/@cs/@formulas.123"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.124" rightStateFormula="/0/@om/@cs/@formulas.125"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(EC,CA,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(EC,ITM,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(EC,CA,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(EC,ITM,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.128" rightStateFormula="/0/@om/@cs/@formulas.127"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.129" rightStateFormula="/0/@om/@cs/@formulas.130"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="legal_info_provided(LB,CA)"/>
+        <formulas xsi:type="OM:Atom" proposition="content_provided(CP,CA)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 20"/>
+        <formulas xsi:type="OM:Atom" proposition="Filtered_content_legal_info(CA,CP,LB)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.135" rightStateFormula="/0/@om/@cs/@formulas.136"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.138" rightStateFormula="/0/@om/@cs/@formulas.137"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Filter_content_legal_info, I)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.139" rightStateFormula="/0/@om/@cs/@formulas.140"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(CA,ITM,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.143" rightStateFormula="/0/@om/@cs/@formulas.142"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.144" rightStateFormula="/0/@om/@cs/@formulas.145"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(CA,ITM,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.148" rightStateFormula="/0/@om/@cs/@formulas.149"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 20"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.150" rightStateFormula="/0/@om/@cs/@formulas.151"/>
+        <formulas xsi:type="OM:Atom" proposition="environmental_info_provided(EC,CA)"/>
+        <formulas xsi:type="OM:Atom" proposition="content_provided(CP,CA)"/>
+        <formulas xsi:type="OM:Atom" proposition="Filtered_content_environmental_info(CA,CP,EC)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.154" rightStateFormula="/0/@om/@cs/@formulas.155"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Filter_content_environmental_info, I)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.160" rightStateFormula="/0/@om/@cs/@formulas.161"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.158" rightStateFormula="/0/@om/@cs/@formulas.159"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(CA,ITM,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(CA,ITM,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.163" rightStateFormula="/0/@om/@cs/@formulas.164"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.165" rightStateFormula="/0/@om/@cs/@formulas.166"/>
+        <formulas xsi:type="OM:Atom" proposition="Filtered_content_legal_info(CA,CP,LB)"/>
+        <formulas xsi:type="OM:Atom" proposition="Filtered_content_environmental_info(CA,CP,EC)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 25"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.169" rightStateFormula="/0/@om/@cs/@formulas.170"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,Map)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,List)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.172" rightStateFormula="/0/@om/@cs/@formulas.173"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Compose_content, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,List)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,List)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 25"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.178" rightStateFormula="/0/@om/@cs/@formulas.179"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Disjunction" leftStateFormula="/0/@om/@cs/@formulas.180" rightStateFormula="/0/@om/@cs/@formulas.181"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,Map)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_composed(CA,CP,List)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_provided(CA,CP)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 30"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.187" rightStateFormula="/0/@om/@cs/@formulas.188"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_provided(CA,CP)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 35"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Provide_composed_content, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Content_provided(CA,CP)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.191" rightStateFormula="/0/@om/@cs/@formulas.192"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="Legal_Info_requirement(CA,LB)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 15"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.195" rightStateFormula="/0/@om/@cs/@formulas.196"/>
+        <formulas xsi:type="OM:Atom" proposition="provided_legal_info(LB,CA)"/>
+        <formulas xsi:type="OM:Atom" proposition="Checked_legal_info(LB)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.198" rightStateFormula="/0/@om/@cs/@formulas.199"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Provide_legal_info, I)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.220" rightStateFormula="/0/@om/@cs/@formulas.221"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.202" rightStateFormula="/0/@om/@cs/@formulas.203"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.204" rightStateFormula="/0/@om/@cs/@formulas.205"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.206" rightStateFormula="/0/@om/@cs/@formulas.207"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(LB,CA,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(LB,ITM,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_personalized(CA,ITM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.210" rightStateFormula="/0/@om/@cs/@formulas.211"/>
+        <formulas xsi:type="OM:Atom" proposition="Personalization_requirement(CA,ITM)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 5"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.214" rightStateFormula="/0/@om/@cs/@formulas.215"/>
+        <formulas xsi:type="OM:Atom" proposition="Environmental_content_provided(CA,EC)"/>
+        <formulas xsi:type="OM:Atom" proposition="User_InterestsRequirements_provided(CA,UM)"/>
+        <formulas xsi:type="OM:Atom" proposition="Petition_personalized(CA,ITM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.218" rightStateFormula="/0/@om/@cs/@formulas.219"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Wait_interests_requirements_context, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.222" rightStateFormula="/0/@om/@cs/@formulas.223"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.224" rightStateFormula="/0/@om/@cs/@formulas.225"/>
+        <formulas xsi:type="OM:Atom" proposition="is_warning_message(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(LB,ITM,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Atom" proposition="enacted_behaviour(repair_behaviour)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.229" rightStateFormula="/0/@om/@cs/@formulas.230"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Atom" proposition="User_InterestsRequirements_requirement(CA,LB)"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 5"/>
+        <formulas xsi:type="OM:Atom" proposition="User_InterestsRequirements_provided(CA,UM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.234" rightStateFormula="/0/@om/@cs/@formulas.235"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Provide_user_InterestsRequirements, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Empty_User_InterestsRequirements_provided(CA,UM)"/>
+        <formulas xsi:type="OM:Atom" proposition="Empty_User_InterestsRequirements_provided(CA,UM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.241" rightStateFormula="/0/@om/@cs/@formulas.242"/>
+        <formulas xsi:type="OM:Atom" proposition="Now > Initial_slot + 5"/>
+        <formulas xsi:type="OM:Atom" proposition="User_data_updated(ITM,UM)"/>
+        <formulas xsi:type="OM:Atom" proposition="User_data_change_requirement(ITM,UM)"/>
+        <formulas xsi:type="OM:Atom" proposition="SlotInstance(Initial_slot,Now)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.248" rightStateFormula="/0/@om/@cs/@formulas.249"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.250" rightStateFormula="/0/@om/@cs/@formulas.251"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.246" rightStateFormula="/0/@om/@cs/@formulas.247"/>
+        <formulas xsi:type="OM:Atom" proposition="isApologiesMessage(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(UM,U,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance_violated(I)"/>
+        <formulas xsi:type="OM:Atom" proposition="Norm_instance(Change_user_data, I)"/>
+        <formulas xsi:type="OM:Atom" proposition="isApologiesMessage(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(UM,U,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.254" rightStateFormula="/0/@om/@cs/@formulas.253"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.257" rightStateFormula="/0/@om/@cs/@formulas.258"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.260" rightStateFormula="/0/@om/@cs/@formulas.256"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(I,X,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="contains_user_data(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="stored_data(d)"/>
+        <formulas xsi:type="OM:Atom" proposition="is_personal_data(d)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.261" rightStateFormula="/0/@om/@cs/@formulas.262"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(I,X,m)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.263" rightStateFormula="/0/@om/@cs/@formulas.264"/>
+        <formulas xsi:type="OM:Atom" proposition="contains_personal_data(m)"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(UM,CA,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="hasRole(CA,&quot;ContentAdaptor&quot;)"/>
+        <formulas xsi:type="OM:Atom" proposition="User_InterestsRequirements_requirement(CA,LB)"/>
+        <formulas xsi:type="OM:Atom" proposition="User_InterestsRequirements_provided(CA,UM)"/>
+        <formulas xsi:type="OM:Conjunction" leftStateFormula="/0/@om/@cs/@formulas.268" rightStateFormula="/0/@om/@cs/@formulas.269"/>
+        <formulas xsi:type="OM:Atom" proposition="message_exchange(I,X,m)"/>
+        <formulas xsi:type="OM:Atom" proposition="contains_user_data(m)"/>
+        <ontology ontologyID="Default">
+          <classes concept="User"/>
+          <classes concept="Interface"/>
+          <classes concept="Interaction_Task_Manager"/>
+          <classes concept="Multimodal_Interaction_Manager"/>
+          <classes concept="Content_Adaptor"/>
+          <classes concept="User_Modeler"/>
+          <classes concept="Authenticator"/>
+          <classes concept="Service_Broker"/>
+          <classes concept="Content_Provider"/>
+          <classes concept="Environmental_Context"/>
+          <classes concept="legal_Info_Manager"/>
+          <classes concept="Legal_Info_Manager"/>
+          <classes concept="Environmental_Context_Manager"/>
+          <classes concept="Provide_environmental_context"/>
+          <classes concept="Provide_content"/>
+          <classes concept="Provide_legal_info"/>
+          <classes concept="Assign_session_preferences"/>
+          <classes concept="Provide_user_interests_requirements"/>
+          <classes concept="Create_new_profile"/>
+          <classes concept="Change_user_profile"/>
+          <classes concept="Change_user_interests_requirements"/>
+          <classes concept="Personalize_content_petition"/>
+          <classes concept="Get_content"/>
+          <classes concept="Filter_content"/>
+          <classes concept="Compose_content"/>
+          <classes concept="Choose_a_related_content_provider"/>
+          <classes concept="Provide_session_id"/>
+          <classes concept="Validate_session_id"/>
+          <classes concept="Manage_new_interaction_petition"/>
+          <classes concept="Manage_new_interface_petition"/>
+          <classes concept="Manage_log_in_petition"/>
+          <classes concept="Manage_content_petition"/>
+          <classes concept="Manage_sign_in_petition"/>
+          <classes concept="Manage_change_profile_petition"/>
+          <classes concept="Manage_change_interests_requirements"/>
+          <classes concept="Collect_petitions"/>
+          <classes concept="Provide_device_information"/>
+          <classes concept="Adapt_interface_format"/>
+          <classes concept="Provide_user_context"/>
+          <classes concept="Adapt_interaction_mode"/>
+          <classes concept="Change_interaction_mode"/>
+          <classes concept="Change_interface_format"/>
+          <classes concept="Log_in"/>
+          <classes concept="Obtain_personalized_content"/>
+          <classes concept="Sign_in"/>
+          <classes concept="Update_profile"/>
+          <classes concept="Update_interests_requirements"/>
+          <classes concept="Provide_composed_content"/>
+          <classes concept="Validate_user"/>
+          <classes concept="Log_i"/>
+          <classes concept="Assign_open_id"/>
+          <classes concept="Sign_up"/>
+          <classes concept="Sign_i"/>
+          <classes concept="Manage_petitions"/>
+          <classes concept="Manage_sign_up_petition"/>
+        </ontology>
+      </cs>
+    </om>
+  </opera:OperAModel>
+  <notation:Diagram type="OperA_SS_ModelID" element="/0/@om/@ss" name="Social Structure" measurementUnit="Pixel">
+    <children type="2001" element="/0/@om/@ss/@roles.0">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="110" y="35"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.1">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="660" y="35"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.2">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="315" y="210"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.3">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-30" y="210"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.4">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="845" y="210"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.5">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="700" y="495"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.6">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-10" y="335"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.7">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-5" y="460"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.8">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="1040" y="234"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.9">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="955" y="360"/>
+    </children>
+    <children type="2001" element="/0/@om/@ss/@roles.10">
+      <children type="5001"/>
+      <children type="5002"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="1010" y="75"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle"/>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.0" source="/1/@children.0" target="/1/@children.1">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="3" y="-14"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[35, -6, -238, 39]$[230, -26, -43, 19]"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.1" source="/1/@children.0" target="/1/@children.2">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="-735" y="612"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[35, 15, -289, -125]$[280, 149, -44, 9]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.24719101,0.72727275)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.2" source="/1/@children.2" target="/1/@children.1">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="-25" y="-19"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-11, -22, 85, 153]$[-53, -177, 43, -2]"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.3" source="/1/@children.2" target="/1/@children.6">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="34" y="2"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-23, 22, 98, -96]$[-111, 108, 10, -10]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.60714287,0.22727273)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.4" source="/1/@children.2" target="/1/@children.5">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="24" y="80"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[14, 22, -144, -248]$[146, 248, -12, -22]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.78089887,0.5)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.07964602,0.84090906)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.5" source="/1/@children.2" target="/1/@children.3">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="6" y="15"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-33, 7, 313, -54]$[-238, 48, 108, -13]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.19101124,0.38636363)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.6" source="/1/@children.2" target="/1/@children.7">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="17" y="-12"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[3, 22, -16, -128]$[78, 150, 59, 0]"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.7" source="/1/@children.2" target="/1/@children.4">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="-4" y="-24"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[35, -22, -192, 118]$[162, -127, -65, 13]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.80898875,0.5)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.8" source="/1/@children.4" target="/1/@children.10">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="13" y="7"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[27, -9, -144, 42]$[146, -48, -25, 3]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.79389316,0.45454547)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.17123288,0.65909094)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.9" source="/1/@children.4" target="/1/@children.8">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="25" y="-20"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[26, 5, -255, -37]$[218, 64, -63, 22]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.8091603,0.47727272)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.10" source="/1/@children.4" target="/1/@children.9">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="50" y="-10"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[36, 22, -266, -143]$[195, 167, -107, 2]"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.11" source="/1/@children.4" target="/1/@children.5">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" y="40"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-7, 22, 63, -200]$[-58, 213, 12, -9]"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.9823009,0.47727272)"/>
+    </edges>
+    <edges type="4003" element="/0/@om/@ss/@dependencies.12" source="/1/@children.4" target="/1/@children.1">
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Location" x="-3" y="48"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-65, -10, 337, 50]$[-359, -60, 43, 0]"/>
+    </edges>
+  </notation:Diagram>
+  <notation:Diagram type="OperA_IS_ModelID" element="/0/@om/@is" name="Interaction Structure" measurementUnit="Pixel">
+    <children type="2015" element="start">
+      <children type="5013"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="5" y="295"/>
+    </children>
+    <children type="2016" element="end">
+      <children type="5014"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="715" y="275"/>
+    </children>
+    <children type="2014" element="User_Model_Creation">
+      <children type="5012"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="80" y="430"/>
+    </children>
+    <children type="2014" element="User_Model_Adaptation">
+      <children type="5012"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="365" y="320"/>
+    </children>
+    <children type="2014" element="Interaction_Interface_Adaption">
+      <children type="5012"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="58" y="106"/>
+    </children>
+    <children type="2014" element="Content_Adaption">
+      <children type="5012"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="380" y="100"/>
+    </children>
+    <children type="2012" element="T130">
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="105" y="305"/>
+    </children>
+    <children type="2012" element="T131">
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="230" y="315"/>
+    </children>
+    <children type="2012" element="T132">
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="440" y="205"/>
+    </children>
+    <children type="2012" element="T133">
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="440" y="10"/>
+    </children>
+    <styles xsi:type="notation:DiagramStyle"/>
+    <edges type="4012" element="A283" source="/2/@children.0" target="/2/@children.6">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[15, 25, -71, -110]$[79, 135, -7, 0]"/>
+    </edges>
+    <edges type="4011" element="A284" source="/2/@children.6" target="/2/@children.2">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="-8" y="23"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[1, 15, -54, -205]$[-21, 220, -76, 0]"/>
+    </edges>
+    <edges type="4011" element="A285" source="/2/@children.6" target="/2/@children.4">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="-26" y="-19"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[8, -4, -213, 69]$[121, -73, -100, 0]"/>
+    </edges>
+    <edges type="4012" element="A286" source="/2/@children.2" target="/2/@children.7">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[76, -3, -132, 4]$[201, -7, -7, 0]"/>
+    </edges>
+    <edges type="4011" element="A287" source="/2/@children.7" target="/2/@children.4">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="-15" y="-14"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[1, -15, 43, 271]$[-142, -286, -100, 0]"/>
+    </edges>
+    <edges type="4011" element="A288" source="/2/@children.7" target="/2/@children.3">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="6" y="-12"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[8, 3, -171, -64]$[96, 67, -83, 0]"/>
+    </edges>
+    <edges type="4012" element="A289" source="/2/@children.3" target="/2/@children.8">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[81, -25, -259, 77]$[333, -102, -7, 0]"/>
+    </edges>
+    <edges type="4011" element="A290" source="/2/@children.8" target="/2/@children.1">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" y="40"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[1, 15, -11, -252]$[-13, 267, -25, 0]"/>
+    </edges>
+    <edges type="4012" element="A291" source="/2/@children.5" target="/2/@children.8">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-7, 25, 45, -150]$[-59, 175, -7, 0]"/>
+    </edges>
+    <edges type="4012" element="A292" source="/2/@children.4" target="/2/@children.9">
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[82, 25, -146, -46]$[221, 71, -7, 0]"/>
+    </edges>
+    <edges type="4011" element="A293" source="/2/@children.9" target="/2/@children.5">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" y="40"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[8, 4, -208, -105]$[149, 109, -67, 0]"/>
+    </edges>
+    <edges type="4011" element="A294" source="/2/@children.9" target="/2/@children.1">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="16" y="-13"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[8, 4, -238, -448]$[221, 127, -25, -325]$[244, 427, -2, -25]"/>
+    </edges>
+    <edges type="4011" element="A295" source="/2/@children.8" target="/2/@children.4">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="-13" y="20"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[-7, -7, 385, 313]$[-492, -320, -100, 0]"/>
+    </edges>
+    <edges type="4011" element="A16" source="/2/@children.7" target="/2/@children.1">
+      <children type="6011">
+        <layoutConstraint xsi:type="notation:Location" x="10" y="22"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" points="[8, 6, -495, 36]$[218, 165, -285, 195]$[478, -13, -25, 17]"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>
