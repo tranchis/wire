@@ -26,7 +26,7 @@
   "Wrapper for testing monitor opera file parser. Equivalent to commands above"
   [file]
   (info "Testing engine with file '" file  "'")
-  (time (engine/start-engine file))
+  (clojure.pprint/pprint (engine/start-engine file))
   (info "Your test is over")
   )
 

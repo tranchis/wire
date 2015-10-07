@@ -3,3 +3,4 @@ target/
 .plugins/
 *.index
 .metadata/
+*.DS_Store

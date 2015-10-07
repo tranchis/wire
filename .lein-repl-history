@@ -1,0 +1,24 @@
+(1)
+(int 1)
+(load-file "/Users/igomez/deapt/dea-repo/wire-github-ignasi/wire/src/edu/upc/igomez/nomodei/dynamic.clj")
+(use 'edu.upc.igomez.nomodei.dynamic)
+(plain)
+pprint *1
+pprint
+pprint (plain)
+(plain)
+(load-file "/Users/igomez/deapt/dea-repo/wire-github-ignasi/wire/src/edu/upc/igomez/nomodei/dynamic.clj")
+(use 'edu.upc.igomez.nomodei.dynamic)
+(plain)
+(pprint (plain))
+pprint *2
+(plain)
+pprint *1
+(use 'clojure.pprint) 
+pprint *1
+pprint *3
+pprint *4
+(plain)
+pprint *1
+pprint *3
+(pprint (plain))

@@ -1,3 +1,18 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Copyright (c) 2015 Sergio Alvarez and Ignasi Gómez Sebastià
+; 
+; All rights reserved. This program and the accompanying materials
+; are made available under the terms of the Eclipse Public License v1.0
+; which accompanies this distribution, and is available at
+; http://www.eclipse.org/legal/epl-v10.html
+; 
+; Contributors:
+;     Sergio Alvarez: Original wire project
+;     Ignasi Gómez-Sebastià: Wire project extensions
+;                           - (2015-09-14) Extending original wire monitor to support merging of active instances
+;                             
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (ns eu.superhub.wp4.monitor.core.lisp-to-clara
   (:require [clojure.pprint :as ppr]
             [clojure.string :as stt]
@@ -5,7 +20,9 @@
             [wire.preds :refer :all]
             [clara.tools.viz :as viz]
             [eu.superhub.wp4.monitor.core.fol-conversions :as folc]
-            [eu.superhub.wp4.monitor.core.regulative-parser :as regp]))
+            [eu.superhub.wp4.monitor.core.regulative-parser :as regp])
+  (:use 
+    [clojure.tools.logging :only (info error)] ) )
 
 
 (defmulti argument->literal (fn [a _] (:type a)))
@@ -169,6 +186,17 @@
                (do
                  (println "norm-instantiation")
                  (insert-unconditional! (->Instantiated ?n ?theta)))))
+
+       (eval '(defrule inject-instantiation
+               "injecting instantiated norm"
+               [?i <- wire.preds.NormInstanceInjected (= ?n norm) 
+                                                      (= ?theta substitution)]
+               [:not [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]]
+               [:not [wire.preds.Repair (= ?n2 norm) (= ?n repair-norm)]]
+               =>
+               (do
+                 (println "injecting instantiated norm"
+                 (insert-unconditional! (->Instantiated ?n ?theta))))))
       
       (eval '(defrule norm-instance-fulfillment
                "norm instance fulfillment"
@@ -210,18 +238,161 @@
 
       (eval '(defquery test-instantiated
                []
-               [?n <- wire.preds.Instantiated])))
+               [?n <- wire.preds.Instantiated]))
+    
+      ;Norm instances instantiated.
+      ;Same as above to avoid breaking legacy code. Improves name
+      (eval '(defquery Instantiated
+               []
+               [?n <- wire.preds.Instantiated]))
+
+      ;Norm instances Violated.
+      (eval '(defquery Violated
+               []
+               [?n <- wire.preds.Violated]))
+
+      ;Norm instances Fulfilled.
+      (eval '(defquery Fulfilled
+               []
+               [?n <- wire.preds.Fulfilled]))
+
+       ;Norm instances Repair.
+      (eval '(defquery Repair
+               []
+               [?n <- wire.preds.Repair]))
+
+      ;Constitutive norm instances.
+      (eval '(defquery CountsAs
+               []
+               [?n <- wire.preds.CountsAs]))
+
+      ;Shortcut to everything above
+      (eval '(defquery Everything
+               []
+               [:or [?n <- wire.preds.Instantiated]
+                    [?n <- wire.preds.Violated]
+                    [?n <- wire.preds.Fulfilled]
+                    [?n <- wire.preds.Repair]
+                    [?n <- wire.preds.CountsAs]])))
 
 (ns eu.superhub.wp4.monitor.core.lisp-to-clara)
 (find-ns id)))
 
-(defn start-engine [file]
+
+(defn all-ti
+  [ti session-all]
+  (query (fire-rules session-all) @(val ti)))
+
+(defn do-inject
+  [norm-instance br session]
+  (let [instance (first norm-instance)
+        instance (:?n instance)
+        norm (:norm instance)
+        ;norm (:norm-id norm)
+        substitution (:substitution instance)
+        _ (info "Injecting norm ' " norm " ' with theta ' " substitution " ' ")
+         session (insert session (->NormInstanceInjected norm substitution))
+
+    ]
+    session ))
+
+(defn get-instances-in-state
+  [session br state]
+  (map #(all-ti % session) (filter #(= (name (key %)) state)
+                            (ns-map br)))
+  )
+
+(defn merge-engines-all
+  "Dumps the working memory of a monitor into another monitor"
+  [session-main session-aux br]
+  (info "Merging active instances...")
+  (let [all-aux (map #(all-ti % session-aux) (filter #(= (name (key %)) 
+                          "Everything")
+                            (ns-map br)))
+        all-main (map #(all-ti % session-main) (filter #(= (name (key %)) 
+                          "Everything")
+                            (ns-map br)))
+        session (doall (map #(do-inject % br session-main) all-aux))
+        session (first session)
+        all-test (map #(all-ti % session) (filter #(= (name (key %)) 
+                          "Everything")
+                            (ns-map br)))
+         ]
+        session
+  ))
+
+(defn merge-engines-active
+  "Merges sets of active norm instances between 2 rules engine sessions 
+  by inserting the set of active instances from the first
+   engine into the second. The first engine session belongs to an 
+   auxiliary monitor, the second to a main one"
+  [session-main session-aux br]
+  (info "Merging active instances...")
+  (let [active-aux (map #(all-ti % session-aux) (filter #(= (name (key %)) 
+                          "Instantiated")
+                            (ns-map br)))
+        #_ (info "Set of active instances in aux monitor: '" active-aux "'")
+        active-main (map #(all-ti % session-main) (filter #(= (name (key %)) 
+                          "Instantiated")
+                            (ns-map br)))
+        #_ (info "Set of active instances in main monitor: '" active-main "'")
+        session (doall (map #(do-inject % br session-main) active-aux))
+        session (first session)
+         ]
+        session
+  ))
+
+(defn start-engine-merge [file]
+  (let [br (base-rules)
+        specification (opera-to-drools
+                        (.getPath
+                          (clojure.java.io/resource file)))]
+        (dorun (map #(binding [*ns* br] (println %) (eval %)) 
+                                        (:rules specification)))
+    (let [session (->
+                    (mk-session (ns-name br) :cache false)
+                      (insert (map->Predicate {:name "NumberOfWorkers"
+                                               :argument-0 "x"}))
+                    (insert (map->Predicate {:name "lessThan"
+                                             :argument-0 "x"
+                                             :argument-1 "5"})))
+          session-main (apply insert session (:inserts specification))
+          session (->
+                    (mk-session (ns-name br) :cache false)
+                    (insert (map->Predicate {:name "Unit"
+                                             :argument-0 "y"}))
+                    (insert (map->Predicate {:name "Unit"
+                                             :argument-0 "y"
+                                             :argument-1 "Archmage"})))
+          session-aux (apply insert session (:inserts specification))
+          test (merge-engines-active session-main session-aux br)
+          ti (map #(all-ti % test) (filter #(= (name (key %)) "test-instantiated")
+                            (ns-map br)))]
+          ti
+      )))
+
+(defn ^Package operationalise 
+  "Operationalises a set of norms"
+  [norms]
+  (let [data norms
+        rules (apply merge-with concat
+                     (concat (map rule-norm (:norms data))
+                             (map rule-counts-as (:cas-rules data))))
+        clause-relationships (apply merge-with concat (:formulae rules))
+        clauses (keys clause-relationships)
+        inserts (mapcat #(map (fn [a]
+                                (->HasClause a (key %)))
+                              (distinct (val %))) clause-relationships)]
+    (merge rules {:rules (map rule-clause clauses)
+                  :inserts (concat inserts (:inserts rules))})))
+
+(defn start-engine-plain [file]
   (let [br (base-rules)
         specification (opera-to-drools
                         (.getPath
                           (clojure.java.io/resource file)))]
     (dorun (map #(binding [*ns* br] (println %) (eval %)) (:rules specification)))
-    (ppr/pprint specification)
+    #_(ppr/pprint specification)
     (let [session (->
                     (mk-session (ns-name br) :cache false)
                     (insert (map->Predicate {:name "NumberOfWorkers"
@@ -230,10 +401,16 @@
                                              :argument-0 "x"
                                              :argument-1 "5"})))
           session-all (apply insert session (:inserts specification))
-          ti (first (filter #(= (name (key %)) "test-instantiated")
-                            (ns-map br)))]
-      #_(spit "/tmp/map.txt" (pr-str (ns-map br)))
-      (query (fire-rules session-all) @(val ti)))))
+          ti (map #(all-ti % session-all) (filter #(= (name (key %)) 
+                            "test-instantiated") (ns-map br)))]
+          ti
+      )))
+
+;Wrapper for tests
+(defn start-engine [file]
+  (let [result (start-engine-merge file)
+        ]
+        result ) )
 
 #_(time (start-engine "TestOpera.opera"))
 #_(base-rules)

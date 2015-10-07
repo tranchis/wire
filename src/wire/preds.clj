@@ -14,6 +14,7 @@
 (defrecord Event [asserter content])
 (defrecord Formula [content grounding])
 (defrecord Instantiated [norm substitution])
+(defrecord NormInstanceInjected [norm substitution])
 (defrecord Fulfilled [norm substitution])
 (defrecord Violated [norm substitution])
 (defrecord Repaired [norm substitution])

@@ -19,6 +19,15 @@ To test the monitor inference engine, open a terminal and run the following comm
 lein run -m wire.test.monitor "engine" "TestOpera.opera"
 ```
 
+To test the monitor dynamic inference engine, open a terminal and run the following commands:
+```javascript
+lein run -m wire.test.dynamic "plain"
+```
+```javascript
+lein run -m wire.test.dynamic "propespective"
+```
+
+
 ## License
 Ignasi Gómez-Sebastià
 Copyright © 2014 FIXME
