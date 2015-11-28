@@ -14,6 +14,7 @@
 (defrecord Event [asserter content])
 (defrecord Formula [content grounding])
 (defrecord Instantiated [norm substitution])
+(defrecord Abrogated [norm])
 (defrecord NormInstanceInjected [norm substitution])
 (defrecord Fulfilled [norm substitution])
 (defrecord Violated [norm substitution])
@@ -21,3 +22,5 @@
 (defrecord SubsetEQ [subset superset])
 (defrecord Repair [norm repair-norm])
 
+(defrecord RestrictedCountsAs [abstract-fact context concrete-fact asserter])
+(defrecord CountsAsPerm [abstract-fact context asserter])

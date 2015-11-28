@@ -175,12 +175,58 @@
                (do
                  (println "counts-as-deactivation")
                  (retract! ?f))))
+
+      (eval '(defrule restricted-counts-as-activation
+               "counts-as activation with constitutive power"
+               [wire.preds.RestrictedCountsAs
+                (= ?g1 abstract-fact)
+                (= ?g2 concrete-fact)
+                (= ?s context)
+                (= ?a asserter)]
+               [wire.preds.Holds (= ?g1 formula) (= ?theta substitution)]
+               [wire.preds.Holds (= ?s formula) (= ?theta2 substitution)]
+               [wire.preds.CountsAsPerm (= ?g1 abstract-fact) 
+                                        (= ?s context)
+                                        (= ?a asserter)]
+               [:not [wire.preds.Holds (= ?g2 formula) (= ?theta substitution)]]
+               =>
+               (do
+                 (println "counts-as-activation")
+                 (insert-unconditional! (substitute ?g2 ?theta)))))
       
+      (eval '(defrule restricted-counts-as-deactivation
+               "counts-as deactivation with constitutive power"
+               [wire.preds.RestrictedCountsAs
+                (= ?g1 abstract-fact)
+                (= ?g2 concrete-fact)
+                (= ?s context)
+                (= ?a asserter)]
+               [wire.preds.Holds (= ?g1 formula) (= ?theta substitution)]
+               [:not [wire.preds.Holds (= ?s formula) (= ?theta2 substitution)]]
+               [:not [wire.preds.CountsAsPerm (= ?g1 abstract-fact) 
+                                              (= ?s context)
+                                              (= ?a asserter)]]
+               [wire.preds.Holds (= ?g2 formula) (= ?theta substitution)]
+               [?f <- wire.preds.Formula (= ?g2 content) (= ?theta grounding)]
+               =>
+               (do
+                 (println "counts-as-deactivation")
+                 (retract! ?f))))
+      
+      (eval '(defrule norm-abrogation
+               "norm abrogation"
+               [:not [wire.preds.Abrogated (= ?n norm)]]
+               =>
+               (do
+                 (println "norm-abrogation")
+                 (insert-unconditional! (->Abrogated ?n)))))
+
       (eval '(defrule norm-instantiation
                "norm instantiation"
                [?a <- wire.preds.Activation (= ?n norm) (= ?f formula)]
                [?h <- wire.preds.Holds (= ?f formula) (= ?theta substitution)]
-               [:not [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]]
+               [:not [wire.preds.Fulfilled (= ?n norm) (= ?theta substitution)]]
+               [:not [wire.preds.Abrogated (= ?n norm)]]
                [:not [wire.preds.Repair (= ?n2 norm) (= ?n repair-norm)]]
                =>
                (do
@@ -197,6 +243,31 @@
                (do
                  (println "injecting instantiated norm"
                  (insert-unconditional! (->Instantiated ?n ?theta))))))
+
+       (eval '(defrule retract-instantiation
+               "injecting instantiated norm"
+               [?i <- wire.preds.NormInstanceInjected (= ?n norm) 
+                                                      (= ?theta substitution)]
+               [:not [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]]
+               [:not [wire.preds.Repair (= ?n2 norm) (= ?n repair-norm)]]
+               =>
+               (do
+                 (println "injecting instantiated norm"
+                 (insert-unconditional! (->Instantiated ?n ?theta))))))
+
+        (eval '(defrule norm-instance-violation
+               "norm instance violation"
+               [?a <- wire.preds.Maintenance (= ?n norm) (= ?f formula)]
+               [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]
+               [:not 
+                    [:and [wire.preds.SubsetEQ (= ?theta2 subset) (= ?theta superset)]
+                    [?h <- wire.preds.Holds (= ?f formula) (= ?theta2 substitution)]]
+               ]
+               [:not [wire.preds.Violated (= ?n norm) (= ?theta substitution)]]         
+               =>
+               (do
+                 (println "norm-violation")
+                 (insert-unconditional! (->Violated ?n ?theta)))))
       
       (eval '(defrule norm-instance-fulfillment
                "norm instance fulfillment"
@@ -259,12 +330,17 @@
        ;Norm instances Repair.
       (eval '(defquery Repair
                []
-               [?n <- wire.preds.Repair]))
+               [?n <- wire.preds.Repaired]))
 
       ;Constitutive norm instances.
       (eval '(defquery CountsAs
                []
                [?n <- wire.preds.CountsAs]))
+
+      ;Hold.
+      (eval '(defquery Holds
+               []
+               [?n <- wire.preds.Holds]))
 
       ;Shortcut to everything above
       (eval '(defquery Everything
@@ -312,6 +388,7 @@
         all-main (map #(all-ti % session-main) (filter #(= (name (key %)) 
                           "Everything")
                             (ns-map br)))
+        ;_ (info "Pelusso:" [all-aux all-main])
         session (doall (map #(do-inject % br session-main) all-aux))
         session (first session)
         all-test (map #(all-ti % session) (filter #(= (name (key %)) 
@@ -399,16 +476,20 @@
                                              :argument-0 "x"}))
                     (insert (map->Predicate {:name "lessThan"
                                              :argument-0 "x"
-                                             :argument-1 "5"})))
+                                             :argument-1 "5"}))
+                    (insert (map->Predicate {:name "Produce_New_Soldier"}))
+                    )
           session-all (apply insert session (:inserts specification))
+
           ti (map #(all-ti % session-all) (filter #(= (name (key %)) 
-                            "test-instantiated") (ns-map br)))]
+                            "Everything") (ns-map br)))]
           ti
       )))
 
+
 ;Wrapper for tests
 (defn start-engine [file]
-  (let [result (start-engine-merge file)
+  (let [result (start-engine-plain file)
         ]
         result ) )
 

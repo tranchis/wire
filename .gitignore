@@ -3,4 +3,5 @@ target/
 .plugins/
 *.index
 .metadata/
-*.DS_Store
+.DS_Store
+.lein-repl-history
