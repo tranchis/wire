@@ -1,6 +1,8 @@
 # wire
 
-NoMoDEI fork for the wire project
+Normative monitor, plus:
+
+ * NoMoDEI
 
 ## Prerequisites
 
@@ -52,5 +54,6 @@ lein run -m wire.test.dynamic "abrogation-water"
 28-11-2015 Cosmetic improving of code
 
 ## License
+Sergio Alvarez-Napagao
 Ignasi Gómez-Sebastià
 Copyright © 2014 FIXME
