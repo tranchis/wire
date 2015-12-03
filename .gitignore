@@ -4,13 +4,5 @@ target/
 .plugins/
 *.index
 .metadata/
-/target
-/lib
-/classes
-/checkouts
-pom.xml
-pom.xml.asc
-*.jar
-*.class
-/.lein-*
-/.nrepl-port
+.DS_Store
+.lein-repl-history
