@@ -18,11 +18,10 @@
             [clojure.string :as stt]
             [clara.rules :refer :all]
             [wire.preds :refer :all]
-            [clara.tools.viz :as viz]
             [eu.superhub.wp4.monitor.core.fol-conversions :as folc]
             [eu.superhub.wp4.monitor.core.regulative-parser :as regp])
   (:use 
-    [clojure.tools.logging :only (info error)] ) )
+    [clojure.tools.logging :only (info error)]))
 
 (defmulti argument->literal (fn [a _] (:type a)))
 
@@ -115,7 +114,6 @@
       `(ns ~id
          (:require [clojure.string :as stt]
                    [clara.rules :refer :all]
-                   [clara.tools.viz :as viz]
                    [eu.superhub.wp4.monitor.core.lisp-to-clara :as lc :refer :all]
                    [eu.superhub.wp4.monitor.core.fol-conversions :as folc]
                    [eu.superhub.wp4.monitor.core.regulative-parser :as regp])))

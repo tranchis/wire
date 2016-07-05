@@ -6,3 +6,4 @@ target/
 .metadata/
 .DS_Store
 .lein-repl-history
+*.orig
