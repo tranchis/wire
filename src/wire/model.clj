@@ -1,10 +1,15 @@
 (ns wire.model
-  (:require [clojure.spec :as s]))
+  (:require [clojure.spec :as s]
+            [rolling-stones.core :as sat
+             :refer [! NOT AND OR XOR IFF IMP NOR NAND]]))
 
 (def variables (into #{} (map #(keyword (str (char %)))
                               (range (int \a) (inc (int \z))))))
 (def types (s/or :string string? :number number?))
 
+(s/def ::b-operators #{'XOR 'IFF 'IMP})
+(s/def ::m-operators #{'AND 'OR 'NOR 'NAND})
+(s/def ::u-operators #{'! 'NOT})
 (s/def ::variable variables)
 (s/def ::literal types)
 
@@ -13,11 +18,15 @@
 (s/def ::parameter (s/or :variable ::variable :literal ::literal))
 (s/def :term/param ::parameter)
 (s/def :term/pred keyword?)
-(s/def ::term (s/keys :req [:term/pred :term/param]))
+(s/def ::term (s/or
+               :propositional keyword?
+               :fol (s/cat :predicate :term/pred :parameters (s/* ::parameter))))
 
 (s/def ::wff
-  (s/or :formula (s/cat :operator #{'and 'or}
-                        :terms (s/coll-of ::wff :min-count 1))
+  (s/or :u-formula (s/cat :operator-u ::u-operators :term-u ::wff)
+        :b-formula (s/cat :operator-b ::b-operators
+                          :term-1 ::wff :term-2 ::wff)
+        :m-formula (s/cat :operator-m ::m-operators :terms (s/* ::wff))
         :term ::term))
 
 (s/def :norm/target keyword?)
@@ -52,7 +61,13 @@
 (s/valid? ::wff [:or [:a]])
 (s/valid? ::wff [:and [:a :b]])
 (s/valid? ::wff [:and [:a [:or [:b :c]]]])
-(ffirst (s/exercise ::norm 1))
-(ffirst (s/exercise ::subs 1))
-(ffirst (s/exercise ::norm-instance 1))
-(ffirst (s/exercise ::inst 1))
+#_(ffirst (s/exercise ::norm 1))
+#_(ffirst (s/exercise ::subs 1))
+#_(ffirst (s/exercise ::norm-instance 1))
+#_(ffirst (s/exercise ::inst 1))
+#_(ffirst (s/exercise ::wff 1))
+#_(ffirst (s/exercise operators 1))
+(ffirst (s/exercise ::term 1))
+(s/valid? ::term '(:pred :x 2 3 4))
+(s/valid? ::wff '(XOR (AND :p :q (! :r)) (IFF :p (IMP :q :r))))
+(ffirst (s/exercise ::wff 1))
