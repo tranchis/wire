@@ -20,7 +20,9 @@
 (s/def :term/pred keyword?)
 (s/def ::term (s/or
                :propositional keyword?
-               :fol (s/cat :predicate :term/pred :parameters (s/* ::parameter))))
+               :fol (s/and
+                     vector?
+                     (s/cat :predicate :term/pred :parameters (s/* ::parameter)))))
 
 (s/def ::wff
   (s/or :u-formula (s/cat :operator-u ::u-operators :term-u ::wff)
@@ -57,10 +59,10 @@
                             :inst/ds :inst/fs ::state]))
 
 (s/valid? ::wff :a)
-(s/valid? ::wff [:and [:a]])
-(s/valid? ::wff [:or [:a]])
-(s/valid? ::wff [:and [:a :b]])
-(s/valid? ::wff [:and [:a [:or [:b :c]]]])
+(s/valid? ::wff '(AND [:a]))
+(s/valid? ::wff '(OR [:a]))
+(s/valid? ::wff '(AND [:a :b]))
+(s/valid? ::wff '(AND :a (OR :b :c)))
 #_(ffirst (s/exercise ::norm 1))
 #_(ffirst (s/exercise ::subs 1))
 #_(ffirst (s/exercise ::norm-instance 1))
@@ -71,3 +73,12 @@
 (s/valid? ::term '(:pred :x 2 3 4))
 (s/valid? ::wff '(XOR (AND :p :q (! :r)) (IFF :p (IMP :q :r))))
 (ffirst (s/exercise ::wff 1))
+
+(def example-norm
+  {:norm/target :agent-0
+   :norm/fa '(AND [:enacts-role :a :d] [:driving :a])
+   :norm/fm '(NOT [:crossed-red :a :l])
+   :norm/fd '(NOT [:driving :a])
+   :norm/fr '[:fine-paid 100]
+   :norm/timeout '[:time 500]})
+(s/explain ::norm example-norm)
