@@ -1,7 +1,5 @@
 (ns wire.model
-  (:require [clojure.spec :as s]
-            [rolling-stones.core :as sat
-             :refer [! NOT AND OR XOR IFF IMP NOR NAND]]))
+  (:require [clojure.spec :as s]))
 
 (def variables (into #{} (map #(keyword (str (char %)))
                               (range (int \a) (inc (int \z))))))
@@ -76,9 +74,15 @@
 
 (def example-norm
   {:norm/target :agent-0
-   :norm/fa '(AND [:enacts-role :a :d] [:driving :a])
+   :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
    :norm/fm '(NOT [:crossed-red :a :l])
    :norm/fd '(NOT [:driving :a])
    :norm/fr '[:fine-paid 100]
    :norm/timeout '[:time 500]})
 (s/explain ::norm example-norm)
+
+(defn valid-wff? [cand]
+  (if (s/valid? ::wff cand)
+    cand
+    (throw (UnsupportedOperationException.
+            (str "Unsafe formula: " (pr-str cand))))))
