@@ -1,6 +1,6 @@
 (ns wire.preds)
 
-(defrecord Norm [norm-id])
+(defrecord Norm [norm-id implementation])
 (defrecord CountsAs [abstract-fact context concrete-fact])
 (defrecord Activation [norm formula])
 (defrecord Expiration [norm formula])

@@ -1,5 +1,6 @@
 (ns wire.model
-  (:require [clojure.spec :as s]))
+  (:require [clojure.spec :as s]
+            [wire.preds :as preds]))
 
 (def variables (into #{} (map #(keyword (str (char %)))
                               (range (int \a) (inc (int \z))))))
@@ -56,29 +57,40 @@
 (s/def ::inst (s/keys :req [:inst/ns :inst/as :inst/vs
                             :inst/ds :inst/fs ::state]))
 
-(s/valid? ::wff :a)
-(s/valid? ::wff '(AND [:a]))
-(s/valid? ::wff '(OR [:a]))
-(s/valid? ::wff '(AND [:a :b]))
-(s/valid? ::wff '(AND :a (OR :b :c)))
+#_(s/valid? ::wff :a)
+#_(s/valid? ::wff '(AND [:a]))
+#_(s/valid? ::wff '(OR [:a]))
+#_(s/valid? ::wff '(AND [:a :b]))
+#_(s/valid? ::wff '(AND :a (OR :b :c)))
 #_(ffirst (s/exercise ::norm 1))
 #_(ffirst (s/exercise ::subs 1))
 #_(ffirst (s/exercise ::norm-instance 1))
 #_(ffirst (s/exercise ::inst 1))
 #_(ffirst (s/exercise ::wff 1))
 #_(ffirst (s/exercise operators 1))
-(ffirst (s/exercise ::term 1))
-(s/valid? ::term '(:pred :x 2 3 4))
-(s/valid? ::wff '(XOR (AND :p :q (! :r)) (IFF :p (IMP :q :r))))
-(ffirst (s/exercise ::wff 1))
+#_(ffirst (s/exercise ::term 1))
+#_(s/valid? ::term '(:pred :x 2 3 4))
+#_(s/valid? ::wff '(XOR (AND :p :q (! :r)) (IFF :p (IMP :q :r))))
+#_(ffirst (s/exercise ::wff 1))
 
 (def example-norm
-  {:norm/target :agent-0
-   :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
-   :norm/fm '(NOT [:crossed-red :a :l])
-   :norm/fd '(NOT [:driving :a])
-   :norm/fr '[:fine-paid 100]
-   :norm/timeout '[:time 500]})
+  (preds/->Norm
+   :norm-1
+   {:norm/target :agent-0
+    :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
+    :norm/fm '(NOT [:crossed-red :a :l])
+    :norm/fd '(NOT [:driving :a])
+    :norm/fr '[:fine-paid 100]
+    :norm/timeout '[:time 500]}))
+(def example-norm-2
+  (preds/->Norm
+   :norm-2
+   {:norm/target :agent-0
+    :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
+    :norm/fm '(NOT [:crossed-red :a :l])
+    :norm/fd '(NOT [:driving :a])
+    :norm/fr '[:fine-paid 200]
+    :norm/timeout '[:time 600]}))
 (s/explain ::norm example-norm)
 
 (defn valid-wff? [cand]
