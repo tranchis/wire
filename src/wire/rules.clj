@@ -199,3 +199,12 @@
       (insert (preds/map->Predicate {:name :test :argument-0 "y"}))
       (insert (preds/map->Predicate {:name :crossed-red :argument-0 "x"}))
       (fire-rules)))
+
+#_(defprotocol Monitor
+   "Protocol that defines basic monitoring operations"
+   (has-violated? [session agent-id] "Returns the list of norm instances violated by agent-id")
+   (status 
+     ([session] "Returns a list of all norm instances along its current status and related agent if applies")
+   ([session agent-id] "Returns a list of all norm instances' status")
+   ([session norm-id] "Returns the status of given norm instance id "))
+   (how2repair [session norm-id] "Returns the repair formula of norm instance norm-id"))
