@@ -78,7 +78,7 @@
    :norm-1
    {:norm/target :agent-0
     :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
-    :norm/fm '(NOT [:crossed-red :a :l])
+    :norm/fm '(NOT [:crossed-red :a])
     :norm/fd '(NOT [:driving :a])
     :norm/fr '[:fine-paid 100]
     :norm/timeout '[:time 500]}))
@@ -87,7 +87,7 @@
    :norm-2
    {:norm/target :agent-0
     :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
-    :norm/fm '(NOT [:crossed-red :a :l])
+    :norm/fm '(NOT [:crossed-red :a])
     :norm/fd '(NOT [:driving :a])
     :norm/fr '[:fine-paid 200]
     :norm/timeout '[:time 600]}))

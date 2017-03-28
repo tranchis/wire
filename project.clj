@@ -26,7 +26,7 @@
                  #_[net.sf.ictalive/owls "1.0.1"]
                  #_[net.sf.ictalive/rules "1.0.4"]
                  #_[net.sf.ictalive/normInstances "1.0.0"]
-                 #_[org.clojure/math.combinatorics "0.0.3"]
+                 [org.clojure/math.combinatorics "0.1.4"]
                  #_[org.eclipse.core/org.eclipse.core.runtime "3.6.0.v20100505"]
                  #_[org.eclipse.core/org.eclipse.core.contenttype "3.4.200.v20130326-1255"]
                  #_[org.eclipse.birt.runtime/org.eclipse.core.jobs "3.5.300.v20130429-1813"]

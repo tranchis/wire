@@ -2,6 +2,7 @@
   (:require [clara.rules :refer :all]
             [clara.rules.dsl :as dsl]
             [clara.rules.compiler :as c]
+            [clojure.math.combinatorics :as combo]
             [wire.logic :as logic]
             [wire.model :as model]
             [wire.preds :as preds])
@@ -14,9 +15,14 @@
 (defn substitute [formula theta]
   formula)
 
-
 (defn contains-all [theta theta2]
   (every? true? (map #(= (get theta (key %)) (val %)) theta2)))
+
+(defn compatible? [f theta]
+  (let [vars (map #(into #{} (mapcat logic/clause->vars %)) (logic/sol f))
+        c? (reduce (fn [p n] (or p n)) false (map #(= % (into #{} (keys theta))) vars))]
+    #_(println "compatible?" f theta c?)
+    c?))
 
 (def base-rules
   [{:lhs '[[?h1 <- HasClause (= ?f formula) (= ?f2 clause)]
@@ -120,10 +126,11 @@
            [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]
            [wire.preds.SubsetEQ (= ?theta2 subset) (= ?theta superset)]
            [:not 
-            [?h <- wire.preds.Holds (= ?f formula) (= ?theta2 substitution)]]
-           [:not [wire.preds.Violated (= ?n norm) (= ?theta substitution)]]]
-    :rhs '(when (not (nil? ?h))
-            (println "norm-violation" ?h)
+            [wire.preds.Holds (= ?f formula) (= ?theta2 substitution)]]
+           [:not [wire.preds.Violated (= ?n norm) (= ?theta substitution)]]
+           [:test (compatible? ?f ?theta2)]]
+    :rhs '(do
+            (println "norm-violation" ?n ?theta ?theta2)
             (insert-unconditional! (wire.preds/->Violated ?n ?theta)))}
    {:lhs '[[wire.preds.Expiration (= ?n norm) (= ?f formula)]
            [?ni <- wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]
@@ -143,8 +150,18 @@
            [?h2 <- wire.preds.Holds (= ?f2 formula) (= ?theta2 substitution)]
            [:test (contains-all ?theta ?theta2)]]
     :rhs '(do
-            (println "subseteq")
+            #_(println "subseteq" ?theta ?theta2)
             (insert! (wire.preds/->SubsetEQ ?theta2 ?theta)))}
+   {:lhs '[[?h1 <- wire.preds.Holds (= ?theta substitution)]]
+    :rhs '(when (> (count ?theta) 1)
+            (let [all-thetas (map (fn [x] (into {} x))
+                                  (filter #(not (or (= 0 (count %)) (= (count ?theta) (count %))))
+                                          (combo/subsets (into [] ?theta))))]
+              #_(println all-thetas)
+              (dorun (map #(do
+                             #_(println "subseteq" ?theta %)
+                             (insert! (wire.preds/->SubsetEQ % ?theta)))
+                          all-thetas))))}
    {:lhs '[[?a <- wire.preds.Predicate]]
     :rhs '(println "Predicate!" ?a)}
    {:lhs '[]
@@ -152,9 +169,10 @@
 
 (defn production-rule [rule]
   (let [{:keys [lhs rhs]} rule]
+    #_(println lhs rhs)
     (eval `(dsl/parse-rule ~lhs ~rhs))))
 
-(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
+#_(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
       [new-inserts-2 new-rules-2] (logic/norm->inserts model/example-norm-2)
       all-rules (concat base-rules [] new-rules new-rules-2)
       rules (map production-rule all-rules)
@@ -167,3 +185,17 @@
       (insert (preds/map->Predicate {:name :test :argument-0 "y"}))
       (fire-rules))
   #_rules)
+
+(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
+      [new-inserts-2 new-rules-2] [nil nil] #_(logic/norm->inserts model/example-norm-2)
+      all-rules (concat base-rules [] new-rules new-rules-2)
+      rules (map production-rule all-rules)
+      empty-session (c/mk-session [rules])
+      session (apply insert empty-session (concat new-inserts new-inserts-2))]
+  (-> session
+      (insert (preds/map->Predicate {:name :enacts-role :argument-0 "x"
+                                     :argument-1 "y"}))
+      (insert (preds/map->Predicate {:name :driving :argument-0 "x"}))
+      (insert (preds/map->Predicate {:name :test :argument-0 "y"}))
+      (insert (preds/map->Predicate {:name :crossed-red :argument-0 "x"}))
+      (fire-rules)))

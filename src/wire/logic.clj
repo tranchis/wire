@@ -6,10 +6,13 @@
 
 (defn sol [wff]
   (binding [*ns* (the-ns 'rolling-stones.core)]
-    (let [res (sat/solutions-symbolic-formula (eval (m/valid-wff? wff)))]
-      (if (< (count res) 2)
-        [res]
-        res))))
+    (let [res (sat/solutions-symbolic-formula (eval (m/valid-wff? wff)))
+          res (if (and (= 1 (count res))
+                       (not (instance? rolling_stones.core.Not (first (first res)))))
+                `([~(first res)])
+                res)]
+      #_(println "sat" res)
+      res)))
 
 #_(sol (:norm/fa m/example-norm))
 
@@ -23,24 +26,48 @@
       `(~(symbol "=") ~(symbol (str "?" (name p))) ~k)
       `(~(symbol "=") ~p ~k))))
 
+(defn generate-checkers [param]
+  (let [individual-checkers (map (fn [idx]
+                                   `[wire.preds.Predicate
+                                     (~(symbol "=")
+                                      ~(symbol (str "?" (name param)))
+                                      ~(symbol (str "argument-" idx)))])
+                                 (range 13))]
+    `[:or ~@individual-checkers]))
+
+(defn generate-negative [literal]
+  (let [main `[:not [wire.preds.Predicate
+                     (~(symbol "=") ~(first literal) ~(symbol "name"))
+                     ~@(map-indexed param-converted (rest literal))]]
+        vars (into #{} (map keyword (rest literal)))
+        not-null (map (fn [x] `[:test (not (nil? ~(symbol (str "?" (name x)))))])
+                      vars)
+        checkers (map generate-checkers vars)]
+    `[:and ~main ~@checkers ~@not-null]))
+
 (defn predicate->binding [cl]
-  (if (vector? cl)
+  #_(println "pb" cl)
+  #_(println (vector? cl) cl)
+  (if (instance? rolling_stones.core.Not cl)
+    (generate-negative (:literal cl))
     `[wire.preds.Predicate (~(symbol "=") ~(first cl) ~(symbol "name"))
-      ~@(map-indexed param-converted (rest cl))]
-    `[:not [wire.preds.Predicate
-            (~(symbol "=") ~(first (:literal cl)) ~(symbol "name"))
-            ~@(map-indexed param-converted (rest (:literal cl)))]]))
+      ~@(map-indexed param-converted (rest cl))]))
+
+(defn clause->vars [cl]
+  #_(println "cl" cl)
+  (if (instance? rolling_stones.core.Not cl)
+    (filter keyword? (drop 1 (:literal cl)))
+    (filter keyword? (drop 1 cl))))
 
 (defn clause->rule [clause]
-  (let [all-variables (into #{} (remove nil? (mapcat #(filter keyword? (drop 1 %))
-                                                     clause)))]
-    {:lhs `[~@(map predicate->binding 
-                   clause)]
+  #_(println "clause" clause)
+  (let [all-variables (into #{} (remove nil? (mapcat clause->vars clause)))]
+    {:lhs `[~@(map predicate->binding clause)]
      :rhs `(let [substitution# ~(apply hash-map
                                        (interleave all-variables
                                                    (map #(symbol (str "?" (name %)))
                                                         all-variables)))]
-             (println "Holds! " ~clause substitution#)
+             (println "Holds!" ~(pr-str clause) substitution#)
              (insert! (preds/->Holds ~clause substitution#)))}))
 
 (defn norm->inserts [norm]
