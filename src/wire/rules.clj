@@ -1,16 +1,13 @@
 (ns wire.rules
   (:require [clara.rules :refer :all]
+            [clara.rules.engine :as engine]
             [clara.rules.dsl :as dsl]
             [clara.rules.compiler :as c]
             [clojure.math.combinatorics :as combo]
+            [wire.monitor :refer :all]
             [wire.logic :as logic]
             [wire.model :as model]
-            [wire.preds :as preds])
-  (:import (wire.preds HasClause Holds Event Norm CountsAs Activation
-                       Maintenance Predicate AbstractFact Holds
-                       Formula Instantiated Abrogated Fulfilled
-                       NormInstanceInjected Violated Repaired SubsetEQ
-                       Repair RestrictedCountsAs CountsAsPerm)))
+            [wire.preds :as preds]))
 
 (defn substitute [formula theta]
   formula)
@@ -25,8 +22,8 @@
     c?))
 
 (def base-rules
-  [{:lhs '[[?h1 <- HasClause (= ?f formula) (= ?f2 clause)]
-           [?h2 <- Holds (= ?f2 formula) (= ?theta substitution)]]
+  [{:lhs '[[?h1 <- wire.preds.HasClause (= ?f formula) (= ?f2 clause)]
+           [?h2 <- wire.preds.Holds (= ?f2 formula) (= ?theta substitution)]]
     :rhs '(do
             (println "holds: " (.hashCode ?f))
             (insert! (wire.preds/->Holds ?f ?theta)))}
@@ -84,17 +81,17 @@
     :rhs '(do
             (println "counts-as-deactivation")
             (retract! ?f))}
-   #_{:lhs '[[?n <- Norm]
+   #_{:lhs '[[?n <- wire.preds.Norm]
            [:not [wire.preds.Abrogated (= ?n norm)]]]
     :rhs '(do
             (println "norm-abrogation")
             (insert-unconditional! (wire.preds/->Abrogated ?n)))}
-   {:lhs '[[?n <- Norm]
+   {:lhs '[[?n <- wire.preds.Norm]
            [?a <- wire.preds.Activation (= ?n norm) (= ?f formula)]]
     :rhs '(do
             (println "activation exists" (.hashCode ?f)))}
-   {:lhs '[[?n <- Norm]
-           [?n2 <- Norm]
+   {:lhs '[[?n <- wire.preds.Norm]
+           [?n2 <- wire.preds.Norm]
            [?a <- wire.preds.Activation (= ?n norm) (= ?f formula)]
            [?h <- wire.preds.Holds (= ?f formula) (= ?theta substitution)]
            [:not [wire.preds.Fulfilled (= ?n norm) (= ?theta substitution)]]
@@ -103,8 +100,8 @@
     :rhs '(do
             (println "norm-instantiation")
             (insert-unconditional! (wire.preds/->Instantiated ?n ?theta)))}
-   {:lhs '[[?n <- Norm]
-           [?n2 <- Norm]
+   {:lhs '[[?n <- wire.preds.Norm]
+           [?n2 <- wire.preds.Norm]
            [?i <- wire.preds.NormInstanceInjected
             (= ?n norm) (= ?theta substitution)]
            [:not [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]]
@@ -112,8 +109,8 @@
     :rhs '(do
             (println "injecting instantiated norm")
             (insert-unconditional! (wire.preds/->Instantiated ?n ?theta)))}
-   {:lhs '[[?n <- Norm]
-           [?n2 <- Norm]
+   {:lhs '[[?n <- wire.preds.Norm]
+           [?n2 <- wire.preds.Norm]
            [?i <- wire.preds.NormInstanceInjected
             (= ?n norm) (= ?theta substitution)]
            [:not [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]]
@@ -121,7 +118,7 @@
     :rhs '(do
             (println "injecting instantiated norm")
             (insert-unconditional! (wire.preds/->Instantiated ?n ?theta)))}
-   {:lhs '[[?n <- Norm]
+   {:lhs '[[?n <- wire.preds.Norm]
            [?a <- wire.preds.Maintenance (= ?n norm) (= ?f formula)]
            [wire.preds.Instantiated (= ?n norm) (= ?theta substitution)]
            [wire.preds.SubsetEQ (= ?theta2 subset) (= ?theta superset)]
@@ -167,10 +164,20 @@
    {:lhs '[]
     :rhs '(println "rule engine started")}])
 
+(def queries
+  [{:params '[:?agent-id]
+    :lhs '[[?viol <- wire.preds.Violated]]}
+   {:params '[]
+    :lhs '[[?inst <- wire.preds.Instantiated]]}])
+
 (defn production-rule [rule]
   (let [{:keys [lhs rhs]} rule]
     #_(println lhs rhs)
     (eval `(dsl/parse-rule ~lhs ~rhs))))
+
+(defn production-query [query]
+  (let [{:keys [params lhs]} query]
+    (eval `(dsl/parse-query ~params ~lhs))))
 
 #_(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
       [new-inserts-2 new-rules-2] (logic/norm->inserts model/example-norm-2)
@@ -186,11 +193,13 @@
       (fire-rules))
   #_rules)
 
-(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
+#_(let [[new-inserts new-rules] (logic/norm->inserts model/example-norm)
       [new-inserts-2 new-rules-2] [nil nil] #_(logic/norm->inserts model/example-norm-2)
+      all-queries (map production-query queries)
       all-rules (concat base-rules [] new-rules new-rules-2)
       rules (map production-rule all-rules)
-      empty-session (c/mk-session [rules])
+      rulebase (concat rules all-queries)
+      empty-session (c/mk-session [rulebase])
       session (apply insert empty-session (concat new-inserts new-inserts-2))]
   (-> session
       (insert (preds/map->Predicate {:name :enacts-role :argument-0 "x"
@@ -198,13 +207,12 @@
       (insert (preds/map->Predicate {:name :driving :argument-0 "x"}))
       (insert (preds/map->Predicate {:name :test :argument-0 "y"}))
       (insert (preds/map->Predicate {:name :crossed-red :argument-0 "x"}))
-      (fire-rules)))
+      (fire-rules)
+      #_(engine/components)
+      #_:rulebase
+      #_:query-nodes
+      #_(get {:lhs [{:type wire.preds.Violated, :constraints [], :fact-binding :?viol}],
+            :params #{:?agent-id}})
+      (status)
+      ))
 
-#_(defprotocol Monitor
-   "Protocol that defines basic monitoring operations"
-   (has-violated? [session agent-id] "Returns the list of norm instances violated by agent-id")
-   (status 
-     ([session] "Returns a list of all norm instances along its current status and related agent if applies")
-   ([session agent-id] "Returns a list of all norm instances' status")
-   ([session norm-id] "Returns the status of given norm instance id "))
-   (how2repair [session norm-id] "Returns the repair formula of norm instance norm-id"))
