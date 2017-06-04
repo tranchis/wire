@@ -15,7 +15,8 @@
   (norm-status [this norm-id])
   (how2repair [this norm-id])
   (add-fact [this fact])
-  (remove-fact [this fact]))
+  (remove-fact [this fact])
+  (facts [this]))
 
 (extend-type clara.rules.engine.LocalSession
   Monitor
@@ -40,6 +41,7 @@
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (insert this (apply preds/->Predicate full-fact))
       (fire-rules this)))
+  (facts [this])
   (remove-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (retract this (apply preds/->Predicate full-fact))
