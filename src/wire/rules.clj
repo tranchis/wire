@@ -4,7 +4,6 @@
             [clara.rules.dsl :as dsl]
             [clara.rules.compiler :as c]
             [clojure.math.combinatorics :as combo]
-            [wire.monitor :refer :all]
             [wire.logic :as logic]
             [wire.model :as model]
             [wire.preds :as preds]))

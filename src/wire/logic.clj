@@ -2,17 +2,27 @@
   (:require [wire.model :as m]
             [clara.rules :refer :all]
             [rolling-stones.core :as sat]
-            [wire.preds :as preds]))
+            [wire.preds :as preds]
+            [clojure.spec.alpha :as s]
+            [wire.model :as model]))
+
+(defn bang->not [formula]
+  (if (instance? rolling_stones.core.Not formula)
+    [:NOT (bang->not (:literal formula))]
+    (if (sequential? formula)
+      (into (empty formula) (map bang->not formula))
+      formula)))
 
 (defn sol [wff]
   (binding [*ns* (the-ns 'rolling-stones.core)]
-    (let [res (sat/solutions-symbolic-formula (eval (m/valid-wff? wff)))
-          res (if (and (= 1 (count res))
-                       (not (instance? rolling_stones.core.Not (first (first res)))))
-                `([~(first res)])
-                res)]
-      #_(println "sat" res)
-      res)))
+    (if (sequential? wff)
+      (let [sols (bang->not (sat/solutions-symbolic-formula (eval wff)))]
+        (if (vector? wff)
+          #{#{(first sols)}}
+          (into #{} (map #(into #{} %) sols))))
+      #{#{wff}})))
+
+(s/fdef sol :args ::model/wff)
 
 #_(sol (:norm/fa m/example-norm))
 

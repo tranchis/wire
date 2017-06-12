@@ -1,5 +1,5 @@
 (ns wire.model
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [wire.preds :as preds]))
 
 (def variables (into #{} (map #(keyword (str (char %)))
