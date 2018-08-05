@@ -2,15 +2,15 @@
 
 (defrecord Norm [norm-id implementation])
 (defrecord CountsAs [abstract-fact context concrete-fact])
-(defrecord Activation [norm formula])
-(defrecord Expiration [norm formula])
-(defrecord Maintenance [norm formula])
+(defrecord Activation [norm wff])
+(defrecord Expiration [norm wff])
+(defrecord Maintenance [norm wff])
 (defrecord Predicate [name argument-0 argument-1 argument-2 argument-3
                       argument-4 argument-5 argument-6 argument-7 argument-8 
                       argument-9 argument-10 argument-11 argument-12])
-(defrecord AbstractFact [norm formula])
-(defrecord Holds [formula substitution])
-(defrecord HasClause [formula clause])
+(defrecord AbstractFact [norm wff])
+(defrecord Holds [wff substitution])
+(defrecord HasClause [wff clause])
 (defrecord Event [asserter content])
 (defrecord Formula [content grounding])
 (defrecord Instantiated [norm substitution])

@@ -91,7 +91,7 @@
     :norm/fd '(NOT [:driving :a])
     :norm/fr '[:fine-paid 200]
     :norm/timeout '[:time 600]}))
-(s/explain ::norm example-norm)
+(s/explain ::norm (:implementation example-norm))
 
 (defn valid-wff? [cand]
   (if (s/valid? ::wff cand)
