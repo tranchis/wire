@@ -55,7 +55,6 @@
         empty-session (c/mk-session [rulebase])]
     (apply insert empty-session new-inserts)))
 
-(s/fdef monitor
-        :args (s/cat :norm-model ::model/norm))
+(s/fdef monitor :args (s/cat :norm-model ::model/norm))
 
 #_(monitor model/example-norm)
