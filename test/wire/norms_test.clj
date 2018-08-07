@@ -39,9 +39,9 @@
   (:norm-id (:norm (first status))))
 
 (fact "A monitor must create norm instances if the proper facts are added."
-     (extract-norm-id (mon/status (init-moni mon-1 "my-agent"))) => nil #_:norm-1
-     #_(extract-norm-id (mon/status (init-moni mon-2 "my-agent"))) => :norm-2
-     #_(extract-norm-id (mon/status (init-moni mon-3 "my-agent"))) => nil #_:norm-3)
+     (extract-norm-id (mon/status (init-moni mon-1 "my-agent"))) => :norm-1
+     (extract-norm-id (mon/status (init-moni mon-2 "my-agent"))) => :norm-2
+     (extract-norm-id (mon/status (init-moni mon-3 "my-agent"))) => :norm-3)
 
 
 #_(fact "An instantiated norm can be violated and the monitor has to detect it."

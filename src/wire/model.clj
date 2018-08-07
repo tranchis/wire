@@ -97,7 +97,7 @@
     :norm/timeout '[:time 600]}))
 (def example-norm-3
   (preds/->Norm
-   :norm-2
+   :norm-3
    {:norm/target :agent-0
     :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
     :norm/fm '(NOT [:crossed-red :a])
