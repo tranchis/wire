@@ -62,3 +62,8 @@
                (sat/AND (sat/OR :a :b) (sat/OR :c :d))
                => ))))
 
+(facts "clause->vars"
+       (fact "should drop value"
+             (clause->vars [:pred :a :b]) => (just [:a :b]))
+       (fact "should treat Not"
+        (clause->vars (rolling-stones.core/->Not '(:a :b))) => (just [:b])))
