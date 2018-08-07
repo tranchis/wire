@@ -20,11 +20,19 @@
     #_(println "compatible?" f theta c?)
     c?))
 
+(defn complete-substitution? [f theta]
+  #_(println "complete-subs" f theta)
+  #_(println (into #{} (keys theta)))
+  #_(println (into #{} (mapcat logic/clause->vars f)))
+  (let [vars (into #{} (mapcat logic/clause->vars f))]
+    (= vars (into #{} (keys theta)))))
+
 (def base-rules
   [{:lhs '[[?h1 <- wire.preds.HasClause (= ?f wff) (= ?f2 clause)]
-           [?h2 <- wire.preds.Holds (= ?f2 wff) (= ?theta substitution)]]
+           [?h2 <- wire.preds.Holds (= ?f2 wff) (= ?theta substitution)]
+           [:test (wire.rules/complete-substitution? ?f2 ?theta)]]
     :rhs '(do
-            (println "holds: " (.hashCode ?f))
+            (println "holds: " ?f2 ?theta)
             (clara.rules/insert! (wire.preds/->Holds ?f ?theta)))}
    {:lhs '[[wire.preds.Event (= ?a asserter) (= ?p content)]]
     :rhs '(do
