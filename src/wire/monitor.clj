@@ -40,13 +40,11 @@
   (how2repair [this norm-id])
   (add-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
-      (insert this (apply preds/->Predicate full-fact))
-      (fire-rules this)))
+      (fire-rules (insert this (apply preds/->Predicate full-fact)))))
   (all-facts [this])
   (remove-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
-      (retract this (apply preds/->Predicate full-fact))
-      (fire-rules this))))
+      (fire-rules (retract this (apply preds/->Predicate full-fact))))))
 
 (defn monitor [norm-model]
   (let [[new-inserts new-rules] (logic/norm->inserts norm-model)

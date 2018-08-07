@@ -19,12 +19,14 @@
                  :get-alphas-fn identity}))
 
 (fact "monitor"
-      (let [norm-example {:norm/target :agent-0
-                          :norm/fa '[:driving :a]
-                          :norm/fm '[:crossed-red :a]
-                          :norm/fd '[:driving :a]
-                          :norm/fr '[:fine-paid 100]
-                          :norm/timeout '[:time 500]}]
+      (let [norm-impl {:norm/target :agent-0
+                       :norm/fa '[:driving :a]
+                       :norm/fm '[:crossed-red :a]
+                       :norm/fd '[:driving :a]
+                       :norm/fr '[:fine-paid 100]
+                       :norm/timeout '[:time 500]}
+            norm-example {:norm-id "norm-1"
+                          :implementation norm-impl}]
         (let [session (monitor norm-example)]
           (eng/components session))
         => {:get-alphas-fn identity

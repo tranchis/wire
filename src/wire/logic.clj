@@ -46,6 +46,7 @@
     `[:or ~@individual-checkers]))
 
 (defn generate-negative [literal]
+  #_(println "generate-negative" literal)
   (let [main `[:not [wire.preds.Predicate
                      (~(symbol "=") ~(first literal) ~(symbol "name"))
                      ~@(map-indexed param-converted (rest literal))]]
@@ -58,8 +59,8 @@
 (defn predicate->binding [cl]
   #_(println "pb" cl)
   #_(println (vector? cl) cl)
-  (if (instance? rolling_stones.core.Not cl)
-    (generate-negative (:literal cl))
+  (if (= (first cl) :NOT) #_(instance? rolling_stones.core.Not cl)
+    (generate-negative (second cl))
     `[wire.preds.Predicate (~(symbol "=") ~(first cl) ~(symbol "name"))
       ~@(map-indexed param-converted (rest cl))]))
 
@@ -91,5 +92,6 @@
         insert-fd (preds/->Expiration norm (:norm/fd implementation))
         insert-fr (preds/->Repair norm (:norm/fr implementation))
         formulas-timeout (sol (:norm/timeout implementation))]
+    #_(println rules-clauses)
     [(concat inserts-mappings [insert-fa insert-fm insert-fd insert-fr norm])
      rules-clauses]))

@@ -158,8 +158,14 @@
                              #_(println "subseteq" ?theta %)
                              (clara.rules/insert! (wire.preds/->SubsetEQ % ?theta)))
                           all-thetas))))}
-   {:lhs '[[?a <- wire.preds.Predicate]]
+   #_{:lhs '[[?a <- wire.preds.Predicate]]
     :rhs '(println "Predicate!" ?a)}
+   #_{:lhs '[[?a <- wire.preds.Holds]]
+    :rhs '(println "Holds!" ?a)}
+   {:lhs '[[?a <- wire.preds.Activation]]
+    :rhs '(println "Activation!" ?a)}
+   {:lhs '[[?a <- wire.preds.Norm]]
+    :rhs '(println "Norm!" ?a)}
    {:lhs '[]
     :rhs '(println "rule engine started")}])
 

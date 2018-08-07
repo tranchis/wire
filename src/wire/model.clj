@@ -39,8 +39,12 @@
 
 (s/def ::subs (s/map-of ::variable ::literal))
 
-(s/def ::norm (s/keys :req [:norm/target :norm/fa :norm/fm
-                            :norm/fd :norm/fr :norm/timeout]))
+(s/def ::norm-id (s/or :k keyword? :s string?))
+
+(s/def ::implementation (s/keys :req [:norm/target :norm/fa :norm/fm
+                                      :norm/fd :norm/fr :norm/timeout]))
+
+(s/def ::norm (s/keys :req-un [::norm-id ::implementation]))
 
 (s/def ::norm-instance (s/keys :req [::norm ::subs]))
 
@@ -83,6 +87,15 @@
     :norm/fr '[:fine-paid 100]
     :norm/timeout '[:time 500]}))
 (def example-norm-2
+  (preds/->Norm
+   :norm-2
+   {:norm/target :agent-0
+    :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
+    :norm/fm '(NOT [:crossed-red :a])
+    :norm/fd '(NOT [:driving :a])
+    :norm/fr '[:fine-paid 200]
+    :norm/timeout '[:time 600]}))
+(def example-norm-3
   (preds/->Norm
    :norm-2
    {:norm/target :agent-0
