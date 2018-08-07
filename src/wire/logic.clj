@@ -68,7 +68,9 @@
   #_(println "cl" cl)
   (if (instance? rolling_stones.core.Not cl)
     (filter keyword? (drop 1 (:literal cl)))
-    (filter keyword? (drop 1 cl))))
+    (if (= :NOT (first cl))
+      (filter keyword? (drop 1 (second cl)))
+      (filter keyword? (drop 1 cl)))))
 
 (defn clause->rule [clause]
   #_(println "clause" clause)

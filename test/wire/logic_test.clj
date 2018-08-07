@@ -63,7 +63,9 @@
                => ))))
 
 (facts "clause->vars"
+       (fact "should drop pred"
+             (clause->vars [:NOT [:crossed-red :a]]) => (just [:a]))
        (fact "should drop value"
              (clause->vars [:pred :a :b]) => (just [:a :b]))
        (fact "should treat Not"
-        (clause->vars (rolling-stones.core/->Not '(:a :b))) => (just [:b])))
+             (clause->vars (rolling-stones.core/->Not '(:a :b))) => (just [:b])))
