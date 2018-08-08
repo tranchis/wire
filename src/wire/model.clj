@@ -81,11 +81,41 @@
   (preds/->Norm
    :norm-1
    {:norm/target :agent-0
-    :norm/fa '(AND [:enacts-role :a :d] (OR [:test :d] [:driving :a]))
+    :norm/fa '(AND [:enacts-role :a :d](OR [:test :d] [:driving :a]) )
     :norm/fm '(NOT [:crossed-red :a])
     :norm/fd '(NOT [:driving :a])
     :norm/fr '[:fine-paid 100]
     :norm/timeout '[:time 500]}))
+
+(def example-norm-and
+  (preds/->Norm
+    :norm-and
+    {:norm/target :agent-0
+     :norm/fa '(AND [:enacts-role :a :d] [:driving :a])
+     :norm/fm '(NOT [:crossed-red :a])
+     :norm/fd '(NOT [:driving :a])
+     :norm/fr '[:fine-paid 100]
+     :norm/timeout '[:time 500]}))
+(def example-norm-or
+  (preds/->Norm
+    :norm-or
+    {:norm/target :agent-0
+     :norm/fa '(OR [:enacts-role :a :d] [:driving :a])
+     :norm/fm '(NOT [:crossed-red :a])
+     :norm/fd '(NOT [:driving :a])
+     :norm/fr '[:fine-paid 100]
+     :norm/timeout '[:time 500]}))
+
+(def example-norm-not
+  (preds/->Norm
+    :norm-not
+    {:norm/target :agent-0
+     :norm/fa '(NOT [:enacts-role :a :d])
+     :norm/fm '(NOT [:crossed-red :a])
+     :norm/fd '(NOT [:driving :a])
+     :norm/fr '[:fine-paid 100]
+     :norm/timeout '[:time 500]}))
+
 (def example-norm-2
   (preds/->Norm
    :norm-2
