@@ -41,7 +41,8 @@
   (add-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (fire-rules (insert this (apply preds/->Predicate full-fact)))))
-  (all-facts [this])
+  (all-facts [this]
+    #{})
   (remove-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (fire-rules (retract this (apply preds/->Predicate full-fact))))))
