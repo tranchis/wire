@@ -7,3 +7,14 @@ target/
 .DS_Store
 .lein-repl-history
 *.orig
+.idea/
+.idea/compiler.xml
+.idea/dictionaries/
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.nrepl-port
+contrib/clojure-binaries/
+wire.iml
