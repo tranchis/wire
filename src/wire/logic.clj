@@ -1,10 +1,10 @@
 (ns wire.logic
-  (:require [wire.model :as m]
+  (:require [wire.preds :as preds]
+            [wire.model :as model]
             [clara.rules :refer :all]
             [rolling-stones.core :as sat]
-            [wire.preds :as preds]
             [clojure.spec.alpha :as s]
-            [wire.model :as model]))
+            [clojure.tools.logging :as log]))
 
 (defn bang->not [formula]
   (if (instance? rolling_stones.core.Not formula)
@@ -46,7 +46,7 @@
     `[:or ~@individual-checkers]))
 
 (defn generate-negative [literal]
-  #_(println "generate-negative" literal)
+  #_(log/info "generate-negative" literal)
   (let [main `[:not [wire.preds.Predicate
                      (~(symbol "=") ~(first literal) ~(symbol "name"))
                      ~@(map-indexed param-converted (rest literal))]]
@@ -57,15 +57,15 @@
     `[:and ~main ~@checkers ~@not-null]))
 
 (defn predicate->binding [cl]
-  #_(println "pb" cl)
-  #_(println (vector? cl) cl)
+  #_(log/info "pb" cl)
+  #_(log/info (vector? cl) cl)
   (if (= (first cl) :NOT) #_(instance? rolling_stones.core.Not cl)
     (generate-negative (second cl))
     `[wire.preds.Predicate (~(symbol "=") ~(first cl) ~(symbol "name"))
       ~@(map-indexed param-converted (rest cl))]))
 
 (defn clause->vars [cl]
-  #_(println "cl" cl)
+  #_(log/info "cl" cl)
   (if (instance? rolling_stones.core.Not cl)
     (filter keyword? (drop 1 (:literal cl)))
     (if (= :NOT (first cl))
@@ -73,14 +73,14 @@
       (filter keyword? (drop 1 cl)))))
 
 (defn clause->rule [clause]
-  #_(println "clause" clause)
+  #_(log/info "clause" clause)
   (let [all-variables (into #{} (remove nil? (mapcat clause->vars clause)))]
     {:lhs `[~@(map predicate->binding clause)]
      :rhs `(let [substitution# ~(apply hash-map
                                        (interleave all-variables
                                                    (map #(symbol (str "?" (name %)))
                                                         all-variables)))]
-             (println "Holds!" ~(pr-str clause) substitution#)
+             (log/info "Holds!" ~(pr-str clause) substitution#)
              (insert! (preds/->Holds ~clause substitution#)))}))
 
 (defn norm->inserts [norm]

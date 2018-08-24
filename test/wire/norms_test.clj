@@ -4,6 +4,7 @@
             [wire.rules :refer :all]
             [wire.model :as model]
 						[wire.preds :as preds]
+						[clojure.tools.logging :as log]
             [clara.rules :refer :all]
 						[clara.tools.tracing :refer :all]))
 
