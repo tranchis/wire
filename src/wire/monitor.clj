@@ -42,7 +42,12 @@
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (fire-rules (insert this (apply preds/->Predicate full-fact)))))
   (all-facts [this]
-    #{})
+    (->> (query this {:lhs [{:type wire.preds.Predicate
+                             :constraints []
+                             :fact-binding :?pred}]
+                      :params #{}})
+         (map :?pred)
+         (into #{})))
   (remove-fact [this fact]
     (let [full-fact (concat fact (take (- 14 (count fact)) (repeat nil)))]
       (fire-rules (retract this (apply preds/->Predicate full-fact))))))

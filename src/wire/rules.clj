@@ -181,6 +181,8 @@
   [{:params '[:?agent-id]
     :lhs '[[?viol <- wire.preds.Violated]]}
    {:params '[]
+    :lhs '[[?pred <- wire.preds.Predicate]]}
+   {:params '[]
     :lhs '[[?inst <- wire.preds.Instantiated]]}])
 
 (defn production-rule [rule]
